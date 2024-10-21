@@ -1,19 +1,20 @@
 {
-    "cSpell.words": [
-        "commandline",
-        "cout",
-        "defterm",
-        "endl",
-        "gdbinit",
-        "iostream",
-        "linkar",
-        "lldb",
-        "Mintty",
-        "mklink",
-        "MSYS",
-        "pacman",
-        "unspec",
-        "vadimcn",
-        "Wextra"
-    ]
+  "cSpell.words": [
+    "commandline",
+    "cout",
+    "defterm",
+    "endl",
+    "gdbinit",
+    "iostream",
+    "linkar",
+    "lldb",
+    "mdbook",
+    "Mintty",
+    "mklink",
+    "MSYS",
+    "pacman",
+    "unspec",
+    "vadimcn",
+    "Wextra"
+  ]
 }

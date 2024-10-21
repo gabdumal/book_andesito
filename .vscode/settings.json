@@ -16,5 +16,15 @@
     "unspec",
     "vadimcn",
     "Wextra"
-  ]
+  ],
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": true,
+    "scminput": true
+  },
+  "markdownlint.config": {
+    "MD033": false,
+    "default": true
+  }
 }

@@ -1,8 +1,0 @@
-[book]
-authors = ["Gabriel Malosto"]
-description = "Guia de configuração de ambiente de desenvolvimento em C e C++, utilizando Clang, LLDB, CMake e VsCode."
-language = "pt-br"
-multilingual = false
-src = "src"
-text-direction = "ltr"
-title = "Ambiente de desenvolvimento em C e C++, com CMake e VsCode"

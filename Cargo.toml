@@ -1,0 +1,9 @@
+[package]
+name = "book_c_cpp_env"
+version = "0.1.0"
+edition = "2021"
+authors = ["Gabriel Malosto"]
+license = "CC-BY-SA-4.0"
+
+[dependencies]
+mdbook = "0.4.40"

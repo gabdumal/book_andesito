@@ -1,0 +1,10 @@
+figcaption {
+  text-align: center;
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}

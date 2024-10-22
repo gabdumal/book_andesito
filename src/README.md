@@ -9,3 +9,5 @@ Cobrimos a instalação das ferramentas necessárias nos seguintes sistemas oper
   - com WSL (Ubuntu)
 - Ubuntu Linux
 - Fedora Linux
+
+Nesse processo, recomendamos configurações de diversas ferramentas que visam a aprimorar a sua experiência de desenvolvimento.

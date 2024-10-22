@@ -23,5 +23,6 @@ preferred-dark-theme = "navy"
 smart-punctuation = true
 git-repository-url = "https://github.com/gabdumal/book_c_cpp_env"
 site-url = "/book_c_cpp_env/"
+additional-css = ["src/styles.css"]
 
 [output.markdown]

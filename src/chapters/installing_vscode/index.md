@@ -13,7 +13,7 @@ Para este guia, vamos utilizar o Visual Studio Code e configurá-lo para compila
 Você pode fazer o download do editor pelo [site oficial](https://code.visualstudio.com/Download).
 
 <figure>
-<img src="./download_options.png" alt="Opções de download do Visual Studio Code, em que se seleciona o instalador do Windows." />
+<img src="./download_options.png" />
 <figcaption>Opções de download do Visual Studio Code, em que se seleciona o instalador do Windows.</figcaption>
 </figure>
 

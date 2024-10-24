@@ -1,4 +1,4 @@
-# Instalando o WSL
+# Windows Subsystem for Linux { #wsl }
 
 O **Windows Subsystem for Linux (WSL)** é uma ferramenta de código aberto apoiada pela Microsoft que permite a emulação de um sistema operacional Linux dentro do Windows.
 A atual versão na data de escrita deste livro é a 2, que traz grandes melhorias em relação à versão anterior.
@@ -167,4 +167,27 @@ Selecione a entrada do ubuntu com o ícone laranja e clique em `Salvar`.
 <figure>
 <img src="./ubuntu_default.png" />
 <figcaption>Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows Terminal.</figcaption>
+</figure>
+
+## Atualizando os pacotes
+
+A maioria das ferramentas que você instalará no Ubuntu será por meio do gerenciador de pacotes `apt`.
+Para garantir que tudo está atualizado, execute o comando abaixo.
+
+```bash
+sudo apt update
+```
+
+Então, para de fato instalar as atualizações, execute o comando abaixo.
+
+```bash
+sudo apt upgrade
+```
+
+A palavra `sudo` é usada para executar um comando com permissões de administrador.
+Ela solicitará a senha do usuário que você criou anteriormente.
+
+<figure>
+<img src="./updating_packages.png" />
+<figcaption>Atualizando os pacotes do Ubuntu.</figcaption>
 </figure>

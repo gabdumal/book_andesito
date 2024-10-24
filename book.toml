@@ -10,8 +10,6 @@ title = "Ambiente de desenvolvimento em C e C++, com CMake e VsCode"
 [rust]
 edition = "2021"
 
-[preprocessor.variables.variables]
-
 [build]
 build-dir = "book"
 create-missing = false

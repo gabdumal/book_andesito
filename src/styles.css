@@ -12,3 +12,9 @@ figure {
 .bold {
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  figure {
+    margin-inline: 0;
+  }
+}

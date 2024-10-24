@@ -8,3 +8,5 @@
 - [Windows Subsystem for Linux](chapters/wsl/index.md)
 - [Visual Studio Code](chapters/vscode/index.md)
 - [Git](chapters/git/index.md)
+- [Configurando o shell](chapters/shell/index.md)
+  - [Zsh](chapters/shell/zsh/index.md)

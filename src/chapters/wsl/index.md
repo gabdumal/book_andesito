@@ -9,7 +9,7 @@ Para este guia, vamos nos manter na distribuição **Ubuntu**, que é a padrão 
 
 ## Pré-requisitos
 
-Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Build 19041) ou superior, o WSL 2 já estará habilitado, e você pode pular para a próxima seção.
+Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Build 19041) ou superior, o WSL 2 já estará habilitado, e você pode pular para a [próxima seção](#habilitando-o-wsl).
 
 <div class="warning">
   <p>

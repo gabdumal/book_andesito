@@ -25,7 +25,7 @@ Pesquise no menu de **extensões** do Visual Studio Code e instale as seguintes:
 Atenção: ainda **não instale** a extensão `C/C++ Extension Pack`!
 Ela inclui outras extensões que serão explicadas mais adiante.
 
-Abra a **paleta de comandos** do Visual Studio Code com `Ctrl` + `Shift` + `P` e pesquise por **Preferences: Open User Settings (JSON)**, ou o equivalente em português.
+Abra a **paleta de comandos** do Visual Studio Code com <kbd>Ctrl + Shift + P</kbd> e pesquise por **Preferences: Open User Settings (JSON)**, ou o equivalente em português.
 
 Copie o conteúdo da pasta [`/config/initial_settings.json`](/config/initial_settings.json) deste repositório e cole no arquivo `settings.json` do Visual Studio Code.
 Perceba que, abrindo o arquivo `settings.json` quando se usa o perfil MSYS2 Clang64, você verá as configurações específicas para este perfil, e não as configurações gerais do Visual Studio Code.
@@ -51,14 +51,14 @@ Copie todos os arquivos para o diretório `linked_nodes` que você criou.
 Você verá que o Visual Studio Code já reconhece o projeto e identifica as bibliotecas e funções utilizadas.
 
 Vamos compilar o projeto pelo terminal integrado do Visual Studio Code.
-Abra o terminal integrado com `Ctrl` + `` ` `` e execute o comando abaixo:
+Abra o terminal integrado com <kbd>Ctrl + `</kbd> e execute o comando abaixo:
 
 ```bash
 clang main.c node.c -include node.h -o linked_nodes
 ```
 
 Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `linked_nodes`.
-Para executar o programa, digite `./linked_nodes` e pressione `Enter`.
+Para executar o programa, digite `./linked_nodes` e pressione <kbd>Enter</kbd>.
 
 ![Compilação e execução de um projeto em C pelo terminal integrado do VsCode.](compiling_and_running_linked_nodes.png)
 
@@ -93,7 +93,7 @@ Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arqu
 O que ele faz é definir uma tarefa chamada `Clang: build C project (all files in root)` que compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na raiz do projeto.
 O executável gerado terá o nome da pasta aberta no Visual Studio Code.
 
-Você pode executar a tarefa `Clang: build C project (all files in root)` pressionando `Ctrl` + `Shift` + `B`, ou acessando pela **Paleta de Comandos** a opção `Tasks: Run Build Task`.
+Você pode executar a tarefa `Clang: build C project (all files in root)` pressionando <kbd>Ctrl + Shift + B</kbd>, ou acessando pela **Paleta de Comandos** a opção `Tasks: Run Build Task`.
 
 ### Rodando o programa pela interface gráfica
 

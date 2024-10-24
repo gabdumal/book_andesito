@@ -8,7 +8,7 @@ Para o Windows 10, você pode baixá-lo na [Microsoft Store](https://www.microso
 ## Atalho de teclado
 
 Vamos criar um atalho de teclas para abrir o Windows Terminal.
-Abra o `Executar` com `Win + R`, digite `shell:AppsFolder`, e pressione `Enter`.
+Abra o `Executar` com <kbd>Win + R</kbd>, digite `shell:AppsFolder`, e pressione <kbd>Enter</kbd>.
 
 <figure>
 <img src="./open_folder.png" />
@@ -36,7 +36,7 @@ Agora, clique com o botão direito do mouse no atalho criado na área de trabalh
 <figcaption>Confirmação da criação do atalho na área de trabalho.</figcaption>
 </figure>
 
-Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas `Ctrl + Alt + T`.
+Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas <kbd>Ctrl + Alt + T</kbd>.
 
 <figure>
 <img src="./set_keybinding.png" />

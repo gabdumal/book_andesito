@@ -134,7 +134,7 @@ Para executá-lo, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+
 
 ![Paleta de Comandos do VsCode em que se pesquisa a opção de rodar a tarefa de compilar um projeto.](running_build_task_in_vscode.png)
 
-Selecione a tarefa `Clang: build C++ project (binary tree)` e pressione `Enter`.
+Selecione a tarefa `Clang: build C++ project (binary tree)` e pressione <kbd>Enter</kbd>.
 
 ![Pop-up em que o Visual Studio Code pede que seja selecionada uma tarefa de compilação.](selecting_compile_task_in_vscode.png)
 
@@ -169,7 +169,7 @@ E o nome da tarefa de compilação que é chamada:
 ```
 
 Agora abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Debug: Select and Start Debugging`.
-Seleciona a tarefa `LLDB: build and launch C++ project (binary tree)` e pressione `Enter`.
+Seleciona a tarefa `LLDB: build and launch C++ project (binary tree)` e pressione <kbd>Enter</kbd>.
 
 ![Paleta de Comandos do VsCode em que se pesquisa a opção de depurar o código.](/img/selecting_debugging_in_vscode.png)
 

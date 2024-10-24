@@ -34,8 +34,8 @@ O arquivo deve ficar como este:
 
 ![Arquivo .zshrc editado no Nano, tendo adicionado as linhas acima descritas.](editing_zshrc_nano_edited.png)
 
-Para salvar o arquivo, pressione `Ctrl` + `O`, e então `Enter`.
-Para sair do editor, pressione `Ctrl` + `X`.
+Para salvar o arquivo, pressione <kbd>Ctrl + O</kbd>, e então <kbd>Enter</kbd>.
+Para sair do editor, pressione <kbd>Ctrl + X</kbd>.
 
 Em vez de fechar o terminal e abrir um novo, você pode recarregar o arquivo `.zshrc` com o seguinte comando:
 

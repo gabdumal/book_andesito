@@ -56,10 +56,10 @@ pacman -Syu
 ![Executando comando de atualizar pacotes no terminal Mintty.](running_command_on_mintty.png)
 
 O shell perguntará se você deseja proceder com o processo.
-Digite `Y` e pressione `Enter`.
+Digite <kbd>Y</kbd> e pressione <kbd>Enter</kbd>.
 
 Ao concluir, ele o pedirá para reiniciar o MSYS2.
-Novamente, digite `Y` e pressione `Enter`.
+Novamente, digite <kbd>Y</kbd> e pressione <kbd>Enter</kbd>.
 
 Abra o MSYS2 CLANG64 novamente.
 Agora vamos de fato **baixar** os pacotes atualizados.
@@ -70,7 +70,7 @@ Digite o comando abaixo:
 pacman -Su
 ```
 
-Confirme a instalação dos pacotes digitando `Y` e pressionando `Enter`.
+Confirme a instalação dos pacotes digitando <kbd>Y</kbd> e pressionando <kbd>Enter</kbd>.
 
 ## Estrutura de diretórios
 

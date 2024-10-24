@@ -5,7 +5,7 @@ A atual versão na data de escrita deste livro é a 2, que traz grandes melhoria
 
 O WSL permite instalar diversas distribuições Linux, até mesmo concomitantemente.
 Este [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-6---install-your-linux-distribution-of-choice) da Microsoft mostra algumas opções.
-Para este guia, vamos nos manter na distribuição **Ubuntu 22.04 LTS**, que é a padrão do WSL.
+Para este guia, vamos nos manter na distribuição **Ubuntu**, que é a padrão do WSL.
 
 ## Pré-requisitos
 
@@ -70,3 +70,101 @@ Por fim, defina a versão 2 do WSL como padrão com o comando abaixo, ainda no P
 ```powershell
 wsl --set-default-version 2
 ```
+
+## Instalando o WSL
+
+Primeiramente, devemos instalar o WSL propriamente dito.
+Para isso, abra o **PowerShell** e execute o comando abaixo.
+
+```powershell
+wsl.exe --install --no-distribution
+```
+
+<figure>
+<img src="./installing_wsl.png" />
+<figcaption>Processo de instalação do WSL pelo Powershell.</figcaption>
+</figure>
+
+Quando eu instalei, usei apenas o comando `wsl.exe --install`, sem o `--no-distribution`.
+Confesso que o meu processo ficou travado nessa última linha `Habilitando recurso(s)`.
+Depois de um minuto eu fechei o terminal e abri novamente.
+
+Digitando `wsl`, recebi a seguinte mensagem: `O Subsistema do Windows para Linux não tem distribuições instaladas`.
+
+<figure>
+<img src="./error_no_distro.png" />
+<figcaption>Resultado do comando <code>wsl</code> após a execução do comando de instalação.</figcaption>
+</figure>
+
+Por isso, recomendo para vocês usarem o comando `wsl.exe --install --no-distribution` para evitar esse problema de cara, e instalar apenas o sistema base mesmo.
+
+Bom, agora que temos o WSL, vamos instalar uma distribuição Linux!
+Mas, por precaução, **reinicie o computador** antes de prosseguir.
+
+## Instalando o Ubuntu
+
+Agora que o WSL está habilitado, podemos instalar a distribuição Ubuntu.
+
+A maneira mais fácil de fazer isso é pela Microsoft Store.
+Procure por uma aplicação chamada **Ubuntu**, sem indicar a versão.
+Ela é a primeira opção da imagem a seguir.
+
+<figure>
+<img src="./ubuntu_options.png" />
+<figcaption>Opções de instalações do Ubuntu pela Microsoft Store, em que se seleciona a Ubuntu.</figcaption>
+</figure>
+
+Você também pode acessar essa página pelo [link direto](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare).
+
+Clique no botão de instalar, e aguarde o download e instalação da distribuição.
+
+<figure>
+<img src="./installing_ubuntu.png" />
+<figcaption>Processo de instalação do Ubuntu para o WSL.</figcaption>
+</figure>
+
+## Configurando o Ubuntu
+
+Pesquise pelo **Ubuntu** no Menu Iniciar e abra o aplicativo.
+
+<figure>
+<img src="./ubuntu_start_menu.png" />
+<figcaption>Entrada do Ubuntu no Menu Iniciar.</figcaption>
+</figure>
+
+O que será aberto, na verdade, é uma janela do terminal.
+Após aguardar alguns segundos, o sistema pedirá para criar um **usuário e senha**.
+
+Eu usei o mesmo usuário do Windows, mas você pode criar um novo usuário se preferir.
+Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo. Não se preocupe, digite-a até o final e pressione <kbd>Enter</kbd>.
+Após repetir a senha, pressione <kbd>Enter</kbd> novamente.
+
+O sistema fará as últimas configurações e criara um usuário de administrador para você dentro do Ubuntu.
+
+<figure>
+<img src="./user_creation.png" />
+<figcaption>Processo de criação de usuário do Ubuntu pelo terminal.</figcaption>
+</figure>
+
+Lembre-se da sua senha, pois ela será solicitada sempre que você precisar de permissões de administrador.
+
+Em caso de esquecê-la, deixo aqui um [guia](https://www.howtogeek.com/devops/how-to-reset-your-forgotten-linux-password-in-wsl/) de como recuperá-la.
+
+## Configurando o Windows Terminal
+
+Se tudo tiver corrido bem, você verá uma nova entrada para o Ubuntu na aba de perfis do **Windows Terminal**.
+
+<figure>
+<img src="./ubuntu_profile.png" />
+<figcaption>Opção do ubuntu na lista de perfis do Windows Terminal.</figcaption>
+</figure>
+
+Eu acho mais prático ter o Ubuntu como padrão quando inicio o terminal.
+Para isso, abra as configurações do Windows Terminal.
+Na seção `Startup` (ou `Inicialização`), você pode definir o perfil padrão.
+Selecione a entrada do ubuntu com o ícone laranja e clique em `Salvar`.
+
+<figure>
+<img src="./ubuntu_default.png" />
+<figcaption>Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows Terminal.</figcaption>
+</figure>

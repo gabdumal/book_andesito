@@ -37,12 +37,12 @@ Sinta-se à vontade para configurar como desejar.
 
 ![Mensagem de boas vindas do Zsh.](zsh_welcome.png)
 
-Para navegar pelas opções, você deve digitar o número ou letra correspondente à opção desejada e pressionar `Enter`.
-A fim de configurar, pressione `1` e `Enter`.
+Para navegar pelas opções, você deve digitar o número ou letra correspondente à opção desejada e pressionar <kbd>Enter</kbd>.
+A fim de configurar, pressione `1` e <kbd>Enter</kbd>.
 
 ![Configuração inicial do Zsh.](zsh_setup.png)
 
-Se você não quiser personalizar nenhuma opção, pressione `0` e `Enter`.
+Se você não quiser personalizar nenhuma opção, pressione `0` e <kbd>Enter</kbd>.
 
 ![Finalização da configuração inicial do Zsh.](zsh_setup_end.png)
 

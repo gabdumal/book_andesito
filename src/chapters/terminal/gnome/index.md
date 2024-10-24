@@ -10,7 +10,7 @@ Pesquise por `Terminal` no menu do GNOME e clique no ícone do aplicativo para a
 </figure>
 
 O GNOME terminal também pode ser aberto por um comando!
-Digite `gnome-terminal` no terminal e pressione `Enter`.
+Digite `gnome-terminal` no terminal e pressione <kbd>Enter</kbd>.
 
 <figure>
 <img src="./opening_terminal_from_terminal.gif" />
@@ -28,7 +28,7 @@ Já no Fedora, você pode defini-lo em `Settings > Keyboard > View and Customize
 <figcaption>Selecionando menu de atalhos de teclado nas configurações do GNOME.</figcaption>
 </figure>
 
-Então, defina o nome como `Terminal`, o comando como `gnome-terminal` e o atalho de teclado como `Ctrl + Alt + T`.
+Então, defina o nome como `Terminal`, o comando como `gnome-terminal` e o atalho de teclado como <kbd>Ctrl + Alt + T</kbd>.
 Pressione `Add` e pronto!
 
 <figure>

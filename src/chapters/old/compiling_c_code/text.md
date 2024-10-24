@@ -39,9 +39,9 @@ Para instalá-los, execute o comando abaixo no terminal do MSYS2:
 pacman -S mingw-w64-clang-x86_64-ninja mingw-w64-clang-x86_64-gcc mingw-w64-clang-x86_64-gcc-libs
 ```
 
-Confirme a instalação digitando `Y` (ou `S`, se estiver em português) e pressionando `Enter`.
+Confirme a instalação digitando <kbd>Y</kbd> (ou <kbd>S</kbd>, se estiver em português) e pressionando <kbd>Enter</kbd>.
 
-Então, execute o comando abaixo e pressione `Enter` para confirmar a instalação dos pacotes:
+Então, execute o comando abaixo e pressione <kbd>Enter</kbd> para confirmar a instalação dos pacotes:
 
 ```bash
 pacman -S mingw-w64-clang-x86_64-toolchain
@@ -67,7 +67,7 @@ clang hello_world.c -o hello_world
 ```
 
 Se tudo estiver correto, você não verá nenhuma mensagem de erro.
-Para executar o programa, digite `./hello_world` e pressione `Enter`.
+Para executar o programa, digite `./hello_world` e pressione <kbd>Enter</kbd>.
 
 ![Comandos executados no terminal do MSYS2 para compilar e executar o programa hello_world.c.](compiling_and_running_hello_world_project.png)
 

@@ -8,3 +8,7 @@ figure {
   align-items: center;
   gap: 1rem;
 }
+
+.bold {
+  font-weight: bold;
+}

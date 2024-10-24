@@ -4,10 +4,10 @@ Este guia pretende auxiliar na configuração de um ambiente de desenvolvimento 
 
 Cobrimos a instalação das ferramentas necessárias nos seguintes sistemas operacionais:
 
-- Windows
-  - com MVSC
-  - com WSL (Ubuntu)
 - Ubuntu Linux
 - Fedora Linux
+- Windows
+  - com WSL (Ubuntu)
+  - com MVSC
 
 Nesse processo, recomendamos configurações de diversas ferramentas que visam a aprimorar a sua experiência de desenvolvimento.

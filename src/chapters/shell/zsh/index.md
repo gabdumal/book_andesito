@@ -139,30 +139,3 @@ Acesse a pasta `home`, e então a pasta do seu **usuário**.
 Vemos que há vários arquivos e pastas dentro do diretório do usuário.
 O arquivo `.bashrc` é o arquivo de configuração do Bash, o shell padrão do Ubuntu.
 Já o arquivo `.zshrc` acabou de ser criado pelo Zsh após a mensagem de boas-vindas.
-
-## Configuração
-
-Vamos usar um abrir de texto para abrir o arquivo `.zshrc`.
-Como já instalamos o Visual Studio Code, podemos usá-lo.
-
-Digite no terminal o seguinte comando:
-
-```bash
-code ~/.zshrc
-```
-
-O `~` é um atalho para a pasta do usuário, ou seja, `/home/gabriel` no meu caso.
-Dentro dela, está o arquivo `.zshrc`.
-
-<figure>
-<img src="./zsh_code_empty.png" />
-<figcaption>Arquivo de configuração do Zsh exibido no VsCode, com o aviso de arquivo modo restrito.</figcaption>
-</figure>
-
-Caso dentro do VsCode haja um aviso de que o arquivo está em modo restrito, clique em "Manage".
-Então, na próxima página clique em "Trust".
-
-<figure>
-<img src="./code_trusted.png" />
-<figcaption>Permitindo confiar no arquivo de configuração do Zsh no VsCode.</figcaption>
-</figure>

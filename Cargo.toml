@@ -1,5 +1,5 @@
 [package]
-name = "book_c_cpp_env"
+name = "book_dev_env"
 version = "0.1.0"
 edition = "2021"
 authors = ["Gabriel Malosto"]

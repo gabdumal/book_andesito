@@ -13,3 +13,4 @@
   - [Oh My Zsh](chapters/shell/oh_my_zsh/index.md)
   - [Temas](chapters/shell/themes/index.md)
   - [Plugins](chapters/shell/plugins/index.md)
+- [C e C++](chapters/c_cpp/index.md)

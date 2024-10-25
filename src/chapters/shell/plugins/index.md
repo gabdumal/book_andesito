@@ -162,43 +162,13 @@ Como dependências, o The Fuck exige que se tenha instalado:
 - pip
 - python-dev -->
 
-## Zsh Syntax Highlighting
-
-O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) é um plugin que destaca comandos enquanto você digita.
-
-Ele está disponível apenas para o Zsh --- sinto muito, pessoal do PowerShell 😔.
-O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
-
-Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
-Faça isso executando o seguinte comando:
-
-```bash
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-
-Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
-Fazemos isso adicionando mais uma linha ao atributo `plugins`, em que havia apenas o `git`.
-
-```bash
-## Plugins
-plugins=(
-    git
-    zsh-syntax-highlighting
-)
-```
-
-<figure>
-<img src="./configuring_zsh_syntax_highlighting.png" />
-<figcaption>Configurando o plugin Zsh Syntax Highlighting.</figcaption>
-</figure>
-
-Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
-
 ## Zsh Autosuggestions
 
 O [**Zsh Autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) é um plugin que sugere comandos enquanto você digita.
+Isso é especialmente útil quando você se lembra de parte de um comando, mas não dele todo.
 
-Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
+Esse plugin está disponível apenas para o Zsh --- sinto muito, pessoal do PowerShell 😔.
+O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
 
 Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
 Faça isso executando o seguinte comando:
@@ -208,15 +178,46 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ```
 
 Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
-Da mesma forma, basta adicionar a linha `zsh-autosuggestions` ao atributo `plugins`.
+Fazemos isso adicionando mais uma linha ao atributo `plugins`, em que havia apenas o `git`.
 
 ```bash
 ## Plugins
 plugins=(
     git
-    zsh-syntax-highlighting
     zsh-autosuggestions
 )
 ```
 
 Lembre-se de salvar o arquivo, fechar o editor, e então **fechar** e abrir novamente o terminal para que as alterações tenham efeito.
+
+## Zsh Syntax Highlighting
+
+O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) é um plugin que destaca comandos enquanto você digita.
+
+Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
+
+Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
+Faça isso executando o seguinte comando:
+
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
+Da mesma forma, basta adicionar a linha `zsh-syntax-highlighting` ao atributo `plugins`.
+
+```bash
+## Plugins
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+```
+
+<figure>
+<img src="./configuring_zsh_plugins.png" />
+<figcaption>Configurando os plugins Zsh Autosuggestions e Zsh Syntax Highlighting.</figcaption>
+</figure>
+
+Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.

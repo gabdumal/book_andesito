@@ -17,7 +17,9 @@
     "pacman",
     "unspec",
     "vadimcn",
-    "Wextra"
+    "Wextra",
+    "winget",
+    "zoxide"
   ],
   "github.copilot.enable": {
     "*": true,

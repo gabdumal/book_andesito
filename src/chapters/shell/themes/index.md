@@ -109,10 +109,18 @@ code $PROFILE
 <figcaption>Abrindo o arquivo de configuração do Powershell com o Visual Studio Code.</figcaption>
 </figure>
 
-Adicione a seguinte linha ao final do arquivo:
+Adicione as seguintes linhas ao arquivo:
 
 ```powershell
+# Shell configuration
+
+## Theme
+$ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
+function Invoke-Starship-TransientFunction {
+  &starship module character
+}
 Invoke-Expression (&starship init powershell)
+Enable-TransientPrompt
 ```
 
 <figure>
@@ -190,10 +198,11 @@ Adicione as seguintes linhas ao final do arquivo:
 ```bash
 ## Theme
 eval "$(starship init zsh)"
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 ```
 
 <figure>
-<img src="./activation_zsh.png" />
+<img src="./edited_zsh.png" />
 <figcaption>Arquivo de configuração do Zsh configurado para ativar o Starship.</figcaption>
 </figure>
 
@@ -206,3 +215,69 @@ Para verificar se o Starship foi instalado corretamente, execute o comando `star
 <img src="./installed_starship_zsh.png" />
 <figcaption>Verificando se o Starship foi instalado no Zsh.</figcaption>
 </figure>
+
+## Configurando o Starship
+
+O starship não é um tema, mas um framework para criar e definir temas.
+Ele é extremamente customizável, e você pode definir o prompt do jeito que quiser.
+Se quiser aprender mais sobre, acesse a [documentação oficial](https://starship.rs/config/).
+
+Neste capítulo, vamos utilizar um dos temas já prontos, os quais são chamados de [presets](https://starship.rs/presets/).
+Acesse o link e escolha o tema que mais lhe agrada.
+Vamos utilizar o tema [Gruvbox Rainbow](https://starship.rs/presets/gruvbox-rainbow), mas o passo a passo é similar para qualquer outro.
+
+O Starship também tem um arquivo de configuração chamado `starship.toml`, que é onde você pode definir as configurações do prompt.
+Por padrão, este arquivo pode não existir.
+
+Para criar um no **Ubuntu**, **Fedora** ou **WSL**, execute o comando:
+
+```bash
+mkdir -p ~/.config && touch ~/.config/starship.toml
+```
+
+Já no **Windows**, execute os comandos:
+
+```powershell
+mkdir -Force $HOME\.config
+New-Item -Path $HOME\.config\starship.toml -ItemType File
+```
+
+Depois de criado, precisamos copiar o conteúdo de um preset para dentro desse arquivo.
+O starship oferece um comando para fazer justamente isso.
+
+No **Ubuntu**, **Fedora** ou **WSL**, execute o comando:
+
+```bash
+starship preset gruvbox-rainbow -o $STARSHIP_CONFIG
+```
+
+Já no **Windows**, execute o comando:
+
+```powershell
+starship.exe preset gruvbox-rainbow -o $ENV:STARSHIP_CONFIG
+```
+
+<figure>
+<img src="./setting_theme_powershell.png" />
+<figcaption>Definindo o tema Gruvbox Rainbow no Powershell.</figcaption>
+</figure>
+
+### Considerações
+
+O Starship é um framework novo e em constante desenvolvimento.
+Uma funcionalidade que foi implementada para o Powershell, mas ainda não para o Zsh, é a de definir o prompt de forma transitória.
+
+Isso significa que apenas a linha atual terá todos os detalhes do prompt, e as demais linhas terão um prompt mais simples.
+
+<figure style="display:flex;flex-direction:column;max-width:100%;">
+  <div style="display:flex;align-items:center;gap:1rem;max-width:100%;">
+    <img src="./example_zsh.png" style="width:50%;height:auto;"/>
+    <img src="./example_powershell.png" style="width:50%;height:auto;"/>
+  </div>
+  <figcaption>Comparação do Starship entre o Zsh e o Powershell respectivamente.</figcaption>
+</figure>
+
+Caso você não goste de tantos detalhes nas linhas anteriores no Zsh, você pode escolher um tema mais simples.
+
+Eu particularmente me incomodo com o prompt do Zsh, então vou trocar o tema para o [Nerd Font Symbols](https://starship.rs/presets/nerd-font).
+O processo é o mesmo, bastando trocar o nome do tema no comando de configuração.

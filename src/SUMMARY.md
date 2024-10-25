@@ -9,7 +9,7 @@
   - [Windows Terminal](chapters/terminal/windows/index.md)
 - [Git](chapters/git/index.md)
 - [Configurando o shell](chapters/shell/index.md)
-  - [Powershell](chapters/shell/powershell/index.md)
+  - [PowerShell](chapters/shell/powershell/index.md)
   - [Zsh](chapters/shell/zsh/index.md)
   - [Temas](chapters/shell/themes/index.md)
   - [Plugins](chapters/shell/plugins/index.md)

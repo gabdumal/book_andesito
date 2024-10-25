@@ -78,7 +78,7 @@ Para instalar o Starship, vamos seguir as instruções do [site oficial](https:/
 Tanto no Windows como no Linux (e WSL), parte do processo é editar o arquivo de configurações do shell.
 Vamos tratar sobre os detalhes de como fazer isso para o PowerShell e para o Zsh.
 
-### Powershell
+### PowerShell
 
 O Starship pode ser instalado no Windows através do **PowerShell**.
 
@@ -90,7 +90,7 @@ winget install --id Starship.Starship
 
 <figure>
 <img src="./starship_powershell.png" />
-<figcaption>Instalando o Starship no Powershell.</figcaption>
+<figcaption>Instalando o Starship no PowerShell.</figcaption>
 </figure>
 
 Após a instalação, é necessário adicionar o script de inicialização do Starship ao seu perfil do PowerShell.
@@ -114,7 +114,7 @@ code $PROFILE
 
 <figure>
 <img src="./edit_powershell.png" />
-<figcaption>Abrindo o arquivo de configuração do Powershell com o Visual Studio Code.</figcaption>
+<figcaption>Abrindo o arquivo de configuração do PowerShell com o Visual Studio Code.</figcaption>
 </figure>
 
 Adicione as seguintes linhas ao arquivo:
@@ -133,17 +133,17 @@ Enable-TransientPrompt
 
 <figure>
 <img src="./edited_powershell.png" />
-<figcaption>Arquivo de configuração do Powershell com o comando para executar o Starship.</figcaption>
+<figcaption>Arquivo de configuração do PowerShell com o comando para executar o Starship.</figcaption>
 </figure>
 
 Salve o arquivo e feche o editor.
 Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
 
-Possivelmente, você verá uma mensagem de erro ao abrir o Powershell.
+Possivelmente, você verá uma mensagem de erro ao abrir o PowerShell.
 
 <figure>
 <img src="./powershell_error.png" />
-<figcaption>Mensagem de erro no Powershell sobre execução de scripts.</figcaption>
+<figcaption>Mensagem de erro no PowerShell sobre execução de scripts.</figcaption>
 </figure>
 
 Essa mensagem é exibida porque o Windows não permite a execução de scripts por padrão.
@@ -157,7 +157,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 <figure>
 <img src="./setting_policy.png" />
-<figcaption>Definindo a política de execução de scripts no Powershell.</figcaption>
+<figcaption>Definindo a política de execução de scripts no PowerShell.</figcaption>
 </figure>
 
 Esse comando define que scripts que sejam assinados por fontes confiáveis podem ser executados.
@@ -167,7 +167,7 @@ Para verificar se o Starship foi instalado corretamente, execute o comando `star
 
 <figure>
 <img src="./installed_starship_powershell.png" />
-<figcaption>Verificando se o Starship foi instalado no Powershell.</figcaption>
+<figcaption>Verificando se o Starship foi instalado no PowerShell.</figcaption>
 </figure>
 
 ### Zsh
@@ -267,13 +267,13 @@ starship.exe preset gruvbox-rainbow -o $ENV:STARSHIP_CONFIG
 
 <figure>
 <img src="./setting_theme_powershell.png" />
-<figcaption>Definindo o tema Gruvbox Rainbow no Powershell.</figcaption>
+<figcaption>Definindo o tema Gruvbox Rainbow no PowerShell.</figcaption>
 </figure>
 
 ### Considerações
 
 O Starship é um framework novo e em constante desenvolvimento.
-Uma funcionalidade que foi implementada para o Powershell, mas ainda não para o Zsh, é a de definir o prompt de forma transitória.
+Uma funcionalidade que foi implementada para o PowerShell, mas ainda não para o Zsh, é a de definir o prompt de forma transitória.
 
 Isso significa que apenas a linha atual terá todos os detalhes do prompt, e as demais linhas terão um prompt mais simples.
 
@@ -282,7 +282,7 @@ Isso significa que apenas a linha atual terá todos os detalhes do prompt, e as 
     <img src="./example_zsh.png" style="width:50%;height:auto;"/>
     <img src="./example_powershell.png" style="width:50%;height:auto;"/>
   </div>
-  <figcaption>Comparação do Starship entre o Zsh e o Powershell respectivamente.</figcaption>
+  <figcaption>Comparação do Starship entre o Zsh e o PowerShell respectivamente.</figcaption>
 </figure>
 
 Caso você não goste de tantos detalhes nas linhas anteriores no Zsh, você pode escolher um tema mais simples.

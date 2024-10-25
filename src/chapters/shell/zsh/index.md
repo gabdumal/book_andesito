@@ -110,7 +110,7 @@ Tanto o Windows quanto o Linux possuem essa variável de ambiente, mas perceba q
 <img src="./home_wsl.png" />
 <img src="./home_powershell.png" />
 </div>
-<figcaption>Comando para exibir a variável de ambiente HOME no Ubuntu e no Powershell, respectivamente.</figcaption>
+<figcaption>Comando para exibir a variável de ambiente HOME no Ubuntu e no PowerShell, respectivamente.</figcaption>
 </figure>
 
 De fato, eu uso o mesmo usuário no Ubuntu e no Windows, mas o caminho da pasta do usuário é diferente porque se tratam de duas pastas completamente distintas.

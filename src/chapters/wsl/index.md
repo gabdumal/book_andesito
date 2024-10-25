@@ -44,7 +44,7 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
   </p>
   <figure>
     <img src="./powershell_adm.png" />
-    <figcaption>Executando o Powershell como administrador a partir do Menu Iniciar.</figcaption>
+    <figcaption>Executando o PowerShell como administrador a partir do Menu Iniciar.</figcaption>
   </figure>
 </div>
 
@@ -82,7 +82,7 @@ wsl.exe --install --no-distribution
 
 <figure>
 <img src="./installing_wsl.png" />
-<figcaption>Processo de instalação do WSL pelo Powershell.</figcaption>
+<figcaption>Processo de instalação do WSL pelo PowerShell.</figcaption>
 </figure>
 
 Quando eu instalei, usei apenas o comando `wsl.exe --install`, sem o `--no-distribution`.

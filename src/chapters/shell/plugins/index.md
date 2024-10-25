@@ -20,7 +20,7 @@ O Zoxide tem como dependência o [**FZF**](https://github.com/junegunn/fzf), que
 Ele é uma ferramenta que permite que você pesquise por arquivos e diretórios de forma rápida e eficiente.
 Vamos tratar da sua instalação adiante.
 
-### Powershell
+### PowerShell
 
 Para instalar o FZF no PowerShell, execute o seguinte comando:
 
@@ -36,7 +36,7 @@ winget install ajeetdsouza.zoxide
 
 <figure>
 <img src="./installing_zoxide_powershell.png" />
-<figcaption>Instalando o FZF e o Zoxide no Powershell.</figcaption>
+<figcaption>Instalando o FZF e o Zoxide no PowerShell.</figcaption>
 </figure>
 
 Então, precisamos adicionar as seguintes linhas ao **final** do seu arquivo de configuração do PowerShell:
@@ -49,14 +49,14 @@ Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 ```
 
 Lembre-se que, para abrir o arquivo de configuração do PowerShell, você deve executar o comando `code $PROFILE` no terminal.
-O arquivo aberto dependerá da versão do Powershell que você está utilizando.
+O arquivo aberto dependerá da versão do PowerShell que você está utilizando.
 
 <figure>
 <img src="./configuring_zoxide_powershell.png" />
-<figcaption>Configurando o Zoxide no Powershell.</figcaption>
+<figcaption>Configurando o Zoxide no PowerShell.</figcaption>
 </figure>
 
-Salve o arquivo, feche o editor, e então **feche** e abra novamente o Powershell para que as alterações tenham efeito.
+Salve o arquivo, feche o editor, e então **feche** e abra novamente o PowerShell para que as alterações tenham efeito.
 
 ### Zsh
 

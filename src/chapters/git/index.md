@@ -83,7 +83,7 @@ Se tudo estiver correto, você verá a versão do Git instalada, como `git versi
 ## Configuração
 
 Após instalar o Git, é necessário definir algumas configurações globais para melhorar a experiência de uso.
-Esta seção pode ser aplicada para todos os **sistemas operacionais** apresentados: Ubuntu, Fedora e Windows (Powershell e WSL).
+Esta seção pode ser aplicada para todos os **sistemas operacionais** apresentados: Ubuntu, Fedora e Windows (PowerShell e WSL).
 
 ### Nome e e-mail
 
@@ -179,7 +179,7 @@ winget install --id GitHub.cli
 
 <figure>
 <img src="./install_gh_cli_powershell.png" />
-<figcaption>Instalando o GitHub CLI no Powershell.</figcaption>
+<figcaption>Instalando o GitHub CLI no PowerShell.</figcaption>
 </figure>
 
 Alternativamente, você pode baixar o instalador pelo [site oficial](https://cli.github.com/).
@@ -190,7 +190,7 @@ Você pode verificar se a instalação foi bem-sucedida executando o comando `gh
 
 <figure>
 <img src="./confirm_gh_cli_powershell.png" />
-<figcaption>Confirmação da instalação do GitHub CLI no Powershell.</figcaption>
+<figcaption>Confirmação da instalação do GitHub CLI no PowerShell.</figcaption>
 </figure>
 
 ### Autenticação

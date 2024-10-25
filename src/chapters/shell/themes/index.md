@@ -96,7 +96,15 @@ winget install --id Starship.Starship
 Após a instalação, é necessário adicionar o script de inicialização do Starship ao seu perfil do PowerShell.
 
 O arquivo de configuração do PowerShell tem o nome `Microsoft.PowerShell_profile.ps1`.
+Seu local de armazenamento pode variar de acordo com a versão do PowerShell.
+
+O arquivo para o PowerShell 5 é encontrado em `$HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`.
+Já para o PowerShell 7, o arquivo é encontrado em `$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`.
+
 Felizmente, o Windows provê uma variável de ambiente chamada `$PROFILE` que aponta justamente para esse arquivo.
+
+As instruções deste capítulo valem para qualquer uma das duas versões.
+Basta executar os comandos no terminal da versão que você utiliza.
 
 Vamos abrir o arquivo de configuração com o VsCode, executando o comando:
 

@@ -49,6 +49,7 @@ Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 ```
 
 Lembre-se que, para abrir o arquivo de configuração do PowerShell, você deve executar o comando `code $PROFILE` no terminal.
+O arquivo aberto dependerá da versão do Powershell que você está utilizando.
 
 <figure>
 <img src="./configuring_zoxide_powershell.png" />

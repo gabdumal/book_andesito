@@ -121,7 +121,7 @@ Invoke-Expression (&starship init powershell)
 </figure>
 
 Salve o arquivo e feche o editor.
-Para que as alterações tenham efeito, feche e abra o terminal novamente.
+Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
 
 Possivelmente, você verá uma mensagem de erro ao abrir o Powershell.
 
@@ -152,4 +152,57 @@ Para verificar se o Starship foi instalado corretamente, execute o comando `star
 <figure>
 <img src="./installed_starship_powershell.png" />
 <figcaption>Verificando se o Starship foi instalado no Powershell.</figcaption>
+</figure>
+
+### Zsh
+
+No Linux e no WSL, o Starship pode ser instalado no **Zsh**.
+
+Para instalar o Starship, execute o comando:
+
+```bash
+sudo curl -sS https://starship.rs/install.sh | sh
+```
+
+<figure>
+<img src="./starship_zsh.png" />
+<figcaption>Executando comando de instalação do Starship no Zsh.</figcaption>
+</figure>
+
+Quando perguntado se deseja prosseguir com a instalação, pressione a tecla <kbd>y</kbd>.
+
+O instalador exibirá uma mensagem informando que o Starship foi instalado com sucesso, e que é necessário adicionar o script de inicialização ao arquivo de configurações do shell.
+
+<figure>
+<img src="./installed_starship_message_zsh.png" />
+<figcaption>Mensagem de sucesso da instalação do Starship no Zsh.</figcaption>
+</figure>
+
+O arquivo de configurações do Zsh é o `~/.zshrc`.
+Vamos editá-lo usando o VsCode com o seguinte comando:
+
+```bash
+code ~/.zshrc
+```
+
+Adicione as seguintes linhas ao final do arquivo:
+
+```bash
+## Theme
+eval "$(starship init zsh)"
+```
+
+<figure>
+<img src="./activation_zsh.png" />
+<figcaption>Arquivo de configuração do Zsh configurado para ativar o Starship.</figcaption>
+</figure>
+
+Salve o arquivo e feche o editor.
+Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
+
+Para verificar se o Starship foi instalado corretamente, execute o comando `starship`.
+
+<figure>
+<img src="./installed_starship_zsh.png" />
+<figcaption>Verificando se o Starship foi instalado no Zsh.</figcaption>
 </figure>

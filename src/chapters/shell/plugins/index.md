@@ -6,7 +6,7 @@ Já para o **PowerShell**, instalaremos os plugins diretamente.
 
 ## Zoxide
 
-O **Zoxide** é um plugin que facilita a navegação entre diretórios.
+O [**Zoxide**](https://github.com/ajeetdsouza/zoxide) é um plugin que facilita a navegação entre diretórios.
 
 Por exemplo, imagine que você tenha um diretório chamado `~/Documents/Projects/MyProject`, que voê frequentemente acessa.
 
@@ -16,9 +16,9 @@ O Zoxide permite que você navegue para esse diretório apenas digitando `cd MyP
 Isso é possível porque o Zoxide mantém um histórico dos diretórios que você acessa com mais frequência.
 E então, quando você digita `cd MyProject`, ele automaticamente navega para o diretório `~/Documents/Projects/MyProject`.
 
-O Zoxide tem como dependência o **FZF**, que é um fuzzy finder.
-O FZF é uma ferramenta que permite que você pesquise por arquivos e diretórios de forma rápida e eficiente.
-Vamos tratar da instalação dele adiante.
+O Zoxide tem como dependência o [**FZF**](https://github.com/junegunn/fzf), que é um fuzzy finder.
+Ele é uma ferramenta que permite que você pesquise por arquivos e diretórios de forma rápida e eficiente.
+Vamos tratar da sua instalação adiante.
 
 ### Powershell
 
@@ -139,3 +139,41 @@ zoxide --version
 <img src="./checking_zoxide_zsh.png" />
 <figcaption>Verificando as versões do FZF e do Zoxide no Zsh.</figcaption>
 </figure>
+
+## Zsh Autosuggestions
+
+O [**Zsh Autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) é um plugin que sugere comandos enquanto você digita.
+Ele está disponível apenas para o Zsh --- sinto muito, pessoal do PowerShell 😔.
+
+O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
+
+## Zsh Syntax Highlighting
+
+O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) é um plugin que destaca comandos enquanto você digita.
+
+Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
+
+Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
+Faça isso executando o seguinte comando:
+
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
+Fazemos isso adicionando mais uma linha ao atributo `plugins`, em que havia apenas o `git`.
+
+```bash
+## Plugins
+plugins=(
+    git
+    zsh-syntax-highlighting
+)
+```
+
+<figure>
+<img src="./configuring_zsh_syntax_highlighting.png" />
+<figcaption>Configurando o plugin Zsh Syntax Highlighting.</figcaption>
+</figure>
+
+Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.

@@ -140,6 +140,28 @@ zoxide --version
 <figcaption>Verificando as versões do FZF e do Zoxide no Zsh.</figcaption>
 </figure>
 
+<!--
+TODO: Ensinar a instalar o The Fuck, considerando que ele exige instalar o Python.
+
+## The Fuck
+
+Primeiramente, perdoem-me o palavreado.
+Mas sabe quando você digita um comando enorme, mas percebe só depois de executar que errou uma coisinha só?
+O tempo todo eu esqueço de adicionar o `sudo` na frente dos comandos.
+
+Pensando nisso, foi criado o [**The Fuck**](https://github.com/nvbn/thefuck).
+Ele é um plugin que corrige esses pequenos erros nos comandos, sejam uma letra trocada, ou todo um atributo esquecido.
+
+Quando receber um erro, digite `fuck`, e o plugin tentará corrigi-lo para você.
+
+### Dependências
+
+Como dependências, o The Fuck exige que se tenha instalado:
+
+- python (3.5+)
+- pip
+- python-dev -->
+
 ## Zsh Syntax Highlighting
 
 O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) é um plugin que destaca comandos enquanto você digita.

@@ -1,11 +1,11 @@
 [book]
 authors = ["Gabriel Malosto"]
-description = "Guia de configuração de ambiente de desenvolvimento em C e C++, utilizando Clang, LLDB, CMake e VsCode."
+description = "Guia de configuração de ambiente de desenvolvimento."
 language = "pt-br"
 multilingual = false
 src = "src"
 text-direction = "ltr"
-title = "Ambiente de desenvolvimento em C e C++, com CMake e VsCode"
+title = "Ambiente de desenvolvimento"
 
 [rust]
 edition = "2021"
@@ -19,8 +19,8 @@ use-default-preprocessors = true
 default-theme = "light"
 preferred-dark-theme = "navy"
 smart-punctuation = true
-git-repository-url = "https://github.com/gabdumal/book_c_cpp_env"
-site-url = "/book_c_cpp_env/"
+git-repository-url = "https://github.com/gabdumal/book_dev_env"
+site-url = "/book_dev_env/"
 additional-css = ["src/styles.css"]
 
 [output.markdown]

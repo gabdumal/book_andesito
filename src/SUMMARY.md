@@ -11,3 +11,4 @@
 - [Configurando o shell](chapters/shell/index.md)
   - [Zsh](chapters/shell/zsh/index.md)
   - [Oh My Zsh](chapters/shell/oh_my_zsh/index.md)
+  - [Themes](chapters/shell/themes/index.md)

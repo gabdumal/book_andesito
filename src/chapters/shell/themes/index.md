@@ -154,7 +154,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 Esse comando define que scripts que sejam assinados por fontes confiáveis podem ser executados.
 
-Feche e abra o terminal novamente.
+**Feche** e abra o terminal novamente.
 Para verificar se o Starship foi instalado corretamente, execute o comando `starship`.
 
 <figure>

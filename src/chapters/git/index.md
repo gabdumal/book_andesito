@@ -71,7 +71,8 @@ Nas próximas sessões, pode manter as opções padrão, até a **Configuring ex
 </figure>
 
 O Git for Windows configura automaticamente a Path para seu executável.
-Para testar se a instalação foi bem-sucedida, abra o PowerShell e execute o comando:
+
+Para testar se a instalação foi bem-sucedida, **feche** e abra o PowerShell novamente, então execute o comando:
 
 ```bash
 git --version
@@ -176,12 +177,19 @@ Abra o **PowerShell** e execute o comando abaixo.
 winget install --id GitHub.cli
 ```
 
+<figure>
+<img src="./install_gh_cli_powershell.png" />
+<figcaption>Instalando o GitHub CLI no Powershell.</figcaption>
+</figure>
+
 Alternativamente, você pode baixar o instalador pelo [site oficial](https://cli.github.com/).
+
+**Feche** e abra o PowerShell novamente para que as mudanças sejam aplicadas.
 
 Você pode verificar se a instalação foi bem-sucedida executando o comando `gh --version`.
 
 <figure>
-<img src="./gh_cli_powershell.png" />
+<img src="./confirm_gh_cli_powershell.png" />
 <figcaption>Confirmação da instalação do GitHub CLI no Powershell.</figcaption>
 </figure>
 
@@ -200,7 +208,7 @@ Siga o seguinte passo a passo:
 1. Escolha o método de autenticação. Você deve usar o `GitHub.com`.
 1. Escolha o protocolo de autenticação. Caso você já tenha definido uma chave SSH no GitHub e saiba o que está fazendo, você pode escolher `SSH`. Caso contrário, escolha `HTTPS`.
 1. Quando perguntado sobre autenticar com as credenciais do GitHub, digite `Y`.
-1. Quando solicitada a forma de log-in, selecione `Login with a web browser`.
+1. Quando solicitada a forma de log-in, selecione `Login with a web browser`, e pressione <kbd>Enter</kbd>.
 
 O GitHub CLI irá então exibir um código de oito caracteres, e um link para você acessar no seu navegador.
 
@@ -235,6 +243,8 @@ Selecione o ícone do perfil (o que tem a imagem de uma pessoa) no canto inferio
 <img src="./sign_in.png" />
 <figcaption>Menu de log-in do Visual Studio Code.</figcaption>
 </figure>
+
+Quando perguntado sobre a forma de autenticação, selecione `GitHub`.
 
 O Visual Studio Code irá abrir uma aba no seu navegador, onde você deve selecionar sua conta e autorizar o acesso.
 

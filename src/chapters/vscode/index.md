@@ -23,6 +23,12 @@ Mesmo que você esteja usando o **WSL**, é necessário instalar o Visual Studio
 </figure>
 
 Execute o instalador e siga as instruções.
+Quando chegar ao passo `Selecionar tarefas adicionais`, marque todas as opções na seção `Outros`.
+
+<figure>
+<img src="./other_options.png" />
+<figcaption>Opções de download do Visual Studio Code, em que se selecionam todas as opções na seção Outros.</figcaption>
+</figure>
 
 ### Ubuntu
 

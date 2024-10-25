@@ -48,6 +48,8 @@ Então, precisamos adicionar as seguintes linhas ao **final** do seu arquivo de 
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 ```
 
+Lembre-se que, para abrir o arquivo de configuração do PowerShell, você deve executar o comando `code $PROFILE` no terminal.
+
 <figure>
 <img src="./configuring_zoxide_powershell.png" />
 <figcaption>Configurando o Zoxide no Powershell.</figcaption>

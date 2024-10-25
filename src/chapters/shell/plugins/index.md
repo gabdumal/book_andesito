@@ -140,18 +140,12 @@ zoxide --version
 <figcaption>Verificando as versões do FZF e do Zoxide no Zsh.</figcaption>
 </figure>
 
-## Zsh Autosuggestions
-
-O [**Zsh Autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) é um plugin que sugere comandos enquanto você digita.
-Ele está disponível apenas para o Zsh --- sinto muito, pessoal do PowerShell 😔.
-
-O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
-
 ## Zsh Syntax Highlighting
 
 O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) é um plugin que destaca comandos enquanto você digita.
 
-Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
+Ele está disponível apenas para o Zsh --- sinto muito, pessoal do PowerShell 😔.
+O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
 
 Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
 Faça isso executando o seguinte comando:
@@ -177,3 +171,30 @@ plugins=(
 </figure>
 
 Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
+
+## Zsh Autosuggestions
+
+O [**Zsh Autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) é um plugin que sugere comandos enquanto você digita.
+
+Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
+
+Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
+Faça isso executando o seguinte comando:
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
+Da mesma forma, basta adicionar a linha `zsh-autosuggestions` ao atributo `plugins`.
+
+```bash
+## Plugins
+plugins=(
+    git
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+)
+```
+
+Lembre-se de salvar o arquivo, fechar o editor, e então **fechar** e abrir novamente o terminal para que as alterações tenham efeito.

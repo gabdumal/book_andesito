@@ -1,8 +1,0 @@
-[package]
-name = "book_dev_env"
-version = "0.1.0"
-edition = "2021"
-authors = ["Gabriel Malosto"]
-license = "CC-BY-SA-4.0"
-
-[dependencies]

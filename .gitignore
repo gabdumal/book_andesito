@@ -1,12 +1,2 @@
-# Development
-.direnv
-.envrc
-
-# Build
-/target
-/book
-
-# Book
-*.exe
-/code/**/.vscode
-/code/**/.cache/
+/public/
+/resources/

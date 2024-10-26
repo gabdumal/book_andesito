@@ -178,16 +178,23 @@ Para garantir que tudo está atualizado, execute o comando abaixo.
 sudo apt update
 ```
 
-Então, para de fato instalar as atualizações, execute o comando abaixo.
-
-```bash
-sudo apt upgrade
-```
-
 A palavra `sudo` é usada para executar um comando com permissões de administrador.
 Ela solicitará a senha do usuário que você criou anteriormente.
 
 <figure>
 <img src="./updating_packages.png" />
 <figcaption>Atualizando os pacotes do Ubuntu.</figcaption>
+</figure>
+
+Então, para de fato instalar as atualizações, execute o comando abaixo.
+
+```bash
+sudo apt upgrade
+```
+
+Então, quando perguntado se deseja continuar, pressione <kbd>Y</kbd> e <kbd>Enter</kbd>.
+
+<figure>
+<img src="./upgrading_packages.png" />
+<figcaption>Instalando as versões atualizadas dos pacotes do Ubuntu.</figcaption>
 </figure>

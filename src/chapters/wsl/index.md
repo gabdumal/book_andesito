@@ -1,4 +1,4 @@
-# Windows Subsystem for Linux { #wsl }
+# Windows Subsystem for Linux
 
 O **Windows Subsystem for Linux (WSL)** é uma ferramenta de código aberto apoiada pela Microsoft que permite a emulação de um sistema operacional Linux dentro do Windows.
 A atual versão na data de escrita deste livro é a 2, que traz grandes melhorias em relação à versão anterior.
@@ -283,6 +283,17 @@ Para criar uma pasta com esse nome, abra o Windows Terminal no perfil do **Ubunt
 mkdir ~/dev
 ```
 
+Vamos criar um arquivo de texto dentro dessa pasta para testar o link simbólico.
+
+```bash
+echo "Hello, World!" > ~/dev/hello.txt
+```
+
+<figure>
+<img src="./creating_file.png" />
+<figcaption>Criando um arquivo na pasta ~/dev do Ubuntu.</figcaption>
+</figure>
+
 Então, abra no terminal um perfil do **PowerShell** como **administrador** e execute o comando abaixo para criar um link simbólico.
 
 ```powershell
@@ -290,6 +301,25 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\ws
 ```
 
 <figure>
-<img src="./home_explorer.png" />
+<img src="./creating_symlink.png" />
 <figcaption>Criando um link simbólico para a pasta ~/dev do Ubuntu.</figcaption>
+</figure>
+
+Então, você poderá acessar a pasta `dev` diretamente pelo Explorador de Arquivos.
+Abra o Executar com <kbd>Win</kbd> + <kbd>R</kbd> e digite `%USERPROFILE%` para acessar seu diretório de usuário no Windows.
+
+Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atalho.
+
+<figure>
+<img src="./symlink_explorer.png" />
+<figcaption>Link simbólico mostrado na pasta do usuário do Windows.</figcaption>
+</figure>
+
+Clique com o botão direito na pasta e selecione **Fixar no Acesso Rápido** para tê-la sempre à mão.
+
+Ao acessar a pasta, você verá o arquivo `hello.txt` que criamos anteriormente no Ubuntu.
+
+<figure>
+<img src="./symlinked_folder.png" />
+<figcaption>Pasta ~/dev do Ubuntu mostrada na estrutura de pastas do Windows.</figcaption>
 </figure>

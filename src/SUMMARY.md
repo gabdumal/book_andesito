@@ -18,3 +18,4 @@
 - [C e C++](chapters/c_cpp/index.md)
   - [Compilador](chapters/c_cpp/compiler/index.md)
   - [Depurador](chapters/c_cpp/debugger/index.md)
+- [Javascript](chapters/javascript/index.md)

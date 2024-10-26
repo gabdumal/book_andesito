@@ -198,3 +198,98 @@ Então, quando perguntado se deseja continuar, pressione <kbd>Y</kbd> e <kbd>Ent
 <img src="./upgrading_packages.png" />
 <figcaption>Instalando as versões atualizadas dos pacotes do Ubuntu.</figcaption>
 </figure>
+
+## Estrutura de diretórios
+
+Aqui vale um pequeno apanhado de como funciona a estrutura de diretórios no Linux.
+Ela varia um pouco a depender da distribuição, mas a estrutura básica é a mesma.
+
+- O sistema todo é organizado dentro de uma pasta, a qual chamamos de `ROOT` ou `/`.
+  - Ela não tem realmente um nome, por isso a referenciamos apenas com uma barra.
+- Dentro dela, temos diversas pastas, que são responsáveis por organizar, por exemplo:
+  - `bin`: programas executáveis instalados a nível de sistema (pelo **apt** ou **dnf**)
+  - `opt`: programas instalados manualmente a nível de sistema.
+  - `usr`: programas instalados pelos usuários.
+  - `etc`: arquivos de configuração do sistema.
+  - `lib`: bibliotecas compartilhadas por programas.
+  - `home`: pastas dos usuários.
+  - `mnt`: referências a dispositivos de armazenamento montados no computador, como pendrives e HDs.
+
+Há outras pastas (chamadas comumente de **diretórios**) importantes, mas com o tempo você pega o jeito.
+
+<figure>
+<img src="./fhs.png" />
+<figcaption>Estrutura de pastas da raiz do Ubuntu (WSL).</figcaption>
+</figure>
+
+A que nos interessa no momento é a pasta `home`.
+Dentro dela, o sistema cria uma pasta para cada usuário, nomeada com o nome do usuário.
+Por exemplo, o meu usuário é `gabriel`, então a pasta do meu usuário é `/home/gabriel`.
+
+Essa pasta é tão importante que ela tem uma variável de ambiente que a referencia, chamada de `HOME`.
+
+Pressione <kbd>q</kbd> para sair do texto de boas-vindas do Zsh.
+Digite no terminal o comando `echo $HOME` e veja o que aparece.
+Depois, digite `echo $HOME` no PowerShell e veja o que aparece.
+
+Tanto o Windows quanto o Linux possuem essa variável de ambiente, mas perceba que o caminho é diferente!
+
+<figure>
+<div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+<img src="./home_wsl.png" />
+<img src="./home_powershell.png" />
+</div>
+<figcaption>Comando para exibir a variável de ambiente HOME no Ubuntu e no PowerShell, respectivamente.</figcaption>
+</figure>
+
+De fato, eu uso o mesmo usuário no Ubuntu e no Windows, mas o caminho da pasta do usuário é diferente porque se tratam de duas pastas completamente distintas.
+
+O WSL cria de fato todo um novo ambiente de emulação dentro do Windows, com suas próprias pastas e configurações.
+Mas como acessar esse ambiente?
+
+Se tudo tiver sido instalado corretamente, você verá uma nova entrada no Explorador de Arquivos chamada `Linux`.
+Dentro dela, haverá uma pasta chamada `Ubuntu`.
+Essa é justamente a pasta `/` (raiz) do Ubuntu, a qual mencionamos anteriormente.
+
+<figure>
+<img src="./root.png" />
+<figcaption>Pasta raiz do Ubuntu WSL exibida no Explorador de Arquivos.</figcaption>
+</figure>
+
+Acesse a pasta `home`, e então a pasta do seu **usuário**.
+
+<figure>
+<img src="./home_explorer.png" />
+<figcaption>Pasta HOME exibida no Explorador de Arquivos.</figcaption>
+</figure>
+
+Vemos que há vários arquivos e pastas dentro do diretório do usuário.
+O arquivo `.bashrc` é o arquivo de configuração do Bash, o shell padrão do Ubuntu.
+Já o arquivo `.zshrc` é o arquivo de configuração do Zsh, o shell que vamos instalar mais adiante.
+
+### Link simbólico
+
+O ideal quando e usa o WSL é deixar todos os seus arquivos e projetos dentro do diretório do usuário no Linux.
+Assim, tem-se uma performance melhor e evita-se problemas de compatibilidade.
+
+Entretanto, pode ser chato ter que navegar até o diretório do usuário toda vez que você quiser acessar um arquivo.
+Para facilitar, você pode criar um **link simbólico** do Windows que aponta para alguma pasta dentro do Ubuntu.
+
+Eu gosto de organizar meus projetos numa pasta chamada `dev` na raiz do diretório do usuário.
+
+Para criar uma pasta com esse nome, abra o Windows Terminal no perfil do **Ubuntu** e execute o comando abaixo.
+
+```bash
+mkdir ~/dev
+```
+
+Então, abra no terminal um perfil do **PowerShell** como **administrador** e execute o comando abaixo para criar um link simbólico.
+
+```powershell
+New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\wsl$\Ubuntu\home\$env:USERNAME\dev"
+```
+
+<figure>
+<img src="./home_explorer.png" />
+<figcaption>Criando um link simbólico para a pasta ~/dev do Ubuntu.</figcaption>
+</figure>

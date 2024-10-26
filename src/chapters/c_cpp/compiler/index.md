@@ -52,11 +52,6 @@ No menu lateral na esquerda, selecione as seguintes opções:
 - Ferramentas do CMake do C++ para Windows
 - Recursos principais de ferramentas de teste --- Ferramentas de Build
 - AddressSanitizer do C++
-- ATL do C++ para as mais recentes ferramentas do build v143 (x86 e x64)
-- MFC do C++ para as mais recentes ferramentas do build v143 (x86 e x64)
-- Suporte do C++/CLI para ferramentas do build v143 (mais recente)
-- Módulos do C++ para ferramentas do build v143 (mais recente)
-- Ferramentas C++ Clang para Windows
 
 <figure>
 <img src="installing_msvc.png" />

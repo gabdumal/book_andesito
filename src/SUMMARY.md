@@ -13,4 +13,8 @@
   - [Zsh](chapters/shell/zsh/index.md)
   - [Temas](chapters/shell/themes/index.md)
   - [Plugins](chapters/shell/plugins/index.md)
+- [Python](chapters/python/index.md)
+  - [Instalação](chapters/python/install/index.md)
 - [C e C++](chapters/c_cpp/index.md)
+  - [Compilador](chapters/c_cpp/compiler/index.md)
+  - [Depurador](chapters/c_cpp/debugger/index.md)

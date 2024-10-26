@@ -9,33 +9,21 @@ Já no Windows, é necessário instalar o Python manualmente.
 
 ## Windows
 
-Para instalar o Python no Windows, acesse a página de [downloads](https://www.python.org/downloads/windows/) e baixe a versão mais recente.
+Para instalar o Python no Windows, podemos utilizar a ferramenta [**Winget**](https://winget.run/pkg/Python/Python.3.10).
 
-Se seu computador for de 64 bits (e muito provavelmente é, a não ser que seja realmente **muito** velho), baixe a versão de 64 bits.
-Caso contrário, baixe a versão de 32 bits.
+Por motivos de compatibilidade com o **LLVM**, é recomendado instalar a versão 3.10.
+Abra o **Powershell** como **administrador** e execute o comando:
 
-Execute o instalador.
-Na primeira tela, marque as opções:
-
-- Use admin privileges when installing py.exe.
-- Add Python to PATH.
-
-Então, clique em **Install Now**.
+```powershell
+winget install -e --id Python.Python.3.10
+```
 
 <figure>
-<img src="./installer.png" />
+<img src="./installing.png" />
 <figcaption>Instalação do Python para Windows.</figcaption>
 </figure>
 
-Aguarde a instalação terminar.
-Então, clique em **Close**.
-
-<figure>
-<img src="./finish_installation.png" />
-<figcaption>Finalizar instalação do Python para Windows.</figcaption>
-</figure>
-
-Para verificar se a instalação foi bem-sucedida, abra o **Powershell** e digite os comandos:
+Para verificar se a instalação foi bem-sucedida, **feche** e abra o **Powershell** novamente, então digite os comandos:
 
 ```bash
 python --version

@@ -19,6 +19,10 @@ Neste livro, vamos utilizar o **Clang** como compilador padrão para C e C++.
 Sua instalação varia de acordo com o sistema operacional.
 Vamos tratar separadamente a instalação no **Linux** (e **WSL**) e no **Windows**.
 
+## Linux
+
+<!-- TODO -->
+
 ## Windows
 
 O **Microsoft Visual Studio** (MSVC) é uma IDE popular para desenvolvimento em C e C++ no Windows.
@@ -52,6 +56,10 @@ No menu lateral na esquerda, selecione as seguintes opções:
 - Ferramentas do CMake do C++ para Windows
 - Recursos principais de ferramentas de teste --- Ferramentas de Build
 - AddressSanitizer do C++
+- ATL do C++ para as mais recentes ferramentas do build v143 (x86 e x64)
+- MFC do C++ para as mais recentes ferramentas do build v143 (x86 e x64)
+- Suporte do C++/CLI para as ferramentas do build v143 (Mais recente)
+- Módulos do C++ para as ferramentas do build v143 (x86 e x64, experimental)
 
 <figure>
 <img src="installing_msvc.png" />
@@ -80,7 +88,7 @@ Abra uma sessão nele e execute o comando `cl` para verificar se o compilador **
 <figcaption>Testando se a instalação do MSVC foi bem-sucedida.</figcaption>
 </figure>
 
-## Configurações do perfil
+### Configurações do perfil
 
 É interessante trocar a pasta inicial desse perfil para a pasta do seu usuário.
 Acesse as configurações do perfil **Developer PowerShell for VS 2022**.
@@ -105,7 +113,7 @@ Para utilizar o **PowerShell 7**, altere **apenas** este primeiro termo para `pw
 
 Então, **salve** as configurações.
 
-## Configuração do terminal
+### Configuração do terminal
 
 Você pode também definir esse perfil como padrão, para que ele seja aberto automaticamente ao iniciar o Windows Terminal.
 
@@ -136,3 +144,11 @@ Para testar se a configuração foi bem-sucedida, abra o terminal integrado do V
 <img src="./opening_code.png" />
 <figcaption>Abrindo o Visual Studio Code a partir do Windows Terminal, e executando o comando "cl" no terminal integrado.</figcaption>
 </figure>
+
+### Considerações
+
+A instalação do **MSVC** utiliza o **Clang** como parte do seu conjunto de ferramentas.
+Na verdade, o comando `cl` não é exatamente o compilador Clang, mas sim um wrapper que o chama.
+
+Se você precisar do compilador Clang puro, você pode instalá-lo separadamente, junto com outras ferramentas do LLVM.
+faremos isso no subcapítulo sobre o [depurador LLDB](/src/chapters/c_cpp/debugger/index.md).

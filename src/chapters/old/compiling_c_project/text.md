@@ -5,7 +5,7 @@ Disponibilizamos, na pasta `/code` deste repositório, um projetos em C e C++ qu
 Retorne ao diretório `~/dev` e crie um diretório chamado `separate_function`.
 Acesse-o e abra o Visual Studio Code com o comando `code .`.
 
-No VsCode, crie um arquivo chamado `main.c` e adicione o código abaixo:
+No VSCode, crie um arquivo chamado `main.c` e adicione o código abaixo:
 
 ```c
 #include <stdio.h>

@@ -477,15 +477,15 @@ Dessa forma, apenas os arquivos de código fonte e os `CMakeLists.txt` serão in
 ## Snippets para os arquivos `CMakeLists.txt`
 
 Configurar esses arquivos até que não é tão difícil, mas é meio trabalhoso.
-Felizmente, podemos automatizar parte desse processo configurando _snippets_ no VsCode!
+Felizmente, podemos automatizar parte desse processo configurando _snippets_ no VSCode!
 
 _Snippets_ são atalhos que inserem blocos de código quando você digita um comando específico.
-Por exemplo, ao digitar `for` e confirmar a sugestão do VsCode, o editor de texto insere um bloco de código que cria um laço `for`.
+Por exemplo, ao digitar `for` e confirmar a sugestão do VSCode, o editor de texto insere um bloco de código que cria um laço `for`.
 
 Eu configurei dois _snippets_ para os arquivos `CMakeLists.txt`.
 Você pode encontrá-los em [`/config/cmake_snippets.json`](/config/cmake_snippets.json).
 
-Para adicioná-los ao seu VsCode, abra a **Paleta de Comandos** com `Ctrl+Shift+P` e digite `Preferences: Configure Snippets`.
+Para adicioná-los ao seu VSCode, abra a **Paleta de Comandos** com `Ctrl+Shift+P` e digite `Preferences: Configure Snippets`.
 
 ![Paleta de comandos do Visual Studio Code, em que se seleciona a opção de configurar snippets.](configure_snippets.png)
 
@@ -494,7 +494,7 @@ Então, selecione a opção `cmake (CMake)`.
 ![Paleta de comandos do Visual Studio Code, em que se seleciona o arquivo de configurações de snippets do Cmake.](selecting_cmake_snippets_file.png)
 
 O primeiro configura um projeto em C++ com as configurações que usamos até agora.
-Você pode chamá-lo ao digitar `cmake-main` e confirmar a sugestão do VsCode.
+Você pode chamá-lo ao digitar `cmake-main` e confirmar a sugestão do VSCode.
 
 ![Utilização do snippet de configurar o arquivo CMakeLists.txt no Visual Studio Code.](using_snippet.png)
 
@@ -505,7 +505,7 @@ Então faça as seguintes modificações:
 - Substitua `my_dependencies` pelas bibliotecas de que seu projeto depende.
 
 O segundo configura uma biblioteca estática, como fizemos para o módulo `edge`.
-Você pode chamá-lo ao digitar `cmake-library` e confirmar a sugestão do VsCode.
+Você pode chamá-lo ao digitar `cmake-library` e confirmar a sugestão do VSCode.
 
 Então faça as seguintes modificações:
 

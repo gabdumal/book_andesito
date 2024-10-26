@@ -8,12 +8,12 @@ Abra o Ícone de Configurações do Visual Studio Code e clique em **Profiles** 
 
 Clique em **New Profile** e o nomeie de MSYS2 Clang64.
 Clique em **Create**.
-![Criando um novo perfil do VsCode.](creating_profile_in_vscode.png)
+![Criando um novo perfil do VSCode.](creating_profile_in_vscode.png)
 
 **Selecione** o perfil, clicando no ícone de "checkmark" do lado do neu nome na lista.
 É importante que o perfil correto esteja selecionado para que as configurações sejam aplicadas.
 
-![Selecionando o perfil criado no VsCode.](selecting_profile_in_vscode.png)
+![Selecionando o perfil criado no VSCode.](selecting_profile_in_vscode.png)
 
 ## Extensões
 
@@ -60,7 +60,7 @@ clang main.c node.c -include node.h -o linked_nodes
 Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `linked_nodes`.
 Para executar o programa, digite `./linked_nodes` e pressione <kbd>Enter</kbd>.
 
-![Compilação e execução de um projeto em C pelo terminal integrado do VsCode.](compiling_and_running_linked_nodes.png)
+![Compilação e execução de um projeto em C pelo terminal integrado do VSCode.](compiling_and_running_linked_nodes.png)
 
 ## Depurando o projeto
 
@@ -88,7 +88,7 @@ Abra o Visual Studio Code no diretório `linked_nodes`.
 Nele, crie uma pasta chamada `.vscode`.
 Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arquivo [`/code/linked_nodes/.vscode/tasks.json`](/code/linked_nodes/.vscode/tasks.json) deste repositório.
 
-![Estrutura de pastas do projeto no VsCode, com a pasta .vscode aberta.](/img/vscode_project_structure.png)
+![Estrutura de pastas do projeto no VSCode, com a pasta .vscode aberta.](/img/vscode_project_structure.png)
 
 O que ele faz é definir uma tarefa chamada `Clang: build C project (all files in root)` que compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na raiz do projeto.
 O executável gerado terá o nome da pasta aberta no Visual Studio Code.
@@ -102,12 +102,12 @@ Crie um arquivo chamado `launch.json` dentro da pasta `.vscode` e adicione o con
 
 Para rodar o programa, abra a **Paleta de Comandos** e pesquise por **Debug: Select and Start Debugging**.
 
-![Paleta de Comandos do VsCode, em que se está selecionando a opção de depurar o código.](/img/selecting_debugging_in_vscode.png)
+![Paleta de Comandos do VSCode, em que se está selecionando a opção de depurar o código.](/img/selecting_debugging_in_vscode.png)
 
 O Visual Studio Code pedirá para você selecionar a configuração de depuração.
 Selecione **LLDB: build and launch C project (all files in root)**.
 
-![Pop-up do VsCode pedindo para selecionar uma configuração de depuração. A selecionada é LLDB: build and launch (all files in root).](selecting_debug_configuration_in_vscode.png)
+![Pop-up do VSCode pedindo para selecionar uma configuração de depuração. A selecionada é LLDB: build and launch (all files in root).](selecting_debug_configuration_in_vscode.png)
 
 Essa ação executará a tarefa que definimos no arquivo `tasks.json` e gerará o executável `linked_nodes` na pasta do projeto.
 Em seguida, abrirá o depurador em um terminal separado.
@@ -132,12 +132,12 @@ Lembre-se: você pode editar as configurações do perfil MSYS2 Clang64 ao abrir
 Substitua o conteúdo do arquivo `settings.json` pelo conteúdo do arquivo [`/config/c_settings.json`](/config/c_settings.json) deste repositório.
 Nele, já adicionamos a configuração global de depuração.
 
-![Paleta de Comandos do VsCode, em que se está selecionando a opção de abrir as configurações do usuário.](/img/opening_user_settings_in_vscode.png)
+![Paleta de Comandos do VSCode, em que se está selecionando a opção de abrir as configurações do usuário.](/img/opening_user_settings_in_vscode.png)
 
 Para as tarefas de compilação, você deve abrir a **Paleta de Comandos** do Visual Studio Code e pesquisar por **Tasks: Open User Tasks (JSON)**.
 Então, se necessário, selecione **Other** e cole o conteúdo do arquivo [`/config/c_tasks.json`](/config/c_tasks.json) deste repositório.
 
-![Paleta de Comandos do VsCode, em que se está selecionando a opção de abrir as tarefas do usuário.](/img/opening_user_tasks_in_vscode.png)
+![Paleta de Comandos do VSCode, em que se está selecionando a opção de abrir as tarefas do usuário.](/img/opening_user_tasks_in_vscode.png)
 
 ---
 

@@ -106,7 +106,7 @@ Felizmente, o Windows provê uma variável de ambiente chamada `$PROFILE` que ap
 As instruções deste capítulo valem para qualquer uma das duas versões.
 Basta executar os comandos no terminal da versão que você utiliza.
 
-Vamos abrir o arquivo de configuração com o VsCode, executando o comando:
+Vamos abrir o arquivo de configuração com o VSCode, executando o comando:
 
 ```powershell
 code $PROFILE
@@ -195,7 +195,7 @@ O instalador exibirá uma mensagem informando que o Starship foi instalado com s
 </figure>
 
 O arquivo de configurações do Zsh é o `~/.zshrc`.
-Vamos editá-lo usando o VsCode com o seguinte comando:
+Vamos editá-lo usando o VSCode com o seguinte comando:
 
 ```bash
 code ~/.zshrc

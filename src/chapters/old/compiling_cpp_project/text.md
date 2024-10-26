@@ -132,7 +132,7 @@ Por isso, é importante entender o que cada parte do arquivo faz e adaptá-lo co
 
 Para executá-lo, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Tasks: Run Build Task`.
 
-![Paleta de Comandos do VsCode em que se pesquisa a opção de rodar a tarefa de compilar um projeto.](running_build_task_in_vscode.png)
+![Paleta de Comandos do VSCode em que se pesquisa a opção de rodar a tarefa de compilar um projeto.](running_build_task_in_vscode.png)
 
 Selecione a tarefa `Clang: build C++ project (binary tree)` e pressione <kbd>Enter</kbd>.
 
@@ -171,7 +171,7 @@ E o nome da tarefa de compilação que é chamada:
 Agora abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Debug: Select and Start Debugging`.
 Seleciona a tarefa `LLDB: build and launch C++ project (binary tree)` e pressione <kbd>Enter</kbd>.
 
-![Paleta de Comandos do VsCode em que se pesquisa a opção de depurar o código.](/img/selecting_debugging_in_vscode.png)
+![Paleta de Comandos do VSCode em que se pesquisa a opção de depurar o código.](/img/selecting_debugging_in_vscode.png)
 
 Seleção da tarefa de depuração:
 
@@ -193,11 +193,11 @@ O nome da tarefa de depuração definida é `LLDB: build and launch C++ project 
 
 Lembre-se: para editar as configurações do perfil, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
 
-![Paleta de Comandos do VsCode em que se pesquisa a opção de abrir as configurações do usuário.](/img/opening_user_settings_in_vscode.png)
+![Paleta de Comandos do VSCode em que se pesquisa a opção de abrir as configurações do usuário.](/img/opening_user_settings_in_vscode.png)
 
 E para editar as tarefas de compilação, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Tasks: Open User Tasks (JSON)`.
 
-![Paleta de Comandos do VsCode em que se pesquisa a opção de abrir as tarefas do usuário.](/img/opening_user_tasks_in_vscode.png)
+![Paleta de Comandos do VSCode em que se pesquisa a opção de abrir as tarefas do usuário.](/img/opening_user_tasks_in_vscode.png)
 
 ---
 

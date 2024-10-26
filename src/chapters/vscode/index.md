@@ -79,9 +79,9 @@ Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos d
 <figcaption>Executando o Visual Studio Code pelo Windows Terminal.</figcaption>
 </figure>
 
-Para abrir o VsCode no **WSL**, você pode prosseguir de duas formas abrir o Windows terminal pelo perfil do **WSL** e executar o comando `code`.
+Para abrir o VSCode no **WSL**, você pode prosseguir de duas formas abrir o Windows terminal pelo perfil do **WSL** e executar o comando `code`.
 
-Ou então, pode abrir o VsCode normalmente, e selecionar o botão azul no canto inferior esquerdo, chamado `Open a Remote Window`.
+Ou então, pode abrir o VSCode normalmente, e selecionar o botão azul no canto inferior esquerdo, chamado `Open a Remote Window`.
 
 <figure>
 <img src="./remote_window.png" />
@@ -95,7 +95,7 @@ Então, selecione a opção `WSL` no menu que aparecer.
 <figcaption>Opção WSL selecionada no menu de conexões remotas.</figcaption>
 </figure>
 
-Isso irá instalar a extensão do **WSL** no VsCode e atualizar sua janela para se conectar com o **Ubuntu**.
+Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para se conectar com o **Ubuntu**.
 
 Algumas de suas extensões previamente instaladas manter-se-ão funcionando, mas algumas podem requerer que você clique em `Install in WSL: Ubuntu` para que funcionem corretamente.
 
@@ -103,3 +103,47 @@ Algumas de suas extensões previamente instaladas manter-se-ão funcionando, mas
 <img src="./extensions.png" alt="Seção de extensões do visual Studio Code, em que se vê a extensão 'WSL' instalada e sua descrição breve, além das extensões 'Error Lens' e 'vscode-pdf'. Também se veem as extensões 'AsciiDoc' e 'Brazilian Portuguese - Code Spell Checker' desabilitadas, nas quais aparece um botão escrito 'Install in WSL: Ubuntu'. No canto inferior esquerdo do aplicativo, o botão de conexões remotas agora mostra o texto 'WSL: Ubuntu'."/>
 <figcaption>Seção de extensões do visual Studio Code, em que se vê a extensão WSL instalada.</figcaption>
 </figure>
+
+## Extensões
+
+O Visual Studio Code possui uma grande quantidade de extensões que podem ser instaladas para adicionar funcionalidades ao editor.
+
+Para instalar uma extensão no Visual Studio Code, clique no ícone de quadrados no canto esquerdo da janela, ou pressione `Ctrl+Shift+X`.
+
+Então, pesquise pelo nome da extensão desejada e clique no botão `Install`.
+
+Recomendo a instalação das seguintes:
+
+- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
+- [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
+- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Brazilian Portuguese - Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-portuguese-brazilian)
+- [vscode-pdf](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf)
+- [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
+
+Se você gostou do meu tema de cores, você pode instalá-lo também:
+
+- [Catppuccin for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc)
+- [Catppuccin Icons for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc)
+
+## Configurações
+
+Para configurar o Visual Studio Code, você pode acessar as configurações do editor clicando no ícone de engrenagem no canto inferior esquerdo da janela.
+
+Alternativamente, você pode editar o arquivo `settings.json` diretamente.
+Para isso, abra a paleta de comandos com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
+
+<figure>
+<img src="./opening_user_settings.png" />
+<figcaption>Abrindo o arquivo de configurações pela paleta de comandos.</figcaption>
+</figure>
+
+Eu preparei um arquivo de configurações para o Visual Studio Code que inclui algumas definições úteis.
+
+Copie o conteúdo do arquivo [`settings.json`](settings.json) deste capítulo e cole no arquivo `settings.json` do seu Visual Studio Code.
+
+Sinta-se livre para alterar as configurações conforme sua preferência.

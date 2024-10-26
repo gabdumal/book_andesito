@@ -125,12 +125,12 @@ Faça isso na seção **Inicialização** e na opção **Perfil padrão**.
 
 ### Visual Studio Code
 
-Para carregar as ferramentas de compilação no VsCode, é necessário primeiro abrir o Windows Terminal no perfil de desenvolvimento.
+Para carregar as ferramentas de compilação no VSCode, é necessário primeiro abrir o Windows Terminal no perfil de desenvolvimento.
 
 Então, execute o comando `code` para abrir o Visual Studio Code.
 Se quiser abri-lo na pasta atual, utilize `code .`.
 
-Para testar se a configuração foi bem-sucedida, abra o terminal integrado do VsCode e execute o comando `cl`.
+Para testar se a configuração foi bem-sucedida, abra o terminal integrado do VSCode e execute o comando `cl`.
 
 <figure>
 <img src="./opening_code.png" />

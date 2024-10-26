@@ -116,15 +116,15 @@ Dentro dela, está o arquivo `.zshrc`.
 
 <figure>
 <img src="./zsh_code_initial.png" />
-<figcaption>Arquivo de configuração do Zsh exibido no VsCode, com o aviso de arquivo modo restrito.</figcaption>
+<figcaption>Arquivo de configuração do Zsh exibido no VSCode, com o aviso de arquivo modo restrito.</figcaption>
 </figure>
 
-Caso dentro do VsCode haja um aviso de que o arquivo está em modo restrito, clique em "Manage".
+Caso dentro do VSCode haja um aviso de que o arquivo está em modo restrito, clique em "Manage".
 Então, na próxima página clique em "Trust".
 
 <figure>
 <img src="./code_trusted.png" />
-<figcaption>Permitindo confiar no arquivo de configuração do Zsh no VsCode.</figcaption>
+<figcaption>Permitindo confiar no arquivo de configuração do Zsh no VSCode.</figcaption>
 </figure>
 
 Uou, realmente é um arquivo grande!

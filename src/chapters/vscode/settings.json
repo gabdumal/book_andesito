@@ -1,0 +1,98 @@
+{
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "prettier.tabWidth": 2
+  },
+  "cSpell.language": "en,en-GB,pt,pt-BR",
+  "cSpell.userWords": ["catppuccin"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": "explicit"
+  },
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "'MesloLGL Nerd Font Mono', 'FiraCode Nerd Font Mono'",
+  "editor.fontWeight": "400",
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.mouseWheelZoom": true,
+  "editor.selectionClipboard": false,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.tabSize": 4,
+  "editor.wordWrap": "bounded",
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "*.css": "css"
+  },
+  "files.autoSave": "afterDelay",
+  "git.autofetch": true,
+  "git.openRepositoryInParentFolders": "always",
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": true,
+    "scminput": true
+  },
+  "markdownlint.config": {
+    "MD024": false,
+    "default": true
+  },
+  "markdownlint.run": "onSave",
+  "terminal.integrated.fontFamily": "'MesloLGL Nerd Font Mono', 'FiraCode Nerd Font Mono'",
+  "terminal.integrated.minimumContrastRatio": 1,
+  "workbench.colorTheme": "Catppuccin Latte",
+  "workbench.experimental.enableNewProfilesUI": true,
+  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.settings.applyToAllProfiles": [
+    "[css]",
+    "[html]",
+    "[javascript]",
+    "[json]",
+    "[jsonc]",
+    "[markdown]",
+    "cspell.language",
+    "cspell.userWords",
+    "editor.codeActionsOnSave",
+    "editor.detectIndentation",
+    "editor.fontFamily",
+    "editor.fontWeight",
+    "editor.formatOnSave",
+    "editor.inlineSuggest.enabled",
+    "editor.mouseWheelZoom",
+    "editor.selectionClipboard",
+    "editor.semanticHighlighting.enabled",
+    "editor.tabSize",
+    "editor.wordWrap",
+    "explorer.confirmDragAndDrop",
+    "files.associations",
+    "files.autoSave",
+    "git.autofetch",
+    "git.openRepositoryInParentFolders",
+    "github.copilot.enable",
+    "markdownlint.config",
+    "markdownlint.run",
+    "terminal.integrated.fontFamily",
+    "terminal.integrated.minimumContrastRatio",
+    "workbench.colorTheme",
+    "workbench.experimental.enableNewProfilesUI",
+    "workbench.iconTheme"
+  ]
+}

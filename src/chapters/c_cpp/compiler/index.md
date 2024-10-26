@@ -126,6 +126,8 @@ Faça isso na seção **Inicialização** e na opção **Perfil padrão**.
 
 **Salve** as configurações e **feche** o Windows Terminal.
 
+Para testar se a configuração foi bem-sucedida, abra o Windows Terminal e digite `$PSVersionTable`.
+
 <figure>
 <img src="./new_terminal.png" />
 <figcaption>Windows Terminal inicializado com o perfil de desenvolvimento.</figcaption>
@@ -151,4 +153,4 @@ A instalação do **MSVC** utiliza o **Clang** como parte do seu conjunto de fer
 Na verdade, o comando `cl` não é exatamente o compilador Clang, mas sim um wrapper que o chama.
 
 Se você precisar do compilador Clang puro, você pode instalá-lo separadamente, junto com outras ferramentas do LLVM.
-faremos isso no subcapítulo sobre o [depurador LLDB](/src/chapters/c_cpp/debugger/index.md).
+Faremos isso no subcapítulo sobre o [depurador LLDB](/src/chapters/c_cpp/debugger/index.md).

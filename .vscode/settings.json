@@ -16,6 +16,8 @@
     "MSYS",
     "MVSC",
     "pacman",
+    "rustc",
+    "rustup",
     "unspec",
     "vadimcn",
     "Wextra",

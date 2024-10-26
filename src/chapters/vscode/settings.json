@@ -59,7 +59,6 @@
   "terminal.integrated.fontFamily": "'MesloLGL Nerd Font Mono', 'FiraCode Nerd Font Mono'",
   "terminal.integrated.minimumContrastRatio": 1,
   "workbench.colorTheme": "Catppuccin Latte",
-  "workbench.experimental.enableNewProfilesUI": true,
   "workbench.iconTheme": "catppuccin-latte",
   "workbench.settings.applyToAllProfiles": [
     "[css]",
@@ -92,7 +91,6 @@
     "terminal.integrated.fontFamily",
     "terminal.integrated.minimumContrastRatio",
     "workbench.colorTheme",
-    "workbench.experimental.enableNewProfilesUI",
     "workbench.iconTheme"
   ]
 }

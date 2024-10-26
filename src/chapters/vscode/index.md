@@ -130,6 +130,15 @@ Se você gostou do meu tema de cores, você pode instalá-lo também:
 - [Catppuccin for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc)
 - [Catppuccin Icons for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc)
 
+Para cada uma dessas extensões, clique com o botão direito sobre e selecione **Apply Extensions to all Profiles**.
+
+<figure>
+<img src="./applying_extension_to_all_profiles.png" />
+<figcaption>Aplicando a primeira extensão a todos os perfis do Visual Studio Code.</figcaption>
+</figure>
+
+Isso será importante mais tarde, quando criarmos perfis específicos para cada linguagem de programação.
+
 ## Configurações
 
 Para configurar o Visual Studio Code, você pode acessar as configurações do editor clicando no ícone de engrenagem no canto inferior esquerdo da janela.

@@ -157,4 +157,4 @@ A instalação do **MSVC** utiliza o **Clang** como parte do seu conjunto de fer
 Na verdade, o comando `cl` não é exatamente o compilador Clang, mas sim um wrapper que o chama.
 
 Se você precisar do compilador Clang puro, você pode instalá-lo separadamente, junto com outras ferramentas do LLVM.
-Faremos isso no subcapítulo sobre o [depurador LLDB](/src/chapters/c_cpp/debugger/_index.md).
+Faremos isso no subcapítulo sobre o [depurador LLDB](../debugger/_index.md).

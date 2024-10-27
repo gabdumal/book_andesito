@@ -15,7 +15,7 @@
     "asciidocExt": {
       "attributes": {},
       "backend": "html5",
-      "extensions": [],
+      "extensions": ["asciidoctor-html5s"],
       "failureLevel": "fatal",
       "noHeaderOrFooter": true,
       "preserveTOC": false,
@@ -25,16 +25,32 @@
       "verbose": false,
       "workingFolderCurrent": false
     },
+    "goldmark": {
+      "extensions": {
+        "passthrough": {
+          "delimiters": {
+            "block": [
+              ["\\[", "\\]"],
+              ["$$", "$$"]
+            ],
+            "inline": [["\\(", "\\)"]]
+          },
+          "enable": true
+        }
+      },
+      "parser": {
+        "attribute": {
+          "block": true
+        }
+      },
+      "renderer": {
+        "unsafe": true
+      }
+    },
     "highlight": {
+      "lineNumbersInTable": false,
       "noClasses": false
     }
-  },
-  "module": {
-    "imports": [
-      {
-        "path": "github.com/McShelby/hugo-theme-relearn"
-      }
-    ]
   },
   "outputs": {
     "home": ["html", "rss", "print"],
@@ -47,6 +63,7 @@
       "email": "professional@gabdumal.com",
       "name": "Gabriel Malosto"
     },
+    "disableInlineCopyToClipBoard": true,
     "linkTitle": "amb-dev",
     "themeVariant": [
       {
@@ -94,5 +111,6 @@
       "methods": ["(?i)GET|POST"],
       "urls": [".*"]
     }
-  }
+  },
+  "theme": "hugo-theme-relearn"
 }

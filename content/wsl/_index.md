@@ -2,10 +2,11 @@
   title = "WSL"
   type = "chapter"
   weight = 1
+  experimental = true
 +++
 
 O **Windows Subsystem for Linux (WSL)** é uma ferramenta de código aberto apoiada pela Microsoft que permite a emulação de um sistema operacional Linux dentro do Windows.
-A atual versão na data de escrita deste livro é a 2, que traz grandes melhorias em relação à versão anterior.
+A atual versão na data de escrita deste livro é a `2`, que traz grandes melhorias em relação à versão anterior.
 
 O WSL permite instalar diversas distribuições Linux, até mesmo concomitantemente.
 Este [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-6---install-your-linux-distribution-of-choice) da Microsoft mostra algumas opções.
@@ -15,24 +16,20 @@ Para este guia, vamos nos manter na distribuição **Ubuntu**, que é a padrão 
 
 Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Build 19041) ou superior, o WSL 2 já estará habilitado, e você pode pular para a [próxima seção](#habilitando-o-wsl).
 
-<div class="warning">
-  <p>
-    Para verificar a versão do seu Windows, pressione <kbd>Win</kbd> + <kbd>R</kbd> e digite <code>winver</code>. Então, pressione <kbd>Enter</kbd>.
-  </p>
-  <figure>
-    <img src="./check_version.png" />
-    <figcaption>Verificando a versão do Windows pelo Executar.</figcaption>
-  </figure>
-</div>
+{{% notice style="info" title="Verificando a versão" %}}
+Para verificar a versão do seu Windows, pressione <kbd>Win</kbd> + <kbd>R</kbd> e digite `winver`. Então, pressione <kbd>Enter</kbd>.
+{{% /notice %}}
+
+{{< figure caption="Verificando a versão do Windows pelo Executar." column=true >}}
+<img src="check_version.png" />
+{{< /figure >}}
 
 Caso utilize uma versão mais antiga, seguiremos os passos recomendados pelo [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-1---enable-the-windows-subsystem-for-linux) da Microsoft.
 
 Ainda assim, para sistemas com arquitetura x64, é necessário ter instalado a **versão 1903** do Windows 10 ou posterior, com a Build 18362.1049 ou posterior.
 Versões mais antigas do Windows 10 não possuem suporte para o WSL 2.
 
-Como alternativa, você pode ler o capítulo [Instalando o MSVC](/src/chapters/installing_msvc/_index.md) para compilar programas diretamente para executáveis do Windows.
-
-<!-- TODO: Atualizar link para o capítulo -->
+Como alternativa, você pode ler o capítulo sobre a [instalação do MSVC](../c_cpp/compiler/_index.md#windows) para compilar programas diretamente para executáveis do Windows.
 
 ### Habilitando o WSL
 
@@ -42,15 +39,12 @@ Para habilitar o WSL no sistema, abra o PowerShell como **administrador** e exec
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
 
-<div class="warning">
-  <p>
-    Lembre-se, para abrir o PowerShell como administrador, clique com o botão direito na entrada do PowerShell no Menu Iniciar e selecione a opção <span class="bold">Executar como administrador</span>.
-  </p>
-  <figure>
-    <img src="./powershell_adm.png" />
-    <figcaption>Executando o PowerShell como administrador a partir do Menu Iniciar.</figcaption>
-  </figure>
-</div>
+{{% notice style="tip" title="Abrindo o PowerShell como administrador" %}}
+Lembre-se, para abrir o PowerShell como administrador, clique com o botão direito na entrada do PowerShell no Menu Iniciar e selecione a opção **Executar como administrador**.
+{{% figure caption="Executando o PowerShell como administrador a partir do Menu Iniciar." %}}
+  <img src="./powershell_adm.png" />
+{{% /figure %}}
+{{% /notice %}}
 
 ### Habilitando a Virtualização
 
@@ -93,7 +87,8 @@ Quando eu instalei, usei apenas o comando `wsl.exe --install`, sem o `--no-distr
 Confesso que o meu processo ficou travado nessa última linha `Habilitando recurso(s)`.
 Depois de um minuto eu fechei o terminal e abri novamente.
 
-Digitando `wsl`, recebi a seguinte mensagem: `O Subsistema do Windows para Linux não tem distribuições instaladas`.
+Digitando `wsl`, recebi a seguinte mensagem:
+`O Subsistema do Windows para Linux não tem distribuições instaladas`.
 
 <figure>
 <img src="./error_no_distro.png" />

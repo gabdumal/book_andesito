@@ -9,7 +9,7 @@ Dessa forma, não é necessário compilar o código antes de executá-lo.
 Basta chamar o interpretador Python e passar o arquivo como argumento.
 
 Eu gosto de organizar meus projetos em uma pasta chamada `dev` na raiz da minha pasta de usuário.
-A criação dessa pasta foi tratada no capítulo [Windows Subsystem for Linux](/src/chapters/wsl/_index.md).
+A criação dessa pasta foi tratada no capítulo [Windows Subsystem for Linux](../../wsl/_index.md).
 
 ## Olá, Mundo
 
@@ -117,7 +117,7 @@ Nele, estavam definidos alguns perfis que eu já criei.
 A fim de não confundir, apaguei-os na edição.
 Para você, a lista terá apenas o perfil **Default**.
 
-Garanta que você definiu que as extensões do perfil **Default** sejam aplicadas para todos os perfis, como mostrado no capítulo [Visual Studio Code](/src/chapters/vscode/_index.md#extensões).
+Garanta que você definiu que as extensões do perfil **Default** sejam aplicadas para todos os perfis, como mostrado no capítulo [Visual Studio Code](../../vscode/_index.md#extensões).
 
 Agora, abra novamente a lista de perfis e selecione o ícone de _check_ na opção **Python**.
 Isso aplicará o perfil criado na pasta atualmente aberta no Visual Studio Code.

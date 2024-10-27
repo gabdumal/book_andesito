@@ -28,7 +28,7 @@ Já para o Windows, cada dependência deve ser manualmente instalada previamente
 ## Windows
 
 Para instalar o **LLDB** no Windows, é necessário ter instalado o **Python 3.10**.
-Leia o capítulo sobre a linguagem [**Python**](/src/chapters/python/_index.md) para saber como instalá-la.
+Leia o capítulo sobre a linguagem [**Python**](../../python/_index.md) para saber como instalá-la.
 
 ### LLVM
 

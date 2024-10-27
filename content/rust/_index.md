@@ -23,7 +23,7 @@ A forma recomendada de instalar o Rust é utilizando o [**rustup**](https://rust
 ### Windows
 
 O Rust para Windows depende do **MSVC** (Microsoft Visual Studio Build Tools) para compilar código nativo.
-Acesse o capítulo sobre o [compilador para C e C++](/src/chapters/c_cpp/compiler/_index.md#windows) para aprender a instalar o MSVC.
+Acesse o capítulo sobre o [compilador para C e C++](../c_cpp/compiler/_index.md#windows) para aprender a instalar o MSVC.
 
 Para instalar o rustup no Windows, acesse o [site oficial](https://www.rust-lang.org/tools/install) da linguagem e baixe o instalador referente à sua arquitetura.
 Para a grande maioria dos casos, o instalador de **64 bits** é o mais adequado.

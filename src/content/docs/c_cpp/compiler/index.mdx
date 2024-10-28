@@ -38,7 +38,7 @@ Não é necessário instalar todo o Visual Studio.
 Dessa forma, acesse a página de [downloads](https://visualstudio.microsoft.com/pt-br/downloads/#build-tools-for-visual-studio-2022) do Visual Studio e baixe a versão **Ferramentas de Build para Visual Studio 2022** (ou superior).
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/download_options.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/download_options.png" />
   <figcaption>
     Opções de download das ferramentas do Visual Studio, em que se seleciona a
     opção "Ferramentas de Build para Visual Studio 2022".
@@ -48,7 +48,7 @@ Dessa forma, acesse a página de [downloads](https://visualstudio.microsoft.com/
 Execute o instalador baixado e prossiga com a instalação.
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/vs_installer.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/vs_installer.png" />
   <figcaption>Instalação do gerenciador do Visual Studio.</figcaption>
 </figure>
 
@@ -67,7 +67,7 @@ No menu lateral na esquerda, selecione as seguintes opções:
 - Módulos do C++ para as ferramentas do build v143 (x86 e x64, experimental)
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/installing_msvc.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/installing_msvc.png" />
   <figcaption>
     Tela de seleção de cargas de trabalho no gerenciador do Visual Studio.
   </figcaption>
@@ -82,7 +82,7 @@ Você verá que duas novas entradas foram adicionadas:
 - Developer PowerShell for VS 2022
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/options_list.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/options_list.png" />
   <figcaption>Lista de opções de shell para o Windows Terminal.</figcaption>
 </figure>
 
@@ -91,7 +91,7 @@ Para acessar as ferramentas instaladas, você deve utilizar o perfil **Developer
 Abra uma sessão nele e execute o comando `cl` para verificar se o compilador **Clang** foi instalado corretamente.
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/testing_cl.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/testing_cl.png" />
   <figcaption>Testando se a instalação do MSVC foi bem-sucedida.</figcaption>
 </figure>
 
@@ -103,7 +103,7 @@ Abra a opção **Diretório inicial**, e troque o valor para `%USERPROFILE%`.
 Então, **salve** as configurações.
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/initial_directory.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/initial_directory.png" />
   <figcaption>
     Diretório de inicialização do perfil definido como a pasta do usuário.
   </figcaption>
@@ -132,7 +132,7 @@ Você pode também definir esse perfil como padrão, para que ele seja aberto au
 Faça isso na seção **Inicialização** e na opção **Perfil padrão**.
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/default_profile.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/default_profile.png" />
   <figcaption>
     "Developer PowerShell for VS 2022" definido como o perfil padrão de
     inicialização do Windows Terminal.
@@ -144,7 +144,7 @@ Faça isso na seção **Inicialização** e na opção **Perfil padrão**.
 Para testar se a configuração foi bem-sucedida, abra o Windows Terminal e digite `$PSVersionTable`.
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/new_terminal.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/new_terminal.png" />
   <figcaption>
     Windows Terminal inicializado com o perfil de desenvolvimento.
   </figcaption>
@@ -160,7 +160,7 @@ Se quiser abri-lo na pasta atual, utilize `code .`.
 Para testar se a configuração foi bem-sucedida, abra o terminal integrado do VSCode e execute o comando `cl`.
 
 <figure>
-  <img src="/src/assets/content/docs/c_cpp/compiler/opening_code.png" />
+  <img src="/book_dev_env/src/assets/content/docs/c_cpp/compiler/opening_code.png" />
   <figcaption>
     Abrindo o Visual Studio Code a partir do Windows Terminal, e executando o
     comando "cl" no terminal integrado.

@@ -19,9 +19,9 @@ Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Buil
 <Aside type="note">
   Para verificar a versão do seu Windows, pressione <kbd>Win</kbd> +{" "}
   <kbd>R</kbd> e digite `winver`. Então, pressione <kbd>Enter</kbd>.
-  <img src="/src/assets/content/docs/wsl/check_version.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/check_version.png" />
   <figure>
-    <img src="/src/assets/content/docs/wsl/powershell_adm.png" />
+    <img src="/book_dev_env/src/assets/content/docs/wsl/powershell_adm.png" />
     <figcaption>Verificando a versão do Windows pelo Executar.</figcaption>
   </figure>
 </Aside>
@@ -46,7 +46,7 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
   direito na entrada do PowerShell no Menu Iniciar e selecione a opção
   **Executar como administrador**.
   <figure>
-    <img src="/src/assets/content/docs/wsl/powershell_adm.png" />
+    <img src="/book_dev_env/src/assets/content/docs/wsl/powershell_adm.png" />
     <figcaption>
       Executando o PowerShell como administrador a partir do Menu Iniciar.
     </figcaption>
@@ -86,7 +86,7 @@ wsl.exe --install --no-distribution
 ```
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/installing_wsl.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/installing_wsl.png" />
   <figcaption>Processo de instalação do WSL pelo PowerShell.</figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ Digitando `wsl`, recebi a seguinte mensagem:
 `O Subsistema do Windows para Linux não tem distribuições instaladas`.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/error_no_distro.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/error_no_distro.png" />
   <figcaption>
     Resultado do comando <code>wsl</code> após a execução do comando de
     instalação.
@@ -119,7 +119,7 @@ Procure por uma aplicação chamada **Ubuntu**, sem indicar a versão.
 Ela é a primeira opção da imagem a seguir.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/ubuntu_options.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_options.png" />
   <figcaption>
     Opções de instalações do Ubuntu pela Microsoft Store, em que se seleciona a
     Ubuntu.
@@ -131,7 +131,7 @@ Você também pode acessar essa página pelo [link direto](https://www.microsoft
 Clique no botão de instalar, e aguarde o download e instalação da distribuição.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/installing_ubuntu.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/installing_ubuntu.png" />
   <figcaption>Processo de instalação do Ubuntu para o WSL.</figcaption>
 </figure>
 
@@ -140,7 +140,7 @@ Clique no botão de instalar, e aguarde o download e instalação da distribuiç
 Pesquise pelo **Ubuntu** no Menu Iniciar e abra o aplicativo.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/ubuntu_start_menu.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_start_menu.png" />
   <figcaption>Entrada do Ubuntu no Menu Iniciar.</figcaption>
 </figure>
 
@@ -154,7 +154,7 @@ Após repetir a senha, pressione <kbd>Enter</kbd> novamente.
 O sistema fará as últimas configurações e criara um usuário de administrador para você dentro do Ubuntu.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/user_creation.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/user_creation.png" />
   <figcaption>
     Processo de criação de usuário do Ubuntu pelo terminal.
   </figcaption>
@@ -169,7 +169,7 @@ Em caso de esquecê-la, deixo aqui um [guia](https://www.howtogeek.com/devops/ho
 Se tudo tiver corrido bem, você verá uma nova entrada para o Ubuntu na aba de perfis do **Windows Terminal**.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/ubuntu_profile.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_profile.png" />
   <figcaption>
     Opção do ubuntu na lista de perfis do Windows Terminal.
   </figcaption>
@@ -181,7 +181,7 @@ Na seção `Startup` (ou `Inicialização`), você pode definir o perfil padrão
 Selecione a entrada do ubuntu com o ícone laranja e clique em `Salvar`.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/ubuntu_default.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_default.png" />
   <figcaption>
     Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows
     Terminal.
@@ -201,7 +201,7 @@ A palavra `sudo` é usada para executar um comando com permissões de administra
 Ela solicitará a senha do usuário que você criou anteriormente.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/updating_packages.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/updating_packages.png" />
   <figcaption>Atualizando os pacotes do Ubuntu.</figcaption>
 </figure>
 
@@ -214,7 +214,7 @@ sudo apt upgrade
 Então, quando perguntado se deseja continuar, pressione <kbd>Y</kbd> e <kbd>Enter</kbd>.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/upgrading_packages.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/upgrading_packages.png" />
   <figcaption>
     Instalando as versões atualizadas dos pacotes do Ubuntu.
   </figcaption>
@@ -239,7 +239,7 @@ Ela varia um pouco a depender da distribuição, mas a estrutura básica é a me
 Há outras pastas (chamadas comumente de **diretórios**) importantes, mas com o tempo você pega o jeito.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/fhs.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/fhs.png" />
   <figcaption>Estrutura de pastas da raiz do Ubuntu (WSL).</figcaption>
 </figure>
 
@@ -257,8 +257,8 @@ Tanto o Windows quanto o Linux possuem essa variável de ambiente, mas perceba q
 
 <figure>
   <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
-    <img src="/src/assets/content/docs/wsl/home_wsl.png" />
-    <img src="/src/assets/content/docs/wsl/home_powershell.png" />
+    <img src="/book_dev_env/src/assets/content/docs/wsl/home_wsl.png" />
+    <img src="/book_dev_env/src/assets/content/docs/wsl/home_powershell.png" />
   </div>
   <figcaption>
     Comando para exibir a variável de ambiente HOME no Ubuntu e no PowerShell,
@@ -276,7 +276,7 @@ Dentro dela, haverá uma pasta chamada `Ubuntu`.
 Essa é justamente a pasta `/` (raiz) do Ubuntu, a qual mencionamos anteriormente.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/root.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/root.png" />
   <figcaption>
     Pasta raiz do Ubuntu WSL exibida no Explorador de Arquivos.
   </figcaption>
@@ -285,7 +285,7 @@ Essa é justamente a pasta `/` (raiz) do Ubuntu, a qual mencionamos anteriorment
 Acesse a pasta `home`, e então a pasta do seu **usuário**.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/home_explorer.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/home_explorer.png" />
   <figcaption>Pasta HOME exibida no Explorador de Arquivos.</figcaption>
 </figure>
 
@@ -316,7 +316,7 @@ echo "Hello, World!" > ~/dev/hello.txt
 ```
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/creating_file.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/creating_file.png" />
   <figcaption>Criando um arquivo na pasta ~/dev do Ubuntu.</figcaption>
 </figure>
 
@@ -327,7 +327,7 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\ws
 ```
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/creating_symlink.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/creating_symlink.png" />
   <figcaption>
     Criando um link simbólico para a pasta ~/dev do Ubuntu.
   </figcaption>
@@ -339,7 +339,7 @@ Abra o Executar com <kbd>Win</kbd> + <kbd>R</kbd> e digite `%USERPROFILE%` para 
 Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atalho.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/symlink_explorer.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/symlink_explorer.png" />
   <figcaption>
     Link simbólico mostrado na pasta do usuário do Windows.
   </figcaption>
@@ -350,7 +350,7 @@ Clique com o botão direito na pasta e selecione **Fixar no Acesso Rápido** par
 Ao acessar a pasta, você verá o arquivo `hello.txt` que criamos anteriormente no Ubuntu.
 
 <figure>
-  <img src="/src/assets/content/docs/wsl/symlinked_folder.png" />
+  <img src="/book_dev_env/src/assets/content/docs/wsl/symlinked_folder.png" />
   <figcaption>
     Pasta ~/dev do Ubuntu mostrada na estrutura de pastas do Windows.
   </figcaption>

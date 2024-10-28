@@ -1,5 +1,5 @@
 ---
-  title: Visual Studio Code
+title: Visual Studio Code
 ---
 
 A fim de escrever código, você precisará de um editor de texto apropriado.
@@ -20,16 +20,22 @@ Você pode fazer o download do editor pelo [site oficial](https://code.visualstu
 Mesmo que você esteja usando o **WSL**, é necessário instalar o Visual Studio Code no Windows, pois é ele que irá gerenciar as extensões e configurações do editor.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/download_options.png" />
-<figcaption>Opções de download do Visual Studio Code, em que se seleciona o instalador do Windows.</figcaption>
+  <img src="/book_dev_env/src/assets/content/docs/vscode/download_options.png" />
+  <figcaption>
+    Opções de download do Visual Studio Code, em que se seleciona o instalador
+    do Windows.
+  </figcaption>
 </figure>
 
 Execute o instalador e siga as instruções.
 Quando chegar ao passo `Selecionar tarefas adicionais`, marque todas as opções na seção `Outros`.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/other_options.png" />
-<figcaption>Opções de download do Visual Studio Code, em que se selecionam todas as opções na seção Outros.</figcaption>
+  <img src="/book_dev_env/src/assets/content/docs/vscode/other_options.png" />
+  <figcaption>
+    Opções de download do Visual Studio Code, em que se selecionam todas as
+    opções na seção Outros.
+  </figcaption>
 </figure>
 
 ### Ubuntu
@@ -77,8 +83,10 @@ sudo dnf install code
 Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos do seu sistema operacional --- seja Windows, Ubuntu ou Fedora --- ou executar o comando `code` no terminal.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/running_code_in_terminal.png" />
-<figcaption>Executando o Visual Studio Code pelo Windows Terminal.</figcaption>
+  <img src="/book_dev_env/src/assets/content/docs/vscode/running_code_in_terminal.png" />
+  <figcaption>
+    Executando o Visual Studio Code pelo Windows Terminal.
+  </figcaption>
 </figure>
 
 Para abrir o VSCode no **WSL**, você pode prosseguir de duas formas abrir o Windows terminal pelo perfil do **WSL** e executar o comando `code`.
@@ -86,15 +94,17 @@ Para abrir o VSCode no **WSL**, você pode prosseguir de duas formas abrir o Win
 Ou então, pode abrir o VSCode normalmente, e selecionar o botão azul no canto inferior esquerdo, chamado `Open a Remote Window`.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/remote_window.png" />
-<figcaption>Botão para abrir uma conexão remota pelo Visual Studio Code.</figcaption>
+  <img src="/book_dev_env/src/assets/content/docs/vscode/remote_window.png" />
+  <figcaption>
+    Botão para abrir uma conexão remota pelo Visual Studio Code.
+  </figcaption>
 </figure>
 
 Então, selecione a opção `WSL` no menu que aparecer.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/connections_menu.png" />
-<figcaption>Opção WSL selecionada no menu de conexões remotas.</figcaption>
+  <img src="/book_dev_env/src/assets/content/docs/vscode/connections_menu.png" />
+  <figcaption>Opção WSL selecionada no menu de conexões remotas.</figcaption>
 </figure>
 
 Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para se conectar com o **Ubuntu**.
@@ -102,8 +112,14 @@ Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para 
 Algumas de suas extensões previamente instaladas manter-se-ão funcionando, mas algumas podem requerer que você clique em `Install in WSL: Ubuntu` para que funcionem corretamente.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/extensions.png" alt="Seção de extensões do visual Studio Code, em que se vê a extensão 'WSL' instalada e sua descrição breve, além das extensões 'Error Lens' e 'vscode-pdf'. Também se veem as extensões 'AsciiDoc' e 'Brazilian Portuguese - Code Spell Checker' desabilitadas, nas quais aparece um botão escrito 'Install in WSL: Ubuntu'. No canto inferior esquerdo do aplicativo, o botão de conexões remotas agora mostra o texto 'WSL: Ubuntu'."/>
-<figcaption>Seção de extensões do visual Studio Code, em que se vê a extensão WSL instalada.</figcaption>
+  <img
+    src="/book_dev_env/src/assets/content/docs/vscode/extensions.png"
+    alt="Seção de extensões do visual Studio Code, em que se vê a extensão 'WSL' instalada e sua descrição breve, além das extensões 'Error Lens' e 'vscode-pdf'. Também se veem as extensões 'AsciiDoc' e 'Brazilian Portuguese - Code Spell Checker' desabilitadas, nas quais aparece um botão escrito 'Install in WSL: Ubuntu'. No canto inferior esquerdo do aplicativo, o botão de conexões remotas agora mostra o texto 'WSL: Ubuntu'."
+  />
+  <figcaption>
+    Seção de extensões do visual Studio Code, em que se vê a extensão WSL
+    instalada.
+  </figcaption>
 </figure>
 
 ## Extensões
@@ -135,8 +151,10 @@ Se você gostou do meu tema de cores, você pode instalá-lo também:
 Para cada uma dessas extensões, clique com o botão direito sobre e selecione **Apply Extensions to all Profiles**.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/applying_extension_to_all_profiles.png" />
-<figcaption>Aplicando a primeira extensão a todos os perfis do Visual Studio Code.</figcaption>
+  <img src="/book_dev_env/src/assets/content/docs/vscode/applying_extension_to_all_profiles.png" />
+  <figcaption>
+    Aplicando a primeira extensão a todos os perfis do Visual Studio Code.
+  </figcaption>
 </figure>
 
 Isso será importante mais tarde, quando criarmos perfis específicos para cada linguagem de programação.
@@ -149,8 +167,10 @@ Alternativamente, você pode editar o arquivo `settings.json` diretamente.
 Para isso, abra a paleta de comandos com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
 
 <figure>
-<img src="/src/assets/content/docs/vscode/opening_user_settings.png" />
-<figcaption>Abrindo o arquivo de configurações pela paleta de comandos.</figcaption>
+  <img src="/book_dev_env/src/assets/content/docs/vscode/opening_user_settings.png" />
+  <figcaption>
+    Abrindo o arquivo de configurações pela paleta de comandos.
+  </figcaption>
 </figure>
 
 Eu preparei um arquivo de configurações para o Visual Studio Code que inclui algumas definições úteis.

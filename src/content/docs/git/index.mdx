@@ -32,14 +32,14 @@ Você pode baixar o instalador pelo [site oficial](https://gitforwindows.org/).
 Execute o instalador e siga as instruções.
 
 <figure>
-  <img src="/src/assets/content/docs/git/first.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/first.png" />
   <figcaption>Tela inicial do instalador do Git para Windows.</figcaption>
 </figure>
 
 Quando perguntado sobre o editor de texto padrão, você pode escolher o **Visual Studio Code**, caso o tenha instalado.
 
 <figure>
-  <img src="/src/assets/content/docs/git/editor.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/editor.png" />
   <figcaption>Seleção do editor de texto padrão do Git.</figcaption>
 </figure>
 
@@ -47,28 +47,28 @@ Na sessão **Adjusting the name of the initial branch in new repositories**, voc
 Recomendo selecionar a opção **Override the default branch name for new repositories** e digitar `main`, uma vez que este é o padrão adotado pelo _GitHub_.
 
 <figure>
-  <img src="/src/assets/content/docs/git/branch_name.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/branch_name.png" />
   <figcaption>Seleção do nome padrão de branch.</figcaption>
 </figure>
 
 Na seção **Adjusting your PATH environment**, selecione **Git from the command line and also from 3rd-party software**.
 
 <figure>
-  <img src="/src/assets/content/docs/git/path.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/path.png" />
   <figcaption>Seleção da configuração da PATH.</figcaption>
 </figure>
 
 Na seção **Choosing the SSH executable**, selecione **use external OpenSSH**.
 
 <figure>
-  <img src="/src/assets/content/docs/git/openssh.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/openssh.png" />
   <figcaption>Seleção do executável do OpenSSH.</figcaption>
 </figure>
 
 Nas próximas sessões, pode manter as opções padrão, até a **Configuring extra options**, em que recomendo marcar também a caixa **Enable symbolic links**.
 
 <figure>
-  <img src="/src/assets/content/docs/git/extra.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/extra.png" />
   <figcaption>Seleção das configurações extra.</figcaption>
 </figure>
 
@@ -99,7 +99,7 @@ git config --global user.email "seu@email.com"
 Para verificar se as configurações foram aplicadas corretamente, execute os mesmo comandos, mas sem o conteúdo
 
 <figure>
-  <img src="/src/assets/content/docs/git/name.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/name.png" />
   <figcaption>Definição do nome de autoria dos commits.</figcaption>
 </figure>
 
@@ -153,7 +153,7 @@ Este comando adiciona o repositório do GitHub CLI ao seu sistema, e então inst
 ```
 
 <figure>
-  <img src="/src/assets/content/docs/git/gh_cli_wsl.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/gh_cli_wsl.png" />
   <figcaption>Instalação do GitHub CLI no WSL.</figcaption>
 </figure>
 
@@ -180,7 +180,7 @@ winget install --id GitHub.cli
 ```
 
 <figure>
-  <img src="/src/assets/content/docs/git/install_gh_cli_powershell.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/install_gh_cli_powershell.png" />
   <figcaption>Instalando o GitHub CLI no PowerShell.</figcaption>
 </figure>
 
@@ -191,7 +191,7 @@ Alternativamente, você pode baixar o instalador pelo [site oficial](https://cli
 Você pode verificar se a instalação foi bem-sucedida executando o comando `gh --version`.
 
 <figure>
-  <img src="/src/assets/content/docs/git/confirm_gh_cli_powershell.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/confirm_gh_cli_powershell.png" />
   <figcaption>
     Confirmação da instalação do GitHub CLI no PowerShell.
   </figcaption>
@@ -217,7 +217,7 @@ Siga o seguinte passo a passo:
 O GitHub CLI irá então exibir um código de oito caracteres, e um link para você acessar no seu navegador.
 
 <figure>
-  <img src="/src/assets/content/docs/git/gh_auth_login.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/gh_auth_login.png" />
   <figcaption>
     Autenticação no terminal do WSL por meio do gitHub CLI.
   </figcaption>
@@ -227,7 +227,7 @@ Copie o **link** e abra em um navegador em que você já esteja logado no GitHub
 Então, selecione sua conta, cole o código de oito caracteres no campo de texto e clique em `Continue`.
 
 <figure>
-  <img src="/src/assets/content/docs/git/github_code.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/github_code.png" />
   <figcaption>
     Código de autenticação do GitHub CLI colado no navegador.
   </figcaption>
@@ -236,7 +236,7 @@ Então, selecione sua conta, cole o código de oito caracteres no campo de texto
 No meu caso, o WSL não conseguir abrir o navegador, então ele exibiu esse pequeno erro, mas foi só copiar o link e abrir no navegador que funcionou.
 
 <figure>
-  <img src="/src/assets/content/docs/git/gh_auth_complete.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/gh_auth_complete.png" />
   <figcaption>Resultado da autenticação pelo navegador.</figcaption>
 </figure>
 
@@ -248,7 +248,7 @@ Eu recomendo fazer isso como complemento ao GitHub CLI, mas não como substituto
 Selecione o ícone do perfil (o que tem a imagem de uma pessoa) no canto inferior esquerdo, e então clique em `Sign in to Sync Settings`.
 
 <figure>
-  <img src="/src/assets/content/docs/git/sign_in.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/sign_in.png" />
   <figcaption>Menu de log-in do Visual Studio Code.</figcaption>
 </figure>
 
@@ -257,7 +257,7 @@ Quando perguntado sobre a forma de autenticação, selecione `GitHub`.
 O Visual Studio Code irá abrir uma aba no seu navegador, onde você deve selecionar sua conta e autorizar o acesso.
 
 <figure>
-  <img src="/src/assets/content/docs/git/auth_vscode.png" />
+  <img src="/book_dev_env/src/assets/content/docs/git/auth_vscode.png" />
   <figcaption>
     Autorização de log-in no GitHub pelo Visual Studio Code.
   </figcaption>

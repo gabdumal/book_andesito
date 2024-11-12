@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+
+interface ImageProps {
+  src: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  images: ImageProps[];
+  caption: string;
+  horizontal?: boolean;
+}
+
+const { images, caption, horizontal } = Astro.props;
+---
+
+<figure class={`flex items-center flex-col gap-1`}>
+  <div class={`flex items-center ${horizontal ? "flex-row" : "flex-col"}`}>
+    {images.map(image => <Image alt={image.alt} src={image.src} />)}
+  </div>
+  <figcaption class="text-center" style={`margin-top: 0`}>
+    {caption}
+  </figcaption>
+</figure>

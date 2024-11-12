@@ -1,3 +1,5 @@
 {
-  "cSpell.words": ["astrojs", "MVSC", "tseslint"]
+  "cSpell.words": ["astrojs", "MVSC", "tseslint"],
+  "editor.tabSize": 2,
+  "cSpell.enableFiletypes": ["mdx"]
 }

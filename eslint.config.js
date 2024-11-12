@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 /** @type {import("eslint").Linter.Config} */
 import eslint from "@eslint/js";
@@ -11,7 +10,7 @@ export default [
     files: ["src/**/*.{js,mjs,cjs,ts}"],
   },
   {
-    ignores: ["prettier.config.js", "dist/**/*"],
+    ignores: ["dist/**/*", "node_modules/**/*", ".astro/**/*"],
   },
 
   eslint.configs.all,
@@ -35,7 +34,6 @@ export default [
         ecmaVersion: "latest",
         projectService: true,
         sourceType: "module",
-        tsconfigRootDir: import.meta.dirname,
       },
     },
   },

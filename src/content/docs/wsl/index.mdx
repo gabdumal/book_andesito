@@ -4,9 +4,35 @@
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
+
+import Figure from "/src/components/Figure.astro";
+import Keyboard from "/src/components/Keyboard.tsx";
+
+import check_version from "/src/assets/content/docs/wsl/check_version.png";
+import powershell_adm from "/src/assets/content/docs/wsl/powershell_adm.png";
+import installing_wsl from "/src/assets/content/docs/wsl/installing_wsl.png";
+import error_no_distro from "/src/assets/content/docs/wsl/error_no_distro.png";
+import ubuntu_options from "/src/assets/content/docs/wsl/ubuntu_options.png";
+import installing_ubuntu from "/src/assets/content/docs/wsl/installing_ubuntu.png";
+import ubuntu_start_menu from "/src/assets/content/docs/wsl/ubuntu_start_menu.png";
+import user_creation from "/src/assets/content/docs/wsl/user_creation.png";
+import ubuntu_profile from "/src/assets/content/docs/wsl/ubuntu_profile.png";
+import ubuntu_default from "/src/assets/content/docs/wsl/ubuntu_default.png";
+import updating_packages from "/src/assets/content/docs/wsl/updating_packages.png";
+import upgrading_packages from "/src/assets/content/docs/wsl/upgrading_packages.png";
+import fhs from "/src/assets/content/docs/wsl/fhs.png";
+import home_wsl from "/src/assets/content/docs/wsl/home_wsl.png";
+import home_powershell from "/src/assets/content/docs/wsl/home_powershell.png";
+import root from "/src/assets/content/docs/wsl/root.png";
+import home_explorer from "/src/assets/content/docs/wsl/home_explorer.png";
+import creating_file from "/src/assets/content/docs/wsl/creating_file.png";
+import creating_symlink from "/src/assets/content/docs/wsl/creating_symlink.png";
+import symlink_explorer from "/src/assets/content/docs/wsl/symlink_explorer.png";
+import symlinked_folder from "/src/assets/content/docs/wsl/symlinked_folder.png";
 
 O **Windows Subsystem for Linux (WSL)** é uma ferramenta de código aberto apoiada pela Microsoft que permite a emulação de um sistema operacional Linux dentro do Windows.
-A atual versão na data de escrita deste livro é a `2`, que traz grandes melhorias em relação à versão anterior.
+A atual versão na data de escrita deste livro é a **WSL 2**, que traz grandes melhorias em relação à versão anterior.
 
 O WSL permite instalar diversas distribuições Linux, até mesmo concomitantemente.
 Este [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-6---install-your-linux-distribution-of-choice) da Microsoft mostra algumas opções.
@@ -17,13 +43,18 @@ Para este guia, vamos nos manter na distribuição **Ubuntu**, que é a padrão 
 Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Build 19041) ou superior, o WSL 2 já estará habilitado, e você pode pular para a [próxima seção](#habilitando-o-wsl).
 
 <Aside type="note">
-  Para verificar a versão do seu Windows, pressione <kbd>Win</kbd> +{" "}
-  <kbd>R</kbd> e digite `winver`. Então, pressione <kbd>Enter</kbd>.
-  <img src="/book_dev_env/src/assets/content/docs/wsl/check_version.png" />
-  <figure>
-    <img src="/book_dev_env/src/assets/content/docs/wsl/powershell_adm.png" />
-    <figcaption>Verificando a versão do Windows pelo Executar.</figcaption>
-  </figure>
+  Para verificar a versão do seu Windows, pressione <Keyboard>Win</Keyboard> +{" "}
+  <Keyboard>R</Keyboard> e digite `winver`. Então, pressione
+  <Keyboard>Enter</Keyboard>.
+  <Figure
+    caption="Verificando a versão do Windows pelo Executar."
+    images={[
+      {
+        src: check_version,
+        alt: `Janela do programa "Executar", em que se escreve "winver".`,
+      },
+    ]}
+  />
 </Aside>
 
 Caso utilize uma versão mais antiga, seguiremos os passos recomendados pelo [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-1---enable-the-windows-subsystem-for-linux) da Microsoft.
@@ -45,12 +76,15 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
   Lembre-se, para abrir o PowerShell como administrador, clique com o botão
   direito na entrada do PowerShell no Menu Iniciar e selecione a opção
   **Executar como administrador**.
-  <figure>
-    <img src="/book_dev_env/src/assets/content/docs/wsl/powershell_adm.png" />
-    <figcaption>
-      Executando o PowerShell como administrador a partir do Menu Iniciar.
-    </figcaption>
-  </figure>
+  <Figure
+    caption="Executando o PowerShell como administrador a partir do Menu Iniciar."
+    images={[
+      {
+        src: powershell_adm,
+        alt: `Menu Iniciar do Windows, em que se pesquisa por "PowerShell", e se seleciona a opção encontrada "Windows PowerShell".`,
+      },
+    ]}
+  />
 </Aside>
 
 ### Habilitando a Virtualização
@@ -85,10 +119,17 @@ Para isso, abra o **PowerShell** e execute o comando abaixo.
 wsl.exe --install --no-distribution
 ```
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/installing_wsl.png" />
-  <figcaption>Processo de instalação do WSL pelo PowerShell.</figcaption>
-</figure>
+<Figure
+  caption="Processo de instalação do WSL pelo PowerShell."
+  images={[
+    {
+      src: installing_wsl,
+      alt: "Terminal do PowerShell, em que se executa o comando supracitado.",
+    },
+  ]}
+/>
+
+{/* TODO: Fix image and below text */}
 
 Quando eu instalei, usei apenas o comando `wsl.exe --install`, sem o `--no-distribution`.
 Confesso que o meu processo ficou travado nessa última linha `Habilitando recurso(s)`.
@@ -97,13 +138,15 @@ Depois de um minuto eu fechei o terminal e abri novamente.
 Digitando `wsl`, recebi a seguinte mensagem:
 `O Subsistema do Windows para Linux não tem distribuições instaladas`.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/error_no_distro.png" />
-  <figcaption>
-    Resultado do comando <code>wsl</code> após a execução do comando de
-    instalação.
-  </figcaption>
-</figure>
+<Figure
+  caption={`Resultado do comando "wsl" após a execução do comando de instalação.`}
+  images={[
+    {
+      src: error_no_distro,
+      alt: `Terminal do PowerShell, em que se executa o comando "wsl". A resposta é "O Subsistema do Windows para Linux não tem distribuições instaladas", o código de erro, e o link para a documentação.`,
+    },
+  ]}
+/>
 
 Por isso, recomendo para vocês usarem o comando `wsl.exe --install --no-distribution` para evitar esse problema de cara, e instalar apenas o sistema base mesmo.
 
@@ -118,47 +161,62 @@ A maneira mais fácil de fazer isso é pela Microsoft Store.
 Procure por uma aplicação chamada **Ubuntu**, sem indicar a versão.
 Ela é a primeira opção da imagem a seguir.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_options.png" />
-  <figcaption>
-    Opções de instalações do Ubuntu pela Microsoft Store, em que se seleciona a
-    Ubuntu.
-  </figcaption>
-</figure>
+<Figure
+  caption="Opções de instalações do Ubuntu pela Microsoft Store, em que se seleciona a Ubuntu."
+  images={[
+    {
+      src: ubuntu_options,
+      alt: "Loja da Microsoft, em que se pesquisa por 'ubuntu', e se seleciona a primeira opção.",
+    },
+  ]}
+/>
 
-Você também pode acessar essa página pelo [link direto](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare).
+Você também pode acessar essa página pelo [link direto](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare) para a loja da Microsoft.
 
 Clique no botão de instalar, e aguarde o download e instalação da distribuição.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/installing_ubuntu.png" />
-  <figcaption>Processo de instalação do Ubuntu para o WSL.</figcaption>
-</figure>
+<Figure
+  caption="Processo de instalação do Ubuntu para o WSL."
+  images={[
+    {
+      src: installing_ubuntu,
+      alt: "Página no Ubuntu na loja da Microsoft. A instalação está em andamento.",
+    },
+  ]}
+/>
 
 ## Configurando o Ubuntu
 
 Pesquise pelo **Ubuntu** no Menu Iniciar e abra o aplicativo.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_start_menu.png" />
-  <figcaption>Entrada do Ubuntu no Menu Iniciar.</figcaption>
-</figure>
+<Figure
+  caption="Entrada do Ubuntu no Menu Iniciar."
+  images={[
+    {
+      src: ubuntu_start_menu,
+      alt: `Menu Iniciar do Windows, em que se pesquisa por "Ubuntu" e se seleciona a opção correspondente.`,
+    },
+  ]}
+/>
 
 O que será aberto, na verdade, é uma janela do terminal.
 Após aguardar alguns segundos, o sistema pedirá para criar um **usuário e senha**.
 
 Eu usei o mesmo usuário do Windows, mas você pode criar um novo usuário se preferir.
-Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo. Não se preocupe, digite-a até o final e pressione <kbd>Enter</kbd>.
-Após repetir a senha, pressione <kbd>Enter</kbd> novamente.
+Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo. Não se preocupe, digite-a até o final e pressione <Keyboard>Enter</Keyboard>.
+Após repetir a senha, pressione <Keyboard>Enter</Keyboard> novamente.
 
 O sistema fará as últimas configurações e criara um usuário de administrador para você dentro do Ubuntu.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/user_creation.png" />
-  <figcaption>
-    Processo de criação de usuário do Ubuntu pelo terminal.
-  </figcaption>
-</figure>
+<Figure
+  caption="Processo de criação de usuário do Ubuntu pelo terminal."
+  images={[
+    {
+      src: user_creation,
+      alt: "Terminal do Ubuntu, em que são exibidas a mensagens da instalação, inclusive os prompts para criação de usuário.",
+    },
+  ]}
+/>
 
 Lembre-se da sua senha, pois ela será solicitada sempre que você precisar de permissões de administrador.
 
@@ -168,25 +226,30 @@ Em caso de esquecê-la, deixo aqui um [guia](https://www.howtogeek.com/devops/ho
 
 Se tudo tiver corrido bem, você verá uma nova entrada para o Ubuntu na aba de perfis do **Windows Terminal**.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_profile.png" />
-  <figcaption>
-    Opção do ubuntu na lista de perfis do Windows Terminal.
-  </figcaption>
-</figure>
+<Figure
+  caption="Opção do Ubuntu na lista de perfis do Windows Terminal."
+  images={[
+    {
+      src: ubuntu_profile,
+      alt: `Lista de perfis do Windows Terminal, em que são exibidas as opções: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell" e "Ubuntu".`,
+    },
+  ]}
+/>
 
 Eu acho mais prático ter o Ubuntu como padrão quando inicio o terminal.
 Para isso, abra as configurações do Windows Terminal.
 Na seção `Startup` (ou `Inicialização`), você pode definir o perfil padrão.
 Selecione a entrada do ubuntu com o ícone laranja e clique em `Salvar`.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/ubuntu_default.png" />
-  <figcaption>
-    Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows
-    Terminal.
-  </figcaption>
-</figure>
+<Figure
+  caption="Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows Terminal."
+  images={[
+    {
+      src: ubuntu_default,
+      alt: "Configurações do Windows Terminal, em que se define o perfil padrão de inicialização.",
+    },
+  ]}
+/>
 
 ## Atualizando os pacotes
 
@@ -200,10 +263,15 @@ sudo apt update
 A palavra `sudo` é usada para executar um comando com permissões de administrador.
 Ela solicitará a senha do usuário que você criou anteriormente.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/updating_packages.png" />
-  <figcaption>Atualizando os pacotes do Ubuntu.</figcaption>
-</figure>
+<Figure
+  caption="Atualizando os pacotes do Ubuntu."
+  images={[
+    {
+      src: updating_packages,
+      alt: `Terminal do Ubuntu, em que se executa o comando "sudo apt update".`,
+    },
+  ]}
+/>
 
 Então, para de fato instalar as atualizações, execute o comando abaixo.
 
@@ -211,14 +279,17 @@ Então, para de fato instalar as atualizações, execute o comando abaixo.
 sudo apt upgrade
 ```
 
-Então, quando perguntado se deseja continuar, pressione <kbd>Y</kbd> e <kbd>Enter</kbd>.
+Então, quando perguntado se deseja continuar, pressione <Keyboard>Y</Keyboard> e <Keyboard>Enter</Keyboard>.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/upgrading_packages.png" />
-  <figcaption>
-    Instalando as versões atualizadas dos pacotes do Ubuntu.
-  </figcaption>
-</figure>
+<Figure
+  caption="Instalando as versões atualizadas dos pacotes do Ubuntu."
+  images={[
+    {
+      src: upgrading_packages,
+      alt: `Terminal do Ubuntu, em que se executa o comando "sudo apt upgrade".`,
+    },
+  ]}
+/>
 
 ## Estrutura de diretórios
 
@@ -238,10 +309,15 @@ Ela varia um pouco a depender da distribuição, mas a estrutura básica é a me
 
 Há outras pastas (chamadas comumente de **diretórios**) importantes, mas com o tempo você pega o jeito.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/fhs.png" />
-  <figcaption>Estrutura de pastas da raiz do Ubuntu (WSL).</figcaption>
-</figure>
+<Figure
+  caption="Estrutura de pastas da raiz do Ubuntu (WSL)."
+  images={[
+    {
+      src: fhs,
+      alt: `Terminal do Ubuntu, em que se executa o comando "ls", que exibe a estrutura de pastas da raiz do Ubuntu.`,
+    },
+  ]}
+/>
 
 A que nos interessa no momento é a pasta `home`.
 Dentro dela, o sistema cria uma pasta para cada usuário, nomeada com o nome do usuário.
@@ -249,22 +325,25 @@ Por exemplo, o meu usuário é `gabriel`, então a pasta do meu usuário é `/ho
 
 Essa pasta é tão importante que ela tem uma variável de ambiente que a referencia, chamada de `HOME`.
 
-Pressione <kbd>q</kbd> para sair do texto de boas-vindas do Zsh.
+Pressione <Keyboard>q</Keyboard> para sair do texto de boas-vindas do Zsh.
 Digite no terminal o comando `echo $HOME` e veja o que aparece.
 Depois, digite `echo $HOME` no PowerShell e veja o que aparece.
 
 Tanto o Windows quanto o Linux possuem essa variável de ambiente, mas perceba que o caminho é diferente!
 
-<figure>
-  <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
-    <img src="/book_dev_env/src/assets/content/docs/wsl/home_wsl.png" />
-    <img src="/book_dev_env/src/assets/content/docs/wsl/home_powershell.png" />
-  </div>
-  <figcaption>
-    Comando para exibir a variável de ambiente HOME no Ubuntu e no PowerShell,
-    respectivamente.
-  </figcaption>
-</figure>
+<Figure
+  caption="Comando para exibir a variável de ambiente HOME no Ubuntu e no PowerShell, respectivamente."
+  images={[
+    {
+      src: home_wsl,
+      alt: `Terminal do Ubuntu, em que se executa o comando "echo $HOME". A resposta é "/home/gabriel".`,
+    },
+    {
+      src: home_powershell,
+      alt: `Terminal do PowerShell, em que se executa o comando "echo $HOME". A resposta é "C:\\Users\\gabriel".`,
+    },
+  ]}
+/>
 
 De fato, eu uso o mesmo usuário no Ubuntu e no Windows, mas o caminho da pasta do usuário é diferente porque se tratam de duas pastas completamente distintas.
 
@@ -275,19 +354,27 @@ Se tudo tiver sido instalado corretamente, você verá uma nova entrada no Explo
 Dentro dela, haverá uma pasta chamada `Ubuntu`.
 Essa é justamente a pasta `/` (raiz) do Ubuntu, a qual mencionamos anteriormente.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/root.png" />
-  <figcaption>
-    Pasta raiz do Ubuntu WSL exibida no Explorador de Arquivos.
-  </figcaption>
-</figure>
+<Figure
+  caption="Pasta raiz do Ubuntu WSL exibida no Explorador de Arquivos."
+  images={[
+    {
+      src: root,
+      alt: `Explorador de Arquivos do Windows aberto na pasta "Linux\\Ubuntu".`,
+    },
+  ]}
+/>
 
 Acesse a pasta `home`, e então a pasta do seu **usuário**.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/home_explorer.png" />
-  <figcaption>Pasta HOME exibida no Explorador de Arquivos.</figcaption>
-</figure>
+<Figure
+  caption="Pasta HOME exibida no Explorador de Arquivos."
+  images={[
+    {
+      src: home_explorer,
+      alt: `Explorador de Arquivos do Windows aberto na pasta "Linux\\Ubuntu\\home\\gabriel".`,
+    },
+  ]}
+/>
 
 Vemos que há vários arquivos e pastas dentro do diretório do usuário.
 O arquivo `.bashrc` é o arquivo de configuração do Bash, o shell padrão do Ubuntu.
@@ -315,10 +402,15 @@ Vamos criar um arquivo de texto dentro dessa pasta para testar o link simbólico
 echo "Hello, World!" > ~/dev/hello.txt
 ```
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/creating_file.png" />
-  <figcaption>Criando um arquivo na pasta ~/dev do Ubuntu.</figcaption>
-</figure>
+<Figure
+  caption="Criando um arquivo de texto na pasta ~/dev do Ubuntu."
+  images={[
+    {
+      src: creating_file,
+      alt: `Terminal do Ubuntu, em que se executa o comando supracitado, e se move para a pasta "dev".`,
+    },
+  ]}
+/>
 
 Então, abra no terminal um perfil do **PowerShell** como **administrador** e execute o comando abaixo para criar um link simbólico.
 
@@ -326,32 +418,41 @@ Então, abra no terminal um perfil do **PowerShell** como **administrador** e ex
 New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\wsl$\Ubuntu\home\$env:USERNAME\dev"
 ```
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/creating_symlink.png" />
-  <figcaption>
-    Criando um link simbólico para a pasta ~/dev do Ubuntu.
-  </figcaption>
-</figure>
+<Figure
+  caption="Criando um link simbólico para a pasta ~/dev do Ubuntu."
+  images={[
+    {
+      src: creating_symlink,
+      alt: "Terminal do PowerShell, em que se executa o comando supracitado.",
+    },
+  ]}
+/>
 
 Então, você poderá acessar a pasta `dev` diretamente pelo Explorador de Arquivos.
-Abra o Executar com <kbd>Win</kbd> + <kbd>R</kbd> e digite `%USERPROFILE%` para acessar seu diretório de usuário no Windows.
+Abra o Executar com <Keyboard>Win</Keyboard> + <Keyboard>R</Keyboard> e digite `%USERPROFILE%` para acessar seu diretório de usuário no Windows.
 
 Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atalho.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/symlink_explorer.png" />
-  <figcaption>
-    Link simbólico mostrado na pasta do usuário do Windows.
-  </figcaption>
-</figure>
+<Figure
+  caption="Link simbólico mostrado na pasta do usuário do Windows."
+  images={[
+    {
+      src: symlink_explorer,
+      alt: `Explorador de Arquivos do Windows aberto na pasta do usuário, em que se exibe a pasta "dev" com um ícone de atalho.`,
+    },
+  ]}
+/>
 
 Clique com o botão direito na pasta e selecione **Fixar no Acesso Rápido** para tê-la sempre à mão.
 
 Ao acessar a pasta, você verá o arquivo `hello.txt` que criamos anteriormente no Ubuntu.
 
-<figure>
-  <img src="/book_dev_env/src/assets/content/docs/wsl/symlinked_folder.png" />
-  <figcaption>
-    Pasta ~/dev do Ubuntu mostrada na estrutura de pastas do Windows.
-  </figcaption>
-</figure>
+<Figure
+  caption="Pasta ~/dev do Ubuntu mostrada na estrutura de pastas do Windows."
+  images={[
+    {
+      src: symlinked_folder,
+      alt: `Explorador de Arquivos do Windows aberto na pasta "dev" do Ubuntu.`,
+    },
+  ]}
+/>

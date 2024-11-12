@@ -1,24 +1,22 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
+import tailwind from "@astrojs/tailwind";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://gabdumal.github.io",
-  base: "book_dev_env",
+  base: "book_andesito/",
   integrations: [
     starlight({
+      customCss: ["./src/tailwind.css"],
       defaultLocale: "root",
+      description: "Guia de configuração de ambiente de desenvolvimento.",
       locales: {
         root: {
           label: "Português",
           lang: "pt",
         },
-      },
-      title: "Ambiente de desenvolvimento",
-      description: "Guia de configuração de ambiente de desenvolvimento.",
-      social: {
-        github: "https://github.com/gabdumal/book_dev_env",
       },
       sidebar: [
         {
@@ -34,7 +32,6 @@ export default defineConfig({
           slug: "vscode",
         },
         {
-          label: "Terminal",
           items: [
             {
               label: "Introdução",
@@ -49,13 +46,13 @@ export default defineConfig({
               slug: "terminal/windows",
             },
           ],
+          label: "Terminal",
         },
         {
           label: "Git",
           slug: "git",
         },
         {
-          label: "Shell",
           items: [
             { label: "Introdução", slug: "shell" },
             { label: "PowerShell", slug: "shell/powershell" },
@@ -63,24 +60,23 @@ export default defineConfig({
             { label: "Temas", slug: "shell/themes" },
             { label: "Plugins", slug: "shell/plugins" },
           ],
+          label: "Shell",
         },
         {
-          label: "Python",
           items: [
             { label: "Introdução", slug: "python" },
             { label: "Instalação", slug: "python/install" },
             { label: "Executando", slug: "python/run" },
             { label: "Ambientes virtuais", slug: "python/venv" },
           ],
+          label: "Python",
         },
         {
-          label: "C e C++",
           items: [
             { label: "Introdução", slug: "c_cpp" },
             { label: "Compilador", slug: "c_cpp/compiler" },
             { label: "Depurador", slug: "c_cpp/debugger" },
             {
-              label: "CMake",
               items: [
                 {
                   label: "Introdução",
@@ -91,8 +87,10 @@ export default defineConfig({
                   slug: "c_cpp/cmake/install",
                 },
               ],
+              label: "CMake",
             },
           ],
+          label: "C e C++",
         },
         {
           label: "JavaScript",
@@ -115,6 +113,15 @@ export default defineConfig({
           slug: "ruby",
         },
       ],
+      social: {
+        github: "https://github.com/gabdumal/book_andesito",
+      },
+      title: "Andesito",
     }),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    react(),
   ],
+  site: "https://gabdumal.github.io",
 });

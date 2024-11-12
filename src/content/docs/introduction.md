@@ -13,7 +13,7 @@ desenvolvimento para as seguintes linguagens:
 - **Java**, utilizando o gerenciador de pacotes **Maven**;
 - **Rust**, utilizando o gerenciador de pacotes **Cargo**.
 
-Cobrimos a instalação das ferramentas necessárias nos seguintes sistemasoperacionais:
+Cobrimos a instalação das ferramentas necessárias nos seguintes sistemas operacionais:
 
 - **Ubuntu** Linux
 - **Fedora** Linux

@@ -13,17 +13,33 @@ hero:
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
+import Link from "../../components/Link";
+import { authorGitHubPage, bookGitHubRepo } from "../../constants";
 
 ## Autoria
 
 <CardGrid stagger>
   <Card title="Autor" icon="pencil">
-    **Gabriel Malosto** é o autor deste livro. Foi um prazer escrevê-lo para
-    você! Pode me encontrar pela minha página no
-    [GitHub](https://github.com/gabdumal).
+    {
+      <p>
+        <span className="font-bold">Gabriel Malosto</span> é o autor deste
+        livro. Foi um prazer escrevê-lo para você! Pode me encontrar pela minha
+        página no <Link href={authorGitHubPage} title="GitHub" />.
+      </p>
+    }
   </Card>
   <Card title="Repositório" icon="github">
-    Encontre o código fonte deste projeto no
-    [GitHub](https://github.com/gabdumal/book_dev_env).
+    {
+      <p>
+        Encontre o código fonte deste projeto no{" "}
+        <Link
+          href={`https://github.com/${import.meta.env.PUBLIC_GITHUB_USERNAME}/${
+            import.meta.env.PUBLIC_BASE
+          }`}
+          title="GitHub"
+        />
+        {"."}
+      </p>
+    }
   </Card>
 </CardGrid>

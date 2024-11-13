@@ -16,8 +16,19 @@ const { images, caption, horizontal } = Astro.props;
 ---
 
 <figure class={`flex items-center flex-col gap-1`}>
-  <div class={`flex items-center ${horizontal ? "flex-row" : "flex-col"}`}>
-    {images.map(image => <Image alt={image.alt} src={image.src} />)}
+  <div
+    class={`flex items-center justify-center gap-1 ${horizontal ? "flex-row" : "flex-col"}`}
+  >
+    {
+      images.map(image => (
+        <Image
+          class="block w-min max-h-full max-w-full object-cover"
+          style={`margin: 0; ${horizontal ? "width: " + 100 / images.length + "%" : ""}`}
+          alt={image.alt}
+          src={image.src}
+        />
+      ))
+    }
   </div>
   <figcaption class="text-center" style={`margin-top: 0`}>
     {caption}

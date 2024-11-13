@@ -2,7 +2,25 @@
 title: Temas
 ---
 
+import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
+
+import firaCode from "/src/assets/content/docs/shell/themes/fira_code.png";
+import selectedFonts from "/src/assets/content/docs/shell/themes/selected_fonts.png";
+import openFonts from "/src/assets/content/docs/shell/themes/open_fonts.png";
+import settingFontWindows from "/src/assets/content/docs/shell/themes/setting_font_windows.png";
+import starshipPowershell from "/src/assets/content/docs/shell/themes/starship_powershell.png";
+import editPowershell from "/src/assets/content/docs/shell/themes/edit_powershell.png";
+import editedPowershell from "/src/assets/content/docs/shell/themes/edited_powershell.png";
+import powershellError from "/src/assets/content/docs/shell/themes/powershell_error.png";
+import settingPolicy from "/src/assets/content/docs/shell/themes/setting_policy.png";
+import installedStarshipPowershell from "/src/assets/content/docs/shell/themes/installed_starship_powershell.png";
+import starshipZsh from "/src/assets/content/docs/shell/themes/starship_zsh.png";
+import installedStarshipMessageZsh from "/src/assets/content/docs/shell/themes/installed_starship_message_zsh.png";
+import installedStarshipZsh from "/src/assets/content/docs/shell/themes/installed_starship_zsh.png";
+import settingThemePowershell from "/src/assets/content/docs/shell/themes/setting_theme_powershell.png";
+import exampleZsh from "/src/assets/content/docs/shell/themes/example_zsh.png";
+import examplePowershell from "/src/assets/content/docs/shell/themes/example_powershell.png";
 
 Uma das partes mais legais de customizar o shell é definir um tema para o prompt!
 Existem diversos frameworks para isso.
@@ -21,38 +39,59 @@ Acesse o site [nerdfonts.com](https://www.nerdfonts.com/font-downloads) e escolh
 Neste exemplo, vamos instalar a fonte **Fira Code**.
 Encontre-a na lista de fontes e clique no botão **Download**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/firacode.png" />
-  <figcaption>
-    Opção de download da fonte FiraCode no site Nerd Fonts.
-  </figcaption>
-</figure>
+<Figure
+  caption="Opção de download da fonte FiraCode no site Nerd Fonts."
+  images={[
+    {
+      src: firaCode,
+      alt: "Parte da página de downloads do site Nerd Fonts, em que se mostra a opção pela fonte FiraCode.",
+    },
+  ]}
+/>
+
+### Instalando as fontes
 
 O pacote Zip contém vários arquivos, que definem variações da fonte.
-Aquelas que nos interessam são as terminadas em **Mono**.
+Extraia o conteúdo do pacote em uma pasta de sua escolha.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/selected_fonts.png" />
-  <figcaption>Fontes Mono selecionadas no explorador de arquivos.</figcaption>
-</figure>
+As variantes que nos interessam são as terminadas em **Mono**.
+
+<Figure
+  caption="Fontes Mono selecionadas no explorador de arquivos."
+  images={[
+    {
+      src: selectedFonts,
+      alt: `Explorador de arquivos do Windows aberto na pasta de downloads da fonte, com os arquivos iniciados em "FiraCodeNerdFontMono" selecionados.`,
+    },
+  ]}
+/>
+
+#### Windows
 
 No Windows, selecione-as e pressione o botão direito do mouse.
 Então, clique em **Abrir**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/open_fonts.png" />
-  <figcaption>Janelas do instalador de fontes abertas.</figcaption>
-</figure>
+<Figure
+  caption="Janelas do instalador de fontes abertas."
+  images={[
+    {
+      src: openFonts,
+      alt: "Diversas janelas sobrepostas do instalador de fontes do Windows, cada uma para um dos arquivos abertos.",
+    },
+  ]}
+/>
 
 Isso abrirá uma janela do instalador para cada fonte.
 Não tem jeito, tem que clicar em **Instalar** em cada uma delas.
 
-No Linux, isso é mais fácil.
+#### Linux
+
+No **Linux**, isso é mais fácil.
 Após extrair o pacote, basta copiar os arquivos das variações para a pasta `~/.local/share/fonts`.
 
 {/* TODO: Ensinar a instalar fontes no Linux */}
 
-Se quiser fazer pelo terminal, o abra na pasta em que estão os arquivos descompactados e execute o comando:
+Se quiser fazer pelo terminal, abra-o na pasta em que estão os arquivos descompactados e execute o comando:
 
 ```bash
 cp *.ttf ~/.local/share/fonts
@@ -66,16 +105,25 @@ Além de instalar a fonte, é necessário configurar o terminal para usá-la.
 
 Já acessamos as configurações de fonte do GNOME Terminal e do Windows Terminal anteriormente.
 
+#### Windows
+
+Pelo Windows Terminal, acesse Configurações > Perfis > Perfil padrão > Aparência.
+
+<Figure
+  caption=">Definindo a fonte FiraCode Mono no Windows Terminal."
+  images={[
+    {
+      src: settingFontWindows,
+      alt: "Janela de configurações do Windows Terminal aberta na aba de aparência do perfil padrão. Na opção de fonte, busca-se pela FiraCode Nerd Font Mono.",
+    },
+  ]}
+/>
+
+#### Linux
+
 Pelo GNOME Terminal, o passo a passo é :
 
 {/* TODO: Explicar como definir a fonte */}
-
-Já pelo Windows Terminal, acesse Configurações > Perfis > Perfil padrão > Aparência.
-
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/setting_font_windows.png" />
-  <figcaption>Definindo a fonte Fira Code Mono no Windows Terminal.</figcaption>
-</figure>
 
 ## Instalando o Starship
 
@@ -94,10 +142,15 @@ Para obter o instalador e executar o script de instalação, rode o seguinte com
 winget install --id Starship.Starship
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/starship_powershell.png" />
-  <figcaption>Instalando o Starship no PowerShell.</figcaption>
-</figure>
+<Figure
+  caption="Instalando o Starship no PowerShell."
+  images={[
+    {
+      src: starshipPowershell,
+      alt: "Terminal com o PowerShell, em que se executa o comando de instalação do Starship.",
+    },
+  ]}
+/>
 
 Após a instalação, é necessário adicionar o script de inicialização do Starship ao seu perfil do PowerShell.
 
@@ -118,12 +171,15 @@ Vamos abrir o arquivo de configuração com o VSCode, executando o comando:
 code $PROFILE
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/edit_powershell.png" />
-  <figcaption>
-    Abrindo o arquivo de configuração do PowerShell com o Visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption="Abrindo o arquivo de configuração do PowerShell com o Visual Studio Code."
+  images={[
+    {
+      src: editPowershell,
+      alt: "Terminal com o PowerShell, em que se executa o comando para abrir o arquivo de configuração do PowerShell no Visual Studio Code.",
+    },
+  ]}
+/>
 
 Adicione as seguintes linhas ao arquivo:
 
@@ -139,25 +195,30 @@ Invoke-Expression (&starship init powershell)
 Enable-TransientPrompt
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/edited_powershell.png" />
-  <figcaption>
-    Arquivo de configuração do PowerShell com o comando para executar o
-    Starship.
-  </figcaption>
-</figure>
+<Figure
+  caption="Arquivo de configuração do PowerShell com o comando para executar o Starship."
+  images={[
+    {
+      src: editedPowershell,
+      alt: "Arquivo de configuração do PowerShell aberto no Visual Studio Code, com as linhas de configuração do Starship adicionadas.",
+    },
+  ]}
+/>
 
 Salve o arquivo e feche o editor.
 Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
 
 Possivelmente, você verá uma mensagem de erro ao abrir o PowerShell.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/powershell_error.png" />
-  <figcaption>
-    Mensagem de erro no PowerShell sobre execução de scripts.
-  </figcaption>
-</figure>
+<Figure
+  caption="Mensagem de erro no PowerShell sobre execução de scripts."
+  images={[
+    {
+      src: powershellError,
+      alt: "Terminal com o PowerShell, em que se exibe uma mensagem de erro sobre a execução de scripts.",
+    },
+  ]}
+/>
 
 Essa mensagem é exibida porque o Windows não permite a execução de scripts por padrão.
 Precisamos alterar a política de execução de scripts para que o Starship funcione.
@@ -168,24 +229,30 @@ Para isso, execute o comando:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/setting_policy.png" />
-  <figcaption>
-    Definindo a política de execução de scripts no PowerShell.
-  </figcaption>
-</figure>
+<Figure
+  caption="Definindo a política de execução de scripts no PowerShell."
+  images={[
+    {
+      src: settingPolicy,
+      alt: "Terminal com o PowerShell, em que se executa o comando para definir a política de execução de scripts.",
+    },
+  ]}
+/>
 
 Esse comando define que scripts que sejam assinados por fontes confiáveis podem ser executados.
 
 **Feche** e abra o terminal novamente.
 Para verificar se o Starship foi instalado corretamente, execute o comando `starship`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/installed_starship_powershell.png" />
-  <figcaption>
-    Verificando se o Starship foi instalado no PowerShell.
-  </figcaption>
-</figure>
+<Figure
+  caption="Verificando se o Starship foi instalado no PowerShell."
+  images={[
+    {
+      src: installedStarshipPowershell,
+      alt: "Terminal com o PowerShell, em que se verifica se o Starship foi instalado corretamente.",
+    },
+  ]}
+/>
 
 ### Zsh
 
@@ -197,19 +264,28 @@ Para instalar o Starship, execute o comando:
 sudo curl -sS https://starship.rs/install.sh | sh
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/starship_zsh.png" />
-  <figcaption>Executando comando de instalação do Starship no Zsh.</figcaption>
-</figure>
+<Figure
+  caption="Executando comando de instalação do Starship no Zsh."
+  images={[
+    {
+      src: starshipZsh,
+      alt: "Terminal com o Zsh, em que se executa o comando de instalação do Starship.",
+    },
+  ]}
+/>
 
 Quando perguntado se deseja prosseguir com a instalação, pressione a tecla <Keyboard keys={["y"]} />.
-
 O instalador exibirá uma mensagem informando que o Starship foi instalado com sucesso, e que é necessário adicionar o script de inicialização ao arquivo de configurações do shell.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/installed_starship_message_zsh.png" />
-  <figcaption>Mensagem de sucesso da instalação do Starship no Zsh.</figcaption>
-</figure>
+<Figure
+  caption="Mensagem de sucesso da instalação do Starship no Zsh."
+  images={[
+    {
+      src: installedStarshipMessageZsh,
+      alt: "Terminal com o Zsh, em que se exibe a mensagem de sucesso da instalação do Starship.",
+    },
+  ]}
+/>
 
 O arquivo de configurações do Zsh é o `~/.zshrc`.
 Vamos editá-lo usando o VSCode com o seguinte comando:
@@ -218,7 +294,7 @@ Vamos editá-lo usando o VSCode com o seguinte comando:
 code ~/.zshrc
 ```
 
-Adicione as seguintes linhas ao final do arquivo:
+Adicione as seguintes linhas ao arquivo logo antes da seção de plugins:
 
 ```bash
 ## Theme
@@ -226,22 +302,43 @@ eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/edited_zsh.png" />
-  <figcaption>
-    Arquivo de configuração do Zsh configurado para ativar o Starship.
-  </figcaption>
-</figure>
+O resultado final deve ser similar a este:
+
+```bash
+# Shell configuration
+ZSH_THEME="robbyrussell"
+
+## Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+## Path configuration
+PATH=$PATH:~/.local/bin
+
+## Source Oh my Zsh
+source $ZSH/oh-my-zsh.sh
+
+## Theme
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+
+## Plugins
+plugins=(git)
+```
 
 Salve o arquivo e feche o editor.
 Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
 
 Para verificar se o Starship foi instalado corretamente, execute o comando `starship`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/installed_starship_zsh.png" />
-  <figcaption>Verificando se o Starship foi instalado no Zsh.</figcaption>
-</figure>
+<Figure
+  caption="Verificando se o Starship foi instalado no Zsh."
+  images={[
+    {
+      src: installedStarshipZsh,
+      alt: "Terminal com o Zsh, em que se verifica se o Starship foi instalado corretamente, exibindo o prompt do Starship.",
+    },
+  ]}
+/>
 
 ## Configurando o Starship
 
@@ -284,10 +381,15 @@ Já no **Windows**, execute o comando:
 starship.exe preset gruvbox-rainbow -o $ENV:STARSHIP_CONFIG
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/themes/setting_theme_powershell.png" />
-  <figcaption>Definindo o tema Gruvbox Rainbow no PowerShell.</figcaption>
-</figure>
+<Figure
+  caption="Definindo o tema Gruvbox Rainbow no PowerShell."
+  images={[
+    {
+      src: settingThemePowershell,
+      alt: "Terminal com o PowerShell, em que se executa o comando para definir o tema Gruvbox Rainbow no Starship. Imediatamente, o prompt é atualizado com o novo tema.",
+    },
+  ]}
+/>
 
 ### Considerações
 
@@ -296,21 +398,20 @@ Uma funcionalidade que foi implementada para o PowerShell, mas ainda não para o
 
 Isso significa que apenas a linha atual terá todos os detalhes do prompt, e as demais linhas terão um prompt mais simples.
 
-<figure style="display:flex;flex-direction:column;max-width:100%;">
-  <div style="display:flex;align-items:center;gap:1rem;max-width:100%;">
-    <img
-      src="/book_andesito/src/assets/content/docs/shell/themes/example_zsh.png"
-      style="width:50%;height:auto;"
-    />
-    <img
-      src="/book_andesito/src/assets/content/docs/shell/themes/example_powershell.png"
-      style="width:50%;height:auto;"
-    />
-  </div>
-  <figcaption>
-    Comparação do Starship entre o Zsh e o PowerShell respectivamente.
-  </figcaption>
-</figure>
+<Figure
+  caption="Comparação do Starship entre o Zsh e o PowerShell respectivamente."
+  horizontal
+  images={[
+    {
+      src: exampleZsh,
+      alt: "Prompt do Starship no Zsh, com muitos detalhes em todas as linhas do histórico.",
+    },
+    {
+      src: examplePowershell,
+      alt: "Prompt do Starship no PowerShell, com menos detalhes, pois o prompt transitório foi ativado.",
+    },
+  ]}
+/>
 
 Caso você não goste de tantos detalhes nas linhas anteriores no Zsh, você pode escolher um tema mais simples.
 

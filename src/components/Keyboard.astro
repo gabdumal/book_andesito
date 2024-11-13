@@ -1,0 +1,19 @@
+---
+interface Props {
+  keys: string[];
+}
+
+const { keys } = Astro.props;
+---
+
+{
+  keys.reduce((acc, key, index) => {
+    if (index > 0) {
+      acc.push(<span class=""> + </span>);
+    }
+    acc.push(
+      <kbd class="bg-gray-200 font-mono px-1 py-0.5 rounded-sm">{key}</kbd>,
+    );
+    return acc;
+  }, [])
+}

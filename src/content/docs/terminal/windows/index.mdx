@@ -2,6 +2,8 @@
 title: Windows Terminal
 ---
 
+import Keyboard from "/src/components/Keyboard.astro";
+
 Este subcapítulo aborda o **Windows Terminal**, um emulador de terminal moderno para usuários do Windows.
 
 Ele é instalado por padrão no Windows 11.
@@ -10,7 +12,7 @@ Para o Windows 10, você pode baixá-lo na [Microsoft Store](https://www.microso
 ## Atalho de teclado
 
 Vamos criar um atalho de teclas para abrir o Windows Terminal.
-Abra o `Executar` com <kbd>Win + R</kbd>, digite `shell:AppsFolder`, e pressione <kbd>Enter</kbd>.
+Abra o `Executar` com <Keyboard keys={["Win", "R"]} />, digite `shell:AppsFolder`, e pressione <Keyboard keys={["Enter"]} />.
 
 <figure>
   <img src="/book_andesito/src/assets/content/docs/terminal/windows/open_folder.png" />
@@ -38,7 +40,7 @@ Agora, clique com o botão direito do mouse no atalho criado na área de trabalh
   <figcaption>Confirmação da criação do atalho na área de trabalho.</figcaption>
 </figure>
 
-Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas <kbd>Ctrl + Alt + T</kbd>.
+Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas <Keyboard keys={["Ctrl", "Alt", "T"]} />.
 
 <figure>
   <img src="/book_andesito/src/assets/content/docs/terminal/windows/set_keybinding.png" />

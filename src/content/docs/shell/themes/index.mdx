@@ -2,6 +2,8 @@
 title: Temas
 ---
 
+import Keyboard from "/src/components/Keyboard.astro";
+
 Uma das partes mais legais de customizar o shell é definir um tema para o prompt!
 Existem diversos frameworks para isso.
 
@@ -200,7 +202,7 @@ sudo curl -sS https://starship.rs/install.sh | sh
   <figcaption>Executando comando de instalação do Starship no Zsh.</figcaption>
 </figure>
 
-Quando perguntado se deseja prosseguir com a instalação, pressione a tecla <kbd>y</kbd>.
+Quando perguntado se deseja prosseguir com a instalação, pressione a tecla <Keyboard keys={["y"]} />.
 
 O instalador exibirá uma mensagem informando que o Starship foi instalado com sucesso, e que é necessário adicionar o script de inicialização ao arquivo de configurações do shell.
 

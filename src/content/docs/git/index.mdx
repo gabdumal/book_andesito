@@ -2,6 +2,8 @@
 title: Git
 ---
 
+import Keyboard from "/src/components/Keyboard.astro";
+
 O **Git** é um sistema de controle de versão distribuído.
 Ele é muito utilizado para controle de versão de código fonte e colaboração em projetos de software.
 
@@ -212,14 +214,14 @@ Siga o seguinte passo a passo:
 1. Escolha o método de autenticação. Você deve usar o `GitHub.com`.
 1. Escolha o protocolo de autenticação. Caso você já tenha definido uma chave SSH no GitHub e saiba o que está fazendo, você pode escolher `SSH`. Caso contrário, escolha `HTTPS`.
 1. Quando perguntado sobre autenticar com as credenciais do GitHub, digite `Y`.
-1. Quando solicitada a forma de log-in, selecione `Login with a web browser`, e pressione <kbd>Enter</kbd>.
+1. Quando solicitada a forma de log-in, selecione `Login with a web browser`, e pressione <Keyboard keys={["Enter"]} />.
 
 O GitHub CLI irá então exibir um código de oito caracteres, e um link para você acessar no seu navegador.
 
 <figure>
   <img src="/book_andesito/src/assets/content/docs/git/gh_auth_login.png" />
   <figcaption>
-    Autenticação no terminal do WSL por meio do gitHub CLI.
+    Autenticação no terminal do WSL por meio do GitHub CLI.
   </figcaption>
 </figure>
 

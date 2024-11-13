@@ -6,7 +6,7 @@
 import { Aside } from "@astrojs/starlight/components";
 
 import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.tsx";
+import Keyboard from "/src/components/Keyboard.astro";
 
 import check_version from "/src/assets/content/docs/wsl/check_version.png";
 import powershell_adm from "/src/assets/content/docs/wsl/powershell_adm.png";
@@ -42,9 +42,9 @@ Para este guia, vamos nos manter na distribuição **Ubuntu**, que é a padrão 
 Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Build 19041) ou superior, o WSL 2 já estará habilitado, e você pode pular para a [próxima seção](#habilitando-o-wsl).
 
 <Aside type="note">
-  Para verificar a versão do seu Windows, pressione <Keyboard>Win</Keyboard> +{" "}
-  <Keyboard>R</Keyboard> e digite `winver`. Então, pressione
-  <Keyboard>Enter</Keyboard>.
+  Para verificar a versão do seu Windows, pressione{" "}
+  <Keyboard keys={["Win", "R"]} /> e digite `winver`. Então, pressione
+  <Keyboard keys={["Enter"]} />.
   <Figure
     caption="Verificando a versão do Windows pelo Executar."
     images={[
@@ -61,7 +61,7 @@ Caso utilize uma versão mais antiga, seguiremos os passos recomendados pelo [gu
 Ainda assim, para sistemas com arquitetura x64, é necessário ter instalado a **versão 1903** do Windows 10 ou posterior, com a Build 18362.1049 ou posterior.
 Versões mais antigas do Windows 10 não possuem suporte para o WSL 2.
 
-Como alternativa, você pode ler o capítulo sobre a [instalação do MSVC](.c_cpp/compiler/index.mdx#windows) para compilar programas diretamente para executáveis do Windows.
+Como alternativa, você pode ler o capítulo sobre a [instalação do MSVC](../c_cpp/compiler/index.mdx#windows) para compilar programas diretamente para executáveis do Windows.
 
 ### Habilitando o WSL
 
@@ -194,8 +194,8 @@ O que será aberto, na verdade, é uma janela do terminal.
 Após aguardar alguns segundos, o sistema pedirá para criar um **usuário e senha**.
 
 Eu usei o mesmo usuário do Windows, mas você pode criar um novo usuário se preferir.
-Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo. Não se preocupe, digite-a até o final e pressione <Keyboard>Enter</Keyboard>.
-Após repetir a senha, pressione <Keyboard>Enter</Keyboard> novamente.
+Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo. Não se preocupe, digite-a até o final e pressione <Keyboard keys={["Enter"]} />.
+Após repetir a senha, pressione <Keyboard keys={["Enter"]} /> novamente.
 
 O sistema fará as últimas configurações e criara um usuário de administrador para você dentro do Ubuntu.
 
@@ -270,7 +270,7 @@ Então, para de fato instalar as atualizações, execute o comando abaixo.
 sudo apt upgrade
 ```
 
-Então, quando perguntado se deseja continuar, pressione <Keyboard>Y</Keyboard> e <Keyboard>Enter</Keyboard>.
+Então, quando perguntado se deseja continuar, pressione <Keyboard keys={["Y"]} /> e <Keyboard keys={["Enter"]}/> para confirmar.
 
 <Figure
   caption="Instalando as versões atualizadas dos pacotes do Ubuntu."
@@ -316,7 +316,7 @@ Por exemplo, o meu usuário é `gabriel`, então a pasta do meu usuário é `/ho
 
 Essa pasta é tão importante que ela tem uma variável de ambiente que a referencia, chamada de `HOME`.
 
-Pressione <Keyboard>q</Keyboard> para sair do texto de boas-vindas do Zsh.
+Pressione <Keyboard keys={["q"]} /> para sair do texto de boas-vindas do Zsh.
 Digite no terminal o comando `echo $HOME` e veja o que aparece.
 Depois, digite `echo $HOME` no PowerShell e veja o que aparece.
 
@@ -420,7 +420,7 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\ws
 />
 
 Então, você poderá acessar a pasta `dev` diretamente pelo Explorador de Arquivos.
-Abra o Executar com <Keyboard>Win</Keyboard> + <Keyboard>R</Keyboard> e digite `%USERPROFILE%` para acessar seu diretório de usuário no Windows.
+Abra o Executar com <Keyboard keys={["Win", "R"]} /> e digite `%USERPROFILE%` para acessar seu diretório de usuário no Windows.
 
 Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atalho.
 

@@ -2,37 +2,62 @@
 title: GNOME Terminal
 ---
 
+import Figure from "/src/components/Figure.astro";
+import Keyboard from "/src/components/Keyboard.astro";
+
+import searching_terminal_on_ubuntu from "/src/assets/content/docs/terminal/gnome/searching_terminal_on_ubuntu.png";
+import opening_terminal_from_terminal from "/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.gif";
+import opening_keyboard_settings from "/src/assets/content/docs/terminal/gnome/opening_keyboard_settings.png";
+import setting_terminal_shortcut from "/src/assets/content/docs/terminal/gnome/setting_terminal_shortcut.png";
+import opening_preferences from "/src/assets/content/docs/terminal/gnome/opening_preferences.png";
+import preferences from "/src/assets/content/docs/terminal/gnome/preferences.png";
+import profile from "/src/assets/content/docs/terminal/gnome/profile.png";
+import installing_catppuccin from "/src/assets/content/docs/terminal/gnome/installing_catppuccin.png";
+import setting_theme from "/src/assets/content/docs/terminal/gnome/setting_theme.png";
+import changed_font_size from "/src/assets/content/docs/terminal/gnome/changed_font_size.png";
+import result from "/src/assets/content/docs/terminal/gnome/result.png";
+
 Este subcapítulo aborda o **GNOME Terminal**, o emulador de terminal padrão do **Ubuntu** e do **Fedora**.
 
 Pesquise por `Terminal` no menu do GNOME e clique no ícone do aplicativo para abri-lo.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/gnome/searching_terminal_on_ubuntu.png" />
-  <figcaption>Buscando pelo Terminal no menu de apps do GNOME.</figcaption>
-</figure>
+<Figure
+  caption="Buscando pelo Terminal no menu de apps do GNOME."
+  images={[
+    {
+      src: searching_terminal_on_ubuntu,
+      alt: `Menu de apps do GNOME no Ubuntu, em que se busca por "terminal".`,
+    },
+  ]}
+/>
 
 O GNOME terminal também pode ser aberto por um comando!
-Digite `gnome-terminal` no terminal e pressione <kbd>Enter</kbd>.
+Digite `gnome-terminal` no terminal e pressione <Keyboard keys={["Enter"]}/>.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.gif" />
-  <figcaption>Buscando pelo Terminal no menu de apps do GNOME.</figcaption>
-</figure>
+<Figure
+  caption="Abrindo o GNOME Terminal a partir do terminal."
+  images={[
+    {
+      src: opening_terminal_from_terminal,
+      alt: "Terminal do GNOME, em que se executa o comando para abrir outro terminal.",
+    },
+  ]}
+/>
 
 ## Atalho de teclado
 
-Um atalho de teclas comumente utilizado para abrir o terminal é `Ctrl + Alt + T`.
+Um atalho de teclas comumente utilizado para abrir o terminal é <Keyboard keys={["Ctrl", "Alt", "T"]}/>.
 O Ubuntu o tem configurado por padrão.
 Já no Fedora, você pode defini-lo em `Settings > Keyboard > View and Customize Shortcuts > Custom Shortcuts`.
 
 <figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/gnome/opening_keybord_settings.png" />
+  <img src="/book_andesito/src/assets/content/docs/terminal/gnome/opening_keyboard_settings.png" />
   <figcaption>
     Selecionando menu de atalhos de teclado nas configurações do GNOME.
   </figcaption>
 </figure>
 
-Então, defina o nome como `Terminal`, o comando como `gnome-terminal` e o atalho de teclado como <kbd>Ctrl + Alt + T</kbd>.
+Então, defina o nome como `Terminal`, o comando como `gnome-terminal` e o atalho de teclado como <Keyboard keys={["Ctrl", "Alt", "T"]}/>.
 Pressione `Add` e pronto!
 
 <figure>

@@ -2,6 +2,8 @@
 title: Plugin
 ---
 
+import Keyboard from "/src/components/Keyboard.astro";
+
 Plugins são uma forma de estender as funcionalidades do shell.
 Para os sistemas que configuramos com o **Zsh**, utilizaremos o **Oh My Zsh**
 Já para o **PowerShell**, instalaremos os plugins diretamente.
@@ -70,7 +72,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/Downloads/.fzf
 ~/Downloads/.fzf/install
 ```
 
-Quando perguntado sobre ativar os recursos do FZF, pressione a tecla <kbd>y</kbd> e então pressione <kbd>Enter</kbd> para cada.
+Quando perguntado sobre ativar os recursos do FZF, pressione a tecla <Keyboard keys={["y"]} /> e então pressione <Keyboard keys={["Enter"]} /> para cada.
 
 <figure>
   <img src="/book_andesito/src/assets/content/docs/shell/plugins/installing_fzf_zsh.png" />
@@ -171,7 +173,7 @@ Como dependências, o The Fuck exige que se tenha instalado:
 O [**Zsh Autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) é um plugin que sugere comandos enquanto você digita.
 Isso é especialmente útil quando você se lembra de parte de um comando, mas não dele todo.
 
-Esse plugin está disponível apenas para o Zsh --- sinto muito, pessoal do PowerShell 😔.
+Esse plugin está disponível apenas para o Zsh &mdash; sinto muito, pessoal do PowerShell 😔.
 O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
 
 Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.

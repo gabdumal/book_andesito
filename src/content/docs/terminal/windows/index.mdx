@@ -2,7 +2,23 @@
 title: Windows Terminal
 ---
 
+import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
+
+import open_folder from "/src/assets/content/docs/terminal/windows/open_folder.png";
+import select_terminal from "/src/assets/content/docs/terminal/windows/select_terminal.png";
+import confirm from "/src/assets/content/docs/terminal/windows/confirm.png";
+import edit_shortcut from "/src/assets/content/docs/terminal/windows/edit_shortcut.png";
+import set_keybinding from "/src/assets/content/docs/terminal/windows/set_keybinding.png";
+import open_configurations from "/src/assets/content/docs/terminal/windows/open_configurations.png";
+import initial_configs from "/src/assets/content/docs/terminal/windows/initial_configs.png";
+import light_theme from "/src/assets/content/docs/terminal/windows/light_theme.png";
+import default_profile from "/src/assets/content/docs/terminal/windows/default_profile.png";
+import json_file from "/src/assets/content/docs/terminal/windows/json_file.png";
+import schemes from "/src/assets/content/docs/terminal/windows/schemes.png";
+import themes from "/src/assets/content/docs/terminal/windows/themes.png";
+import schemes_list from "/src/assets/content/docs/terminal/windows/schemes_list.png";
+import themes_list from "/src/assets/content/docs/terminal/windows/themes_list.png";
 
 Este subcapítulo aborda o **Windows Terminal**, um emulador de terminal moderno para usuários do Windows.
 
@@ -14,38 +30,63 @@ Para o Windows 10, você pode baixá-lo na [Microsoft Store](https://www.microso
 Vamos criar um atalho de teclas para abrir o Windows Terminal.
 Abra o `Executar` com <Keyboard keys={["Win", "R"]} />, digite `shell:AppsFolder`, e pressione <Keyboard keys={["Enter"]} />.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/open_folder.png" />
-  <figcaption>Abrindo a pasta de aplicativos pelo Executar.</figcaption>
-</figure>
+<Figure
+  caption="Abrindo a pasta de aplicativos pelo Executar."
+  images={[
+    {
+      src: open_folder,
+      alt: "Janela do programa Executar, em que se digita o texto supracitado.",
+    },
+  ]}
+/>
 
 Encontre o ícone do Windows Terminal, clique com o botão direito do mouse e selecione `Criar atalho`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/select_terminal.png" />
-  <figcaption>Criando um atalho para o Windows Terminal.</figcaption>
-</figure>
+<Figure
+  caption="Criando um atalho para o Windows Terminal."
+  images={[
+    {
+      src: select_terminal,
+      alt: "Janela do Explorador de Arquivos aberto da pasta de aplicações do sistema. A entrada do Windows Terminal foi selecionada, e clicada com o botão direito do mouse. Aparece ao seu lado um menu de opções.",
+    },
+  ]}
+/>
 
 Clique em `Sim` para criar o atalho na área de trabalho.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/confirm.png" />
-  <figcaption>Confirmação da criação do atalho na área de trabalho.</figcaption>
-</figure>
+<Figure
+  caption="Confirmação da criação do atalho na área de trabalho."
+  images={[
+    {
+      src: confirm,
+      alt: "Janela de confirmação da criação do atalho na área de trabalho.",
+    },
+  ]}
+/>
 
 Agora, clique com o botão direito do mouse no atalho criado na área de trabalho e selecione `Propriedades`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/edit_shortcut.png" />
-  <figcaption>Confirmação da criação do atalho na área de trabalho.</figcaption>
-</figure>
+<Figure
+  caption="Abrindo as propriedades do atalho do Windows Terminal."
+  images={[
+    {
+      src: edit_shortcut,
+      alt: "Menu de opções do atalho do Windows Terminal.",
+    },
+  ]}
+/>
 
 Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas <Keyboard keys={["Ctrl", "Alt", "T"]} />.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/set_keybinding.png" />
-  <figcaption>Confirmação da criação do atalho na área de trabalho.</figcaption>
-</figure>
+<Figure
+  caption="Definindo a combinação de teclas para abrir o Windows Terminal."
+  images={[
+    {
+      src: set_keybinding,
+      alt: `Janela de propriedades do atalho do Windows Terminal, com a caixa de texto "Tecla de atalho" selecionada. Dentro dela foram pressionadas as teclas "Ctrl + Alt + T".`,
+    },
+  ]}
+/>
 
 ## Perfis
 
@@ -53,27 +94,40 @@ O Windows Terminal permite a criação de perfis, que são configurações perso
 
 Para acessar as configurações, clique no ícone de seta para baixo no canto superior direito da janela e selecione `Configurações`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/open_configurations.png" />
-  <figcaption>
-    Menu de abertura das configurações do Windows Terminal.
-  </figcaption>
-</figure>
+<Figure
+  caption="Menu de abertura das configurações do Windows Terminal."
+  images={[
+    {
+      src: open_configurations,
+      alt: "Janela do Windows Terminal, em que foi selecionado o botão de abrir o menu de contexto para abrir um novo perfil ou as configurações.",
+    },
+  ]}
+/>
 
 As configurações são divididas em seções, que permitem configurar o tema, as fontes, os atalhos de teclado, os perfis e outros aspectos do terminal.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/initial_configs.png" />
-  <figcaption>Tela inicial das configurações do Windows Terminal.</figcaption>
-</figure>
+<Figure
+  caption="Tela inicial das configurações do Windows Terminal."
+  images={[
+    {
+      src: initial_configs,
+      alt: `Janela de configurações do Windows Terminal, em que está aberta a primeira tela, referente a "Inicialização".`,
+    },
+  ]}
+/>
 
 Eu gosto de usar o tema claro no terminal, o que eu posso fazer pela seção `Aparência`.
 Então, posso selecionar a definição `Tema do Aplicativo` como `Claro`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/light_theme.png" />
-  <figcaption>Tela inicial das configurações do Windows Terminal.</figcaption>
-</figure>
+<Figure
+  caption="Definição do tema claro no Windows Terminal."
+  images={[
+    {
+      src: light_theme,
+      alt: "Janela de configurações do Windows Terminal, em que está aberta a tela de aparência, com a opção de tema claro selecionada.",
+    },
+  ]}
+/>
 
 Entretanto, essa definição apenas muda o tema do aplicativo.
 Para configurar a cor de fundo, as cores do texto, fonte, e aspectos relacionados, é necessário editar um perfil.
@@ -83,17 +137,27 @@ Então selecione a opção `Aparência` no fim do menu.
 
 Eu defini o tema como `One Half Light` e o tamanho da fonte como 16.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/default_profile.png" />
-  <figcaption>Definições do perfil padrão.</figcaption>
-</figure>
+<Figure
+  caption="Definições do perfil padrão."
+  images={[
+    {
+      src: default_profile,
+      alt: `Janela de configurações do Windows Terminal, em que está aberta a tela dos padrões do terminal, na seção de "Aparência".`,
+    },
+  ]}
+/>
 
 Toda essa interface apenas edita um arquivo de configuração, que pode ser acessado diretamente pelo botão `Abrir JSON`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/json_file.png" />
-  <figcaption>Arquivo JSON de definições do Windows Terminal.</figcaption>
-</figure>
+<Figure
+  caption="Arquivo JSON de definições do Windows Terminal."
+  images={[
+    {
+      src: json_file,
+      alt: "Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code.",
+    },
+  ]}
+/>
 
 Eu gosto de usar um tema bastante popular chamado `Catppuccin`.
 Ele é um projeto que oferece personalização para uma série de programas.
@@ -107,40 +171,45 @@ Para aplicar o tema, abra o arquivo `latte.json` do repositório do GitHub (ou o
 
 Então, abra o arquivo de configuração do Windows Terminal e cole o conteúdo copiado dentro da seção `schemes`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/schemes.png" />
-  <figcaption>
-    Tema Catppuccin Latte sendo aplicado no atributo "schemes".
-  </figcaption>
-</figure>
+<Figure
+  caption={`Tema Catppuccin Latte sendo aplicado no atributo "schemes".`}
+  images={[
+    {
+      src: schemes,
+      alt: `Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code, com as definições do tema Catppuccin Latte sendo aplicado no atributo "schemes".`,
+    },
+  ]}
+/>
 
 Depois, copie o conteúdo do arquivo `latteTheme.json` do repositório (ou o correspondente à variante que você escolheu) e cole dentro da seção `themes`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/terminal/windows/themes.png" />
-  <figcaption>
-    Tema Catppuccin Latte sendo aplicado no atributo "themes".
-  </figcaption>
-</figure>
+<Figure
+  caption={`Tema Catppuccin Latte sendo aplicado no atributo "themes".`}
+  images={[
+    {
+      src: themes,
+      alt: `Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code, com as definições do tema Catppuccin Latte sendo aplicado no atributo "themes".`,
+    },
+  ]}
+/>
 
 Salve o arquivo de configuração e feche o Windows Terminal.
 Abra o terminal novamente.
 Agora, você verá que o esquema de cores `Catppuccin Latte` está disponível na lista de temas.
 
-<figure>
-  <div style="display:flex;align-items:center;gap:1rem;">
-    <img
-      src="/book_andesito/src/assets/content/docs/terminal/windows/schemes_list.png"
-      style="height:320px;"
-    />
-    <img
-      src="/book_andesito/src/assets/content/docs/terminal/windows/themes_list.png"
-      style="height:320px;"
-    />
-  </div>
-  <figcaption>
-    Tema Catppuccin Latte disponível nas listas de esquema de cores e temas.
-  </figcaption>
-</figure>
+<Figure
+  caption="Tema Catppuccin Latte disponível nas listas de esquema de cores e temas."
+  horizontal
+  images={[
+    {
+      src: schemes_list,
+      alt: "Lista de esquemas de cores disponíveis no Windows Terminal.",
+    },
+    {
+      src: themes_list,
+      alt: "Lista de temas disponíveis no Windows Terminal.",
+    },
+  ]}
+/>
 
 Você pode aplicar o tema da mesma forma como selecionamos o tema claro e o `One Half Light` anteriormente.

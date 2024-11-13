@@ -1,14 +1,15 @@
 ---
 title: Zsh
+author: Gabriel Malosto
 ---
 
 import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
 
 import welcome from "/src/assets/content/docs/shell/zsh/welcome.png";
-import install_omz from "/src/assets/content/docs/shell/zsh/install_omz.png";
-import zsh_code_initial from "/src/assets/content/docs/shell/zsh/zsh_code_initial.png";
-import code_trusted from "/src/assets/content/docs/shell/zsh/code_trusted.png";
+import installOmz from "/src/assets/content/docs/shell/zsh/install_omz.png";
+import zshCodeInitial from "/src/assets/content/docs/shell/zsh/zsh_code_initial.png";
+import codeTrusted from "/src/assets/content/docs/shell/zsh/code_trusted.png";
 
 O **Zsh** é um shell que busca ser mais poderoso e flexível que o Bash (o shell padrão do Ubuntu e do Fedora)
 Ele permite a instalação de uma série de plugins de forma mais simplificada.
@@ -112,7 +113,7 @@ Além de instalar o Oh My Zsh, o script de instalação também configura o arqu
   caption="Script de instalação do Oh My Zsh sendo executado no Ubuntu WSL."
   images={[
     {
-      src: install_omz,
+      src: installOmz,
       alt: `Terminal do Ubuntu WSL, em que se executa o script de instalação do Oh My Zsh.`,
     },
   ]}
@@ -138,7 +139,7 @@ Dentro dela, está o arquivo `.zshrc`.
   caption="Abrindo o arquivo de configuração do Zsh no Visual Studio Code."
   images={[
     {
-      src: zsh_code_initial,
+      src: zshCodeInitial,
       alt: `Arquivo de configuração do Zsh exibido no VSCode, com o aviso de arquivo modo restrito.`,
     },
   ]}
@@ -151,7 +152,7 @@ Então, na próxima página clique em "Trust".
   caption="Permitindo confiar no arquivo de configuração do Zsh no VSCode."
   images={[
     {
-      src: code_trusted,
+      src: codeTrusted,
       alt: `Tela de autorização para confiar no arquivo de configuração do Zsh no VSCode.`,
     },
   ]}

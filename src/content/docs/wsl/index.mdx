@@ -1,6 +1,6 @@
 ---
-  title: Windows Subsystem for Linux
-  order: 2
+title: Windows Subsystem for Linux
+author: Gabriel Malosto  
 ---
 
 import { Aside } from "@astrojs/starlight/components";
@@ -8,27 +8,27 @@ import { Aside } from "@astrojs/starlight/components";
 import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
 
-import check_version from "/src/assets/content/docs/wsl/check_version.png";
-import powershell_adm from "/src/assets/content/docs/wsl/powershell_adm.png";
-import installing_wsl from "/src/assets/content/docs/wsl/installing_wsl.png";
-import error_no_distro from "/src/assets/content/docs/wsl/error_no_distro.png";
-import ubuntu_options from "/src/assets/content/docs/wsl/ubuntu_options.png";
-import installing_ubuntu from "/src/assets/content/docs/wsl/installing_ubuntu.png";
-import ubuntu_start_menu from "/src/assets/content/docs/wsl/ubuntu_start_menu.png";
-import user_creation from "/src/assets/content/docs/wsl/user_creation.png";
-import ubuntu_profile from "/src/assets/content/docs/wsl/ubuntu_profile.png";
-import ubuntu_default from "/src/assets/content/docs/wsl/ubuntu_default.png";
-import updating_packages from "/src/assets/content/docs/wsl/updating_packages.png";
-import upgrading_packages from "/src/assets/content/docs/wsl/upgrading_packages.png";
+import checkVersion from "/src/assets/content/docs/wsl/check_version.png";
+import powerShellAdm from "/src/assets/content/docs/wsl/powershell_adm.png";
+import installingWsl from "/src/assets/content/docs/wsl/installing_wsl.png";
+import errorNoDistro from "/src/assets/content/docs/wsl/error_no_distro.png";
+import ubuntuOptions from "/src/assets/content/docs/wsl/ubuntu_options.png";
+import installingUbuntu from "/src/assets/content/docs/wsl/installing_ubuntu.png";
+import ubuntuStartMenu from "/src/assets/content/docs/wsl/ubuntu_start_menu.png";
+import userCreation from "/src/assets/content/docs/wsl/user_creation.png";
+import ubuntuProfile from "/src/assets/content/docs/wsl/ubuntu_profile.png";
+import ubuntuDefault from "/src/assets/content/docs/wsl/ubuntu_default.png";
+import updatingPackages from "/src/assets/content/docs/wsl/updating_packages.png";
+import upgradingPackages from "/src/assets/content/docs/wsl/upgrading_packages.png";
 import fhs from "/src/assets/content/docs/wsl/fhs.png";
-import home_wsl from "/src/assets/content/docs/wsl/home_wsl.png";
-import home_powershell from "/src/assets/content/docs/wsl/home_powershell.png";
+import homeWsl from "/src/assets/content/docs/wsl/home_wsl.png";
+import homePowerShell from "/src/assets/content/docs/wsl/home_powershell.png";
 import root from "/src/assets/content/docs/wsl/root.png";
-import home_explorer from "/src/assets/content/docs/wsl/home_explorer.png";
-import creating_file from "/src/assets/content/docs/wsl/creating_file.png";
-import creating_symlink from "/src/assets/content/docs/wsl/creating_symlink.png";
-import symlink_explorer from "/src/assets/content/docs/wsl/symlink_explorer.png";
-import symlinked_folder from "/src/assets/content/docs/wsl/symlinked_folder.png";
+import homeExplorer from "/src/assets/content/docs/wsl/home_explorer.png";
+import creatingFile from "/src/assets/content/docs/wsl/creating_file.png";
+import creatingSymlink from "/src/assets/content/docs/wsl/creating_symlink.png";
+import symlinkExplorer from "/src/assets/content/docs/wsl/symlink_explorer.png";
+import symlinkedFolder from "/src/assets/content/docs/wsl/symlinked_folder.png";
 
 O **Windows Subsystem for Linux (WSL)** é uma ferramenta de código aberto apoiada pela Microsoft que permite a emulação de um sistema operacional Linux dentro do Windows.
 A atual versão na data de escrita deste livro é a **WSL 2**, que traz grandes melhorias em relação à versão anterior.
@@ -49,7 +49,7 @@ Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Buil
     caption="Verificando a versão do Windows pelo Executar."
     images={[
       {
-        src: check_version,
+        src: checkVersion,
         alt: `Janela do programa "Executar", em que se escreve "winver".`,
       },
     ]}
@@ -79,7 +79,7 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
     caption="Executando o PowerShell como administrador a partir do Menu Iniciar."
     images={[
       {
-        src: powershell_adm,
+        src: powerShellAdm,
         alt: `Menu Iniciar do Windows, em que se pesquisa por "PowerShell", e se seleciona a opção encontrada "Windows PowerShell".`,
       },
     ]}
@@ -122,7 +122,7 @@ wsl.exe --install --no-distribution
   caption="Processo de instalação do WSL pelo PowerShell."
   images={[
     {
-      src: installing_wsl,
+      src: installingWsl,
       alt: "Terminal do PowerShell, em que se executa o comando supracitado.",
     },
   ]}
@@ -135,7 +135,7 @@ Digitando `wsl`, recebi a seguinte mensagem:
   caption={`Resultado do comando "wsl" após a execução do comando de instalação.`}
   images={[
     {
-      src: error_no_distro,
+      src: errorNoDistro,
       alt: `Terminal do PowerShell, em que se executa o comando "wsl". A resposta é "O Subsistema do Windows para Linux não tem distribuições instaladas", o código de erro, e o link para a documentação.`,
     },
   ]}
@@ -156,7 +156,7 @@ Ela é a primeira opção da imagem a seguir.
   caption="Opções de instalações do Ubuntu pela Microsoft Store, em que se seleciona a Ubuntu."
   images={[
     {
-      src: ubuntu_options,
+      src: ubuntuOptions,
       alt: "Loja da Microsoft, em que se pesquisa por 'ubuntu', e se seleciona a primeira opção.",
     },
   ]}
@@ -170,7 +170,7 @@ Clique no botão de instalar, e aguarde o download e instalação da distribuiç
   caption="Processo de instalação do Ubuntu para o WSL."
   images={[
     {
-      src: installing_ubuntu,
+      src: installingUbuntu,
       alt: "Página no Ubuntu na loja da Microsoft. A instalação está em andamento.",
     },
   ]}
@@ -184,7 +184,7 @@ Pesquise pelo **Ubuntu** no Menu Iniciar e abra o aplicativo.
   caption="Entrada do Ubuntu no Menu Iniciar."
   images={[
     {
-      src: ubuntu_start_menu,
+      src: ubuntuStartMenu,
       alt: `Menu Iniciar do Windows, em que se pesquisa por "Ubuntu" e se seleciona a opção correspondente.`,
     },
   ]}
@@ -203,7 +203,7 @@ O sistema fará as últimas configurações e criara um usuário de administrado
   caption="Processo de criação de usuário do Ubuntu pelo terminal."
   images={[
     {
-      src: user_creation,
+      src: userCreation,
       alt: "Terminal do Ubuntu, em que são exibidas a mensagens da instalação, inclusive os prompts para criação de usuário.",
     },
   ]}
@@ -221,7 +221,7 @@ Se tudo tiver corrido bem, você verá uma nova entrada para o Ubuntu na aba de 
   caption="Opção do Ubuntu na lista de perfis do Windows Terminal."
   images={[
     {
-      src: ubuntu_profile,
+      src: ubuntuProfile,
       alt: `Lista de perfis do Windows Terminal, em que são exibidas as opções: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell" e "Ubuntu".`,
     },
   ]}
@@ -236,7 +236,7 @@ Selecione a entrada do ubuntu com o ícone do pinguim Tux e clique em `Salvar`.
   caption="Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows Terminal."
   images={[
     {
-      src: ubuntu_default,
+      src: ubuntuDefault,
       alt: "Configurações do Windows Terminal, em que se define o perfil padrão de inicialização.",
     },
   ]}
@@ -258,7 +258,7 @@ Ela solicitará a senha do usuário que você criou anteriormente.
   caption="Atualizando os pacotes do Ubuntu."
   images={[
     {
-      src: updating_packages,
+      src: updatingPackages,
       alt: `Terminal do Ubuntu, em que se executa o comando "sudo apt update".`,
     },
   ]}
@@ -276,7 +276,7 @@ Então, quando perguntado se deseja continuar, pressione <Keyboard keys={["Y"]} 
   caption="Instalando as versões atualizadas dos pacotes do Ubuntu."
   images={[
     {
-      src: upgrading_packages,
+      src: upgradingPackages,
       alt: `Terminal do Ubuntu, em que se executa o comando "sudo apt upgrade".`,
     },
   ]}
@@ -326,11 +326,11 @@ Tanto o Windows quanto o Linux possuem essa variável de ambiente, mas perceba q
   caption="Comando para exibir a variável de ambiente HOME no Ubuntu e no PowerShell, respectivamente."
   images={[
     {
-      src: home_wsl,
+      src: homeWsl,
       alt: `Terminal do Ubuntu, em que se executa o comando "echo $HOME". A resposta é "/home/gabriel".`,
     },
     {
-      src: home_powershell,
+      src: homePowerShell,
       alt: `Terminal do PowerShell, em que se executa o comando "echo $HOME". A resposta é "C:\\Users\\gabriel".`,
     },
   ]}
@@ -361,7 +361,7 @@ Acesse a pasta `home`, e então a pasta do seu **usuário**.
   caption="Pasta HOME exibida no Explorador de Arquivos."
   images={[
     {
-      src: home_explorer,
+      src: homeExplorer,
       alt: `Explorador de Arquivos do Windows aberto na pasta "Linux\\Ubuntu\\home\\gabriel".`,
     },
   ]}
@@ -397,7 +397,7 @@ echo "Hello, World!" > ~/dev/hello.txt
   caption="Criando um arquivo de texto na pasta ~/dev do Ubuntu."
   images={[
     {
-      src: creating_file,
+      src: creatingFile,
       alt: `Terminal do Ubuntu, em que se executa o comando supracitado, e se move para a pasta "dev".`,
     },
   ]}
@@ -413,7 +413,7 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\ws
   caption="Criando um link simbólico para a pasta ~/dev do Ubuntu."
   images={[
     {
-      src: creating_symlink,
+      src: creatingSymlink,
       alt: "Terminal do PowerShell, em que se executa o comando supracitado.",
     },
   ]}
@@ -428,7 +428,7 @@ Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atal
   caption="Link simbólico mostrado na pasta do usuário do Windows."
   images={[
     {
-      src: symlink_explorer,
+      src: symlinkExplorer,
       alt: `Explorador de Arquivos do Windows aberto na pasta do usuário, em que se exibe a pasta "dev" com um ícone de atalho.`,
     },
   ]}
@@ -442,7 +442,7 @@ Ao acessar a pasta, você verá o arquivo `hello.txt` que criamos anteriormente 
   caption="Pasta ~/dev do Ubuntu mostrada na estrutura de pastas do Windows."
   images={[
     {
-      src: symlinked_folder,
+      src: symlinkedFolder,
       alt: `Explorador de Arquivos do Windows aberto na pasta "dev" do Ubuntu.`,
     },
   ]}

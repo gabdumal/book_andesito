@@ -1,5 +1,6 @@
 ---
 title: Git
+author: Gabriel Malosto
 ---
 
 import Figure from "/src/components/Figure.astro";
@@ -7,19 +8,19 @@ import Keyboard from "/src/components/Keyboard.astro";
 
 import first from "/src/assets/content/docs/git/first.png";
 import editor from "/src/assets/content/docs/git/editor.png";
-import branch_name from "/src/assets/content/docs/git/branch_name.png";
+import branchName from "/src/assets/content/docs/git/branch_name.png";
 import path from "/src/assets/content/docs/git/path.png";
 import openssh from "/src/assets/content/docs/git/openssh.png";
 import extra from "/src/assets/content/docs/git/extra.png";
 import name from "/src/assets/content/docs/git/name.png";
-import gh_cli_wsl from "/src/assets/content/docs/git/gh_cli_wsl.png";
-import install_gh_cli_powershell from "/src/assets/content/docs/git/install_gh_cli_powershell.png";
-import confirm_gh_cli_powershell from "/src/assets/content/docs/git/confirm_gh_cli_powershell.png";
-import gh_auth_login from "/src/assets/content/docs/git/gh_auth_login.png";
-import github_code from "/src/assets/content/docs/git/github_code.png";
-import gh_auth_complete from "/src/assets/content/docs/git/gh_auth_complete.png";
-import sign_in from "/src/assets/content/docs/git/sign_in.png";
-import auth_vscode from "/src/assets/content/docs/git/auth_vscode.png";
+import ghCliWsl from "/src/assets/content/docs/git/gh_cli_wsl.png";
+import installGhCliPowerShell from "/src/assets/content/docs/git/install_gh_cli_powershell.png";
+import confirmGhCliPowerShell from "/src/assets/content/docs/git/confirm_gh_cli_powershell.png";
+import ghAuthLogin from "/src/assets/content/docs/git/gh_auth_login.png";
+import githubCode from "/src/assets/content/docs/git/github_code.png";
+import ghAuthComplete from "/src/assets/content/docs/git/gh_auth_complete.png";
+import signIn from "/src/assets/content/docs/git/sign_in.png";
+import authVsCode from "/src/assets/content/docs/git/auth_vscode.png";
 
 O **Git** é um sistema de controle de versão distribuído.
 Ele é muito utilizado para controle de versão de código fonte e colaboração em projetos de software.
@@ -79,7 +80,7 @@ Recomendo selecionar a opção **Override the default branch name for new reposi
   caption="Seleção do nome padrão de branch."
   images={[
     {
-      src: branch_name,
+      src: branchName,
       alt: `Instalador do Git para Windows, na tela de seleção do nome padrão de branch, em que se escolhe o nome "main".`,
     },
   ]}
@@ -210,7 +211,7 @@ Este comando adiciona o repositório do GitHub CLI ao seu sistema, e então inst
   caption="Instalação do GitHub CLI no WSL."
   images={[
     {
-      src: gh_cli_wsl,
+      src: ghCliWsl,
       alt: "Terminal do WSL, em que se executam os comandos para instalar o GitHub CLI.",
     },
   ]}
@@ -242,7 +243,7 @@ winget install --id GitHub.cli
   caption="Instalação do GitHub CLI no PowerShell."
   images={[
     {
-      src: install_gh_cli_powershell,
+      src: installGhCliPowerShell,
       alt: "Terminal do PowerShell, em que se executa o comando para instalar o GitHub CLI.",
     },
   ]}
@@ -258,7 +259,7 @@ Você pode verificar se a instalação foi bem-sucedida executando o comando `gh
   caption="Confirmação da instalação do GitHub CLI no PowerShell."
   images={[
     {
-      src: confirm_gh_cli_powershell,
+      src: confirmGhCliPowerShell,
       alt: "Terminal do PowerShell, em que se executa o comando para confirmar a instalação do GitHub CLI.",
     },
   ]}
@@ -287,7 +288,7 @@ O GitHub CLI irá então exibir um código de oito caracteres, e um link para vo
   caption="Autenticação no terminal do WSL por meio do GitHub CLI."
   images={[
     {
-      src: gh_auth_login,
+      src: ghAuthLogin,
       alt: "Terminal do WSL, em que se executa o comando para autenticar no GitHub CLI.",
     },
   ]}
@@ -300,7 +301,7 @@ Então, selecione sua conta, cole o código de oito caracteres no campo de texto
   caption="Código de autenticação do GitHub CLI colado no navegador."
   images={[
     {
-      src: github_code,
+      src: githubCode,
       alt: "janela do navegador, aberto na página de autenticação por código do GitHub. No campo de texto se digita o código fornecido previamente pelo terminal.",
     },
   ]}
@@ -312,7 +313,7 @@ No meu caso, o WSL não conseguiu abrir o navegador, então ele exibiu esse pequ
   caption="Resultado da autenticação pelo navegador."
   images={[
     {
-      src: gh_auth_complete,
+      src: ghAuthComplete,
       alt: "Terminal do WSl, em que se exibe o resultado da autenticação pelo navegador.",
     },
   ]}
@@ -329,7 +330,7 @@ Selecione o ícone do perfil (o que tem a imagem de uma pessoa) no canto inferio
   caption="Menu de log-in do Visual Studio Code."
   images={[
     {
-      src: sign_in,
+      src: signIn,
       alt: "Canto inferior esquerdo do Visual Studio Code, em que se clica no ícone de perfil para abrir o menu de log-in.",
     },
   ]}
@@ -343,7 +344,7 @@ O Visual Studio Code irá abrir uma aba no seu navegador, onde você deve seleci
   caption="Autorização de log-in no GitHub pelo Visual Studio Code."
   images={[
     {
-      src: auth_vscode,
+      src: authVsCode,
       alt: "Janela do navegador, aberta na página de autorização de log-in no GitHub a partir do Visual Studio Code.",
     },
   ]}

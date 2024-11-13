@@ -1,5 +1,6 @@
 ---
 title: Introdução
+author: Gabriel Malosto
 ---
 
 Este guia pretende auxiliar na configuração de um ambiente de

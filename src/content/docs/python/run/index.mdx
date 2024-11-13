@@ -2,6 +2,19 @@
 title: Executando um script
 ---
 
+import Figure from "/src/components/Figure.astro";
+
+import hello from "/src/assets/content/docs/python/run/hello.png";
+import helloPerson from "/src/assets/content/docs/python/run/hello_person.png";
+import openingProfiles from "/src/assets/content/docs/python/run/opening_profiles.png";
+import creatingProfile from "/src/assets/content/docs/python/run/creating_profile.png";
+import selectingProfile from "/src/assets/content/docs/python/run/selecting_profile.png";
+import emptySettings from "/src/assets/content/docs/python/run/empty_settings.png";
+import workspace from "/src/assets/content/docs/python/run/workspace.png";
+import launch from "/src/assets/content/docs/python/run/launch.png";
+import selectLauncher from "/src/assets/content/docs/python/run/select_launcher.png";
+import debug from "/src/assets/content/docs/python/run/debug.png";
+
 O Python é um linguagem interpretada, que executa um arquivo linha por linha.
 Dessa forma, não é necessário compilar o código antes de executá-lo.
 Basta chamar o interpretador Python e passar o arquivo como argumento.
@@ -50,10 +63,15 @@ Para executar o arquivo, basta chamar o interpretador Python e passar o arquivo 
 python hello.py
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/hello.png" />
-  <figcaption>Execução do script "hello".</figcaption>
-</figure>
+<Figure
+  caption={`Execução do script "hello".`}
+  images={[
+    {
+      src: hello,
+      alt: `Terminal com o PowerShell, em que se executa o comando para imprimir "Hello, World!"`,
+    },
+  ]}
+/>
 
 ## Visual Studio Code
 
@@ -84,13 +102,15 @@ Abra o terminal do Visual Studio Code e execute o script:
 python main.py
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/hello_person.png" />
-  <figcaption>
-    Execução do script "main" do projeto "hello_person" por dentro do Visual
-    Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption={`Execução do script "main" do projeto "hello_person" por dentro do Visual Studio Code.`}
+  images={[
+    {
+      src: helloPerson,
+      alt: `Visual Studio Code aberto com o script "main" do projeto "hello_person". No terminal integrado, se executa o script.`,
+    },
+  ]}
+/>
 
 Nós podemos melhor a experiência de desenvolvimento no Visual Studio Code instalando algumas extensões.
 
@@ -98,24 +118,30 @@ Nós podemos melhor a experiência de desenvolvimento no Visual Studio Code inst
 
 Para não misturar definições de linguagens diferentes, vamos utilizar o recurso de **Perfis** do Visual Studio Code.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/opening_profiles.png" />
-  <figcaption>
-    Abrindo a tela de configuração de perfis do Visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption={`Abrindo a tela de configuração de perfis do Visual Studio Code.`}
+  images={[
+    {
+      src: openingProfiles,
+      alt: `Menu de configuração do Visual Studio Code, em que seleciona a opção "Profiles".`,
+    },
+  ]}
+/>
 
 Clique no botão **New Profile**.
 Dê o nome de **Python** para o perfil.
 Selecione o ícone de _cobra_.
 Então, clique em **Create**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/creating_profile.png" />
-  <figcaption>
-    Criando perfil para a linguagem Python no Visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption={`Criando perfil para a linguagem Python no Visual Studio Code.`}
+  images={[
+    {
+      src: creatingProfile,
+      alt: `Tela de criação de perfil no Visual Studio Code, em que se define o nome "Python" e o ícone de cobra.`,
+    },
+  ]}
+/>
 
 Na imagem acima, ignore o espaço em branco na lista de perfis.
 Nele, estavam definidos alguns perfis que eu já criei.
@@ -127,10 +153,15 @@ Garanta que você definiu que as extensões do perfil **Default** sejam aplicada
 Agora, abra novamente a lista de perfis e selecione o ícone de _check_ na opção **Python**.
 Isso aplicará o perfil criado na pasta atualmente aberta no Visual Studio Code.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/selecting_profile.png" />
-  <figcaption>Selecionando o perfil "Python" no Visual Studio Code.</figcaption>
-</figure>
+<Figure
+  caption={`Selecionando o perfil "Python" no Visual Studio Code.`}
+  images={[
+    {
+      src: selectingProfile,
+      alt: `Parte do menu de perfis do Visual Studio Code, em que se seleciona o perfil "Python".`,
+    },
+  ]}
+/>
 
 #### Extensões e Configurações padrão
 
@@ -139,12 +170,15 @@ Se você abrir o arquivo de configuração do Visual Studio Code pela paleta de 
 Isso ocorre porque o Visual Studio Code cria um arquivo de configuração para cada perfil.
 Dessa forma, as extensões instaladas e as configurações definidas para um perfil não interferem nos outros.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/empty_settings.png" />
-  <figcaption>
-    Arquivo de configurações do perfil "Python" no Visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption={`Arquivo de configurações do perfil "Python" no Visual Studio Code.`}
+  images={[
+    {
+      src: emptySettings,
+      alt: `Arquivo de configurações do perfil "Python" aberto no Visual Studio Code. O conteúdo é vazio.`,
+    },
+  ]}
+/>
 
 Mas e se eu quiser que certas configurações sejam aplicadas a todos os perfis?
 É para isso que definimos, nas configurações do perfil **Default**, o atributo `"workbench.settings.applyToAllProfiles"`.
@@ -179,10 +213,15 @@ Lembre-se de **salvar** o arquivo após a edição.
 
 Agora, o Visual Studio Code apresenta uma série de ferramentas para facilitar o desenvolvimento de aplicações em Python.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/workspace.png" />
-  <figcaption>Visual Studio Code com funcionalidades para o Python.</figcaption>
-</figure>
+<Figure
+  caption={`Visual Studio Code com funcionalidades para o Python.`}
+  images={[
+    {
+      src: workspace,
+      alt: `Script "main"aberto no Visual Studio Code. Ferramentas das extensões estão disponíveis na interface.`,
+    },
+  ]}
+/>
 
 ### Executando e depurando
 
@@ -191,27 +230,38 @@ Para executar ou depurar um arquivo pela interface do Visual Studio Code, basta 
 O VSCode pedirá para selecionar o depurador a ser utilizado.
 Da lista de opções, escolha **Python Debugger**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/launch.png" />
-  <figcaption>
-    Executando o código pela interface do visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption={`Selecionando o depurador "Python Debugger" no Visual Studio Code.`}
+  images={[
+    {
+      src: launch,
+      alt: `Menu de seleção de depurador no Visual Studio Code, em que se escolhe o "Python Debugger".`,
+    },
+  ]}
+/>
 
 Então, o Visual Studio Code abrirá uma lista de opções para como executar o programa.
 Nesse caso, escolha **Python File**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/select_launcher.png" />
-  <figcaption>Escolhendo como executar o código</figcaption>
-</figure>
+<Figure
+  caption={`Selecionando como executar o código no Visual Studio Code.`}
+  images={[
+    {
+      src: selectLauncher,
+      alt: `Menu de seleção de como executar o código no Visual Studio Code, em que se escolhe "Python File".`,
+    },
+  ]}
+/>
 
 Por fim, o Visual Studio Code abrirá uma janela de depuração, onde você poderá acompanhar a execução do programa linha por linha.
 Para interagir com o programa, utilize o terminal integrado do Visual Studio Code.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/run/debug.png" />
-  <figcaption>
-    Depurando o programa pela interface do visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption={`Depurando o programa pela interface do Visual Studio Code.`}
+  images={[
+    {
+      src: debug,
+      alt: `Interface de depuração do Visual Studio Code, em que está aberto o script "main".`,
+    },
+  ]}
+/>

@@ -2,10 +2,22 @@
 title: Ambientes virtuais
 ---
 
+import Figure from "/src/components/Figure.astro";
+
+import installingVenvPowerShell from "/src/assets/content/docs/python/venv/installing_venv_powershell.png";
+
 # Ambientes virtuais
 
 ```powershell
 pip install virtualenv
 ```
 
-![alt text](/book_andesito/src/assets/content/docs/python/venv/image.png)
+<Figure
+  caption="Instalando o pacote `virtualenv` no PowerShell"
+  images={[
+    {
+      src: installingVenvPowerShell,
+      alt: "Terminal com o PowerShell, em que se executa o comando para instalar o pacote `virtualenv`",
+    },
+  ]}
+/>

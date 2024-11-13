@@ -2,6 +2,12 @@
 title: PowerShell
 ---
 
+import Figure from "/src/components/Figure.astro";
+
+import installing_7 from "/src/assets/content/docs/shell/powershell/installing_7.png";
+import options_list from "/src/assets/content/docs/shell/powershell/options_list.png";
+import default_profile from "/src/assets/content/docs/shell/powershell/default_profile.png";
+
 O **PowerShell** é uma ferramenta de linha de comando desenvolvida pela Microsoft, que é utilizada para automatizar tarefas e gerenciar configurações do sistema operacional.
 
 Por padrão, o Windows vem com o **PowerShell 5.1** instalado.
@@ -13,8 +19,7 @@ Neste capítulo, vamos mostrar como instalar o **PowerShell 7** no Windows.
 ## Instalando o PowerShell 7
 
 O modo de instalação recomendado pela Microsoft é através do **WinGet**, que é um gerenciador de pacotes para o Windows.
-
-Acesse o [guia de instalação](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4#install-powershell-using-winget-recommended).
+Você pode acessar seu [guia de instalação](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4#install-powershell-using-winget-recommended).
 
 Segundo ele, o comando a ser executado é:
 
@@ -22,30 +27,42 @@ Segundo ele, o comando a ser executado é:
 winget install --id Microsoft.PowerShell --source winget
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/powershell/installing_7.png" />
-  <figcaption>Processo de instalação do PowerShell 7 pelo WinGet.</figcaption>
-</figure>
+<Figure
+  caption="Processo de instalação do PowerShell 7 pelo WinGet."
+  images={[
+    {
+      src: installing_7,
+      alt: "Terminal do PowerShell, em que se executa o comando de instalação supracitado.",
+    },
+  ]}
+/>
 
 Feche a abra o PowerShell para que as alterações tenham efeito.
 Abra a lista de opções de shell do Windows Terminal.
 Você verá que há uma nova entrada ao fim da lista, chamada simplesmente **PowerShell**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/powershell/options_list.png" />
-  <figcaption>Lista de opções de shell para o Windows Terminal.</figcaption>
-</figure>
+<Figure
+  caption="Lista de opções de shell para o Windows Terminal."
+  images={[
+    {
+      src: options_list,
+      alt: `Menu de perfis do Windows Terminal, em que estão disponíveis os seguintes: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell", "PowerShell".`,
+    },
+  ]}
+/>
 
 Para abrir essa opção por padrão ao iniciar o Windows Terminal, clique na opção de **Configurações**.
 
 Então, na seção de **Inicialização**, defina a opção **Perfil padrão** como **PowerShell**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/powershell/default_profile.png" />
-  <figcaption>
-    PowerShell 7 definido como o perfil padrão de inicialização do Windows
-    Terminal.
-  </figcaption>
-</figure>
+<Figure
+  caption="PowerShell 7 definido como o perfil padrão de inicialização do Windows Terminal."
+  images={[
+    {
+      src: default_profile,
+      alt: `Parte da janela de configurações do Windows Terminal aberta na seção "Inicialização", em que se vê a opção "Perfil padrão" configurada com o "PowerShell".`,
+    },
+  ]}
+/>
 
 Salve, **feche** e abra o Windows Terminal novamente para que as alterações tenham efeito.

@@ -2,6 +2,17 @@
 title: Visual Studio Code
 ---
 
+import Figure from "/src/components/Figure.astro";
+
+import download_options from "/src/assets/content/docs/vscode/download_options.png";
+import other_options from "/src/assets/content/docs/vscode/other_options.png";
+import running_code_in_terminal from "/src/assets/content/docs/vscode/running_code_in_terminal.png";
+import remote_window from "/src/assets/content/docs/vscode/remote_window.png";
+import connections_menu from "/src/assets/content/docs/vscode/connections_menu.png";
+import extensions from "/src/assets/content/docs/vscode/extensions.png";
+import applying_extension_to_all_profiles from "/src/assets/content/docs/vscode/applying_extension_to_all_profiles.png";
+import opening_user_settings from "/src/assets/content/docs/vscode/opening_user_settings.png";
+
 A fim de escrever código, você precisará de um editor de texto apropriado.
 É interessante que ele seja voltado para o desenvolvimento de software, com funcionalidades como _syntax highlighting_, _code completion_, _debugging_, etc.
 
@@ -14,29 +25,33 @@ Para este guia, vamos utilizar o Visual Studio Code e configurá-lo para compila
 
 Apresento as formas ideias de instalar o Visual Studio Code nos três sistemas operacionais que estamos tratando neste guia: Windows, Ubuntu e Fedora.
 
-### Windows
+### Windows e WSL
 
 Você pode fazer o download do editor pelo [site oficial](https://code.visualstudio.com/Download).
 Mesmo que você esteja usando o **WSL**, é necessário instalar o Visual Studio Code no Windows, pois é ele que irá gerenciar as extensões e configurações do editor.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/vscode/download_options.png" />
-  <figcaption>
-    Opções de download do Visual Studio Code, em que se seleciona o instalador
-    do Windows.
-  </figcaption>
-</figure>
+<Figure
+  caption="Opções de download do Visual Studio Code, em que se seleciona o instalador do Windows."
+  images={[
+    {
+      src: download_options,
+      alt: "Página de downloads do website do Visual Studio Code.",
+    },
+  ]}
+/>
 
 Execute o instalador e siga as instruções.
 Quando chegar ao passo `Selecionar tarefas adicionais`, marque todas as opções na seção `Outros`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/vscode/other_options.png" />
-  <figcaption>
-    Opções de download do Visual Studio Code, em que se selecionam todas as
-    opções na seção Outros.
-  </figcaption>
-</figure>
+<Figure
+  caption="Seleção de tarefas adicionais na instalação do Visual Studio Code."
+  images={[
+    {
+      src: other_options,
+      alt: "Instalação do Visual Studio Code, em que se selecionam todas as opções na seção Outros.",
+    },
+  ]}
+/>
 
 ### Ubuntu
 
@@ -82,45 +97,56 @@ sudo dnf install code
 
 Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos do seu sistema operacional --- seja Windows, Ubuntu ou Fedora --- ou executar o comando `code` no terminal.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/vscode/running_code_in_terminal.png" />
-  <figcaption>
-    Executando o Visual Studio Code pelo Windows Terminal.
-  </figcaption>
-</figure>
+<Figure
+  caption="Executando o Visual Studio Code pelo Windows Terminal."
+  images={[
+    {
+      src: running_code_in_terminal,
+      alt: "Janela do Windows Terminal, em que se executa o comando de abertura do Visual Studio Code. Ao lado, a janela do Visual Studio Code é aberta.",
+    },
+  ]}
+/>
 
 Para abrir o VSCode no **WSL**, você pode prosseguir de duas formas abrir o Windows terminal pelo perfil do **WSL** e executar o comando `code`.
 
 Ou então, pode abrir o VSCode normalmente, e selecionar o botão azul no canto inferior esquerdo, chamado `Open a Remote Window`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/vscode/remote_window.png" />
-  <figcaption>
-    Botão para abrir uma conexão remota pelo Visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption="Botão para abrir uma conexão remota pelo Visual Studio Code."
+  images={[
+    {
+      src: remote_window,
+      alt: "Porção inferior esquerda do Visual Studio Code, em que há um botão azul, cujo texto auxiliar indica a ação de abrir uma janela remota.",
+    },
+  ]}
+/>
 
 Então, selecione a opção `WSL` no menu que aparecer.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/vscode/connections_menu.png" />
-  <figcaption>Opção WSL selecionada no menu de conexões remotas.</figcaption>
-</figure>
+<Figure
+  caption="Opção WSL selecionada no menu de conexões remotas."
+  images={[
+    {
+      src: connections_menu,
+      alt: "Menu de conexões remotas do Visual Studio Code, em que se seleciona a opção 'WSL: Ubuntu'.",
+    },
+  ]}
+/>
 
 Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para se conectar com o **Ubuntu**.
 
 Algumas de suas extensões previamente instaladas manter-se-ão funcionando, mas algumas podem requerer que você clique em `Install in WSL: Ubuntu` para que funcionem corretamente.
 
-<figure>
-  <img
-    src="/book_andesito/src/assets/content/docs/vscode/extensions.png"
-    alt="Seção de extensões do visual Studio Code, em que se vê a extensão 'WSL' instalada e sua descrição breve, além das extensões 'Error Lens' e 'vscode-pdf'. Também se veem as extensões 'AsciiDoc' e 'Brazilian Portuguese - Code Spell Checker' desabilitadas, nas quais aparece um botão escrito 'Install in WSL: Ubuntu'. No canto inferior esquerdo do aplicativo, o botão de conexões remotas agora mostra o texto 'WSL: Ubuntu'."
-  />
-  <figcaption>
-    Seção de extensões do visual Studio Code, em que se vê a extensão WSL
-    instalada.
-  </figcaption>
-</figure>
+<Figure
+  caption="Seção de extensões do visual Studio Code, em que se vê a extensão WSL
+    instalada."
+  images={[
+    {
+      src: extensions,
+      alt: `Seção de extensões do visual Studio Code, em que se vê a extensão "WSL" instalada e sua descrição breve, além das extensões "Error Lens" e "vscode-pdf". Também se veem as extensões "AsciiDoc" e "Brazilian Portuguese - Code Spell Checker" desabilitadas, nas quais aparece um botão escrito "Install in WSL: Ubuntu". No canto inferior esquerdo do aplicativo, o botão de conexões remotas agora mostra o texto "WSL: Ubuntu".`,
+    },
+  ]}
+/>
 
 ## Extensões
 
@@ -150,12 +176,15 @@ Se você gostou do meu tema de cores, você pode instalá-lo também:
 
 Para cada uma dessas extensões, clique com o botão direito sobre e selecione **Apply Extensions to all Profiles**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/vscode/applying_extension_to_all_profiles.png" />
-  <figcaption>
-    Aplicando a primeira extensão a todos os perfis do Visual Studio Code.
-  </figcaption>
-</figure>
+<Figure
+  caption="Aplicando a primeira extensão a todos os perfis do Visual Studio Code."
+  images={[
+    {
+      src: applying_extension_to_all_profiles,
+      alt: `Janela de extensões do Visual Studio Code, em que se aplica a extensão "Git Graph" a todos os perfis do editor.`,
+    },
+  ]}
+/>
 
 Isso será importante mais tarde, quando criarmos perfis específicos para cada linguagem de programação.
 
@@ -166,12 +195,15 @@ Para configurar o Visual Studio Code, você pode acessar as configurações do e
 Alternativamente, você pode editar o arquivo `settings.json` diretamente.
 Para isso, abra a paleta de comandos com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/vscode/opening_user_settings.png" />
-  <figcaption>
-    Abrindo o arquivo de configurações pela paleta de comandos.
-  </figcaption>
-</figure>
+<Figure
+  caption="Abrindo o arquivo de configurações do Visual Studio Code pela paleta de comandos."
+  images={[
+    {
+      src: opening_user_settings,
+      alt: "Janela de paleta de comandos do Visual Studio Code, em que se digita 'Preferences: Open User Settings (JSON)'. A primeira opção é selecionada.",
+    },
+  ]}
+/>
 
 Eu preparei um arquivo de configurações para o Visual Studio Code que inclui algumas definições úteis.
 

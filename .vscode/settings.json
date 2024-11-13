@@ -1,5 +1,13 @@
 {
-  "cSpell.words": ["astrojs", "MVSC", "openssh", "tseslint"],
+  "cSpell.words": [
+    "astrojs",
+    "MVSC",
+    "openssh",
+    "tseslint",
+    "winget",
+    "zoxide",
+    "Zoxide"
+  ],
   "editor.tabSize": 2,
   "cSpell.enableFiletypes": ["mdx"]
 }

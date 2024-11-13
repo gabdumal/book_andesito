@@ -2,7 +2,15 @@
 title: Plugin
 ---
 
+import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
+
+import installingZoxidePowerShell from "/src/assets/content/docs/shell/plugins/installing_zoxide_powershell.png";
+import configuringZoxidePowerShell from "/src/assets/content/docs/shell/plugins/configuring_zoxide_powershell.png";
+import installingFzfZsh from "/src/assets/content/docs/shell/plugins/installing_fzf_zsh.png";
+import installingZoxideZsh from "/src/assets/content/docs/shell/plugins/installing_zoxide_zsh.png";
+import checkingZoxideZsh from "/src/assets/content/docs/shell/plugins/checking_zoxide_zsh.png";
+import configuringZshPlugins from "/src/assets/content/docs/shell/plugins/configuring_zsh_plugins.png";
 
 Plugins são uma forma de estender as funcionalidades do shell.
 Para os sistemas que configuramos com o **Zsh**, utilizaremos o **Oh My Zsh**
@@ -38,10 +46,15 @@ E então, instale o Zoxide com o seguinte comando:
 winget install ajeetdsouza.zoxide
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/plugins/installing_zoxide_powershell.png" />
-  <figcaption>Instalando o FZF e o Zoxide no PowerShell.</figcaption>
-</figure>
+<Figure
+  caption="Instalando o FZF e o Zoxide no PowerShell."
+  images={[
+    {
+      src: installingZoxidePowerShell,
+      alt: "Terminal com o PowerShell, em que se executam os comandos para instalar o FZF e o Zoxide.",
+    },
+  ]}
+/>
 
 Então, precisamos adicionar as seguintes linhas ao **final** do seu arquivo de configuração do PowerShell:
 
@@ -55,10 +68,15 @@ Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 Lembre-se que, para abrir o arquivo de configuração do PowerShell, você deve executar o comando `code $PROFILE` no terminal.
 O arquivo aberto dependerá da versão do PowerShell que você está utilizando.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/plugins/configuring_zoxide_powershell.png" />
-  <figcaption>Configurando o Zoxide no PowerShell.</figcaption>
-</figure>
+<Figure
+  caption="Configurando o Zoxide no PowerShell."
+  images={[
+    {
+      src: configuringZoxidePowerShell,
+      alt: "Arquivo de configuração do PowerShell aberto no Visual Studio Code, em que foi adicionada a configuração do Zoxide.",
+    },
+  ]}
+/>
 
 Salve o arquivo, feche o editor, e então **feche** e abra novamente o PowerShell para que as alterações tenham efeito.
 
@@ -74,10 +92,15 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/Downloads/.fzf
 
 Quando perguntado sobre ativar os recursos do FZF, pressione a tecla <Keyboard keys={["y"]} /> e então pressione <Keyboard keys={["Enter"]} /> para cada.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/plugins/installing_fzf_zsh.png" />
-  <figcaption>Instalando o FZF no Zsh.</figcaption>
-</figure>
+<Figure
+  caption="Instalando o FZF no Zsh."
+  images={[
+    {
+      src: installingFzfZsh,
+      alt: "Terminal com o Zsh, em que se executam os comandos para instalar o FZF.",
+    },
+  ]}
+/>
 
 Para instalar o Zoxide, execute o seguinte comando:
 
@@ -85,14 +108,19 @@ Para instalar o Zoxide, execute o seguinte comando:
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/plugins/installing_zoxide_zsh.png" />
-  <figcaption>Instalando o Zoxide no Zsh.</figcaption>
-</figure>
+<Figure
+  caption="Instalando o Zoxide no Zsh."
+  images={[
+    {
+      src: installingZoxideZsh,
+      alt: "Terminal com o Zsh, em que se executa o comando para instalar o Zoxide.",
+    },
+  ]}
+/>
 
-Possivelmente, o FZF editou seu arquivo de configuração do Zsh.
+Possivelmente o FZF editou seu arquivo de configuração do Zsh.
 Vamos excluir a linha que ele adicionou.
-Então devemos mover o bloco `Plugins` para o final do arquivo, e adicionar as seguintes linhas:
+Então devemos adicionar as seguintes linhas ao bloco `Plugins`:
 
 ```bash
 ### FZF
@@ -106,13 +134,13 @@ eval "$(zoxide init --cmd cd zsh)"
 O arquivo de configuração do Zsh deve ficar assim:
 
 ```bash
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 # Shell configuration
 ZSH_THEME="robbyrussell"
 
-## User configuration
+## Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+## Path configuration
 PATH=$PATH:~/.local/bin
 
 ## Source Oh my Zsh
@@ -142,10 +170,15 @@ fzf --version
 zoxide --version
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/plugins/checking_zoxide_zsh.png" />
-  <figcaption>Verificando as versões do FZF e do Zoxide no Zsh.</figcaption>
-</figure>
+<Figure
+  caption="Verificando as versões do FZF e do Zoxide no Zsh."
+  images={[
+    {
+      src: checkingZoxideZsh,
+      alt: "Terminal com o Zsh, em que se verifica as versões do FZF e do Zoxide.",
+    },
+  ]}
+/>
 
 {/* TODO: Ensinar a instalar o The Fuck, considerando que ele exige instalar o Python. */}
 
@@ -221,11 +254,14 @@ plugins=(
 )
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/shell/plugins/configuring_zsh_plugins.png" />
-  <figcaption>
-    Configurando os plugins Zsh Autosuggestions e Zsh Syntax Highlighting.
-  </figcaption>
-</figure>
+<Figure
+  caption="Configurando os plugins Zsh Autosuggestions e Zsh Syntax Highlighting."
+  images={[
+    {
+      src: configuringZshPlugins,
+      alt: "Arquivo de configuração do Zsh aberto no Visual Studio Code, em que foram adicionadas as configurações dos plugins Zsh Autosuggestions e Zsh Syntax Highlighting.",
+    },
+  ]}
+/>
 
 Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.

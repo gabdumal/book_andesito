@@ -3,6 +3,13 @@ title: Instalação
 author: Gabriel Malosto
 ---
 
+import Figure from "/src/components/Figure.astro";
+
+import downloadOptions from "/src/assets/content/docs/c_cpp/cmake/install/download_options.png";
+import installingWindows from "/src/assets/content/docs/c_cpp/cmake/install/installing_windows.png";
+import checkingInstallationWindows from "/src/assets/content/docs/c_cpp/cmake/install/checking_installation_windows.png";
+import ninjaDownloadOptions from "/src/assets/content/docs/c_cpp/cmake/install/ninja_download_options.png";
+
 A instalação do **CMake** é simples e pode ser feita de várias formas, dependendo do sistema operacional.
 
 Vamos também instalar o **Ninja**, um gerador de build que é mais rápido que o **Make**.
@@ -17,28 +24,41 @@ Para instalar o **CMake** no Windows, acesse a página de [downloads](https://cm
 
 Então, selecione a opção do instalador para Windows x64 mais recente.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/c_cpp/cmake/install/download_options.png" />
-  <figcaption>Opções de download do CMake.</figcaption>
-</figure>
+<Figure
+  caption="Opções de download do CMake."
+  images={[
+    {
+      src: downloadOptions,
+      alt: "Página de downloads do website do CMake. A versão mais recente para Windows x64 está destacada.",
+    },
+  ]}
+/>
 
 Execute o instalador e siga as instruções.
 Na página **Install Options**, selecione a opção **Add CMake to the PATH environment variable**.
 Então prossiga com a instalação.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/c_cpp/cmake/install/installing_windows.png" />
-  <figcaption>Instalando o CMake no Windows.</figcaption>
-</figure>
+<Figure
+  caption="Instalando o CMake no Windows."
+  images={[
+    {
+      src: installingWindows,
+      alt: `Instalador do CMake no Windows, em que se seleciona a opção "Add CMake to the PATH environment variable".`,
+    },
+  ]}
+/>
 
 Para verificar se a instalação foi bem-sucedida, abra o PowerShell e execute o comando `cmake`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/c_cpp/cmake/install/checking_installation_windows.png" />
-  <figcaption>
-    Verificando se a instalação do CMake no Windows foi bem-sucedida.
-  </figcaption>
-</figure>
+<Figure
+  caption="Verificando se a instalação do CMake no Windows foi bem-sucedida."
+  images={[
+    {
+      src: checkingInstallationWindows,
+      alt: "Terminal com o PowerShell, em que se executa o comando supracitado.",
+    },
+  ]}
+/>
 
 ### Ninja
 
@@ -46,10 +66,15 @@ Para instalar o **Ninja**, acesse a página de [downloads](https://github.com/ni
 
 Selecione a opção para Windows na versão mais recente, marcada como **latest**.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/c_cpp/cmake/install/ninja_download_options.png" />
-  <figcaption>Opções de download do Ninja.</figcaption>
-</figure>
+<Figure
+  caption="Opções de download do Ninja."
+  images={[
+    {
+      src: ninjaDownloadOptions,
+      alt: "Página de downloads do Ninja pelo GitHub. A versão mais recente para Windows está destacada.",
+    },
+  ]}
+/>
 
 Extraia o arquivo Zip baixado.
 Então rode o executável `ninja.exe`.

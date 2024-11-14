@@ -3,6 +3,7 @@
     "astrojs",
     "msvc",
     "openssh",
+    "rustup",
     "tseslint",
     "winget",
     "zoxide"

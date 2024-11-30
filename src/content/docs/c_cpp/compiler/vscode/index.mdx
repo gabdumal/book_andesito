@@ -223,134 +223,9 @@ Este é o conteúdo padrão dele:
 />
 
 Apague todo o conteúdo dele.
-Em seguida, copie o conteúdo abaixo e cole no arquivo.
-
-```json
-{
-  "Clang Format configuration": {
-    "prefix": "clang-format",
-    "body": [
-      "AccessModifierOffset: -4",
-      "# AlignAfterOpenBracket: BlockIndent",
-      "BasedOnStyle: Google",
-      "BracedInitializerIndentWidth: 4",
-      "ColumnLimit: 0",
-      "ContinuationIndentWidth: 4",
-      "EmptyLineAfterAccessModifier: Never",
-      "EmptyLineBeforeAccessModifier: LogicalBlock",
-      "FixNamespaceComments: true",
-      "IndentAccessModifiers: true",
-      "IndentCaseBlocks: true",
-      "IndentCaseLabels: true",
-      "IndentExternBlock: true",
-      "IndentGotoLabels: true",
-      "IndentPPDirectives: AfterHash",
-      "IndentRequiresClause: true",
-      "IndentWidth: 4",
-      "InsertBraces: true",
-      "IndentWrappedFunctionNames: true",
-      "InsertNewlineAtEOF: true",
-      "NamespaceIndentation: All",
-      "ObjCBlockIndentWidth: 4",
-      "PointerAlignment: Right",
-      "PPIndentWidth: 4",
-      "SeparateDefinitionBlocks: Always",
-      "SpaceAfterCStyleCast: true",
-      "SpaceAfterLogicalNot: false",
-      "SpaceAfterTemplateKeyword: false",
-      "SpaceBeforeAssignmentOperators: true",
-      "SpaceBeforeCtorInitializerColon: false",
-      "SpaceBeforeInheritanceColon: false",
-      "SpaceBeforeParens: ControlStatements",
-      "Standard: Latest",
-      "TabWidth: 4",
-      "UseTab: Never",
-      ""
-    ],
-    "description": "Clang Format configuration"
-  },
-  "Clang Tidy configuration": {
-    "prefix": "clang-tidy",
-    "body": [
-      "Checks: \"-*,readability-identifier-naming\"",
-      "CheckOptions:",
-      "  # Macro",
-      "  - key: readability-identifier-naming.MacroDefinitionCase",
-      "    value: UPPER_CASE",
-      "  - key: readability-identifier-naming.MacroDefinitionPrefix",
-      "    value: \"_\"",
-      "  - key: readability-identifier-naming.MacroDefinitionIgnoredRegexp",
-      "    value: \"^[A-Z]+(_[A-Z]+)*_$\"",
-      "",
-      "  # Default",
-      "  - key: readability-identifier-naming.VariableCase",
-      "    value: lower_case",
-      "",
-      "  - key: readability-identifier-naming.StaticVariableCase",
-      "    value: lower_case",
-      "",
-      "  - key: readability-identifier-naming.ParameterCase",
-      "    value: lower_case",
-      "",
-      "  - key: readability-identifier-naming.FunctionCase",
-      "    value: camelBack",
-      "",
-      "  - key: readability-identifier-naming.TypeAliasCase",
-      "    value: CamelCase",
-      "",
-      "  - key: readability-identifier-naming.TypedefCase",
-      "    value: CamelCase",
-      "",
-      "  - key: readability-identifier-naming.ConstantCase",
-      "    value: UPPER_CASE",
-      "",
-      "  - key: readability-identifier-naming.StaticConstantCase",
-      "    value: lower_case",
-      "",
-      "  - key: readability-identifier-naming.ConstexprVariableCase # Ensure the constexpr variables are treated as constants",
-      "    value: lower_case",
-      "  - key: readability-identifier-naming.ConstexprVariablePrefix",
-      "    value: \"\"",
-      "",
-      "  # Class",
-      "  - key: readability-identifier-naming.ClassCase",
-      "    value: CamelCase",
-      "",
-      "  - key: readability-identifier-naming.MemberCase",
-      "    value: lower_case",
-      "",
-      "  # Enum",
-      "  - key: readability-identifier-naming.EnumCase",
-      "    value: CamelCase",
-      "",
-      "  - key: readability-identifier-naming.EnumConstantCase",
-      "    value: UPPER_CASE",
-      "",
-      "  # Struct",
-      "  - key: readability-identifier-naming.StructMemberCase",
-      "    value: lower_case",
-      "",
-      "  # Namespace",
-      "  - key: readability-identifier-naming.NamespaceCase",
-      "    value: CamelCase",
-      "",
-      "  - key: readability-identifier-naming.NamespaceConstantCase",
-      "    value: lower_case",
-      "",
-      "  - key: readability-identifier-naming.ClassMemberCase",
-      "    value: lower_case",
-      "",
-      "  # Global",
-      "  - key: readability-identifier-naming.GlobalConstantCase",
-      "    value: UPPER_CASE",
-      ""
-    ],
-    "description": "Clang Tidy configuration"
-  }
-}
-```
-
-Lembre-se de salvar o arquivo `global.code-snippets`.
+Em seguida, acesse o arquivo [`global.code-snippets`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/snippets/global.code-snippets) no repositório do livro.
+Copie o conteúdo do arquivo remote e cole no arquivo local que foi aberto no Visual Studio Code.
+Lembre-se de salvar após a edição.
 
 Para usar os snippets, feche e abra o Visual Studio Code.
 
@@ -552,9 +427,9 @@ Agora, em vez de rodar o comando no terminal, vamos utilizar a interface gráfic
 Crie uma pasta chamada `.vscode` na raiz do projeto.
 Ela é responsável por guardar configurações específicas do Visual Studio Code para o projeto.
 
-Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json).
+Dentro dela, crie um arquivo chamado `tasks.json` e copie para ele o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json) do repositório do livro.
 
-O que ele faz é definir uma tarefa chamada `Clang: build C project (all files in root)` para o Linux e outra para o Windows.
+O que o arquivo faz é definir uma tarefa chamada `Clang: build C project (all files in root)` para o Linux e outra para o Windows.
 Essa tarefa compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na raiz do projeto.
 O executável gerado terá o nome da pasta aberta no Visual Studio Code.
 
@@ -645,57 +520,19 @@ Será aberto o arquivo padrão de tarefas do perfil `C/C++`.
   ]}
 />
 
-Copie o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c/c_cpp_profile/tasks.json) e cole no arquivo `tasks.json` aberto.
+Copie o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/tasks.json) do repositório do livro e cole no arquivo `tasks.json` aberto no Visual Studio Code.
 Lembre-se de salvar.
 
 Assim, a tarefa estará disponível para todos os projetos que utilizarem o perfil `C/C++`.
 
+<Aside type="caution">
+  Essa tarefa de compilação é específica para projetos que possuem todos os
+  arquivos de código-fonte na **raiz** do projeto. Caso você tenha uma estrutura
+  de pastas diferente, será necessário criar um arquivo na pasta `.vscode` de
+  cada projeto com a tarefa de compilação específica. Então, você deve editar o
+  comando definido no arquivo para especificar os arquivos de entrada.
+</Aside>
+
 Se você estiver desenvolvendo um projeto com outras pessoas que não fizeram a mesma configuração que você, então recomendo criar o arquivo `tasks.json` na pasta `.vscode` mesmo, para que elas possam compilar o projeto sem problemas.
 
-Para facilitar isso, podemos criar um snippet para a tarefa de compilação.
-Abra a paleta de comandos com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Snippets: Configure Snippets`.
-
-Selecione a opção `global.code-snippets`.
-
-Adicione o seguinte código ao final da lista de snippets.
-
-```json
-"Build tasks": {
-    "prefix": "build-tasks",
-    "scope": "json",
-    "body": [
-        "{",
-        "  \"tasks\": [",
-        "    {",
-        "      \"args\": [",
-        "        \"-fcolor-diagnostics\",",
-        "        \"-fansi-escape-codes\",",
-        "        \"-g\",",
-        "        \"${workspaceFolder}/*.c\",",
-        "        \"-I\",",
-        "        \"${workspaceFolder}\",",
-        "        \"-o\",",
-        "        \"${workspaceFolder}/${workspaceFolderBasename}\"",
-        "      ],",
-        "      \"command\": \"/usr/bin/clang\",",
-        "      \"detail\": \"Tarefa de compilação de um projeto em C. Compila todos os arquivos C na raiz do projeto em um único executável.\",",
-        "      \"group\": {",
-        "        \"kind\": \"build\"",
-        "      },",
-        "      \"label\": \"Clang: build C project (all files in root) (Linux)\",",
-        "      \"options\": {",
-        "        \"cwd\": \"${workspaceFolder}\"",
-        "      },",
-        "      \"problemMatcher\": [\"$$gcc\"],",
-        "      \"type\": \"cppbuild\"",
-        "    }",
-        "  ],",
-        "  \"version\": \"2.0.0\"",
-        "}",
-        ""
-    ],
-    "description": "Build tasks"
-}
-```
-
-Os arquivos modificados do perfil do Visual Studio Code ficarão como no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_tasks/c_cpp_profile/tasks.json).
+Os arquivos modificados do perfil do Visual Studio Code ficarão como no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/).

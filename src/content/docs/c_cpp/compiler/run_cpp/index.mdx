@@ -4,9 +4,14 @@ author: Gabriel Malosto
 ---
 
 import Figure from "/src/components/Figure.astro";
+import Keyboard from "/src/components/Keyboard.astro";
 
 import compileRunHello from "/src/assets/content/docs/c_cpp/compiler/run_cpp/compile_run_hello.png";
 import compileRunBinary from "/src/assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary.png";
+import constructTasksJson from "/src/assets/content/docs/c_cpp/compiler/run_cpp/construct_tasks_json.png";
+import fillBuildTask from "/src/assets/content/docs/c_cpp/compiler/run_cpp/fill_build_task.png";
+import buildLocal from "/src/assets/content/docs/c_cpp/compiler/run_cpp/build_local.png";
+import localOutput from "/src/assets/content/docs/c_cpp/compiler/run_cpp/local_output.png";
 
 Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C++.
 
@@ -128,6 +133,125 @@ Se tudo estiver correto, você verá os nós da árvore binária sendo impressos
     {
       src: compileRunBinary,
       alt: `Terminal com os comandos para compilar e executar o projeto "binary_tree", cujo resultado é "1 3 4 5 7 8 9"`,
+    },
+  ]}
+/>
+
+### Configurações
+
+Assim como fizemos para projetos em **C**, podemos configurar tarefas de compilação para **C++** no Visual Studio Code.
+
+Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](vscode), já está configurada uma tarefa de compilação para **C++**.
+
+Infelizmente, essa tarefa apenas compila arquivos `.cpp` que estejam na raiz do projeto.
+Uma vez que nosso projeto tem arquivos em pastas diferentes, precisamos especificar a localização de todos eles.
+Dessa forma, a tarefa de compilação global não é suficiente para compilar o projeto `binary_tree`.
+Precisamos criar um arquivo de tarefa personalizado para isso.
+
+Nós configuramos também alguns snippets para facilitar a construção do arquivo `tasks.json`.
+Crie uma pasta chamada `.vscode` na raiz do projeto e um arquivo chamado `tasks.json` dentro dela.
+
+Garanta que o perfil `C/C++` esteja ativo e abra o arquivo `tasks.json`.
+Digite nele `tasks-json` e pressione <Keyboard keys={["Enter"]} /> para preencher o arquivo com o snippet.
+
+<Figure
+  caption={`Construção do arquivo "tasks.json".`}
+  images={[
+    {
+      src: constructTasksJson,
+      alt: `Visual Studio Code com o arquivo "tasks.json" aberto, sugerindo o preenchimento com o snippet para construção de tarefas.`,
+    },
+  ]}
+/>
+
+Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Keyboard keys={["Enter"]} /> para preencher o arquivo com o snippet.
+
+<Figure
+  caption={`Preenchimento da tarefa de compilação "cpp-build-task".`}
+  images={[
+    {
+      src: fillBuildTask,
+      alt: `Visual Studio Code com o arquivo "tasks.json" aberto, sugerindo o preenchimento com o snippet para a tarefa de compilação de C++.`,
+    },
+  ]}
+/>
+
+Observe o campo `args`.
+Ele contém os argumentos que passamos para o comando de compilação.
+Atualmente, ele recebe todos os arquivos `.cpp` que estejam na raiz do projeto.
+
+```json
+"args": [
+  "-fcolor-diagnostics",
+  "-fansi-escape-codes",
+  "-g",
+  "${workspaceFolder}/*.cpp",
+  "-I",
+  "${workspaceFolder}",
+  "-o",
+  "${workspaceFolder}/${workspaceFolderBasename}"
+],
+```
+
+Precisamos passar, além desses, todos os arquivos `.cpp` que estão nas pastas `tree` e `node`.
+Para isso, adicionamos uma linha para cada pasta, iniciando com o atalho `${workspaceFolder}`, o qual indica a pasta raiz do projeto.
+
+O arquivo `tasks.json` deve ficar da forma abaixo, assim como no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/binary_tree/.vscode/tasks.json).
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "args": [
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-g",
+        "${workspaceFolder}/*.cpp",
+        "${workspaceFolder}/node/*.cpp",
+        "${workspaceFolder}/tree/*.cpp",
+        "-I",
+        "${workspaceFolder}",
+        "-o",
+        "${workspaceFolder}/${workspaceFolderBasename}"
+      ],
+      "command": "/usr/bin/clang++",
+      "detail": "Tarefa de compilação de um projeto em C++. Compila todos os arquivos C++ na raiz do projeto em um único executável.",
+      "group": {
+        "kind": "build"
+      },
+      "label": "Clang: build C++ project (all files in root) (Linux, Local)",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$gcc"],
+      "type": "cppbuild"
+    }
+  ]
+}
+```
+
+Poderemos então usar o atalho <Keyboard keys={["Ctrl", "Shift", "B"]} /> para abrir o painel de tarefas de compilação.
+Então selecione a `Clang: build C++ project (all files in root) (Linux, Local)`.
+
+<Figure
+  caption={`Compilação do projeto "binary_tree" com a tarefa personalizada.`}
+  images={[
+    {
+      src: buildLocal,
+      alt: `Visual Studio Code com o painel de tarefas aberto, mostrando a tarefa "Clang: build C++ project (all files in root) (Linux, Local)" selecionada.`,
+    },
+  ]}
+/>
+
+O Visual Studio Code compilará o projeto e mostrará o resultado no terminal integrado.
+
+<Figure
+  caption={`Saída da compilação do projeto "binary_tree".`}
+  images={[
+    {
+      src: localOutput,
+      alt: `Terminal integrado do Visual Studio Code com a saída da compilação do projeto "binary_tree".`,
     },
   ]}
 />

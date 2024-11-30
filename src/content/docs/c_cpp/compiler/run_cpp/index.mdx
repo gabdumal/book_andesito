@@ -1,0 +1,136 @@
+---
+title: Compilando programas em C++
+author: Gabriel Malosto
+---
+
+import Figure from "/src/components/Figure.astro";
+
+import compileRunHello from "/src/assets/content/docs/c_cpp/compiler/run_cpp/compile_run_hello.png";
+import compileRunBinary from "/src/assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary.png";
+
+Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C++.
+
+No terminal, abra a pasta `c_cpp_projects` que criamos anteriormente para guardar nossos projetos.
+
+```bash
+cd ~/dev/c_cpp_projects
+```
+
+## Programa
+
+Crie um diretório chamado `binary_tree`, entre nele e abra-o no Visual Studio Code.
+
+```bash
+mkdir binary_tree
+cd binary_tree
+code .
+```
+
+Lembre-se de ativar o perfil `C/C++` que criamos no capítulo [Configurando o VSCode](vscode).
+
+Crie um arquivo chamado `main.cpp` e adicione o seguinte código:
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout << "Hello, World!" << endl;
+    return 0;
+}
+```
+
+Para compilar o código, utilizamos o comando `clang++`, em vez de apenas `clang`.
+A estrutura do comando é a mesma.
+
+```bash
+clang++ main.cpp -o binary_tree
+```
+
+Para executar o programa, basta chamar o arquivo binário gerado:
+
+```bash
+./binary_tree
+```
+
+<Figure
+  caption={`Compilação e execução do programa "Binary Tree".`}
+  images={[
+    {
+      src: compileRunHello,
+      alt: `Terminal com os comandos para compilar e executar o programa "Binary Tree", cujo resultado é "Hello, World!"`,
+    },
+  ]}
+/>
+
+## Projeto
+
+Vamos editar este projeto para de fato representar uma árvore binária.
+Crie duas pastas dentro do projeto: `tree` e `node`.
+
+```bash
+mkdir tree node
+```
+
+- Dentro de tree, crie um arquivo `tree.cpp` e um `tree.hpp`.
+- Dentro de node, crie um arquivo `node.cpp` e um `node.hpp`.
+
+```bash
+touch tree/tree.cpp tree/tree.hpp node/node.cpp node/node.hpp
+```
+
+- Na raiz do projeto, crie os arquivos `.clang-format` e `.clang-tidy`.
+
+```bash
+touch .clang-format .clang-tidy
+```
+
+- Use os snippets para preencher o conteúdo dos arquivos.
+
+{/* TODO: Fix link */}
+
+Acesse o projeto pelo [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public).
+
+Nele, você encontrará a implementação de uma árvore binária e seus nós.
+Copie o conteúdo de todos os arquivos para os respectivos arquivos criados.
+
+### Compilação
+
+Para compilar o projeto, precisamos passar todos os arquivos para o compilador.
+Fazemos isso usando o comando `clang++` da seguinte maneira:
+
+```bash
+clang++ <arquivos.cpp> -I <pastas_com_arquivos.hpp> -o <executavel>
+```
+
+- `<arquivos.cpp>`: todos os arquivos `.cpp` do projeto.
+- `<pastas_com_arquivos.hpp>`: todas as pastas que contêm arquivos `.hpp` do projeto.
+- `<executavel>`: nome do arquivo binário gerado.
+
+Ou seja, precisamos especificar a localização de todos os arquivos que desejamos incluir e compilar.
+Dado que nosso projeto tem mais de uma pasta internamente, precisamos especificar a localização de todas elas.
+Execute o seguinte:
+
+```bash
+clang++ tree/tree.cpp node/node.cpp main.cpp -I tree -I node -o binary_tree
+```
+
+Para executar o programa, basta chamar o arquivo binário gerado:
+
+```bash
+./binary_tree
+```
+
+Se tudo estiver correto, você verá os nós da árvore binária sendo impressos no terminal em ordem crescente.
+
+<Figure
+  caption={`Compilação e execução do projeto "binary_tree".`}
+  images={[
+    {
+      src: compileRunBinary,
+      alt: `Terminal com os comandos para compilar e executar o projeto "binary_tree", cujo resultado é "1 3 4 5 7 8 9"`,
+    },
+  ]}
+/>

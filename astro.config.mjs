@@ -74,7 +74,19 @@ export default defineConfig({
         {
           items: [
             { label: "Introdução", slug: "c_cpp" },
-            { label: "Compilador", slug: "c_cpp/compiler" },
+            {
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "c_cpp/compiler",
+                },
+                {
+                  label: "Instalação",
+                  slug: "c_cpp/compiler/install",
+                },
+              ],
+              label: "Compilador",
+            },
             { label: "Depurador", slug: "c_cpp/debugger" },
             {
               items: [

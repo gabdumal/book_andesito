@@ -14,6 +14,12 @@ import runHello from "/src/assets/content/docs/c_cpp/compiler/run_c/run_hello.pn
 import openingProfiles from "/src/assets/common/opening_profiles.png";
 import createProfile from "/src/assets/content/docs/c_cpp/compiler/run_c/create_profile.png";
 import selectProfile from "/src/assets/content/docs/c_cpp/compiler/run_c/select_profile.png";
+import searchSnippets from "/src/assets/content/docs/c_cpp/compiler/run_c/search_snippets.png";
+import newSnippetsFile from "/src/assets/content/docs/c_cpp/compiler/run_c/new_snippets_file.png";
+import globalSnippets from "/src/assets/content/docs/c_cpp/compiler/run_c/global_snippets.png";
+import defaultSnippetsFile from "/src/assets/content/docs/c_cpp/compiler/run_c/default_snippets_file.png";
+import useSnippet from "/src/assets/content/docs/c_cpp/compiler/run_c/use_snippet.png";
+import usedSnippet from "/src/assets/content/docs/c_cpp/compiler/run_c/used_snippet.png";
 
 Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C.
 Fazermos isso de forma manual e também por meio do Visual Studio Code.
@@ -325,4 +331,234 @@ Salve o arquivo e feche o Visual Studio Code.
   Caso você venha a precisar compilar um projeto para uma versão mais velha que
   a 23, basta alterar o valor das chaves `C_Cpp.default.cStandard` e
   `C_Cpp.default.cppStandard` para a versão desejada.
+</Aside>
+
+### Snippets
+
+Snippets são trechos de código que podem ser inseridos rapidamente no editor.
+Eles possuem um atalho que, ao ser digitado e pressionado <Keyboard keys={["Tab"]} />, expande o trecho para o código completo.
+
+Estamos utilizando o `clang-format` como formatador de texto e o `clang-tidy` como linter.
+Para configurá-los, basta criar um arquivo `.clang-format` e um `.clang-tidy` na raiz do projeto.
+
+Entretanto, criar e configurar esses arquivos manualmente pode ser trabalhoso.
+Por isso, podemos utilizar um snippet para criar esses arquivos automaticamente.
+
+Garanta que você tenha selecionado o perfil `C/C++`.
+Então abra a paleta de comandos do Visual Studio Code com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Snippets: Configure Snippets`.
+
+<Figure
+  caption={`Abrindo a configuração de snippets do Visual Studio Code.`}
+  images={[
+    {
+      src: searchSnippets,
+      alt: `Menu de comandos do Visual Studio Code, em que se pesquisa por "Snippets: Configure Snippets".`,
+    },
+  ]}
+/>
+
+Selecione a opção `New Global Snippets file`.
+
+<Figure
+  caption={`Criando um novo arquivo de snippets.`}
+  images={[
+    {
+      src: newSnippetsFile,
+      alt: `Menu de comandos do Visual Studio Code, em que se seleciona a opção "New Global Snippets file".`,
+    },
+  ]}
+/>
+
+Digite o nome `global` e pressione <Keyboard keys={["Enter"]} />.
+
+<Figure
+  caption={`Nomeando o arquivo de snippets como "global".`}
+  images={[
+    {
+      src: globalSnippets,
+      alt: `Campo de texto para nomear o arquivo de snippets, com o nome "global" preenchido.`,
+    },
+  ]}
+/>
+
+O arquivo de configuração de snippets para o perfil `C/C++` será aberto.
+Seu nome é `global.code-snippets`.
+Este é o conteúdo padrão dele:
+
+<Figure
+  caption={`Conteúdo padrão do arquivo de snippets "global".`}
+  images={[
+    {
+      src: defaultSnippetsFile,
+      alt: `Arquivo de snippets "global" com o conteúdo padrão, que ensina a definir um snippet.`,
+    },
+  ]}
+/>
+
+Apague todo o conteúdo dele.
+Em seguida, copie o conteúdo abaixo e cole no arquivo.
+
+```json
+{
+  "Clang Format configuration": {
+    "prefix": "clang-format",
+    "body": [
+      "AccessModifierOffset: -4",
+      "# AlignAfterOpenBracket: BlockIndent",
+      "BasedOnStyle: Google",
+      "BracedInitializerIndentWidth: 4",
+      "ColumnLimit: 0",
+      "ContinuationIndentWidth: 4",
+      "EmptyLineAfterAccessModifier: Never",
+      "EmptyLineBeforeAccessModifier: LogicalBlock",
+      "FixNamespaceComments: true",
+      "IndentAccessModifiers: true",
+      "IndentCaseBlocks: true",
+      "IndentCaseLabels: true",
+      "IndentExternBlock: true",
+      "IndentGotoLabels: true",
+      "IndentPPDirectives: AfterHash",
+      "IndentRequiresClause: true",
+      "IndentWidth: 4",
+      "InsertBraces: true",
+      "IndentWrappedFunctionNames: true",
+      "InsertNewlineAtEOF: true",
+      "NamespaceIndentation: All",
+      "ObjCBlockIndentWidth: 4",
+      "PointerAlignment: Right",
+      "PPIndentWidth: 4",
+      "SeparateDefinitionBlocks: Always",
+      "SpaceAfterCStyleCast: true",
+      "SpaceAfterLogicalNot: false",
+      "SpaceAfterTemplateKeyword: false",
+      "SpaceBeforeAssignmentOperators: true",
+      "SpaceBeforeCtorInitializerColon: false",
+      "SpaceBeforeInheritanceColon: false",
+      "SpaceBeforeParens: ControlStatements",
+      "Standard: Latest",
+      "TabWidth: 4",
+      "UseTab: Never",
+      ""
+    ],
+    "description": "Clang Format configuration"
+  },
+  "Clang Tidy configuration": {
+    "prefix": "clang-tidy",
+    "body": [
+      "Checks: \"-*,readability-identifier-naming\"",
+      "CheckOptions:",
+      "  # Macro",
+      "  - key: readability-identifier-naming.MacroDefinitionCase",
+      "    value: UPPER_CASE",
+      "  - key: readability-identifier-naming.MacroDefinitionPrefix",
+      "    value: \"_\"",
+      "  - key: readability-identifier-naming.MacroDefinitionIgnoredRegexp",
+      "    value: \"^[A-Z]+(_[A-Z]+)*_$\"",
+      "",
+      "  # Default",
+      "  - key: readability-identifier-naming.VariableCase",
+      "    value: lower_case",
+      "",
+      "  - key: readability-identifier-naming.StaticVariableCase",
+      "    value: lower_case",
+      "",
+      "  - key: readability-identifier-naming.ParameterCase",
+      "    value: lower_case",
+      "",
+      "  - key: readability-identifier-naming.FunctionCase",
+      "    value: camelBack",
+      "",
+      "  - key: readability-identifier-naming.TypeAliasCase",
+      "    value: CamelCase",
+      "",
+      "  - key: readability-identifier-naming.TypedefCase",
+      "    value: CamelCase",
+      "",
+      "  - key: readability-identifier-naming.ConstantCase",
+      "    value: UPPER_CASE",
+      "",
+      "  - key: readability-identifier-naming.StaticConstantCase",
+      "    value: lower_case",
+      "",
+      "  - key: readability-identifier-naming.ConstexprVariableCase # Ensure the constexpr variables are treated as constants",
+      "    value: lower_case",
+      "  - key: readability-identifier-naming.ConstexprVariablePrefix",
+      "    value: \"\"",
+      "",
+      "  # Class",
+      "  - key: readability-identifier-naming.ClassCase",
+      "    value: CamelCase",
+      "",
+      "  - key: readability-identifier-naming.MemberCase",
+      "    value: lower_case",
+      "",
+      "  # Enum",
+      "  - key: readability-identifier-naming.EnumCase",
+      "    value: CamelCase",
+      "",
+      "  - key: readability-identifier-naming.EnumConstantCase",
+      "    value: UPPER_CASE",
+      "",
+      "  # Struct",
+      "  - key: readability-identifier-naming.StructMemberCase",
+      "    value: lower_case",
+      "",
+      "  # Namespace",
+      "  - key: readability-identifier-naming.NamespaceCase",
+      "    value: CamelCase",
+      "",
+      "  - key: readability-identifier-naming.NamespaceConstantCase",
+      "    value: lower_case",
+      "",
+      "  - key: readability-identifier-naming.ClassMemberCase",
+      "    value: lower_case",
+      "",
+      "  # Global",
+      "  - key: readability-identifier-naming.GlobalConstantCase",
+      "    value: UPPER_CASE",
+      ""
+    ],
+    "description": "Clang Tidy configuration"
+  }
+}
+```
+
+Lembre-se de salvar o arquivo `global.code-snippets`.
+
+Para usar os snippets, feche e abra o Visual Studio Code.
+
+Então, crie um arquivo chamado `.clang-format` e outro chamado `.clang-tidy` na raiz do projeto.
+
+Em seguida, abra o arquivo `.clang-format`, digite `clang-format` e pressione <Keyboard keys={["Enter"]} />.
+
+<Figure
+  caption={`Utilizando o snippet "clang-format".`}
+  images={[
+    {
+      src: useSnippet,
+      alt: `Arquivo ".clang-format" vazio, em que se digita "clang-format". O Visual Studio Code sugere completar com o snippet "Clang Format configuration".`,
+    },
+  ]}
+/>
+
+O arquivo `.clang-format` será preenchido com as configurações definidas no snippet `Clang Format configurations`.
+
+<Figure
+  caption={`Arquivo ".clang-format" preenchido com as configurações do snippet.`}
+  images={[
+    {
+      src: usedSnippet,
+      alt: `Arquivo ".clang-format" preenchido com as configurações do snippet "Clang Format configuration".`,
+    },
+  ]}
+/>
+
+Agora, faça o mesmo para o arquivo `.clang-tidy`.
+
+<Aside type="tip">
+  Caso deseje alterar as configurações do arquivo `.clang-format`, basta
+  editá-lo. O LLVM disponibiliza a
+  [documentação](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
+  acerca das opções de formatação. Igualmente, está disponível a
+  [documentação](https://clang.llvm.org/extra/clang-tidy/) do Clang Tidy.
 </Aside>

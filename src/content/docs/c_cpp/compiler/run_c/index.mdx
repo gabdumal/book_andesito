@@ -6,12 +6,17 @@ author: Gabriel Malosto
 import { Aside } from "@astrojs/starlight/components";
 
 import Figure from "/src/components/Figure.astro";
+import Keyboard from "/src/components/Keyboard.astro";
 
 import compileHello from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_hello.png";
 import compileRunSeparate from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_run_separate.png";
 import runHello from "/src/assets/content/docs/c_cpp/compiler/run_c/run_hello.png";
+import openingProfiles from "/src/assets/common/opening_profiles.png";
+import createProfile from "/src/assets/content/docs/c_cpp/compiler/run_c/create_profile.png";
+import selectProfile from "/src/assets/content/docs/c_cpp/compiler/run_c/select_profile.png";
 
 Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C.
+Fazermos isso de forma manual e também por meio do Visual Studio Code.
 
 Abra a pasta `dev` que criamos anteriormente para guardar nossos projetos.
 
@@ -26,7 +31,7 @@ mkdir c_cpp_projects
 cd c_cpp_projects
 ```
 
-## Programa de um arquivo
+## Programa
 
 Crie um outro diretório chamado `hello_world e também navegue para dentro nele.
 
@@ -189,3 +194,135 @@ clang main.c functions.c -o separate_function
     },
   ]}
 />
+
+## Visual Studio Code
+
+Para compilar e executar programas em C no Visual Studio Code, devemos instalar algumas extensões.
+Recomendamos criar um perfil para o C e C++, o que manterá as configurações para essas linguagens separadas.
+
+### Perfil
+
+Para criar um perfil no Visual Studio Code, clique no ícone de engrenagem no canto inferior esquerdo e selecione **Profiles** (ou perfis).
+
+<Figure
+  caption={`Abrindo a tela de configuração de perfis do Visual Studio Code.`}
+  images={[
+    {
+      src: openingProfiles,
+      alt: `Menu de configuração do Visual Studio Code, em que se seleciona a opção "Profiles".`,
+    },
+  ]}
+/>
+
+Clique no botão **New Profile**.
+Uma nova entrada surgirá na lista de perfis.
+
+Dê um nome ao perfil, como `C/C++`.
+Escolha o ícone de sua preferências.
+
+<Figure
+  caption={`Criando um novo perfil chamado "C/C++".`}
+  images={[
+    {
+      src: createProfile,
+      alt: `Tela de criação de perfil do Visual Studio Code, em que se preenche o nome "C/C++" e se escolhe um ícone.`,
+    },
+  ]}
+/>
+
+Agora, selecione o perfil ao clicar no ícone de check ao lado da entrada dele na lista de perfis.
+
+<Figure
+  caption={`Selecionando o perfil "C/C++".`}
+  images={[
+    {
+      src: selectProfile,
+      alt: `Menu de perfis do Visual Studio Code, em que se seleciona o perfil "C/C++".`,
+    },
+  ]}
+/>
+
+### Extensões
+
+Tendo ativado o perfil `C/C++`, instale as seguinte extensões no Visual Studio Code:
+
+- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph): visualiza o histórico de commits do Git;
+- [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools): fornece suporte para desenvolvimento em C e C++;
+- [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd): fornece recursos de análise de código para o Clang;
+- [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb): permite a depuração de programas em C e C++.
+
+Se você estiver usando o WSL, certifique-se de clicar nos botões **Install in WSL: Ubuntu** para cada extensão da lista de instaladas que oferecer essa opção.
+
+### Configurações
+
+Vamos adicionar algumas configurações padrão para o perfil `C/C++`.
+
+Abra a paleta de comandos do Visual Studio Code com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Preferences: Open User
+Settings (JSON)`, ou o equivalente em português.
+
+Isso abrirá um arquivo chamado `settings.json`, responsável por definir as configurações desse perfil.
+Toda vez que você muda alguma opção no menu de configurações do Visual Studio Code, o que ele faz é adicionar ou modificar uma linha nesse arquivo por baixo dos panos.
+
+Copie o conteúdo a seguir e cole no arquivo `settings.json` aberto.
+
+```json
+{
+  "C_Cpp.default.cStandard": "c23",
+  "C_Cpp.default.cppStandard": "c++23",
+  "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "prettier.tabWidth": 2
+  },
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.semanticHighlighting.enabled": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "git.autofetch": true,
+  "git.openRepositoryInParentFolders": "always",
+  "security.allowedUNCHosts": ["wsl$", "wsl.localhost"]
+}
+```
+
+Perceba que, abrindo o arquivo `settings.json` quando se usa o perfil `C/C++`, você verá as configurações específicas para este perfil, e não as configurações gerais do Visual Studio Code.
+É este mesmo o objetivo que temos.
+
+A configuração definida no arquivo `settings.json` faz o seguinte:
+
+- O compilador Clang é definido como o compilador padrão;
+- Ativamos o IntelliSense para o Clang;
+- As versões do C e do C++ são definidas como C23 e C++23, respectivamente;
+- Definimos o formatador padrão como a extensão `clangd`, e desativamos a formatação da extensão `C/C++`;
+- Entre outras definições úteis.
+
+Salve o arquivo e feche o Visual Studio Code.
+
+<Aside type="tip">
+  Caso você venha a precisar compilar um projeto para uma versão mais velha que
+  a 23, basta alterar o valor das chaves `C_Cpp.default.cStandard` e
+  `C_Cpp.default.cppStandard` para a versão desejada.
+</Aside>

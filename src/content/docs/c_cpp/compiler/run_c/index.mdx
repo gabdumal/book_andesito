@@ -20,6 +20,7 @@ import globalSnippets from "/src/assets/content/docs/c_cpp/compiler/run_c/global
 import defaultSnippetsFile from "/src/assets/content/docs/c_cpp/compiler/run_c/default_snippets_file.png";
 import useSnippet from "/src/assets/content/docs/c_cpp/compiler/run_c/use_snippet.png";
 import usedSnippet from "/src/assets/content/docs/c_cpp/compiler/run_c/used_snippet.png";
+import compileRunLinked from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_run_linked.png";
 
 Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C.
 Fazermos isso de forma manual e também por meio do Visual Studio Code.
@@ -86,9 +87,10 @@ clang [opções] <arquivo>.c -include -o <executavel>
 
 - [opções] são as opções de compilação, como:
 
+  - -o \<arquivo\> para especificar o arquivo de saída;
+  - -include para incluir um arquivo de cabeçalho;
   - -c para compilar sem ligar os arquivos;
   - -g para incluir informações de debug;
-  - -o \<arquivo\> para especificar o arquivo de saída;
   - entre outras.
 
 - \<arquivo\>.c é o nome do arquivo que será compilado.
@@ -527,7 +529,8 @@ Lembre-se de salvar o arquivo `global.code-snippets`.
 
 Para usar os snippets, feche e abra o Visual Studio Code.
 
-Então, crie um arquivo chamado `.clang-format` e outro chamado `.clang-tidy` na raiz do projeto.
+Então, abra o diretório `separate_function` que criamos anteriormente.
+Crie um arquivo chamado `.clang-format` e outro chamado `.clang-tidy` na raiz do projeto.
 
 Em seguida, abra o arquivo `.clang-format`, digite `clang-format` e pressione <Keyboard keys={["Enter"]} />.
 
@@ -562,3 +565,157 @@ Agora, faça o mesmo para o arquivo `.clang-tidy`.
   acerca das opções de formatação. Igualmente, está disponível a
   [documentação](https://clang.llvm.org/extra/clang-tidy/) do Clang Tidy.
 </Aside>
+
+## Projeto no Visual Studio Code
+
+Vamos criar um projeto para construir uma lista encadeada de nós.
+
+No terminal, navegue para a pasta `c_cpp_projects` que criamos anteriormente.
+
+```bash
+cd ~/dev/c_cpp_projects
+```
+
+Crie um diretório chamado `linked_nodes` e navegue para dentro dele.
+
+```bash
+mkdir linked_nodes
+cd linked_nodes
+```
+
+Abra o Visual Studio Code no diretório atual.
+
+```bash
+code .
+```
+
+Selecione o **perfil `C/C++`** que criamos anteriormente.
+
+### Arquivos
+
+Crie um arquivo chamado `node.h` e cole o seguinte código nele.
+
+```c
+#ifndef __NODE_H__
+#define __NODE_H__
+
+struct Node {
+        int data;
+        struct Node *next;
+};
+
+struct Node *createNode();
+void setData(struct Node *node, int data);
+int getData(struct Node *node);
+void setNext(struct Node *node, struct Node *next);
+struct Node *getNext(struct Node *node);
+
+#endif  // __NODE_H__
+```
+
+Então, crie um arquivo chamado `node.c` e cole o código a seguir.
+
+```c
+#include "node.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node *createNode() {
+    struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
+    if (new_node != NULL) {
+        new_node->data = 0;
+        new_node->next = NULL;
+    }
+    return new_node;
+}
+
+void setData(struct Node *node, int data) {
+    if (node != NULL) {
+        node->data = data;
+    }
+}
+
+int getData(struct Node *node) {
+    if (node != NULL) {
+        return node->data;
+    }
+    return -1;
+}
+
+void setNext(struct Node *node, struct Node *next) {
+    if (node != NULL) {
+        node->next = next;
+    }
+}
+
+struct Node *getNext(struct Node *node) {
+    if (node != NULL) {
+        return node->next;
+    }
+    return NULL;
+}
+```
+
+Por fim, crie um arquivo chamado `main.` e cole o código a seguir.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "node.h"
+
+int main() {
+    printf("Creating a linked list with 10 nodes\n");
+
+    struct Node *node = createNode();
+    struct Node *head = node;
+    setData(node, 1);
+
+    for (int i = 2; i <= 10; i++) {
+        struct Node *new_node = createNode();
+        setData(new_node, i);
+        setNext(node, new_node);
+        node = new_node;
+    }
+
+    printf("Traversing the linked list\n");
+
+    node = head;
+
+    while (node != NULL) {
+        printf("%d\t", getData(node));
+        node = getNext(node);
+    }
+
+    printf("\n");
+
+    return 0;
+}
+```
+
+Para configurar a formatação e o linter, crie os arquivos `.clang-format` e `.clang-tidy` na raiz do projeto.
+Então utilize os snippets `clang-format` e `clang-tidy` para preenchê-los.
+
+### Compilação
+
+Você verá que o Visual Studio Code já reconhece o projeto e identifica as bibliotecas e funções utilizadas.
+
+Vamos compilar o projeto pelo terminal integrado do Visual Studio Code.
+Abra o terminal integrado com <Keyboard keys={["Ctrl", "`"]} /> e execute o comando abaixo.
+
+```bash
+clang main.c node.c -include node.h -o linked_nodes
+```
+
+Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `linked_nodes`. Para executar o programa, digite `./linked_nodes` e pressione <Keyboard keys={["Enter"]} />.
+
+<Figure
+  caption={`Compilação e execução do projeto "linked_nodes".`}
+  images={[
+    {
+      src: compileRunLinked,
+      alt: `Terminal integrado do Visual Studio Code exibindo a compilação e execução do projeto "linked_nodes".`,
+    },
+  ]}
+/>

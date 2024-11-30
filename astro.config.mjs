@@ -88,6 +88,10 @@ export default defineConfig({
                   label: "Programas em C",
                   slug: "c_cpp/compiler/run_c",
                 },
+                {
+                  label: "Configurando o VSCode",
+                  slug: "c_cpp/compiler/vscode",
+                },
               ],
               label: "Compilador",
             },

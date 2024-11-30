@@ -1,5 +1,12 @@
 # build output
 dist/
+## Ignore all
+*
+## Unignore all with extensions
+!*.*
+## Unignore all dirs
+!*/
+
 # generated types
 .astro/
 

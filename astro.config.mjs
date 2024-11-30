@@ -99,7 +99,14 @@ export default defineConfig({
               ],
               label: "Compilador",
             },
-            { label: "Depurador", slug: "c_cpp/debugger" },
+            {
+              items: [
+                { label: "Introdução", slug: "c_cpp/debugger" },
+                { label: "Instalação", slug: "c_cpp/debugger/install" },
+                { label: "Programas em C", slug: "c_cpp/debugger/run_c" },
+              ],
+              label: "Depurador",
+            },
             {
               items: [
                 {

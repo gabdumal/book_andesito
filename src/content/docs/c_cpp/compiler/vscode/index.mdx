@@ -18,6 +18,12 @@ import defaultSnippetsFile from "/src/assets/content/docs/c_cpp/compiler/vscode/
 import useSnippet from "/src/assets/content/docs/c_cpp/compiler/vscode/use_snippet.png";
 import usedSnippet from "/src/assets/content/docs/c_cpp/compiler/vscode/used_snippet.png";
 import compileRunLinked from "/src/assets/content/docs/c_cpp/compiler/vscode/compile_run_linked.png";
+import runBuildTask from "/src/assets/content/docs/c_cpp/compiler/vscode/run_build_task.png";
+import selectTask from "/src/assets/content/docs/c_cpp/compiler/vscode/select_task.png";
+import buildOutput from "/src/assets/content/docs/c_cpp/compiler/vscode/build_output.png";
+import openUserTasks from "/src/assets/content/docs/c_cpp/compiler/vscode/open_user_tasks.png";
+import othersTasks from "/src/assets/content/docs/c_cpp/compiler/vscode/others_tasks.png";
+import defaultTask from "/src/assets/content/docs/c_cpp/compiler/vscode/default_task.png";
 
 Para compilar e executar programas em C no Visual Studio Code, devemos instalar algumas extensões.
 Recomendamos criar um perfil para o C e C++, o que manterá as configurações para essas linguagens separadas.
@@ -63,6 +69,11 @@ Agora, selecione o perfil ao clicar no ícone de check ao lado da entrada dele n
     },
   ]}
 />
+
+<Aside type="caution">
+  lembre-se de sempre selecionar este perfil ao abrir o Visual Studio Code em um
+  projeto de C ou C++, para que as configurações sejam aplicadas.
+</Aside>
 
 ## Extensões
 
@@ -508,9 +519,7 @@ int main() {
 }
 ```
 
-{/* TODO: Fix link */}
-
-Você também pode acessar esse projeto no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public).
+Você também pode acessar esse projeto no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/linked_nodes).
 
 Para configurar a formatação e o linter, crie os arquivos `.clang-format` e `.clang-tidy` na raiz do projeto.
 Então utilize os snippets `clang-format` e `clang-tidy` para preenchê-los.
@@ -537,3 +546,156 @@ Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cab
     },
   ]}
 />
+
+Agora, em vez de rodar o comando no terminal, vamos utilizar a interface gráfica do Visual Studio Code para compilar o projeto.
+
+Crie uma pasta chamada `.vscode` na raiz do projeto.
+Ela é responsável por guardar configurações específicas do Visual Studio Code para o projeto.
+
+Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json).
+
+O que ele faz é definir uma tarefa chamada `Clang: build C project (all files in root)` para o Linux e outra para o Windows.
+Essa tarefa compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na raiz do projeto.
+O executável gerado terá o nome da pasta aberta no Visual Studio Code.
+
+Clique no arquivo `main.c` no Visual Studio Code para focar a visualização nele.
+
+Abra a paleta de comandos com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Tasks: Run Task`.
+Você também pode executar esse comando com o atalho <Keyboard keys={["Ctrl", "Shift", "B"]} />.
+
+<Figure
+  caption={`Selecionando a opção de executar tarefa  de compilação no Visual Studio Code.`}
+  images={[
+    {
+      src: runBuildTask,
+      alt: `Paleta de comandos do Visual Studio Code, em que se pesquisa por "Tasks: Run Build Task".`,
+    },
+  ]}
+/>
+
+Seleciona a tarefa `Clang: build C project (all files in root)` de acordo com o seu sistema operacional.
+
+<Figure
+  caption={`Selecionando a tarefa de compilação do projeto.`}
+  images={[
+    {
+      src: selectTask,
+      alt: `Menu de tarefas do Visual Studio Code, em que se seleciona a tarefa "Clang: build C project (all files in root) (Linux)".`,
+    },
+  ]}
+/>
+
+O mesmo comando de compilação será executado, mas pelo Visual Studio Code.
+Ele exibirá o resultado da compilação no terminal integrado.
+
+<Figure
+  caption={`Saída da compilação do projeto "linked_nodes".`}
+  images={[
+    {
+      src: buildOutput,
+      alt: `Terminal integrado do Visual Studio Code exibindo a saída da compilação do projeto "linked_nodes".`,
+    },
+  ]}
+/>
+
+Para executar, podemos chamar o arquivo executável diretamente no terminal integrado.
+
+Neste caso, digite `./linked_nodes` e pressione <Keyboard keys={["Enter"]} />.
+
+### Configurações
+
+Felizmente, o Visual Studio Code permite que você salve as configurações de compilação em arquivos globais para serem utilizadas em outros projetos.
+
+**Ative** o perfil `C/C++`, para que as configurações sejam salvas apenas para esse perfil.
+Dessa forma, eliminamos o risco de conflitos entre diferentes configurações de compilação e depuração.
+
+Para salvar as tarefas de compilação, abra a paleta de comandos com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Tasks: Open User Tasks`.
+
+<Figure
+  caption={`Abrindo o arquivo de tarefas do usuário.`}
+  images={[
+    {
+      src: openUserTasks,
+      alt: `Menu de comandos do Visual Studio Code, em que se pesquisa por "Tasks: Open User Tasks".`,
+    },
+  ]}
+/>
+
+Selecione a opção `Others`.
+
+<Figure
+  caption={`Selecionando a opção "Others".`}
+  images={[
+    {
+      src: othersTasks,
+      alt: `Menu de configuração de tarefas do Visual Studio Code, em que se seleciona a opção "Others".`,
+    },
+  ]}
+/>
+
+Será aberto o arquivo padrão de tarefas do perfil `C/C++`.
+
+<Figure
+  caption={`Conteúdo do arquivo de tarefas do perfil "C/C++".`}
+  images={[
+    {
+      src: defaultTask,
+      alt: `Arquivo de tarefas do Visual Studio Code com o conteúdo padrão para o perfil "C/C++".`,
+    },
+  ]}
+/>
+
+Copie o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c/c_cpp_profile/tasks.json) e cole no arquivo `tasks.json` aberto.
+Lembre-se de salvar.
+
+Assim, a tarefa estará disponível para todos os projetos que utilizarem o perfil `C/C++`.
+
+Se você estiver desenvolvendo um projeto com outras pessoas que não fizeram a mesma configuração que você, então recomendo criar o arquivo `tasks.json` na pasta `.vscode` mesmo, para que elas possam compilar o projeto sem problemas.
+
+Para facilitar isso, podemos criar um snippet para a tarefa de compilação.
+Abra a paleta de comandos com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Snippets: Configure Snippets`.
+
+Selecione a opção `global.code-snippets`.
+
+Adicione o seguinte código ao final da lista de snippets.
+
+```json
+"Build tasks": {
+    "prefix": "build-tasks",
+    "scope": "json",
+    "body": [
+        "{",
+        "  \"tasks\": [",
+        "    {",
+        "      \"args\": [",
+        "        \"-fcolor-diagnostics\",",
+        "        \"-fansi-escape-codes\",",
+        "        \"-g\",",
+        "        \"${workspaceFolder}/*.c\",",
+        "        \"-I\",",
+        "        \"${workspaceFolder}\",",
+        "        \"-o\",",
+        "        \"${workspaceFolder}/${workspaceFolderBasename}\"",
+        "      ],",
+        "      \"command\": \"/usr/bin/clang\",",
+        "      \"detail\": \"Tarefa de compilação de um projeto em C. Compila todos os arquivos C na raiz do projeto em um único executável.\",",
+        "      \"group\": {",
+        "        \"kind\": \"build\"",
+        "      },",
+        "      \"label\": \"Clang: build C project (all files in root) (Linux)\",",
+        "      \"options\": {",
+        "        \"cwd\": \"${workspaceFolder}\"",
+        "      },",
+        "      \"problemMatcher\": [\"$$gcc\"],",
+        "      \"type\": \"cppbuild\"",
+        "    }",
+        "  ],",
+        "  \"version\": \"2.0.0\"",
+        "}",
+        ""
+    ],
+    "description": "Build tasks"
+}
+```
+
+Os arquivos modificados do perfil do Visual Studio Code ficarão como no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_tasks/c_cpp_profile/tasks.json).

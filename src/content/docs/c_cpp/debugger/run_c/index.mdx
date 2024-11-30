@@ -1,0 +1,44 @@
+---
+title: Depurando programas em C
+author: Gabriel Malosto
+---
+
+import Figure from "/src/components/Figure.astro";
+
+import debugMenu from "/src/assets/content/docs/c_cpp/debugger/run_c/debug_menu.png";
+import selectDebugger from "/src/assets/content/docs/c_cpp/debugger/run_c/select_debugger.png";
+
+Vamos utilizar a interface gráfica do Visual Studio Code para depurar programas em C.
+
+No terminal, abra o projeto `linked_nodes` que criamos anteriormente e o abra no Visual Studio Code.
+
+```bash
+cd ~/dev/c_cpp_projects/linked_nodes
+code .
+```
+
+Acesse o menu de depuração clicando no ícone de **bug** na barra lateral do Visual Studio Code.
+
+<Figure
+  caption="Menu de depuração do Visual Studio Code."
+  images={[
+    {
+      src: debugMenu,
+      alt: `Menu de depuração do Visual Studio Code, em que se vê um botão com o texto "Run and Debug".`,
+    },
+  ]}
+/>
+
+Abra o arquivo `main.c` no editor.
+Clique no botão **Run and Debug** e selecione a opção **C++ (GDB/LLDB)**.
+
+<Figure
+  caption="Seleção do depurador C++."
+  images={[
+    {
+      src: selectDebugger,
+      alt: `Janela de seleção de depurador do Visual Studio Code, em que se escolhe a opção "C++ (GDB/LLDB)".`,
+    },
+  ]}
+/>
+```

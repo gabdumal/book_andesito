@@ -1,20 +1,21 @@
 ---
 title: GNOME Terminal
+author: Gabriel Malosto
 ---
 
 import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
 
-import searching_terminal_on_ubuntu from "/src/assets/content/docs/terminal/gnome/searching_terminal_on_ubuntu.png";
-import opening_terminal_from_terminal from "/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.gif";
-import opening_keyboard_settings from "/src/assets/content/docs/terminal/gnome/opening_keyboard_settings.png";
-import setting_terminal_shortcut from "/src/assets/content/docs/terminal/gnome/setting_terminal_shortcut.png";
-import opening_preferences from "/src/assets/content/docs/terminal/gnome/opening_preferences.png";
+import searchingTerminalOnUbuntu from "/src/assets/content/docs/terminal/gnome/searching_terminal_on_ubuntu.png";
+import openingTerminalFromTerminal from "/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.gif";
+import openingKeyboardSettings from "/src/assets/content/docs/terminal/gnome/opening_keyboard_settings.png";
+import settingTerminalShortcut from "/src/assets/content/docs/terminal/gnome/setting_terminal_shortcut.png";
+import openingPreferences from "/src/assets/content/docs/terminal/gnome/opening_preferences.png";
 import preferences from "/src/assets/content/docs/terminal/gnome/preferences.png";
 import profile from "/src/assets/content/docs/terminal/gnome/profile.png";
-import installing_catppuccin from "/src/assets/content/docs/terminal/gnome/installing_catppuccin.png";
-import setting_theme from "/src/assets/content/docs/terminal/gnome/setting_theme.png";
-import changed_font_size from "/src/assets/content/docs/terminal/gnome/changed_font_size.png";
+import installingCatppuccin from "/src/assets/content/docs/terminal/gnome/installing_catppuccin.png";
+import settingTheme from "/src/assets/content/docs/terminal/gnome/setting_theme.png";
+import changedFontSize from "/src/assets/content/docs/terminal/gnome/changed_font_size.png";
 import result from "/src/assets/content/docs/terminal/gnome/result.png";
 
 Este subcapítulo aborda o **GNOME Terminal**, o emulador de terminal padrão do **Ubuntu** e do **Fedora**.
@@ -25,7 +26,7 @@ Pesquise por `Terminal` no menu do GNOME e clique no ícone do aplicativo para a
   caption="Buscando pelo Terminal no menu de apps do GNOME."
   images={[
     {
-      src: searching_terminal_on_ubuntu,
+      src: searchingTerminalOnUbuntu,
       alt: `Menu de apps do GNOME no Ubuntu, em que se busca por "terminal".`,
     },
   ]}
@@ -38,7 +39,7 @@ Digite `gnome-terminal` no terminal e pressione <Keyboard keys={["Enter"]}/>.
   caption="Abrindo o GNOME Terminal a partir do terminal."
   images={[
     {
-      src: opening_terminal_from_terminal,
+      src: openingTerminalFromTerminal,
       alt: "Terminal do GNOME, em que se executa o comando para abrir outro terminal.",
     },
   ]}
@@ -54,7 +55,7 @@ Já no Fedora, você pode defini-lo em `Settings > Keyboard > View and Customize
   caption="Selecionando menu de atalhos de teclado nas configurações do GNOME."
   images={[
     {
-      src: opening_keyboard_settings,
+      src: openingKeyboardSettings,
       alt: "Configurações do GNOME, em que está aberto o menu de atalhos de teclado.",
     },
   ]}
@@ -67,7 +68,7 @@ Pressione `Add` e pronto!
   caption="Definindo o atalho de teclado para abrir o terminal."
   images={[
     {
-      src: setting_terminal_shortcut,
+      src: settingTerminalShortcut,
       alt: "Configurações do GNOME, em que se define o atalho de teclado para abrir o terminal.",
     },
   ]}
@@ -83,7 +84,7 @@ Abra o menu do terminal e selecione `Preferences`.
   caption="Abrindo o menu de preferências do GNOME Terminal."
   images={[
     {
-      src: opening_preferences,
+      src: openingPreferences,
       alt: "GNOME Terminal, em que se seleciona o botão de menu no canto superior direito.",
     },
   ]}
@@ -131,7 +132,7 @@ curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.3.0/insta
   caption="Instalando o tema Catppuccin para o GNOME Terminal."
   images={[
     {
-      src: installing_catppuccin,
+      src: installingCatppuccin,
       alt: "Terminal do GNOME, em que se executa o script de instalação do tema Catppuccin.",
     },
   ]}
@@ -146,7 +147,7 @@ Para isso, clique no botão `▾` ao lado do nome do tema, e selecione `Set as d
   caption="Definindo o tema Catppuccin Latte como padrão."
   images={[
     {
-      src: setting_theme,
+      src: settingTheme,
       alt: "Preferências do GNOME Terminal, em que se define o tema Catppuccin Latte como padrão.",
     },
   ]}
@@ -162,7 +163,7 @@ Você pode então selecionar sua fonte de preferência, e o tamanho dela.
   caption="Definições do perfil após mudar o tamanho da fonte."
   images={[
     {
-      src: changed_font_size,
+      src: changedFontSize,
       alt: "Preferências do GNOME Terminal, em que se altera o tamanho da fonte.",
     },
   ]}

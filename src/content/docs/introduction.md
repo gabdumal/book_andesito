@@ -1,11 +1,12 @@
 ---
 title: Introdução
+author: Gabriel Malosto
 ---
 
 Este guia pretende auxiliar na configuração de um ambiente de
 desenvolvimento para as seguintes linguagens:
 
-- **C e C++**, utilizando o compilador **Clang**, o depurador **LLDB**e a
+- **C e C++**, utilizando o compilador **Clang**, o depurador **LLDB** e a
   ferramenta **CMake**;
 - **Python**, utilizando o gerenciador de pacotes **Pip**;
 - **Javascript** e o seu _superscript_ **Typescript**, utilizando o

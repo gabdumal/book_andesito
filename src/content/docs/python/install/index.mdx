@@ -1,6 +1,12 @@
 ---
 title: Instalação
+author: Gabriel Malosto
 ---
+
+import Figure from "/src/components/Figure.astro";
+
+import installing from "/src/assets/content/docs/python/install/installing.png";
+import testingInstallation from "/src/assets/content/docs/python/install/testing_installation.png";
 
 O Python é instalado por padrão no Ubuntu (e WSL) e no Fedora, bastando verificar se as ferramentas auxiliares estão instaladas.
 Já no Windows, é necessário instalar o Python manualmente.
@@ -20,10 +26,15 @@ Abra o **Powershell** como **administrador** e execute o comando:
 winget install -e --id Python.Python.3.10
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/install/installing.png" />
-  <figcaption>Instalação do Python para Windows.</figcaption>
-</figure>
+<Figure
+  caption="Instalação do Python para Windows."
+  images={[
+    {
+      src: installing,
+      alt: "Terminal com o PowerShell, em que se executa o comando para instalar o Python.",
+    },
+  ]}
+/>
 
 Para verificar se a instalação foi bem-sucedida, **feche** e abra o **Powershell** novamente, então digite os comandos:
 
@@ -32,9 +43,12 @@ python --version
 pip --version
 ```
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/python/install/testing_installation.png" />
-  <figcaption>
-    Verificando se a instalação do Python foi bem-sucedida.
-  </figcaption>
-</figure>
+<Figure
+  caption="Verificando se a instalação do Python foi bem-sucedida."
+  images={[
+    {
+      src: testingInstallation,
+      alt: "Terminal com o PowerShell, em que se verifica a versão do Python e do pip.",
+    },
+  ]}
+/>

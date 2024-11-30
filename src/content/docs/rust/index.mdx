@@ -1,8 +1,14 @@
 ---
 title: Rust
+author: Gabriel Malosto
 ---
 
+import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
+
+import downloadOptionsWindows from "/src/assets/content/docs/rust/download_options_windows.png";
+import windowsInstaller from "/src/assets/content/docs/rust/windows_installer.png";
+import windowsInstalled from "/src/assets/content/docs/rust/windows_installed.png";
 
 **Rust** é uma linguagem de programação recente, desenvolvida inicialmente pela **Mozilla Research** e atualmente mantida pela **Rust Foundation**.
 Ela é focada em segurança, concorrência e performance, permitindo escrever código de baixo nível evitando acesso direto à memória e bugs comuns em linguagens como C e C++.
@@ -19,7 +25,7 @@ A forma recomendada de instalar o Rust é utilizando o [**rustup**](https://rust
 ### Linux
 
 {/* TODO */}
- 
+
 #### Ubuntu e WSL
 
 ```bash
@@ -28,32 +34,49 @@ sudo apt install curl pkg-config libssl-dev
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
+{/* TODO */}
+
 ### Windows
 
 O Rust para Windows depende do **MSVC** (Microsoft Visual Studio Build Tools) para compilar código nativo.
-Acesse o capítulo sobre o [compilador para C e C++](..c_cpp/compiler/index.mdx#windows) para aprender a instalar o MSVC.
+Acesse o capítulo sobre o [compilador para C e C++](c_cpp/compiler#windows) para aprender a instalar o MSVC.
 
 Para instalar o rustup no Windows, acesse o [site oficial](https://www.rust-lang.org/tools/install) da linguagem e baixe o instalador referente à sua arquitetura.
 Para a grande maioria dos casos, o instalador de **64 bits** é o mais adequado.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/rust/download_options_windows.png" />
-  <figcaption>Opções de download do rustup para Windows.</figcaption>
-</figure>
+<Figure
+  caption="Opções de download do rustup para Windows."
+  images={[
+    {
+      src: downloadOptionsWindows,
+      alt: "Página de downloads do website do Rust. São exibidas as duas opções de download, para 32 e 64 bits.",
+    },
+  ]}
+/>
 
 O instalador abre uma janela de terminal que guiará você pelo processo de instalação.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/rust/windows_installer.png" />
-  <figcaption>Instalador do rust para Windows.</figcaption>
-</figure>
+<Figure
+  caption="Instalador do rust para Windows."
+  images={[
+    {
+      src: windowsInstaller,
+      alt: "Terminal aberto no PowerShell, em que se executa o instalador do Rust.",
+    },
+  ]}
+/>
 
 Pressione a tecla <Keyboard keys={["1"]} /> e <Keyboard keys={["Enter"]} /> para instalar o Rust e suas ferramentas.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/rust/windows_installed.png" />
-  <figcaption>Finalização da instalação do rust para Windows.</figcaption>
-</figure>
+<Figure
+  caption="Finalização da instalação do rust para Windows."
+  images={[
+    {
+      src: windowsInstalled,
+      alt: "Terminal com o PowerShell, em que é exibida a mensagem de finalização da instalação do Rust.",
+    },
+  ]}
+/>
 
 Para verificar se a instalação foi bem-sucedida, abra um terminal e execute o comando `rustc --version`.
 O resultado deve ser algo como `rustc 1.82.0 (f6e511eec 2024-10-15)` ou mais recente.

@@ -1,5 +1,6 @@
 ---
 title: Temas
+author: Gabriel Malosto
 ---
 
 import Figure from "/src/components/Figure.astro";
@@ -9,18 +10,18 @@ import firaCode from "/src/assets/content/docs/shell/themes/fira_code.png";
 import selectedFonts from "/src/assets/content/docs/shell/themes/selected_fonts.png";
 import openFonts from "/src/assets/content/docs/shell/themes/open_fonts.png";
 import settingFontWindows from "/src/assets/content/docs/shell/themes/setting_font_windows.png";
-import starshipPowershell from "/src/assets/content/docs/shell/themes/starship_powershell.png";
-import editPowershell from "/src/assets/content/docs/shell/themes/edit_powershell.png";
-import editedPowershell from "/src/assets/content/docs/shell/themes/edited_powershell.png";
+import starshipPowerShell from "/src/assets/content/docs/shell/themes/starship_powershell.png";
+import editPowerShell from "/src/assets/content/docs/shell/themes/edit_powershell.png";
+import editedPowerShell from "/src/assets/content/docs/shell/themes/edited_powershell.png";
 import powershellError from "/src/assets/content/docs/shell/themes/powershell_error.png";
 import settingPolicy from "/src/assets/content/docs/shell/themes/setting_policy.png";
-import installedStarshipPowershell from "/src/assets/content/docs/shell/themes/installed_starship_powershell.png";
+import installedStarshipPowerShell from "/src/assets/content/docs/shell/themes/installed_starship_powershell.png";
 import starshipZsh from "/src/assets/content/docs/shell/themes/starship_zsh.png";
 import installedStarshipMessageZsh from "/src/assets/content/docs/shell/themes/installed_starship_message_zsh.png";
 import installedStarshipZsh from "/src/assets/content/docs/shell/themes/installed_starship_zsh.png";
-import settingThemePowershell from "/src/assets/content/docs/shell/themes/setting_theme_powershell.png";
+import settingThemePowerShell from "/src/assets/content/docs/shell/themes/setting_theme_powershell.png";
 import exampleZsh from "/src/assets/content/docs/shell/themes/example_zsh.png";
-import examplePowershell from "/src/assets/content/docs/shell/themes/example_powershell.png";
+import examplePowerShell from "/src/assets/content/docs/shell/themes/example_powershell.png";
 
 Uma das partes mais legais de customizar o shell é definir um tema para o prompt!
 Existem diversos frameworks para isso.
@@ -146,7 +147,7 @@ winget install --id Starship.Starship
   caption="Instalando o Starship no PowerShell."
   images={[
     {
-      src: starshipPowershell,
+      src: starshipPowerShell,
       alt: "Terminal com o PowerShell, em que se executa o comando de instalação do Starship.",
     },
   ]}
@@ -175,7 +176,7 @@ code $PROFILE
   caption="Abrindo o arquivo de configuração do PowerShell com o Visual Studio Code."
   images={[
     {
-      src: editPowershell,
+      src: editPowerShell,
       alt: "Terminal com o PowerShell, em que se executa o comando para abrir o arquivo de configuração do PowerShell no Visual Studio Code.",
     },
   ]}
@@ -199,7 +200,7 @@ Enable-TransientPrompt
   caption="Arquivo de configuração do PowerShell com o comando para executar o Starship."
   images={[
     {
-      src: editedPowershell,
+      src: editedPowerShell,
       alt: "Arquivo de configuração do PowerShell aberto no Visual Studio Code, com as linhas de configuração do Starship adicionadas.",
     },
   ]}
@@ -248,7 +249,7 @@ Para verificar se o Starship foi instalado corretamente, execute o comando `star
   caption="Verificando se o Starship foi instalado no PowerShell."
   images={[
     {
-      src: installedStarshipPowershell,
+      src: installedStarshipPowerShell,
       alt: "Terminal com o PowerShell, em que se verifica se o Starship foi instalado corretamente.",
     },
   ]}
@@ -385,7 +386,7 @@ starship.exe preset gruvbox-rainbow -o $ENV:STARSHIP_CONFIG
   caption="Definindo o tema Gruvbox Rainbow no PowerShell."
   images={[
     {
-      src: settingThemePowershell,
+      src: settingThemePowerShell,
       alt: "Terminal com o PowerShell, em que se executa o comando para definir o tema Gruvbox Rainbow no Starship. Imediatamente, o prompt é atualizado com o novo tema.",
     },
   ]}
@@ -407,7 +408,7 @@ Isso significa que apenas a linha atual terá todos os detalhes do prompt, e as 
       alt: "Prompt do Starship no Zsh, com muitos detalhes em todas as linhas do histórico.",
     },
     {
-      src: examplePowershell,
+      src: examplePowerShell,
       alt: "Prompt do Starship no PowerShell, com menos detalhes, pois o prompt transitório foi ativado.",
     },
   ]}

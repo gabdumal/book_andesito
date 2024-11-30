@@ -1,12 +1,13 @@
 ---
 title: PowerShell
+author: Gabriel Malosto
 ---
 
 import Figure from "/src/components/Figure.astro";
 
-import installing_7 from "/src/assets/content/docs/shell/powershell/installing_7.png";
-import options_list from "/src/assets/content/docs/shell/powershell/options_list.png";
-import default_profile from "/src/assets/content/docs/shell/powershell/default_profile.png";
+import installing7 from "/src/assets/content/docs/shell/powershell/installing_7.png";
+import optionsList from "/src/assets/content/docs/shell/powershell/options_list.png";
+import defaultProfile from "/src/assets/content/docs/shell/powershell/default_profile.png";
 
 O **PowerShell** é uma ferramenta de linha de comando desenvolvida pela Microsoft, que é utilizada para automatizar tarefas e gerenciar configurações do sistema operacional.
 
@@ -31,7 +32,7 @@ winget install --id Microsoft.PowerShell --source winget
   caption="Processo de instalação do PowerShell 7 pelo WinGet."
   images={[
     {
-      src: installing_7,
+      src: installing7,
       alt: "Terminal do PowerShell, em que se executa o comando de instalação supracitado.",
     },
   ]}
@@ -45,7 +46,7 @@ Você verá que há uma nova entrada ao fim da lista, chamada simplesmente **Pow
   caption="Lista de opções de shell para o Windows Terminal."
   images={[
     {
-      src: options_list,
+      src: optionsList,
       alt: `Menu de perfis do Windows Terminal, em que estão disponíveis os seguintes: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell", "PowerShell".`,
     },
   ]}
@@ -59,7 +60,7 @@ Então, na seção de **Inicialização**, defina a opção **Perfil padrão** c
   caption="PowerShell 7 definido como o perfil padrão de inicialização do Windows Terminal."
   images={[
     {
-      src: default_profile,
+      src: defaultProfile,
       alt: `Parte da janela de configurações do Windows Terminal aberta na seção "Inicialização", em que se vê a opção "Perfil padrão" configurada com o "PowerShell".`,
     },
   ]}

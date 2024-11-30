@@ -1,24 +1,25 @@
 ---
 title: Windows Terminal
+author: Gabriel Malosto
 ---
 
 import Figure from "/src/components/Figure.astro";
 import Keyboard from "/src/components/Keyboard.astro";
 
-import open_folder from "/src/assets/content/docs/terminal/windows/open_folder.png";
-import select_terminal from "/src/assets/content/docs/terminal/windows/select_terminal.png";
+import openFolder from "/src/assets/content/docs/terminal/windows/open_folder.png";
+import selectTerminal from "/src/assets/content/docs/terminal/windows/select_terminal.png";
 import confirm from "/src/assets/content/docs/terminal/windows/confirm.png";
-import edit_shortcut from "/src/assets/content/docs/terminal/windows/edit_shortcut.png";
-import set_keybinding from "/src/assets/content/docs/terminal/windows/set_keybinding.png";
-import open_configurations from "/src/assets/content/docs/terminal/windows/open_configurations.png";
-import initial_configs from "/src/assets/content/docs/terminal/windows/initial_configs.png";
-import light_theme from "/src/assets/content/docs/terminal/windows/light_theme.png";
-import default_profile from "/src/assets/content/docs/terminal/windows/default_profile.png";
-import json_file from "/src/assets/content/docs/terminal/windows/json_file.png";
+import editShortcut from "/src/assets/content/docs/terminal/windows/edit_shortcut.png";
+import setKeybinding from "/src/assets/content/docs/terminal/windows/set_keybinding.png";
+import openConfigurations from "/src/assets/content/docs/terminal/windows/open_configurations.png";
+import initialConfigs from "/src/assets/content/docs/terminal/windows/initial_configs.png";
+import lightTheme from "/src/assets/content/docs/terminal/windows/light_theme.png";
+import defaultProfile from "/src/assets/content/docs/terminal/windows/default_profile.png";
+import jsonFile from "/src/assets/content/docs/terminal/windows/json_file.png";
 import schemes from "/src/assets/content/docs/terminal/windows/schemes.png";
 import themes from "/src/assets/content/docs/terminal/windows/themes.png";
-import schemes_list from "/src/assets/content/docs/terminal/windows/schemes_list.png";
-import themes_list from "/src/assets/content/docs/terminal/windows/themes_list.png";
+import schemesList from "/src/assets/content/docs/terminal/windows/schemes_list.png";
+import themesList from "/src/assets/content/docs/terminal/windows/themes_list.png";
 
 Este subcapítulo aborda o **Windows Terminal**, um emulador de terminal moderno para usuários do Windows.
 
@@ -34,7 +35,7 @@ Abra o `Executar` com <Keyboard keys={["Win", "R"]} />, digite `shell:AppsFolder
   caption="Abrindo a pasta de aplicativos pelo Executar."
   images={[
     {
-      src: open_folder,
+      src: openFolder,
       alt: "Janela do programa Executar, em que se digita o texto supracitado.",
     },
   ]}
@@ -46,7 +47,7 @@ Encontre o ícone do Windows Terminal, clique com o botão direito do mouse e se
   caption="Criando um atalho para o Windows Terminal."
   images={[
     {
-      src: select_terminal,
+      src: selectTerminal,
       alt: "Janela do Explorador de Arquivos aberto da pasta de aplicações do sistema. A entrada do Windows Terminal foi selecionada, e clicada com o botão direito do mouse. Aparece ao seu lado um menu de opções.",
     },
   ]}
@@ -70,7 +71,7 @@ Agora, clique com o botão direito do mouse no atalho criado na área de trabalh
   caption="Abrindo as propriedades do atalho do Windows Terminal."
   images={[
     {
-      src: edit_shortcut,
+      src: editShortcut,
       alt: "Menu de opções do atalho do Windows Terminal.",
     },
   ]}
@@ -82,7 +83,7 @@ Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de te
   caption="Definindo a combinação de teclas para abrir o Windows Terminal."
   images={[
     {
-      src: set_keybinding,
+      src: setKeybinding,
       alt: `Janela de propriedades do atalho do Windows Terminal, com a caixa de texto "Tecla de atalho" selecionada. Dentro dela foram pressionadas as teclas "Ctrl + Alt + T".`,
     },
   ]}
@@ -98,7 +99,7 @@ Para acessar as configurações, clique no ícone de seta para baixo no canto su
   caption="Menu de abertura das configurações do Windows Terminal."
   images={[
     {
-      src: open_configurations,
+      src: openConfigurations,
       alt: "Janela do Windows Terminal, em que foi selecionado o botão de abrir o menu de contexto para abrir um novo perfil ou as configurações.",
     },
   ]}
@@ -110,7 +111,7 @@ As configurações são divididas em seções, que permitem configurar o tema, a
   caption="Tela inicial das configurações do Windows Terminal."
   images={[
     {
-      src: initial_configs,
+      src: initialConfigs,
       alt: `Janela de configurações do Windows Terminal, em que está aberta a primeira tela, referente a "Inicialização".`,
     },
   ]}
@@ -123,7 +124,7 @@ Então, posso selecionar a definição `Tema do Aplicativo` como `Claro`.
   caption="Definição do tema claro no Windows Terminal."
   images={[
     {
-      src: light_theme,
+      src: lightTheme,
       alt: "Janela de configurações do Windows Terminal, em que está aberta a tela de aparência, com a opção de tema claro selecionada.",
     },
   ]}
@@ -141,7 +142,7 @@ Eu defini o tema como `One Half Light` e o tamanho da fonte como 16.
   caption="Definições do perfil padrão."
   images={[
     {
-      src: default_profile,
+      src: defaultProfile,
       alt: `Janela de configurações do Windows Terminal, em que está aberta a tela dos padrões do terminal, na seção de "Aparência".`,
     },
   ]}
@@ -153,7 +154,7 @@ Toda essa interface apenas edita um arquivo de configuração, que pode ser aces
   caption="Arquivo JSON de definições do Windows Terminal."
   images={[
     {
-      src: json_file,
+      src: jsonFile,
       alt: "Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code.",
     },
   ]}
@@ -202,11 +203,11 @@ Agora, você verá que o esquema de cores `Catppuccin Latte` está disponível n
   horizontal
   images={[
     {
-      src: schemes_list,
+      src: schemesList,
       alt: "Lista de esquemas de cores disponíveis no Windows Terminal.",
     },
     {
-      src: themes_list,
+      src: themesList,
       alt: "Lista de temas disponíveis no Windows Terminal.",
     },
   ]}

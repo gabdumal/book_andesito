@@ -1,6 +1,13 @@
 ---
 title: Depurador
+author: Gabriel Malosto
 ---
+
+import Figure from "/src/components/Figure.astro";
+
+import llvmDownloadOptions from "/src/assets/content/docs/c_cpp/debugger/llvm_download_options.png";
+import installingLlvm from "/src/assets/content/docs/c_cpp/debugger/installing_llvm.png";
+import testingInstallation from "/src/assets/content/docs/c_cpp/debugger/testing_installation.png";
 
 O depurador é uma ferramenta que permite que você execute um programa passo a passo, inspecionando variáveis e observando o fluxo de execução.
 Isso é útil para encontrar bugs e entender o comportamento do programa.
@@ -48,23 +55,38 @@ Assim, eu lhes garanto que o processo de instalação funcionará com o Python 3
 
 Acesse a página de [**downloads do LLVM**](https://github.com/llvm/llvm-project/releases/tag/llvmorg-19.1.2) na versão 19.1.2 e baixe o arquivo `LLVM-19.1.2-win64.exe`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/c_cpp/debugger/llvm_download_options.png" />
-  <figcaption>Opções de download do LLVM.</figcaption>
-</figure>
+<Figure
+  caption="Opções de download do LLVM."
+  images={[
+    {
+      src: llvmDownloadOptions,
+      alt: `Página de downloads do website do LLVM. A versão "LLVM-19.1.2-win64.exe" está destacada.`,
+    },
+  ]}
+/>
 
 Então, execute o instalador e siga as instruções.
 Na página **Install Options**, selecione a opção **Add LLVM to the system PATH for all users**.
 Então prossiga com a instalação.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/c_cpp/debugger/installing_llvm.png" />
-  <figcaption>Instalador do LLVM na página "Install Options".</figcaption>
-</figure>
+<Figure
+  caption={`Instalador do LLVM na página "Install Options".`}
+  images={[
+    {
+      src: installingLlvm,
+      alt: `Instalador do LLVM na página "Install Options". São presentadas três opções, sendo selecionada a segunda: "Add LLVM to the system PATH for all users".`,
+    },
+  ]}
+/>
 
 Para verificar se a instalação foi bem-sucedida, abra uma nova instância do PowerShell e execute o comando `lldb --version`.
 
-<figure>
-  <img src="/book_andesito/src/assets/content/docs/c_cpp/debugger/testing_installation.png" />
-  <figcaption>Verificando se a instalação do LLVM foi bem-sucedida.</figcaption>
-</figure>
+<Figure
+  caption="Verificando se a instalação do LLVM foi bem-sucedida."
+  images={[
+    {
+      src: testingInstallation,
+      alt: `Terminal com o PowerShell, em que se executa o comando supracitado.`,
+    },
+  ]}
+/>

@@ -1,5 +1,6 @@
 ---
 title: Visual Studio Code
+author: Gabriel Malosto
 ---
 
 import { Code } from "astro:components";
@@ -7,15 +8,14 @@ import { Code } from "astro:components";
 import Figure from "/src/components/Figure.astro";
 import Link from "/src/components/Link";
 
-import download_options from "/src/assets/content/docs/vscode/download_options.png";
-import other_options from "/src/assets/content/docs/vscode/other_options.png";
-import running_code_in_terminal from "/src/assets/content/docs/vscode/running_code_in_terminal.png";
-import remote_window from "/src/assets/content/docs/vscode/remote_window.png";
-import connections_menu from "/src/assets/content/docs/vscode/connections_menu.png";
+import downloadOptions from "/src/assets/content/docs/vscode/download_options.png";
+import otherOptions from "/src/assets/content/docs/vscode/other_options.png";
+import runningCodeInTerminal from "/src/assets/content/docs/vscode/running_code_in_terminal.png";
+import remoteWindow from "/src/assets/content/docs/vscode/remote_window.png";
+import connectionsMenu from "/src/assets/content/docs/vscode/connections_menu.png";
 import extensions from "/src/assets/content/docs/vscode/extensions.png";
-import applying_extension_to_all_profiles from "/src/assets/content/docs/vscode/applying_extension_to_all_profiles.png";
-import opening_user_settings from "/src/assets/content/docs/vscode/opening_user_settings.png";
-import { url } from "../../../util";
+import applyingExtensionToAllProfiles from "/src/assets/content/docs/vscode/applying_extension_to_all_profiles.png";
+import openingUserSettings from "/src/assets/content/docs/vscode/opening_user_settings.png";
 
 A fim de escrever código, você precisará de um editor de texto apropriado.
 É interessante que ele seja voltado para o desenvolvimento de software, com funcionalidades como _syntax highlighting_, _code completion_, _debugging_, etc.
@@ -38,7 +38,7 @@ Mesmo que você esteja usando o **WSL**, é necessário instalar o Visual Studio
   caption="Opções de download do Visual Studio Code, em que se seleciona o instalador do Windows."
   images={[
     {
-      src: download_options,
+      src: downloadOptions,
       alt: "Página de downloads do website do Visual Studio Code.",
     },
   ]}
@@ -51,7 +51,7 @@ Quando chegar ao passo `Selecionar tarefas adicionais`, marque todas as opções
   caption="Seleção de tarefas adicionais na instalação do Visual Studio Code."
   images={[
     {
-      src: other_options,
+      src: otherOptions,
       alt: "Instalação do Visual Studio Code, em que se selecionam todas as opções na seção Outros.",
     },
   ]}
@@ -105,7 +105,7 @@ Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos d
   caption="Executando o Visual Studio Code pelo Windows Terminal."
   images={[
     {
-      src: running_code_in_terminal,
+      src: runningCodeInTerminal,
       alt: "Janela do Windows Terminal, em que se executa o comando de abertura do Visual Studio Code. Ao lado, a janela do Visual Studio Code é aberta.",
     },
   ]}
@@ -119,7 +119,7 @@ Ou então, pode abrir o VSCode normalmente, e selecionar o botão azul no canto 
   caption="Botão para abrir uma conexão remota pelo Visual Studio Code."
   images={[
     {
-      src: remote_window,
+      src: remoteWindow,
       alt: "Porção inferior esquerda do Visual Studio Code, em que há um botão azul, cujo texto auxiliar indica a ação de abrir uma janela remota.",
     },
   ]}
@@ -131,7 +131,7 @@ Então, selecione a opção `WSL` no menu que aparecer.
   caption="Opção WSL selecionada no menu de conexões remotas."
   images={[
     {
-      src: connections_menu,
+      src: connectionsMenu,
       alt: "Menu de conexões remotas do Visual Studio Code, em que se seleciona a opção 'WSL: Ubuntu'.",
     },
   ]}
@@ -184,7 +184,7 @@ Para cada uma dessas extensões, clique com o botão direito sobre e selecione *
   caption="Aplicando a primeira extensão a todos os perfis do Visual Studio Code."
   images={[
     {
-      src: applying_extension_to_all_profiles,
+      src: applyingExtensionToAllProfiles,
       alt: `Janela de extensões do Visual Studio Code, em que se aplica a extensão "Git Graph" a todos os perfis do editor.`,
     },
   ]}
@@ -203,7 +203,7 @@ Para isso, abra a paleta de comandos com `Ctrl+Shift+P` e digite `Preferences: O
   caption="Abrindo o arquivo de configurações do Visual Studio Code pela paleta de comandos."
   images={[
     {
-      src: opening_user_settings,
+      src: openingUserSettings,
       alt: "Janela de paleta de comandos do Visual Studio Code, em que se digita 'Preferences: Open User Settings (JSON)'. A primeira opção é selecionada.",
     },
   ]}
@@ -211,7 +211,7 @@ Para isso, abra a paleta de comandos com `Ctrl+Shift+P` e digite `Preferences: O
 
 Eu preparei um arquivo de configurações para o Visual Studio Code que inclui algumas definições úteis.
 
-Copie o conteúdo do arquivo <Link href={url("public/content/docs/vscode/settings.json")} title="settings.json" /> disponibilizado neste livro.
+Copie o conteúdo do arquivo <Link href={("content/docs/vscode/settings.json")} title="settings.json" /> disponibilizado neste livro.
 Então, abra o arquivo `settings.json` do seu Visual Studio Code e cole nele o conteúdo copiado.
 
 Sinta-se livre para alterar as configurações conforme sua preferência.

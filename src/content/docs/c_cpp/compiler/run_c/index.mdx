@@ -3,8 +3,116 @@ title: Compilando um programa em C
 author: Gabriel Malosto
 ---
 
+import { Aside } from "@astrojs/starlight/components";
+
+import Figure from "/src/components/Figure.astro";
+
+import compileHello from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_hello.png";
+import runHello from "/src/assets/content/docs/c_cpp/compiler/run_c/run_hello.png";
+
 Abar a pasta `dev` que criamos anteriormente para guardar nossos projetos.
 
 ```bash
 cd ~/dev
 ```
+
+Dentro dela, crie um diretório chamado `c_cpp_projects`.
+
+```bash
+mkdir c_cpp_projects
+cd c_cpp_projects
+```
+
+Navegue para dentro dele e crie um outro diretório chamado `hello_world.
+Também entre nele.
+
+```bash
+mkdir hello_world
+cd hello_world
+```
+
+Crie um arquivo chamado `hello_world.c`.
+
+```bash
+touch hello_world.c
+```
+
+Abra o Visual Studio Code neste diretório.
+
+```bash
+code .
+```
+
+<Aside type="caution">
+  Caso esteja usando o WSl, certifique-se que a extensão [Remote -
+  WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+  esteja instalada no Visual Studio Code. Então, garanta que a janela aberta do
+  VSCode esteja conectada ao WSL.
+</Aside>
+
+Copie o seguinte código para o arquivo `hello_world.c`.
+Lembre-se de salvar o arquivo.
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, world!\nThis is my first code in C.\n");
+    return 0;
+}
+```
+
+Vamos utilizar o **Clang** para compilar o código.
+O comando de compilação do Clang tem a seguinte estrutura:
+
+```bash
+clang [opções] <arquivo>.c -include -o <executavel>
+```
+
+- [opções] são as opções de compilação, como:
+
+  - -c para compilar sem linkar
+  - -g para incluir informações de debug, etc.
+  - -o \<arquivo\> para especificar o arquivo de saída.
+
+- \<arquivo\>.c é o nome do arquivo que será compilado.
+
+- \<executavel\> é o nome do arquivo executável de saída.
+
+Assim, com o terminal aberto na pasta `~/dev/c_cpp_projects/hello_world`, execute:
+
+{/* TODO: Verificar como fazer no Windows */}
+
+```bash
+clang hello_world.c -o hello_world
+```
+
+Se tudo ocorrer bem, um arquivo executável será criado.
+Para Linux e WSL, ele se chamará `hello_world`.
+Já para o Windows, ele será `hello_world.exe`.
+
+<Figure
+  caption={`Compilação do arquivo "hello_world.c".`}
+  images={[
+    {
+      src: compileHello,
+      alt: `Terminal exibindo três comandos executados. O primeiro é "ls" e mostra o arquivo "hello_world.c" dentro da pasta "hello_world". O segundo é o de compilação, que não retorna nenhum texto. O terceiro é "ls" novamente, que agora mostra os arquivos "hello_world.c" e "hello_world".`,
+    },
+  ]}
+/>
+
+Para executar o programa, basta chamar o arquivo executável.
+
+```bash
+./hello_world
+```
+
+<Figure
+  caption={`Execução do programa "hello_world".`}
+  images={[
+    {
+      src: runHello,
+      alt: `Terminal exibindo o comando "./hello_world" e a saída do programa, que é "Hello, world! This is my first code in C.".`,
+    },
+  ]}
+/>

@@ -84,6 +84,10 @@ export default defineConfig({
                   label: "Instalação",
                   slug: "c_cpp/compiler/install",
                 },
+                {
+                  label: "Programas em C",
+                  slug: "c_cpp/compiler/run_c",
+                },
               ],
               label: "Compilador",
             },

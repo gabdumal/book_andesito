@@ -7,16 +7,16 @@ import { Aside } from "@astrojs/starlight/components";
 
 import Figure from "/src/components/Figure.astro";
 
-import downloadOptions from "/src/assets/content/docs/c_cpp/compiler/download_options.png";
-import vsInstaller from "/src/assets/content/docs/c_cpp/compiler/vs_installer.png";
-import installingMsvc from "/src/assets/content/docs/c_cpp/compiler/installing_msvc.png";
-import optionsList from "/src/assets/content/docs/c_cpp/compiler/options_list.png";
-import testingCl from "/src/assets/content/docs/c_cpp/compiler/testing_cl.png";
-import initialDirectory from "/src/assets/content/docs/c_cpp/compiler/initial_directory.png";
-import initPsDev from "/src/assets/content/docs/c_cpp/compiler/init_ps_dev.png";
-import defaultProfile from "/src/assets/content/docs/c_cpp/compiler/default_profile.png";
-import newTerminal from "/src/assets/content/docs/c_cpp/compiler/new_terminal.png";
-import openingCode from "/src/assets/content/docs/c_cpp/compiler/opening_code.png";
+import downloadOptions from "/src/assets/content/docs/c_cpp/compiler/install/download_options.png";
+import vsInstaller from "/src/assets/content/docs/c_cpp/compiler/install/vs_installer.png";
+import installingMsvc from "/src/assets/content/docs/c_cpp/compiler/install/installing_msvc.png";
+import optionsList from "/src/assets/content/docs/c_cpp/compiler/install/options_list.png";
+import testingCl from "/src/assets/content/docs/c_cpp/compiler/install/testing_cl.png";
+import initialDirectory from "/src/assets/content/docs/c_cpp/compiler/install/initial_directory.png";
+import initPsDev from "/src/assets/content/docs/c_cpp/compiler/install/init_ps_dev.png";
+import defaultProfile from "/src/assets/content/docs/c_cpp/compiler/install/default_profile.png";
+import newTerminal from "/src/assets/content/docs/c_cpp/compiler/install/new_terminal.png";
+import openingCode from "/src/assets/content/docs/c_cpp/compiler/install/opening_code.png";
 
 Neste capítulo, vamos instalar as ferramentas de compilação para C e C++ para o Linux, em que se inclui o WSL, e no Windows.
 
@@ -39,11 +39,11 @@ sudo apt update && sudo apt upgrade
 sudo apt install wget
 sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 sudo apt --fix-broken install
-sudo apt install llvm clang ninja-build
+sudo apt install llvm clang clang-format clang-tools clang-tidy clangd ninja-build
 ```
 
 Você pode verificar a instalação com o comando `clang --version`.
-O resultado deve ser como o seguinte:
+O resultado deve ser como o seguinte, podendo variar de acordo com a versão instalada:
 
 ```bash
 Ubuntu clang version 18.1.8 (++20240731025043+3b5b5c1ec4a3-1~exp1~20240731145144.92)
@@ -60,6 +60,8 @@ O resultado deve ser `1.11.1` ou superior.
 {/* TODO */}
 
 ## Windows
+
+{/* TODO: Install clang tools and clangd and ninja */}
 
 O **Microsoft Visual Studio** (MSVC) é uma IDE popular para desenvolvimento em C e C++ no Windows.
 Muitas das suas funcionalidades são pagas, apesar de existir uma versão gratuita chamada **Community**.

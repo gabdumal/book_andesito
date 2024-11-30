@@ -16,9 +16,17 @@ Uma vez que boa parte do gerenciamento é feito em tempo de compilação, os pro
 
 A forma recomendada de instalar o Rust é utilizando o [**rustup**](https://rust-lang.github.io/rustup/installation/index.html), um gerenciador de versões da linguagem.
 
-### Ubuntu e Fedora
+### Linux
 
-### WSL
+{/* TODO */}
+ 
+#### Ubuntu e WSL
+
+```bash
+sudo apt update && sudo apt upgrade
+sudo apt install curl pkg-config libssl-dev
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
 ### Windows
 
@@ -52,3 +60,7 @@ O resultado deve ser algo como `rustc 1.82.0 (f6e511eec 2024-10-15)` ou mais rec
 
 Então, verifique se o **cargo**, o gerenciador de pacotes do Rust, também foi instalado corretamente com o comando `cargo --version`.
 O resultado deve ser algo como `cargo 1.82.0 (8f40fc59f 2024-08-21)` ou mais recente.
+
+```
+
+```

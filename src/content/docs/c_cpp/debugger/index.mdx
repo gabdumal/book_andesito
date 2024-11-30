@@ -23,6 +23,16 @@ Já para o Windows, cada dependência deve ser manualmente instalada previamente
 
 {/* TODO */}
 
+### Ubuntu
+
+```bash
+sudo apt update && sudo apt upgrade
+sudo apt install wget
+sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+sudo apt --fix-broken install
+sudo apt install llvm lldb
+```
+
 ## Windows
 
 Para instalar o **LLDB** no Windows, é necessário ter instalado o **Python 3.10**.

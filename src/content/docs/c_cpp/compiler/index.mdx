@@ -2,6 +2,8 @@
 title: Compilador
 ---
 
+import { Aside } from "@astrojs/starlight/components";
+
 A principal ferramenta para desenvolver em C e C++ é o compilador.
 A função dele é transformar o código fonte escrito em um arquivo executável que pode ser rodado pelo sistema operacional.
 
@@ -25,7 +27,23 @@ Vamos tratar separadamente a instalação no **Linux** (e **WSL**) e no **Window
 
 {/* TODO */}
 
+### Ubuntu
+
+```bash
+sudo apt update && sudo apt upgrade
+sudo apt install wget
+sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+sudo apt --fix-broken install
+sudo apt install llvm clang ninja-build
+```
+
 ## Windows
+
+<Aside type="danger">
+  Instalar ferramentas de compilação e depuração de C e C++ para o Windows é mais complicado, instável e carece de boa documentação.
+  Algumas funcionalidades precisam de muitas correções obscuras para funcionarem ou nem sequer é possível fazê-las funcionar.
+  Recomendamos que você instale alguma distribuição Linux ou o [WSL](../wsl).
+</Aside>
 
 O **Microsoft Visual Studio** (MSVC) é uma IDE popular para desenvolvimento em C e C++ no Windows.
 Muitas das suas funcionalidades são pagas, apesar de existir uma versão gratuita chamada **Community**.

@@ -5,8 +5,9 @@ author: Gabriel Malosto
 
 import Figure from "/src/components/Figure.astro";
 
-import debugMenu from "/src/assets/content/docs/c_cpp/debugger/run_c/debug_menu.png";
-import selectDebugger from "/src/assets/content/docs/c_cpp/debugger/run_c/select_debugger.png";
+import selectLauncher from "/src/assets/content/docs/c_cpp/debugger/run_c/select_launcher.png";
+import launchOutput from "/src/assets/content/docs/c_cpp/debugger/run_c/launch_output.png";
+import breakpoint from "/src/assets/content/docs/c_cpp/debugger/run_c/breakpoint.png";
 
 Vamos utilizar a interface gráfica do Visual Studio Code para depurar programas em C.
 
@@ -17,28 +18,60 @@ cd ~/dev/c_cpp_projects/linked_nodes
 code .
 ```
 
+Para executarmos um programa, devemos configurar mais um arquivo chamado `launch.json`.
+
+Se você tiver seguido os passos recomendados pelo capítulo [Configurando o VSCode](../compiler/vscode), ele estará definido no [`settings.json`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/settings.json) do perfil `C/C++`.
+
 Acesse o menu de depuração clicando no ícone de **bug** na barra lateral do Visual Studio Code.
 
+No topo do menu de depuração há um seletor para escolher a configuração de depuração.
+Clique nele e selecione a opção `LLDB: build and launch C project (all files in root)` para o seu sistema operacional.
+
 <Figure
-  caption="Menu de depuração do Visual Studio Code."
+  caption="Selecionando a configuração de depuração no Visual Studio Code."
   images={[
     {
-      src: debugMenu,
-      alt: `Menu de depuração do Visual Studio Code, em que se vê um botão com o texto "Run and Debug".`,
+      src: selectLauncher,
+      alt: `Menu de seleção da configuração de depuração do Visual Studio Code, em que se vê a opção "LLDB: build and launch C project (all files in root) (Linux)" selecionada.`,
     },
   ]}
 />
 
-Abra o arquivo `main.c` no editor.
-Clique no botão **Run and Debug** e selecione a opção **C++ (GDB/LLDB)**.
+Clique no botão de play verde ao lado do seletor.
+
+O Visual Studio Code irá compilar o projeto a partir da tarefa de compilação que configuramos anteriormente e abrirá uma nova janela de terminal com a saída desse processo.
+
+Em seguida, ele executará o programa, o que aparecerá na aba `Debug console`, ao lado daquela do terminal, no canto inferior da tela.
 
 <Figure
-  caption="Seleção do depurador C++."
+  caption="Saída da compilação e execução do programa no Visual Studio Code."
   images={[
     {
-      src: selectDebugger,
-      alt: `Janela de seleção de depurador do Visual Studio Code, em que se escolhe a opção "C++ (GDB/LLDB)".`,
+      src: launchOutput,
+      alt: "Visual Studio Code com a aba de console de depuração aberta. Nela, está a saída da execução do programa: 1 2 3 4 5 6 7 8 9 10.",
     },
   ]}
 />
+
+Coloque um breakpoint na linha 20 do arquivo `main.c`, em que há o seguinte trecho de código:
+
+```c
+printf("Traversing the linked list\n");
 ```
+
+Para fazer isso, basta clicar no espaço em branco logo à esquerda do número da linha.
+
+Então, clique novamente no botão de play verde para executar o programa.
+
+<Figure
+  caption="Usando um breakpoint no Visual Studio Code."
+  images={[
+    {
+      src: breakpoint,
+      alt: `Visual Studio Code depurando o arquivo "main.c", tendo pausado no breakpoint na linha 20.`,
+    },
+  ]}
+/>
+
+O programa interromperá a execução nessa linha, e exibirá todas as variáveis disponíveis naquele momento.
+Você pode então investigar o estado do programa e seguir a execução linha por linha.

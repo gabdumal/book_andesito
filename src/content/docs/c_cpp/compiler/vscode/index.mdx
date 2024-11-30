@@ -406,6 +406,8 @@ Você verá que o Visual Studio Code já reconhece o projeto e identifica as bib
 Vamos compilar o projeto pelo terminal integrado do Visual Studio Code.
 Abra o terminal integrado com <Keyboard keys={["Ctrl", "`"]} /> e execute o comando abaixo.
 
+{/* TODO: Check for Windows */}
+
 ```bash
 clang main.c node.c -include node.h -o linked_nodes
 ```
@@ -426,6 +428,8 @@ Agora, em vez de rodar o comando no terminal, vamos utilizar a interface gráfic
 
 Crie uma pasta chamada `.vscode` na raiz do projeto.
 Ela é responsável por guardar configurações específicas do Visual Studio Code para o projeto.
+
+{/* TODO: Check for Windows */}
 
 Dentro dela, crie um arquivo chamado `tasks.json` e copie para ele o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json) do repositório do livro.
 

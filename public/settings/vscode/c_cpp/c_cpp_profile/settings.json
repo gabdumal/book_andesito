@@ -29,7 +29,9 @@
     "prettier.tabWidth": 2
   },
   "[snippets]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.tabSize": 2,
+    "editor.tabWidth": 2
   },
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
@@ -39,5 +41,30 @@
   "files.trimFinalNewlines": true,
   "git.autofetch": true,
   "git.openRepositoryInParentFolders": "always",
+  "launch": {
+    "configurations": [
+      {
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "name": "LLDB: build and launch C project (all files in root) (Linux)",
+        "preLaunchTask": "Clang: build C project (all files in root) (Linux)",
+        "program": "${workspaceFolder}/${workspaceFolderBasename}",
+        "request": "launch",
+        "terminal": "console",
+        "type": "lldb"
+      },
+      {
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "name": "LLDB: build and launch C++ project (all files in root) (Linux)",
+        "preLaunchTask": "Clang: build C++ project (all files in root) (Linux)",
+        "program": "${workspaceFolder}/${workspaceFolderBasename}",
+        "request": "launch",
+        "terminal": "console",
+        "type": "lldb"
+      }
+    ],
+    "version": "0.2.0"
+  },
   "security.allowedUNCHosts": ["wsl$", "wsl.localhost"]
 }

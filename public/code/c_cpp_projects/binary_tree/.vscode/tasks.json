@@ -15,11 +15,11 @@
         "${workspaceFolder}/${workspaceFolderBasename}"
       ],
       "command": "/usr/bin/clang++",
-      "detail": "Tarefa de compilação de um projeto em C++. Compila todos os arquivos C++ na raiz do projeto em um único executável.",
+      "detail": "Tarefa de compilação de um projeto em C++. Compila todos os arquivos C++ ligados do projeto em um único executável.",
       "group": {
         "kind": "build"
       },
-      "label": "Clang: build C++ project (all files in root) (Linux, Local)",
+      "label": "Clang: build C++ project (Linux, Local)",
       "options": {
         "cwd": "${workspaceFolder}"
       },

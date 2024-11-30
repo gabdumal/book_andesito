@@ -1,5 +1,5 @@
 ---
-title: Compilando um programa em C
+title: Compilando programas em C
 author: Gabriel Malosto
 ---
 
@@ -8,23 +8,27 @@ import { Aside } from "@astrojs/starlight/components";
 import Figure from "/src/components/Figure.astro";
 
 import compileHello from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_hello.png";
+import compileRunSeparate from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_run_separate.png";
 import runHello from "/src/assets/content/docs/c_cpp/compiler/run_c/run_hello.png";
 
-Abar a pasta `dev` que criamos anteriormente para guardar nossos projetos.
+Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C.
+
+Abra a pasta `dev` que criamos anteriormente para guardar nossos projetos.
 
 ```bash
 cd ~/dev
 ```
 
-Dentro dela, crie um diretório chamado `c_cpp_projects`.
+Dentro dela, crie um diretório chamado `c_cpp_projects` e navegue para dentro dele.
 
 ```bash
 mkdir c_cpp_projects
 cd c_cpp_projects
 ```
 
-Navegue para dentro dele e crie um outro diretório chamado `hello_world.
-Também entre nele.
+## Programa de um arquivo
+
+Crie um outro diretório chamado `hello_world e também navegue para dentro nele.
 
 ```bash
 mkdir hello_world
@@ -71,9 +75,10 @@ clang [opções] <arquivo>.c -include -o <executavel>
 
 - [opções] são as opções de compilação, como:
 
-  - -c para compilar sem linkar
-  - -g para incluir informações de debug, etc.
-  - -o \<arquivo\> para especificar o arquivo de saída.
+  - -c para compilar sem ligar os arquivos;
+  - -g para incluir informações de debug;
+  - -o \<arquivo\> para especificar o arquivo de saída;
+  - entre outras.
 
 - \<arquivo\>.c é o nome do arquivo que será compilado.
 
@@ -113,6 +118,74 @@ Para executar o programa, basta chamar o arquivo executável.
     {
       src: runHello,
       alt: `Terminal exibindo o comando "./hello_world" e a saída do programa, que é "Hello, world! This is my first code in C.".`,
+    },
+  ]}
+/>
+
+## Projeto
+
+Retorne para a pasta `c_cpp_projects`.
+
+```bash
+cd ~/dev/c_cpp_projects
+```
+
+Crie um novo diretório chamado `separate_function` e navegue para dentro dele.
+
+```bash
+mkdir separate_function
+cd separate_function
+```
+
+Crie um arquivo chamado `main.c`.
+Então abra o Visual Studio Code no diretório atual.
+
+```bash
+touch main.c
+code .
+```
+
+Copie o seguinte código para o arquivo `main.c`.
+
+```c
+#include <stdio.h>
+
+int sum(int a, int b);
+
+int main() {
+    int a = 5, b = 7;
+    int result = sum(a, b);
+    printf("The sum of %d and %d is %d.\n", a, b, result);
+    return 0;
+}
+```
+
+Crie um outro arquivo chamado `functions.c` e cole nele o código a seguir.
+
+```c
+int sum(int a, int b) {
+    return a + b;
+}
+```
+
+A função principal `main` chama a função `sum`, que está definida em outro arquivo.
+Então, para fazer a compilação, precisamos passar os dois arquivos para o compilador.
+Internamente, o compilador fará a compilação de cada arquivo separadamente e, em seguida, fará a ligação entre eles.
+
+Para compilar o projeto, execute o comando abaixo no terminal.
+Perceba que você também pode colocar opção -o antes dos arquivos de entrada.
+Ela define o nome do arquivo de saída.
+
+```bash
+clang main.c functions.c -o separate_function
+```
+
+<Figure
+  caption={`Compilação do projeto "separate_function".`}
+  images={[
+    {
+      src: compileRunSeparate,
+      alt: `Terminal exibindo quatro comandos executados. O primeiro é "ls" e mostra os arquivos "functions.c" e "main.c" dentro da pasta "separate_function". O segundo é o de compilação, que não retorna nenhum texto. O terceiro é "ls" novamente, que agora mostra os arquivos "functions.c", "main.c" e "separate_function". O quarto é a execução do programa, que retorna "The sum of 5 and 7 is 12.".`,
     },
   ]}
 />

@@ -1,7 +1,9 @@
 {
   "C_Cpp.default.cStandard": "c23",
   "C_Cpp.default.cppStandard": "c++23",
-  "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/**"
+  ],
   "C_Cpp.default.intelliSenseMode": "clang-x64",
   "C_Cpp.intelliSenseEngine": "disabled",
   "[css]": {
@@ -66,5 +68,8 @@
     ],
     "version": "0.2.0"
   },
-  "security.allowedUNCHosts": ["wsl$", "wsl.localhost"]
+  "security.allowedUNCHosts": [
+    "wsl$",
+    "wsl.localhost"
+  ]
 }

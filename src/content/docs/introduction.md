@@ -16,11 +16,13 @@ desenvolvimento para as seguintes linguagens:
 
 Cobrimos a instalação das ferramentas necessárias nos seguintes sistemas operacionais:
 
-- **Ubuntu** Linux
-- **Fedora** Linux
-- **Windows**
-  - com **WSL** (Ubuntu)
-  - com **MVSC**
+- [**Fedora**](https://fedoraproject.org/) Linux
+- Linux [**Mint**](https://www.linuxmint.com/)
+- **Windows** com [**WSL**](https://learn.microsoft.com/pt-br/windows/wsl/install) ([Fedora](https://docs.fedoraproject.org/en-US/cloud/wsl/) Linux)
+
+:::note
+O Linux **Mint** é uma distribuição baseada no [**Ubuntu**](https://ubuntu.com/), portanto, suas instruções funcionarão de forma similar caso você tenha o **Ubuntu** instalado.
+:::
 
 Nesse processo, recomendamos configurações de diversas ferramentas que visam
 a aprimorar a sua experiência de desenvolvimento.

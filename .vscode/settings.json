@@ -2,7 +2,6 @@
   "cSpell.words": [
     "astrojs",
     "clangd",
-    "msvc",
     "openssh",
     "rustup",
     "tseslint",
@@ -10,5 +9,11 @@
     "zoxide"
   ],
   "editor.tabSize": 2,
-  "cSpell.enableFiletypes": ["mdx"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ]
 }

@@ -1,12 +1,8 @@
+## Development environment
+.direnv/
+
 # build output
 dist/
-## Ignore all
-*
-## Unignore all with extensions
-!*.*
-## Unignore all dirs
-!*/
-
 # generated types
 .astro/
 
@@ -19,12 +15,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+
 # environment variables
+.env
 .env.production
 
 # macOS-specific files
 .DS_Store
-
-# development
-.envrc
-.direnv/

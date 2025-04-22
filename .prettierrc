@@ -1,9 +1,11 @@
 {
-  "arrowParens": "avoid",
-  "plugins": ["prettier-plugin-organize-imports"],
-  "semi": true,
-  "singleAttributePerLine": false,
-  "tabWidth": 2,
-  "trailingComma": "all",
-  "useTabs": false
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
 }

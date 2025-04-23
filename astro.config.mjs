@@ -59,10 +59,10 @@ export default defineConfig({
           ],
           label: "Terminal",
         },
-        // {
-        //   label: "Git",
-        //   slug: "git",
-        // },
+        {
+          label: "Git",
+          slug: "git",
+        },
         // {
         //   items: [
         //     { label: "Introdução", slug: "shell" },

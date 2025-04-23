@@ -3,166 +3,76 @@ title: Git
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import Figure from "@components/Figure.astro";
+import { Steps } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
-import first from "/src/assets/content/docs/git/first.png";
-import editor from "/src/assets/content/docs/git/editor.png";
-import branchName from "/src/assets/content/docs/git/branch_name.png";
-import path from "/src/assets/content/docs/git/path.png";
-import openssh from "/src/assets/content/docs/git/openssh.png";
-import extra from "/src/assets/content/docs/git/extra.png";
-import name from "/src/assets/content/docs/git/name.png";
-import ghCliWsl from "/src/assets/content/docs/git/gh_cli_wsl.png";
-import installGhCliPowerShell from "/src/assets/content/docs/git/install_gh_cli_powershell.png";
-import confirmGhCliPowerShell from "/src/assets/content/docs/git/confirm_gh_cli_powershell.png";
-import ghAuthLogin from "/src/assets/content/docs/git/gh_auth_login.png";
-import githubCode from "/src/assets/content/docs/git/github_code.png";
-import ghAuthComplete from "/src/assets/content/docs/git/gh_auth_complete.png";
-import signIn from "/src/assets/content/docs/git/sign_in.png";
-import authVsCode from "/src/assets/content/docs/git/auth_vscode.png";
+import githubCode from "@assets/content/docs/git/github_code.png";
+import ghAuthComplete from "@assets/content/docs/git/gh_auth_complete.png";
 
 O **Git** é um sistema de controle de versão distribuído.
 Ele é muito utilizado para controle de versão de código fonte e colaboração em projetos de software.
 
 ## Instalação
 
-### Ubuntu e WSL
+### Fedora e WSL
 
-Para instalar o Git no Ubuntu, ou no WSL utilizando o Ubuntu como distro, basta executar o comando:
+Para instalar o Git no Fedora, ou no WSL utilizando o Fedora como distro, basta executar o comando:
 
-```bash
-sudo apt install git
-```
-
-### Fedora
-
-Para instalar o Git no Fedora, execute o comando:
-
-```bash
+```bash title="Fedora ou WSL" frame="terminal"
 sudo dnf install git
 ```
 
-### Windows
+Quando o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} />.
+O processo pode demorar um pouco no WSL, basta aguardar.
 
-O Git é focado em sistemas Unix-like.
-Para usá-lo no Windows, é necessário instalar uma versão específica chamada **Git for Windows** (bem auto-descritivo).
+### Mint
 
-Você pode baixar o instalador pelo [site oficial](https://gitforwindows.org/).
-Execute o instalador e siga as instruções.
+Para instalar o Git no Mint ou outras distros baseadas no Debian, execute o comando:
 
-<Figure
-  caption="Tela inicial do instalador do Git para Windows."
-  images={[
-    {
-      src: first,
-      alt: "Tela inicial do instalador do Git para Windows, em que se descreve a licença de uso.",
-    },
-  ]}
-/>
-
-Quando perguntado sobre o editor de texto padrão, você pode escolher o **Visual Studio Code**, caso o tenha instalado.
-
-<Figure
-  caption="Seleção do editor de texto padrão do Git."
-  images={[
-    {
-      src: editor,
-      alt: `Instalador do Git para Windows, na tela de seleção do editor de texto padrão do Git, em que se escolhe a opção "Visual Studio Code".`,
-    },
-  ]}
-/>
-
-Na sessão **Adjusting the name of the initial branch in new repositories**, você pode escolher o nome da branch padrão.
-Recomendo selecionar a opção **Override the default branch name for new repositories** e digitar `main`, uma vez que este é o padrão adotado pelo _GitHub_.
-
-<Figure
-  caption="Seleção do nome padrão de branch."
-  images={[
-    {
-      src: branchName,
-      alt: `Instalador do Git para Windows, na tela de seleção do nome padrão de branch, em que se escolhe o nome "main".`,
-    },
-  ]}
-/>
-
-Na seção **Adjusting your PATH environment**, selecione **Git from the command line and also from 3rd-party software**.
-
-<Figure
-  caption="Seleção da configuração da PATH."
-  images={[
-    {
-      src: path,
-      alt: "Instalador do Git para Windows, na tela de seleção da configuração da PATH, em que se escolhe a segunda opção, com o texto supracitado.",
-    },
-  ]}
-/>
-
-Na seção **Choosing the SSH executable**, selecione **use external OpenSSH**.
-
-<Figure
-  caption="Seleção do executável do OpenSSH."
-  images={[
-    {
-      src: openssh,
-      alt: "Instalador do Git para Windows, na tela de seleção do executável do OpenSSH, em que se escolhe a segunda opção, com o texto supracitado.",
-    },
-  ]}
-/>
-
-Nas próximas sessões, pode manter as opções padrão, até a **Configuring extra options**, em que recomendo marcar também a caixa **Enable symbolic links**.
-
-<Figure
-  caption="Seleção das configurações extra."
-  images={[
-    {
-      src: extra,
-      alt: "Instalador do Git para Windows, na tela de seleção das configurações extra, em que se selecionam as duas opções supracitadas.",
-    },
-  ]}
-/>
-
-O Git for Windows configura automaticamente a Path para seu executável.
-
-Para testar se a instalação foi bem-sucedida, **feche** e abra o PowerShell novamente, então execute o comando:
-
-```bash
-git --version
+```bash title="Mint" frame="terminal"
+sudo apt install git
 ```
 
-Se tudo estiver correto, você verá a versão do Git instalada, como `git version 2.47.0.windows.1`, por exemplo, ou superior.
+Quando o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} />.
+
+### Confirmação
+
+Para confirmar se o git foi instalado corretamente, digite o seguinte comando no terminal.
+O resultado deve ser algo como a linha marcada com `#`, ou alguma versão superior.
+
+```bash title="Fedora, WSL ou Mint" frame="terminal"
+git --version
+# git version 2.49.0
+```
 
 ## Configuração
 
 Após instalar o Git, é necessário definir algumas configurações globais para melhorar a experiência de uso.
-Esta seção pode ser aplicada para todos os **sistemas operacionais** apresentados: Ubuntu, Fedora e Windows (PowerShell e WSL).
+Esta seção pode ser aplicada para todos os **sistemas operacionais** apresentados: Mint, Fedora e WSL com Fedora.
 
 ### Nome e e-mail
 
-Para definir o nome e e-mail, execute os comandos abaixo, substituindo os valores entre aspas pelo seu nome e seu e-mail.
+Para definir o nome e e-mail, execute os comandos abaixo, substituindo os valores entre aspas pelo seu nome e seu e-mail (**mantenha** as aspas).
 
-```bash
+```bash title="Fedora, WSL ou Mint" frame="terminal"
 git config --global user.name "Seu Nome"
 git config --global user.email "seu@email.com"
 ```
 
-Para verificar se as configurações foram aplicadas corretamente, execute os mesmo comandos, mas sem o conteúdo
+Para verificar se as configurações foram aplicadas corretamente, execute os mesmo comandos, mas sem o conteúdo.
 
-<Figure
-  caption="Definição do nome de autoria dos commits."
-  images={[
-    {
-      src: name,
-      alt: "Terminal do WSL, em que se executam os comandos para definir o nome de autoria dos commits.",
-    },
-  ]}
-/>
+```bash title="Fedora, WSL ou Mint" frame="terminal"
+git config --global user.name "Gabriel Malosto"
+git config user.name
+# Gabriel Malosto
+```
 
 ### Editor de texto
 
 Para definir o editor de texto padrão, execute o comando abaixo, substituindo `code` pelo comando que abre o Visual Studio Code no seu sistema.
 
-```bash
+```bash title="Fedora, WSL ou Mint" frame="terminal"
 git config --global core.editor "code --wait"
 ```
 
@@ -172,104 +82,67 @@ git config --global core.editor "code --wait"
 
 Para definir a branch padrão como `main`, execute o comando abaixo.
 
-```bash
+```bash title="Fedora, WSL ou Mint" frame="terminal"
 git config --global init.defaultBranch main
 ```
 
-## Github
+## Github CLI
 
 O **GitHub** é uma plataforma de hospedagem de código fonte e colaboração em projetos de software.
-
 Para obter commits de repositórios privados e fazer o envio para eles, é necessário configurar a autenticação do seu terminal.
 
-### Instalação do GitHub CLI
-
-Para autenticar o Git com o GitHub, eu recomendo instalar uma ferramenta chamada **GitHub CLI**.
+Para autenticar o Git com o GitHub, eu recomendo instalar uma ferramenta chamada[ **GitHub CLI**](https://cli.github.com/).
 Ele permite fazer login no GitHub e gerenciar repositórios diretamente do terminal.
 
-Você pode conhecer sobre o projeto e aprender os comandos disponíveis pelo [site oficial](https://cli.github.com/).
+### Instalação
 
-A instalação depende do sistema operacional que você está utilizando.
+A instalação depende do sistema operacional que você está utilizando, como explicado no [repositório oficial](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt).
 
-#### Ubuntu e WSL
+#### Fedora ou WSL
 
-Para instalar o GitHub CLI no Ubuntu, ou no WSL utilizando o Ubuntu como distro, vamos seguir a [documentação oficial](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt).
-
-Este comando adiciona o repositório do GitHub CLI ao seu sistema, e então instala o pacote.
-
-```bash
-(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
-&& sudo mkdir -p -m 755 /etc/apt/keyrings \
-&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-&& sudo apt update \
-&& sudo apt install gh -y
-```
-
-<Figure
-  caption="Instalação do GitHub CLI no WSL."
-  images={[
-    {
-      src: ghCliWsl,
-      alt: "Terminal do WSL, em que se executam os comandos para instalar o GitHub CLI.",
-    },
-  ]}
-/>
-
-#### Fedora
-
-Para instalar o GitHub CLI no Fedora, vamos seguir a [documentação oficial](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#fedora-centos-red-hat-enterprise-linux-dnf).
+Para instalar o GitHub CLI no Fedora ou no WSL usando o Fedora como distro, vamos seguir a [documentação](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#fedora-centos-red-hat-enterprise-linux-dnf).
 
 Este comando adiciona o repositório do GitHub CLI ao seu sistema, e então instala o pacote.
 
-```bash
-sudo dnf install 'dnf-command(config-manager)'
-sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+```bash bash title="Fedora ou WSL" frame="terminal"
+sudo dnf install dnf5-plugins
+sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf install gh --repo gh-cli
 ```
 
-#### Windows
+#### Mint
 
-Para instalar o GitHub CLI no Windows, sem o WSL, vamos seguir a [documentação oficial](https://github.com/cli/cli?tab=readme-ov-file#windows).
+Para instalar o GitHub CLI no Mint, vamos seguir a [documentação](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt).
 
-Abra o **PowerShell** e execute o comando abaixo.
+Este comando adiciona o repositório do GitHub CLI em seu sistema, e então instala o pacote.
 
-```bash
-winget install --id GitHub.cli
+```bash title="Mint" frame="terminal"
+(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
+	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+        && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+        && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
 ```
 
-<Figure
-  caption="Instalação do GitHub CLI no PowerShell."
-  images={[
-    {
-      src: installGhCliPowerShell,
-      alt: "Terminal do PowerShell, em que se executa o comando para instalar o GitHub CLI.",
-    },
-  ]}
-/>
+#### Confirmação
 
-Alternativamente, você pode baixar o instalador pelo [site oficial](https://cli.github.com/).
+Você pode verificar se a instalação foi bem-sucedida executando o comando abaixo.
+O resultado deve ser similar.
 
-**Feche** e abra o PowerShell novamente para que as mudanças sejam aplicadas.
-
-Você pode verificar se a instalação foi bem-sucedida executando o comando `gh --version`.
-
-<Figure
-  caption="Confirmação da instalação do GitHub CLI no PowerShell."
-  images={[
-    {
-      src: confirmGhCliPowerShell,
-      alt: "Terminal do PowerShell, em que se executa o comando para confirmar a instalação do GitHub CLI.",
-    },
-  ]}
-/>
+```bash title="Fedora, WSL ou Mint" frame="terminal"
+gh --version
+# gh version 2.71.0 (2025-04-23)
+# https://github.com/cli/cli/releases/tag/v2.71.0
+```
 
 ### Autenticação
 
 Para autenticar o GitHub CLI, execute o seguinte comando.
 
-```bash
+```bash title="Fedora, WSL ou Mint" frame="terminal"
 gh auth login
 ```
 
@@ -277,37 +150,35 @@ O GitHub CLI irá apresentar uma série de escolhas para você decidir como dese
 
 Siga o seguinte passo a passo:
 
+<Steps>
+
 1. Escolha o método de autenticação. Você deve usar o `GitHub.com`.
 1. Escolha o protocolo de autenticação. Caso você já tenha definido uma chave SSH no GitHub e saiba o que está fazendo, você pode escolher `SSH`. Caso contrário, escolha `HTTPS`.
-1. Quando perguntado sobre autenticar com as credenciais do GitHub, digite `Y`.
-1. Quando solicitada a forma de log-in, selecione `Login with a web browser`, e pressione <Keyboard keys={["Enter"]} />.
+1. Quando perguntado sobre autenticar com as credenciais do GitHub, entre <Kbd linux={"y"} />.
+1. Quando solicitada a forma de log-in, selecione `Login with a web browser`, e pressione <Kbd linux={"Enter"} />.
+1. O GitHub CLI irá exibir um **código** de oito caracteres e um **link** para acessar no seu navegador.
+1. **Copie** o link e abra em um navegador em que você já esteja logado no GitHub.
+1. Então, selecione sua conta, **cole** o código de oito caracteres no campo de texto e clique em `Continue`.
 
-O GitHub CLI irá então exibir um código de oito caracteres, e um link para você acessar no seu navegador.
+</Steps>
 
-<Figure
-  caption="Autenticação no terminal do WSL por meio do GitHub CLI."
-  images={[
-    {
-      src: ghAuthLogin,
-      alt: "Terminal do WSL, em que se executa o comando para autenticar no GitHub CLI.",
-    },
-  ]}
-/>
+:::caution
+No meu caso, o **WSL** não conseguiu abrir o navegador, então ele exibiu um pequeno erro, mas basta **copiar** o link e abrir no navegador que funciona!
+:::
 
-Copie o **link** e abra em um navegador em que você já esteja logado no GitHub.
-Então, selecione sua conta, cole o código de oito caracteres no campo de texto e clique em `Continue`.
+A tela de autenticação no site do GitHub deve ser como a seguinte.
 
 <Figure
   caption="Código de autenticação do GitHub CLI colado no navegador."
   images={[
     {
       src: githubCode,
-      alt: "janela do navegador, aberto na página de autenticação por código do GitHub. No campo de texto se digita o código fornecido previamente pelo terminal.",
+      alt: "Página de autenticação por código do GitHub. No campo de texto se digita o código fornecido previamente pelo terminal.",
     },
   ]}
 />
 
-No meu caso, o WSL não conseguiu abrir o navegador, então ele exibiu esse pequeno erro, mas foi só copiar o link e abrir no navegador que funcionou.
+O prompt de toda a operação deve ser similar a esse.
 
 <Figure
   caption="Resultado da autenticação pelo navegador."
@@ -315,37 +186,6 @@ No meu caso, o WSL não conseguiu abrir o navegador, então ele exibiu esse pequ
     {
       src: ghAuthComplete,
       alt: "Terminal do WSl, em que se exibe o resultado da autenticação pelo navegador.",
-    },
-  ]}
-/>
-
-### Visual Studio Code
-
-Você também pode se autenticar no GitHub pelo Visual Studio Code.
-Eu recomendo fazer isso como complemento ao GitHub CLI, mas não como substituto.
-
-Selecione o ícone do perfil (o que tem a imagem de uma pessoa) no canto inferior esquerdo, e então clique em `Sign in to Sync Settings`.
-
-<Figure
-  caption="Menu de log-in do Visual Studio Code."
-  images={[
-    {
-      src: signIn,
-      alt: "Canto inferior esquerdo do Visual Studio Code, em que se clica no ícone de perfil para abrir o menu de log-in.",
-    },
-  ]}
-/>
-
-Quando perguntado sobre a forma de autenticação, selecione `GitHub`.
-
-O Visual Studio Code irá abrir uma aba no seu navegador, onde você deve selecionar sua conta e autorizar o acesso.
-
-<Figure
-  caption="Autorização de log-in no GitHub pelo Visual Studio Code."
-  images={[
-    {
-      src: authVsCode,
-      alt: "Janela do navegador, aberta na página de autorização de log-in no GitHub a partir do Visual Studio Code.",
     },
   ]}
 />

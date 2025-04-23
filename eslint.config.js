@@ -7,6 +7,10 @@ import tsEsLint from "typescript-eslint";
 /** @type {import("eslint").Linter.Config} */
 export default [
   {
+    ignores: [".astro/**", ".nix_shell/**", "dist/**", "node_modules/**"],
+  },
+
+  {
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -291,7 +295,7 @@ export default [
   /* Astro plugin rules */
   ...astroPlugin.configs.recommended,
   {
-    files: ["*.astro"],
+    files: ["**/*.astro"],
     processor: "astro/client-side-ts",
   },
 

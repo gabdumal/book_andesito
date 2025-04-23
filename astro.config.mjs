@@ -1,6 +1,8 @@
 // @ts-check
 import starlight from "@astrojs/starlight";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
+import starlightKbd from "starlight-kbd";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,7 +11,7 @@ export default defineConfig({
       customCss: [
         "@fontsource-variable/atkinson-hyperlegible-next",
         "@fontsource-variable/atkinson-hyperlegible-mono",
-        "./src/styles/custom.css",
+        "./src/styles/global.css",
       ],
       defaultLocale: "root",
       description: "Guia de configuração de ambiente de desenvolvimento.",
@@ -19,15 +21,23 @@ export default defineConfig({
           lang: "pt",
         },
       },
+      plugins: [
+        starlightKbd({
+          types: [
+            { default: true, id: "linux", label: "Linux" },
+            { id: "windows", label: "Windows" },
+          ],
+        }),
+      ],
       sidebar: [
         {
           label: "Introdução",
           slug: "introduction",
         },
-        // {
-        //   label: "WSL",
-        //   slug: "wsl",
-        // },
+        {
+          label: "WSL",
+          slug: "wsl",
+        },
         // {
         //   label: "VSCode",
         //   slug: "vscode",
@@ -157,4 +167,7 @@ export default defineConfig({
     }),
   ],
   site: "https://gabdumal.github.io",
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

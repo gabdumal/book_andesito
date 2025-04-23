@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+
+interface ImageProps {
+  alt: string;
+  // eslint-disable-next-line no-undef
+  src: ImageMetadata;
+}
+
+interface Props {
+  caption: string;
+  horizontal?: boolean;
+  images: ImageProps[];
+}
+
+const { caption, horizontal, images } = Astro.props;
+const FULL_WIDTH = 100;
+---
+
+<figure class={`flex items-center flex-col gap-1`}>
+  <div
+    class={`flex items-center justify-center gap-1 ${horizontal ? "flex-row" : "flex-col"}`}
+  >
+    {
+      images.map((image) => (
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        <Image
+          alt={image.alt}
+          class="block w-min max-h-full max-w-full object-cover"
+          src={image.src}
+          style={`margin: 0;
+            ${horizontal ? `width: ${FULL_WIDTH / images.length}%` : ""}`}
+        />
+      ))
+    }
+  </div>
+  <figcaption class="text-center font-medium" style={`margin-top: 0`}>
+    {caption}
+  </figcaption>
+</figure>

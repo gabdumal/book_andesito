@@ -5,8 +5,11 @@
     "@astrojs/ts-plugin": "^1.10.4",
     "@fontsource-variable/atkinson-hyperlegible-mono": "^5.2.1",
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.2.1",
+    "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.6.1",
-    "sharp": "^0.32.5"
+    "sharp": "^0.32.5",
+    "starlight-kbd": "^0.2.0",
+    "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",

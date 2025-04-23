@@ -1,82 +1,100 @@
 ---
 title: Windows Subsystem for Linux
-author: Gabriel Malosto  
+author: Gabriel Malosto
 ---
 
-import { Aside } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
+import { Aside, LinkButton } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import Figure from "@components/Figure.astro";
 
-import checkVersion from "/src/assets/content/docs/wsl/check_version.png";
-import powerShellAdm from "/src/assets/content/docs/wsl/powershell_adm.png";
-import installingWsl from "/src/assets/content/docs/wsl/installing_wsl.png";
-import errorNoDistro from "/src/assets/content/docs/wsl/error_no_distro.png";
-import ubuntuOptions from "/src/assets/content/docs/wsl/ubuntu_options.png";
-import installingUbuntu from "/src/assets/content/docs/wsl/installing_ubuntu.png";
-import ubuntuStartMenu from "/src/assets/content/docs/wsl/ubuntu_start_menu.png";
-import userCreation from "/src/assets/content/docs/wsl/user_creation.png";
-import ubuntuProfile from "/src/assets/content/docs/wsl/ubuntu_profile.png";
-import ubuntuDefault from "/src/assets/content/docs/wsl/ubuntu_default.png";
-import updatingPackages from "/src/assets/content/docs/wsl/updating_packages.png";
-import upgradingPackages from "/src/assets/content/docs/wsl/upgrading_packages.png";
-import fhs from "/src/assets/content/docs/wsl/fhs.png";
-import homeWsl from "/src/assets/content/docs/wsl/home_wsl.png";
-import homePowerShell from "/src/assets/content/docs/wsl/home_powershell.png";
-import root from "/src/assets/content/docs/wsl/root.png";
-import homeExplorer from "/src/assets/content/docs/wsl/home_explorer.png";
-import creatingFile from "/src/assets/content/docs/wsl/creating_file.png";
-import creatingSymlink from "/src/assets/content/docs/wsl/creating_symlink.png";
-import symlinkExplorer from "/src/assets/content/docs/wsl/symlink_explorer.png";
-import symlinkedFolder from "/src/assets/content/docs/wsl/symlinked_folder.png";
+import checkVersion from "@assets/content/docs/wsl/check_version.png";
+import windowsVersion from "@assets/content/docs/wsl/windows_version.png";
+import powerShellAdm from "@assets/content/docs/wsl/powershell_adm.png";
+import installingWsl from "@assets/content/docs/wsl/installing_wsl.png";
+import installingFedora from "@assets/content/docs/wsl/installing_fedora.png";
+import settingPassword from "@assets/content/docs/wsl/setting_password.png";
+import upgradingPackages1 from "@assets/content/docs/wsl/upgrading_packages_1.png";
+import upgradingPackages2 from "@assets/content/docs/wsl/upgrading_packages_2.png";
+import upgradingPackages3 from "@assets/content/docs/wsl/upgrading_packages_3.png";
+import upgradingPackages4 from "@assets/content/docs/wsl/upgrading_packages_4.png";
+import fhs from "@assets/content/docs/wsl/fhs.png";
+import homeWsl from "@assets/content/docs/wsl/home_wsl.png";
+import homePowerShell from "@assets/content/docs/wsl/home_powershell.png";
+import rootOnExplorer from "@assets/content/docs/wsl/root_on_explorer.png";
+import showHiddenFilesOnExplorer from "@assets/content/docs/wsl/show_hidden_files_on_explorer.png";
+import creatingFile from "@assets/content/docs/wsl/creating_file.png";
+import homeOnExplorerWithSymlink from "@assets/content/docs/wsl/home_on_explorer_with_symlink.png";
+import symlinkedDevFolder from "@assets/content/docs/wsl/symlinked_dev_folder.png";
 
 O **Windows Subsystem for Linux (WSL)** é uma ferramenta de código aberto apoiada pela Microsoft que permite a emulação de um sistema operacional Linux dentro do Windows.
 A atual versão na data de escrita deste livro é a **WSL 2**, que traz grandes melhorias em relação à versão anterior.
 
 O WSL permite instalar diversas distribuições Linux, até mesmo concomitantemente.
 Este [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-6---install-your-linux-distribution-of-choice) da Microsoft mostra algumas opções.
-Para este guia, vamos nos manter na distribuição **Ubuntu**, que é a padrão do WSL.
+Para este guia, vamos instalar a distribuição **Fedora 42**.
 
 ## Pré-requisitos
 
-Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Build 19041) ou superior, o WSL 2 já estará habilitado, e você pode pular para a [próxima seção](#habilitando-o-wsl).
+Se você estiver usando o **Windows 11**, ou o **Windows 10 versão 2004** (Build 19041) ou superior, o WSL 2 já estará habilitado, e você pode pular para a próxima seção.
 
-<Aside type="note">
-  Para verificar a versão do seu Windows, pressione{" "}
-  <Keyboard keys={["Win", "R"]} /> e digite `winver`. Então, pressione
-  <Keyboard keys={["Enter"]} />.
-  <Figure
-    caption="Verificando a versão do Windows pelo Executar."
-    images={[
-      {
-        src: checkVersion,
-        alt: `Janela do programa "Executar", em que se escreve "winver".`,
-      },
-    ]}
-  />
-</Aside>
+Para verificar a versão do seu Windows, pressione <Kbd linux={"Super+R"} windows={"Win+R"} /> e digite `winver`.
+Então, pressione <Kbd linux={"Enter"} />.
+
+<Figure
+  caption="Verificando a versão do Windows pelo Executar."
+  images={[
+    {
+      src: checkVersion,
+      alt: `Janela do programa "Executar", em que se escreve "winver".`,
+    },
+  ]}
+/>
+
+O sistema exibirá uma janela similar a essa.
+
+<Figure
+  caption="Versão do Windows instalada no meu computador."
+  images={[
+    {
+      src: windowsVersion,
+      alt: `Janela informativa sobre a versão do windows, em que se vê com destaque o texto Windows 11". Abaixo, lê-se que a versão especĩfica ẽ a 24H2 do Windows 11 Home, compilação de número 26100.4376.`,
+    },
+  ]}
+/>
+
+Eu tenho instalado o Windows 11, que já tem o WSL habilitado por padrão.
+Se também for o seu caso, clique no botão abaixo.
+
+<div class="flex m-0! justify-center">
+  <LinkButton
+    href="#instalando-o-wsl"
+    variant="secondary"
+    icon="down-arrow"
+    style="margin-start:auto;"
+  >
+    Já tenho o WSL habilitado!
+  </LinkButton>
+</div>
 
 Caso utilize uma versão mais antiga, seguiremos os passos recomendados pelo [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-1---enable-the-windows-subsystem-for-linux) da Microsoft.
 
-Ainda assim, para sistemas com arquitetura x64, é necessário ter instalado a **versão 1903** do Windows 10 ou posterior, com a Build 18362.1049 ou posterior.
+Ainda assim, para sistemas com arquitetura x64, é necessário ter instalada a **versão 1903** do Windows 10 ou posterior, com a Build 18362.1049 ou posterior.
 Versões mais antigas do Windows 10 não possuem suporte para o WSL 2.
-
-Como alternativa, você pode ler o capítulo sobre a [instalação do MSVC](c_cpp/compiler#windows) para compilar programas diretamente para executáveis do Windows.
-Ainda assim, **não recomendamos** essa abordagem, uma vez que instalar ferramentas para o Windows nativamente tende a ser mais complicado, instável e carecer de boa documentação.
-Caso possível, opte sempre por usar uma distribuição Linux ou o WSL.
 
 ### Habilitando o WSL
 
 Para habilitar o WSL no sistema, abra o PowerShell como **administrador** e execute o comando abaixo.
 
-```powershell
+```powershell title="PowerShell" frame="terminal"
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
 
 <Aside type="tip">
-  Lembre-se, para abrir o PowerShell como administrador, clique com o botão
-  direito na entrada do PowerShell no Menu Iniciar e selecione a opção
-  **Executar como administrador**.
+  Para abrir o PowerShell como administrador, clique com o botão direito na
+  entrada do PowerShell no Menu Iniciar e selecione a opção **Executar como
+  administrador**.
   <Figure
     caption="Executando o PowerShell como administrador a partir do Menu Iniciar."
     images={[
@@ -92,31 +110,33 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 
 Para habilitar a virtualização no sistema, execute o comando abaixo no PowerShell como **administrador**.
 
-```powershell
+```powershell title="PowerShell" frame="terminal"
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
 ### Atualizando para o WSL 2
 
-Baixe o pacote de atualização do WSL 2 pelo [repositório da Microsoft](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi) e instale-o.
+Baixe o pacote de atualização do WSL 2 pelo [repositório da Microsoft](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi).
 Você pode verificar a origem do link pelo [guia oficial](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package) da Microsoft.
 
-Após o download, execute o instalador e siga as instruções.
+Após o download, **execute** o instalador e siga as instruções.
 
 ### Definindo o WSL 2 como padrão
 
 Por fim, defina a versão 2 do WSL como padrão com o comando abaixo, ainda no PowerShell como **administrador**.
 
-```powershell
+```powershell title="PowerShell" frame="terminal"
 wsl --set-default-version 2
 ```
+
+Então, **reinicie** o computador para aplicar as mudanças.
 
 ## Instalando o WSL
 
 Primeiramente, devemos instalar o WSL propriamente dito.
 Para isso, abra o **PowerShell** e execute o comando abaixo.
 
-```powershell
+```powershell title="PowerShell" frame="terminal"
 wsl.exe --install --no-distribution
 ```
 
@@ -125,161 +145,118 @@ wsl.exe --install --no-distribution
   images={[
     {
       src: installingWsl,
-      alt: "Terminal do PowerShell, em que se executa o comando supracitado.",
+      alt: "Terminal do PowerShell, em que se executa o comando de instalação do WSL, inicialmente sem instalar alguma distribuição.",
     },
   ]}
 />
 
-Digitando `wsl`, recebi a seguinte mensagem:
-`O Subsistema do Windows para Linux não tem distribuições instaladas`.
+Então, **reinicie** o computador para aplicar as mudanças.
+
+## Instalando o Fedora
+
+Agora que o WSL está habilitado, podemos instalar a distribuição Fedora, segundo seu [manual oficial](https://docs.fedoraproject.org/en-US/cloud/wsl/).
+
+Para fazer isso, abra o **PowerShell** e execute o comando abaixo.
+
+```powershell title="PowerShell" frame="terminal"
+wsl --install FedoraLinux-42
+```
+
+Então, defina-o como a distribuição padrão com o seguinte comando.
+
+```powershell title="PowerShell" frame="terminal"
+wsl -d FedoraLinux-42
+```
+
+Após aguardar alguns segundos, o sistema pedirá para criar um **usuário**.
+Eu recomendo usar o mesmo nome de usuário que você utiliza no Windows.
 
 <Figure
-  caption={`Resultado do comando "wsl" após a execução do comando de instalação.`}
+  caption="Processo de instalação do Fedora pelo terminal."
   images={[
     {
-      src: errorNoDistro,
-      alt: `Terminal do PowerShell, em que se executa o comando "wsl". A resposta é "O Subsistema do Windows para Linux não tem distribuições instaladas", o código de erro, e o link para a documentação.`,
+      src: installingFedora,
+      alt: "Terminal do Powershell, em que são exibidas a mensagens da instalação, inclusive os prompts para criação de usuário.",
     },
   ]}
 />
 
-Bom, agora que temos o WSL, vamos instalar uma distribuição Linux!
-Mas, por precaução, **reinicie o computador** antes de prosseguir.
+Agora, **feche** essa janela do Powershell.
 
-## Instalando o Ubuntu
+Após instalar o WSL, você poderá abri-lo diretamente pela entrada criada no menu Iniciar do Windows, chamada `WSL`.
 
-Agora que o WSL está habilitado, podemos instalar a distribuição Ubuntu.
+**Abra-o**, e digite o comando abaixo para definir uma senha.
 
-A maneira mais fácil de fazer isso é pela Microsoft Store.
-Procure por uma aplicação chamada **Ubuntu**, sem indicar a versão.
-Ela é a primeira opção da imagem a seguir.
+```bash title="WSL" frame="terminal"
+sudo passwd $USER
+```
 
-<Figure
-  caption="Opções de instalações do Ubuntu pela Microsoft Store, em que se seleciona a Ubuntu."
-  images={[
-    {
-      src: ubuntuOptions,
-      alt: "Loja da Microsoft, em que se pesquisa por 'ubuntu', e se seleciona a primeira opção.",
-    },
-  ]}
-/>
+Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo.
+Não se preocupe, digite-a até o final e pressione <Kbd linux={"Enter"} />.
+Após repetir a senha, pressione <Kbd linux={"Enter"} /> novamente.
 
-Você também pode acessar essa página pelo [link direto](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare) para a loja da Microsoft.
-
-Clique no botão de instalar, e aguarde o download e instalação da distribuição.
+O sistema fará as últimas configurações e criara um usuário de administrador para você dentro do Fedora.
 
 <Figure
-  caption="Processo de instalação do Ubuntu para o WSL."
+  caption="Processo de definição da senha do Fedora pelo terminal."
   images={[
     {
-      src: installingUbuntu,
-      alt: "Página no Ubuntu na loja da Microsoft. A instalação está em andamento.",
-    },
-  ]}
-/>
-
-## Configurando o Ubuntu
-
-Pesquise pelo **Ubuntu** no Menu Iniciar e abra o aplicativo.
-
-<Figure
-  caption="Entrada do Ubuntu no Menu Iniciar."
-  images={[
-    {
-      src: ubuntuStartMenu,
-      alt: `Menu Iniciar do Windows, em que se pesquisa por "Ubuntu" e se seleciona a opção correspondente.`,
-    },
-  ]}
-/>
-
-O que será aberto, na verdade, é uma janela do terminal.
-Após aguardar alguns segundos, o sistema pedirá para criar um **usuário e senha**.
-
-Eu usei o mesmo usuário do Windows, mas você pode criar um novo usuário se preferir.
-Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo. Não se preocupe, digite-a até o final e pressione <Keyboard keys={["Enter"]} />.
-Após repetir a senha, pressione <Keyboard keys={["Enter"]} /> novamente.
-
-O sistema fará as últimas configurações e criara um usuário de administrador para você dentro do Ubuntu.
-
-<Figure
-  caption="Processo de criação de usuário do Ubuntu pelo terminal."
-  images={[
-    {
-      src: userCreation,
-      alt: "Terminal do Ubuntu, em que são exibidas a mensagens da instalação, inclusive os prompts para criação de usuário.",
+      src: settingPassword,
+      alt: "Terminal do WSL, em que são exibidos os prompts para definição da senha do usuário.",
     },
   ]}
 />
 
 Lembre-se da sua senha, pois ela será solicitada sempre que você precisar de permissões de administrador.
 
-Em caso de esquecê-la, deixo aqui um [guia](https://www.howtogeek.com/devops/how-to-reset-your-forgotten-linux-password-in-wsl/) de como recuperá-la.
+### Esqueci a senha do meu usuário no WSL
 
-## Configurando o Windows Terminal
+Em caso de esquecê-la, você pode entrar no wsl como um usuário **root**.
+Para isso, execute o seguinte comando no **PowerShell**.
 
-Se tudo tiver corrido bem, você verá uma nova entrada para o Ubuntu na aba de perfis do **Windows Terminal**.
+```powershell title="PowerShell" frame="terminal"
+wsl --user root
+```
 
-<Figure
-  caption="Opção do Ubuntu na lista de perfis do Windows Terminal."
-  images={[
-    {
-      src: ubuntuProfile,
-      alt: `Lista de perfis do Windows Terminal, em que são exibidas as opções: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell" e "Ubuntu".`,
-    },
-  ]}
-/>
+Então, execute o comando de redefinição de senha, mas digitando seu usuário em vez de `[YOUR_USERNAME]`, sem os colchetes.
 
-Eu acho mais prático ter o Ubuntu como padrão quando inicio o terminal.
-Para isso, abra as configurações do Windows Terminal.
-Na seção `Startup` (ou `Inicialização`), você pode definir o perfil padrão.
-Selecione a entrada do ubuntu com o ícone do pinguim Tux e clique em `Salvar`.
-
-<Figure
-  caption="Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows Terminal."
-  images={[
-    {
-      src: ubuntuDefault,
-      alt: "Configurações do Windows Terminal, em que se define o perfil padrão de inicialização.",
-    },
-  ]}
-/>
+```bash title="PowerShell - WSL" frame="terminal"
+sudo passwd [YOUR_USERNAME]
+```
 
 ## Atualizando os pacotes
 
-A maioria das ferramentas que você instalará no Ubuntu será por meio do gerenciador de pacotes `apt`.
-Para garantir que tudo está atualizado, execute o comando abaixo.
+A maioria das ferramentas que você instalará no Fedora será por meio do gerenciador de pacotes `dnf`.
+Para atualizar os pacotes, execute o comando abaixo.
 
-```bash
-sudo apt update
+```bash title="WSL" frame="terminal"
+sudo dnf upgrade
 ```
 
 A palavra `sudo` é usada para executar um comando com permissões de administrador.
-Ela solicitará a senha do usuário que você criou anteriormente.
+Ela provavelmente solicitará a senha do usuário que você criou anteriormente.
+
+Quando perguntado se deseja continuar, pressione <Kbd linux={"Y"} /> e <Kbd linux={"Enter"} /> para confirmar.
+Isso pode ocorrer mais de uma vez durante a instalação.
 
 <Figure
-  caption="Atualizando os pacotes do Ubuntu."
+  caption="Instalando as versões atualizadas dos pacotes do Fedora."
   images={[
     {
-      src: updatingPackages,
-      alt: `Terminal do Ubuntu, em que se executa o comando "sudo apt update".`,
+      src: upgradingPackages1,
+      alt: `Terminal do Fedora, primeira captura da execução do comando "sudo dnf upgrade".`,
     },
-  ]}
-/>
-
-Então, para de fato instalar as atualizações, execute o comando abaixo.
-
-```bash
-sudo apt upgrade
-```
-
-Então, quando perguntado se deseja continuar, pressione <Keyboard keys={["Y"]} /> e <Keyboard keys={["Enter"]}/> para confirmar.
-
-<Figure
-  caption="Instalando as versões atualizadas dos pacotes do Ubuntu."
-  images={[
     {
-      src: upgradingPackages,
-      alt: `Terminal do Ubuntu, em que se executa o comando "sudo apt upgrade".`,
+      src: upgradingPackages2,
+      alt: `Terminal do Fedora, segunda captura da execução do comando "sudo dnf upgrade".`,
+    },
+    {
+      src: upgradingPackages3,
+      alt: `Terminal do Fedora, terceira captura da execução do comando "sudo dnf upgrade".`,
+    },
+    {
+      src: upgradingPackages4,
+      alt: `Terminal do Fedora, quarta captura da execução do comando "sudo dnf upgrade".`,
     },
   ]}
 />
@@ -303,126 +280,133 @@ Ela varia um pouco a depender da distribuição, mas a estrutura básica é a me
 Há outras pastas (chamadas comumente de **diretórios**) importantes, mas com o tempo você pega o jeito.
 
 <Figure
-  caption="Estrutura de pastas da raiz do Ubuntu (WSL)."
+  caption="Estrutura de pastas da raiz do Fedora (WSL)."
   images={[
     {
       src: fhs,
-      alt: `Terminal do Ubuntu, em que se executa o comando "ls", que exibe a estrutura de pastas da raiz do Ubuntu.`,
+      alt: `Terminal do Fedora, em que se executa o comando "ls", que exibe a estrutura de pastas da raiz do Fedora.`,
     },
   ]}
 />
 
 A que nos interessa no momento é a pasta `home`.
 Dentro dela, o sistema cria uma pasta para cada usuário, nomeada com o nome do usuário.
-Por exemplo, o meu usuário é `gabriel`, então a pasta do meu usuário é `/home/gabriel`.
+Por exemplo, o meu usuário é `gabriel-dev`, então a pasta do meu usuário é `/home/gabriel-dev`.
 
 Essa pasta é tão importante que ela tem uma variável de ambiente que a referencia, chamada de `HOME`.
 
-Pressione <Keyboard keys={["q"]} /> para sair do texto de boas-vindas do Zsh.
 Digite no terminal o comando `echo $HOME` e veja o que aparece.
 Depois, digite `echo $HOME` no PowerShell e veja o que aparece.
 
 Tanto o Windows quanto o Linux possuem essa variável de ambiente, mas perceba que o caminho é diferente!
 
 <Figure
-  caption="Comando para exibir a variável de ambiente HOME no Ubuntu e no PowerShell, respectivamente."
+  caption="Comando para exibir a variável de ambiente HOME no Fedora e no PowerShell, respectivamente."
   images={[
     {
       src: homeWsl,
-      alt: `Terminal do Ubuntu, em que se executa o comando "echo $HOME". A resposta é "/home/gabriel".`,
+      alt: `Terminal do Fedora, em que se executa o comando "echo $HOME". A resposta é "/home/gabriel-dev".`,
     },
     {
       src: homePowerShell,
-      alt: `Terminal do PowerShell, em que se executa o comando "echo $HOME". A resposta é "C:\\Users\\gabriel".`,
+      alt: `Terminal do PowerShell, em que se executa o comando "echo $HOME". A resposta é "C:\\Users\\gabriel-dev".`,
     },
   ]}
 />
 
-De fato, eu uso o mesmo usuário no Ubuntu e no Windows, mas o caminho da pasta do usuário é diferente porque se tratam de duas pastas completamente distintas.
+De fato, eu uso o mesmo nome de usuário no Fedora e no Windows, mas o caminho da pasta do usuário é diferente porque se tratam de duas pastas completamente distintas.
 
-O WSL cria de fato todo um novo ambiente de emulação dentro do Windows, com suas próprias pastas e configurações.
+O WSL cria todo um novo ambiente de emulação dentro do Windows, com suas próprias pastas e configurações.
 Mas como acessar esse ambiente?
 
 Se tudo tiver sido instalado corretamente, você verá uma nova entrada no Explorador de Arquivos chamada `Linux`.
-Dentro dela, haverá uma pasta chamada `Ubuntu`.
-Essa é justamente a pasta `/` (raiz) do Ubuntu, a qual mencionamos anteriormente.
+Dentro dela, haverá uma pasta chamada `FedoraLinux-42` (ou na versão mais atual).
+Essa é justamente a pasta `/` (raiz) do Fedora, a qual mencionamos anteriormente.
 
 <Figure
-  caption="Pasta raiz do Ubuntu WSL exibida no Explorador de Arquivos."
+  caption="Pasta raiz do Fedora WSL exibida no Explorador de Arquivos."
   images={[
     {
-      src: root,
-      alt: `Explorador de Arquivos do Windows aberto na pasta "Linux\\Ubuntu".`,
+      src: rootOnExplorer,
+      alt: `Explorador de Arquivos do Windows aberto na pasta "Linux\\FedoraLinux-42".`,
     },
   ]}
 />
 
-Acesse a pasta `home`, e então a pasta do seu **usuário**.
+Acesse pelo **Explorador de Arquivos** a pasta `home`.
+Ela contém todos os diretórios de usuários registrados no Fedora.
+No momento, existe apenas o usuário que criamos.
+No meu caso, é o `gabriel-dev`.
+Clique com o botão direito nela, e selecione **Fixar no Acesso rápido**.
+
+Abra a pasta do seu usuário.
+Garanta que os arquivos ocultos estejam sendo exibidos.
+Você pode fazer isso clicando em: Visualizar > Mostrar > Itens ocultos.
 
 <Figure
-  caption="Pasta HOME exibida no Explorador de Arquivos."
+  caption="Exibindo arquivos ocultos no Explorador de Arquivos."
   images={[
     {
-      src: homeExplorer,
-      alt: `Explorador de Arquivos do Windows aberto na pasta "Linux\\Ubuntu\\home\\gabriel".`,
+      src: showHiddenFilesOnExplorer,
+      alt: `Passos instruindo como exibir arquivos ocultos no explorador de Arquivos do Windows.`,
     },
   ]}
 />
 
-Vemos que há vários arquivos e pastas dentro do diretório do usuário.
-O arquivo `.bashrc` é o arquivo de configuração do Bash, o shell padrão do Ubuntu.
-Já o arquivo `.zshrc` é o arquivo de configuração do Zsh, o shell que vamos instalar mais adiante.
+Vemos que há alguns arquivos dentro do diretório do usuário.
+O arquivo `.bashrc` é o arquivo de configuração do **Bash**, o shell padrão do Fedora.
 
 ### Link simbólico
 
-O ideal quando e usa o WSL é deixar todos os seus arquivos e projetos dentro do diretório do usuário no Linux.
+O ideal quando se usa o WSL é deixar todos os seus arquivos e projetos dentro do diretório do usuário do **Linux**.
 Assim, tem-se uma performance melhor e evita-se problemas de compatibilidade.
 
 Entretanto, pode ser chato ter que navegar até o diretório do usuário toda vez que você quiser acessar um arquivo.
-Para facilitar, você pode criar um **link simbólico** do Windows que aponta para alguma pasta dentro do Ubuntu.
+Para facilitar, você pode criar um **link simbólico** no Windows que aponta para alguma pasta dentro do Fedora.
 
 Eu gosto de organizar meus projetos numa pasta chamada `dev` na raiz do diretório do usuário.
 
-Para criar uma pasta com esse nome, abra o Windows Terminal no perfil do **Ubuntu** e execute o comando abaixo.
+Para criar uma pasta com esse nome, abra o **WSL** e execute o comando abaixo.
 
-```bash
+```bash title="WSL" frame="terminal"
 mkdir ~/dev
 ```
 
 Vamos criar um arquivo de texto dentro dessa pasta para testar o link simbólico.
 
-```bash
-echo "Hello, World!" > ~/dev/hello.txt
+```bash title="WSL" frame="terminal"
+echo "Hello, World!" > ~/dev/hello.txt`
 ```
 
 <Figure
-  caption="Criando um arquivo de texto na pasta ~/dev do Ubuntu."
+  caption="Criando um arquivo de texto na pasta ~/dev do Fedora."
   images={[
     {
       src: creatingFile,
-      alt: `Terminal do Ubuntu, em que se executa o comando supracitado, e se move para a pasta "dev".`,
+      alt: `Terminal do Fedora, em que se executa comandos para criar a pasta "dev", se mover para dentro dela e criar um arquivo de texto.`,
     },
   ]}
 />
 
-Então, abra no terminal um perfil do **PowerShell** como **administrador** e execute o comando abaixo para criar um link simbólico.
+Então, abra no terminal um perfil do **PowerShell** como **administrador** e execute o comando abaixo para criar um link simbólico, substituindo a versão do Fedora, se você utilizar uma mais recente que a 42.
 
-```powershell
-New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\wsl$\Ubuntu\home\$env:USERNAME\dev"
+```powershell title="Powershell" frame="terminal"
+New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\wsl$\FedoraLinux-42\home\$env:USERNAME\dev"
 ```
 
-<Figure
-  caption="Criando um link simbólico para a pasta ~/dev do Ubuntu."
-  images={[
-    {
-      src: creatingSymlink,
-      alt: "Terminal do PowerShell, em que se executa o comando supracitado.",
-    },
-  ]}
-/>
+O resultado será como o seguinte.
+
+```powershell title="Powershell" frame="terminal"
+ Diretório: C:\Users\gabriel-dev
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----l        23/04/2025     12:03                dev
+```
 
 Então, você poderá acessar a pasta `dev` diretamente pelo Explorador de Arquivos.
-Abra o Executar com <Keyboard keys={["Win", "R"]} /> e digite `%USERPROFILE%` para acessar seu diretório de usuário no Windows.
+Abra o Executar com <Kbd linux={"Super+R"} windows={"Win+R"} /> e digite `%USERPROFILE%` para acessar seu diretório de usuário no Windows.
 
 Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atalho.
 
@@ -430,22 +414,22 @@ Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atal
   caption="Link simbólico mostrado na pasta do usuário do Windows."
   images={[
     {
-      src: symlinkExplorer,
+      src: homeOnExplorerWithSymlink,
       alt: `Explorador de Arquivos do Windows aberto na pasta do usuário, em que se exibe a pasta "dev" com um ícone de atalho.`,
     },
   ]}
 />
 
-Clique com o botão direito na pasta e selecione **Fixar no Acesso Rápido** para tê-la sempre à mão.
+Clique com o botão direito na pasta `dev` e selecione **Fixar no Acesso rápido** para tê-la sempre à mão.
 
-Ao acessar a pasta, você verá o arquivo `hello.txt` que criamos anteriormente no Ubuntu.
+Ao acessar a pasta, você verá o arquivo `hello.txt` que criamos anteriormente no Fedora.
 
 <Figure
-  caption="Pasta ~/dev do Ubuntu mostrada na estrutura de pastas do Windows."
+  caption="Pasta ~/dev do Fedora mostrada na estrutura de pastas do Windows."
   images={[
     {
-      src: symlinkedFolder,
-      alt: `Explorador de Arquivos do Windows aberto na pasta "dev" do Ubuntu.`,
+      src: symlinkedDevFolder,
+      alt: `Explorador de Arquivos do Windows aberto na pasta "dev" do Fedora.`,
     },
   ]}
 />

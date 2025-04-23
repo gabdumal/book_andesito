@@ -3,11 +3,12 @@ title: PowerShell
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
+import { Kbd } from "starlight-kbd/components";
 
-import installing7 from "/src/assets/content/docs/shell/powershell/installing_7.png";
-import optionsList from "/src/assets/content/docs/shell/powershell/options_list.png";
-import defaultProfile from "/src/assets/content/docs/shell/powershell/default_profile.png";
+import Figure from "@components/Figure.astro";
+
+import installing7 from "@assets/content/docs/shell/powershell/installing_7.png";
+import hideWindowsPowerShell from "@assets/content/docs/shell/powershell/hide_windows_powershell.png";
 
 O **PowerShell** é uma ferramenta de linha de comando desenvolvida pela Microsoft, que é utilizada para automatizar tarefas e gerenciar configurações do sistema operacional.
 
@@ -24,7 +25,7 @@ Você pode acessar seu [guia de instalação](https://learn.microsoft.com/en-us/
 
 Segundo ele, o comando a ser executado é:
 
-```powershell
+```powershell title="PowerShell 5.1" frame="terminal"
 winget install --id Microsoft.PowerShell --source winget
 ```
 
@@ -38,30 +39,22 @@ winget install --id Microsoft.PowerShell --source winget
   ]}
 />
 
-Feche a abra o PowerShell para que as alterações tenham efeito.
-Abra a lista de opções de shell do Windows Terminal.
-Você verá que há uma nova entrada ao fim da lista, chamada simplesmente **PowerShell**.
+**Feche** a abra o PowerShell para que as alterações tenham efeito.
+
+Abra as configurações do Windows Terminal com o comando <Kbd linux={"Ctrl+,"} />
+
+Você verá que um novo perfil, para o PowerShell 7, foi instalado, chamado simplesmente de **PowerShell** e com ícone preto.
+
+Podemos, então, ocultar a exibição do perfil do PowerShell 5.1.
+Ele é identificado na entrada `Windows PowerShell`, com ícone azul.
+Selecione-a e ative a opção `Ocultar perfil da lista suspensa`.
 
 <Figure
-  caption="Lista de opções de shell para o Windows Terminal."
+  caption="Escondendo o Windows Powershell."
   images={[
     {
-      src: optionsList,
-      alt: `Menu de perfis do Windows Terminal, em que estão disponíveis os seguintes: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell", "PowerShell".`,
-    },
-  ]}
-/>
-
-Para abrir essa opção por padrão ao iniciar o Windows Terminal, clique na opção de **Configurações**.
-
-Então, na seção de **Inicialização**, defina a opção **Perfil padrão** como **PowerShell**.
-
-<Figure
-  caption="PowerShell 7 definido como o perfil padrão de inicialização do Windows Terminal."
-  images={[
-    {
-      src: defaultProfile,
-      alt: `Parte da janela de configurações do Windows Terminal aberta na seção "Inicialização", em que se vê a opção "Perfil padrão" configurada com o "PowerShell".`,
+      src: hideWindowsPowerShell,
+      alt: `Configurações do perfil "Windows Powershell", em que a opção de escondê-lo está ativa.`,
     },
   ]}
 />

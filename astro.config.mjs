@@ -63,16 +63,16 @@ export default defineConfig({
           label: "Git",
           slug: "git",
         },
-        // {
-        //   items: [
-        //     { label: "Introdução", slug: "shell" },
-        //     { label: "PowerShell", slug: "shell/powershell" },
-        //     { label: "Zsh", slug: "shell/zsh" },
-        //     { label: "Temas", slug: "shell/themes" },
-        //     { label: "Plugins", slug: "shell/plugins" },
-        //   ],
-        //   label: "Shell",
-        // },
+        {
+          items: [
+            { label: "Introdução", slug: "shell" },
+            { label: "PowerShell", slug: "shell/powershell" },
+            // { label: "Zsh", slug: "shell/zsh" },
+            // { label: "Temas", slug: "shell/themes" },
+            // { label: "Plugins", slug: "shell/plugins" },
+          ],
+          label: "Shell",
+        },
         // {
         //   items: [
         //     { label: "Introdução", slug: "python" },

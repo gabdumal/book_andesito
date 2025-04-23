@@ -1,17 +1,8 @@
 {
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
@@ -29,16 +20,22 @@
     "editor.tabSize": 2,
     "prettier.tabWidth": 2
   },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "cSpell.language": "en,en-US,pt,pt-BR",
-  "cSpell.userWords": ["catppuccin"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.markdownlint": "explicit"
+    "source.fixAll.markdownlint": "explicit",
+    "source.organizeLinkDefinitions": "always"
   },
   "editor.detectIndentation": false,
   "editor.fontFamily": "'MesloLGL Nerd Font Mono', 'FiraCode Nerd Font Mono'",
-  "editor.fontWeight": "400",
+  "editor.fontSize": 15,
+  "editor.fontWeight": "normal",
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
+  "editor.lineHeight": 1.625,
+  "editor.minimap.enabled": false,
   "editor.mouseWheelZoom": true,
   "editor.selectionClipboard": false,
   "editor.semanticHighlighting.enabled": true,
@@ -46,41 +43,50 @@
   "editor.wordWrap": "bounded",
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
-    "*.css": "css"
+    "*.css": "css",
+    "*.mdx": "mdx"
   },
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "firefox.keepProfileChanges": true,
+  "firefox.profile": "default",
   "git.autofetch": true,
   "git.openRepositoryInParentFolders": "always",
   "github.copilot.enable": {
-    "*": true,
-    "markdown": true,
-    "plaintext": true,
-    "scminput": true
+    "*": true
   },
   "markdownlint.config": {
-    "MD024": false,
-    "default": true
+    "default": true,
+    "MD024": false
   },
   "markdownlint.run": "onSave",
+  "security.allowedUNCHosts": ["wsl.localhost"],
   "terminal.integrated.fontFamily": "'MesloLGL Nerd Font Mono', 'FiraCode Nerd Font Mono'",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.lineHeight": 1.1,
   "terminal.integrated.minimumContrastRatio": 1,
   "workbench.colorTheme": "Catppuccin Latte",
   "workbench.iconTheme": "catppuccin-latte",
   "workbench.settings.applyToAllProfiles": [
     "[css]",
     "[html]",
-    "[javascript]",
     "[json]",
     "[jsonc]",
     "[markdown]",
-    "cspell.language",
-    "cspell.userWords",
+    "[mdx]",
+    "cSpell.language",
     "editor.codeActionsOnSave",
     "editor.detectIndentation",
     "editor.fontFamily",
+    "editor.fontSize",
     "editor.fontWeight",
     "editor.formatOnSave",
     "editor.inlineSuggest.enabled",
+    "editor.lineHeight",
+    "editor.minimap.enabled",
+    "editor.mouseWheelScrollSensitivity",
     "editor.mouseWheelZoom",
     "editor.selectionClipboard",
     "editor.semanticHighlighting.enabled",
@@ -89,14 +95,30 @@
     "explorer.confirmDragAndDrop",
     "files.associations",
     "files.autoSave",
+    "files.eol",
+    "files.insertFinalNewline",
+    "files.trimFinalNewlines",
+    "firefox.executable",
+    "firefox.keepProfileChanges",
+    "firefox.profile",
     "git.autofetch",
+    "git.enableCommitSigning",
     "git.openRepositoryInParentFolders",
     "github.copilot.enable",
+    "github.gitProtocol",
     "markdownlint.config",
     "markdownlint.run",
     "terminal.integrated.fontFamily",
+    "terminal.integrated.fontSize",
+    "terminal.integrated.lineHeight",
     "terminal.integrated.minimumContrastRatio",
+    "terminal.integrated.mouseWheelScrollSensitivity",
+    "window.titleBarStyle",
+    "window.zoomLevel",
     "workbench.colorTheme",
-    "workbench.iconTheme"
-  ]
+    "workbench.iconTheme",
+    "workbench.list.mouseWheelScrollSensitivity",
+    "workbench.startupEditor"
+  ],
+  "workbench.startupEditor": "none"
 }

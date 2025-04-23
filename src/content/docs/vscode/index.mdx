@@ -3,31 +3,35 @@ title: Visual Studio Code
 author: Gabriel Malosto
 ---
 
-import { Code } from "astro:components";
+import { Code } from "@astrojs/starlight/components";
 
-import Figure from "/src/components/Figure.astro";
-import Link from "/src/components/Link";
+import Figure from "@components/Figure.astro";
+import Link from "@components/Link.astro";
 
-import downloadOptions from "/src/assets/content/docs/vscode/download_options.png";
-import otherOptions from "/src/assets/content/docs/vscode/other_options.png";
-import runningCodeInTerminal from "/src/assets/content/docs/vscode/running_code_in_terminal.png";
-import remoteWindow from "/src/assets/content/docs/vscode/remote_window.png";
-import connectionsMenu from "/src/assets/content/docs/vscode/connections_menu.png";
-import extensions from "/src/assets/content/docs/vscode/extensions.png";
-import applyingExtensionToAllProfiles from "/src/assets/content/docs/vscode/applying_extension_to_all_profiles.png";
-import openingUserSettings from "/src/assets/content/docs/vscode/opening_user_settings.png";
+import downloadOptions from "@assets/content/docs/vscode/download_options.png";
+import otherOptions from "@assets/content/docs/vscode/other_options.png";
+import runningCodeViaPowershell from "@assets/content/docs/vscode/running_code_via_powershell.png";
+import runningCodeViaWsl from "@assets/content/docs/vscode/running_code_via_wsl.png";
+import remoteWindowButton from "@assets/content/docs/vscode/remote_window_button.png";
+import connectionsMenu from "@assets/content/docs/vscode/connections_menu.png";
+import backupAndSync from "@assets/content/docs/vscode/backup_and_sync.png";
+import whatToSync from "@assets/content/docs/vscode/what_to_sync.png";
+import whichService from "@assets/content/docs/vscode/which_service.png";
+import whichAccount from "@assets/content/docs/vscode/which_account.png";
+import extensions from "@assets/content/docs/vscode/extensions.png";
+import applyingExtensionToAllProfiles from "@assets/content/docs/vscode/applying_extension_to_all_profiles.png";
+import openingUserSettings from "@assets/content/docs/vscode/opening_user_settings.png";
+import settings from "/public/settings/vscode/initial/settings.json?raw";
 
 A fim de escrever código, você precisará de um editor de texto apropriado.
 É interessante que ele seja voltado para o desenvolvimento de software, com funcionalidades como _syntax highlighting_, _code completion_, _debugging_, etc.
 
 O **Visual Studio Code** é um editor de texto muito popular entre desenvolvedores.
-Ele é leve, rápido e possui uma grande quantidade de extensões que facilitam o desenvolvimento de software.
-
-Para este guia, vamos utilizar o Visual Studio Code e configurá-lo para compilar e depurar código em C e C++.
+Ele é relativamente leve, rápido e possui uma grande quantidade de extensões que facilitam o desenvolvimento de software.
 
 ## Instalação
 
-Apresento as formas ideias de instalar o Visual Studio Code nos três sistemas operacionais que estamos tratando neste guia: Windows, Ubuntu e Fedora.
+Apresento formas de instalar o Visual Studio Code nos três sistemas operacionais que estamos tratando neste guia: Windows, Fedora e Mint.
 
 ### Windows e WSL
 
@@ -35,11 +39,11 @@ Você pode fazer o download do editor pelo [site oficial](https://code.visualstu
 Mesmo que você esteja usando o **WSL**, é necessário instalar o Visual Studio Code no Windows, pois é ele que irá gerenciar as extensões e configurações do editor.
 
 <Figure
-  caption="Opções de download do Visual Studio Code, em que se seleciona o instalador do Windows."
+  caption="Opções de downloads do website do Visual Studio Code."
   images={[
     {
       src: downloadOptions,
-      alt: "Página de downloads do website do Visual Studio Code.",
+      alt: "Página de download do Visual Studio Code, em que se seleciona o instalador do Windows.",
     },
   ]}
 />
@@ -57,13 +61,31 @@ Quando chegar ao passo `Selecionar tarefas adicionais`, marque todas as opções
   ]}
 />
 
-### Ubuntu
+### Fedora
 
-Para instalar o Visual Studio Code no Ubuntu, e em outros sistemas que utilizam o gerenciador de pacotes `apt` (como Mint, Debian, Pop!\_OS, entre outros), podemos adicionar o repositório oficial do Visual Studio Code, o que o manterá atualizado automaticamente.
+Para instalar o Visual Studio Code no Fedora, podemos adicionar o repositório oficial do Visual Studio Code, o que o manterá atualizado automaticamente.
 
-Para isso, utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions).
+Utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions).
 
-```bash
+```bash title="Fedora: Ptyxis" frame="terminal"
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+```
+
+Em seguida, instale o Visual Studio Code.
+
+```bash title="Fedora: Ptyxis" frame="terminal"
+dnf check-update
+sudo dnf install code
+```
+
+### Mint
+
+Para instalar o Visual Studio Code no Mint, e em outros sistemas que utilizam o gerenciador de pacotes `apt` (como Fedora, Debian, Pop!\_OS, entre outros), também podemos adicionar o repositório oficial.
+
+Para isso, utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_debian-and-Fedora-based-distributions).
+
+```bash title="Mint: Gnome Terminal" frame="terminal"
 sudo apt-get install wget gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
@@ -71,55 +93,66 @@ echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft
 rm -f packages.microsoft.gpg
 ```
 
-Em seguida, atualize a lista de pacotes e instale o Visual Studio Code:
+Em seguida, atualize a lista de pacotes e instale o Visual Studio Code.
 
-```bash
+```bash title="Mint: Gnome Terminal" frame="terminal"
 sudo apt install apt-transport-https
 sudo apt update
 sudo apt install code
 ```
 
-### Fedora
-
-Para instalar o Visual Studio Code no Fedora, também podemos adicionar o repositório oficial do Visual Studio Code.
-
-Utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions):
-
-```bash
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-```
-
-Em seguida, instale o Visual Studio Code:
-
-```bash
-dnf check-update
-sudo dnf install code
-```
-
 ## Executando
 
-Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos do seu sistema operacional &mdash; seja Windows, Ubuntu ou Fedora &mdash; ou executar o comando `code` no terminal.
+Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos do seu sistema operacional &mdash; seja Windows, Fedora ou Fedora &mdash.
+
+### Fedora e Mint
+
+Você também pode abrir o terminal padrão e executar o comando `code`.
+No Fedora, o terminal se chama **Ptyxis**.
+Já no Mint, ele é o **GNOME Terminal**.
+
+### Windows
+
+No Windows, você pode executar o comando `code` pelo PowerShell.
 
 <Figure
-  caption="Executando o Visual Studio Code pelo Windows Terminal."
+  caption="Executando o Visual Studio Code pelo PowerShell."
   images={[
     {
-      src: runningCodeInTerminal,
-      alt: "Janela do Windows Terminal, em que se executa o comando de abertura do Visual Studio Code. Ao lado, a janela do Visual Studio Code é aberta.",
+      src: runningCodeViaPowershell,
+      alt: "Janela do PowerShell, em que se executa o comando de abertura do Visual Studio Code. Ao lado, a janela do Visual Studio Code é aberta.",
     },
   ]}
 />
 
-Para abrir o VSCode no **WSL**, você pode prosseguir de duas formas abrir o Windows terminal pelo perfil do **WSL** e executar o comando `code`.
+Isso abrirá o aplicativo no ecossistema do Windows, o que provavelmente não é o que você quer fazer.
+Idealmente, você deve executar o VSCode integrado no ambiente do WSL, como ensinado abaixo.
 
-Ou então, pode abrir o VSCode normalmente, e selecionar o botão azul no canto inferior esquerdo, chamado `Open a Remote Window`.
+### WSL
+
+Para executar o VSCode no **WSL**, você pode abrir o aplicativo do **WSL** e executar o comando `code .`.
+Isso abrirá o aplicativo focado na sua pasta `home` do Fedora.
+
+Na primeira vez que executar esse comando, o Visual Studio Code pedirá autorização para se conectar com o sistema do WSL.
+Maque a caixa de seleção `Permanently allow host 'wsl.localhost'` e clique no botão `Allow`.
+
+<Figure
+  caption="Executando o Visual Studio Code pelo WSL."
+  images={[
+    {
+      src: runningCodeViaWsl,
+      alt: `Janela do WSL, em que se executa o comando de abertura do Visual Studio Code na pasta "home" do usuário. Ao lado, uma janela do Visual Studio Code pede autorização para se conectar ao WSL.`,
+    },
+  ]}
+/>
+
+Ou então, pode abrir o VSCode normalmente pelo Menu Iniciar, e então selecionar o botão azul no canto inferior esquerdo, chamado `Open a Remote Window`.
 
 <Figure
   caption="Botão para abrir uma conexão remota pelo Visual Studio Code."
   images={[
     {
-      src: remoteWindow,
+      src: remoteWindowButton,
       alt: "Porção inferior esquerda do Visual Studio Code, em que há um botão azul, cujo texto auxiliar indica a ação de abrir uma janela remota.",
     },
   ]}
@@ -132,25 +165,62 @@ Então, selecione a opção `WSL` no menu que aparecer.
   images={[
     {
       src: connectionsMenu,
-      alt: "Menu de conexões remotas do Visual Studio Code, em que se seleciona a opção 'WSL: Ubuntu'.",
+      alt: "Menu de conexões remotas do Visual Studio Code, em que se seleciona a opção 'WSL'.",
     },
   ]}
 />
 
-Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para se conectar com o **Ubuntu**.
+Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para se conectar com o **Fedora**.
 
-Algumas de suas extensões previamente instaladas manter-se-ão funcionando, mas algumas podem requerer que você clique em `Install in WSL: Ubuntu` para que funcionem corretamente.
+## Conta
+
+O Visual Studio Code permite sincronizar suas configurações por meio da sua conta do GitHub.
+No canto inferior esquerdo da tela, existe um ícone de uma pessoa.
+Clique nele, e, em seguida, clice na opção `Backup and Sync Settings...` do menu que se abrir.
 
 <Figure
-  caption="Seção de extensões do visual Studio Code, em que se vê a extensão WSL
-    instalada."
+  caption="Menu de contas do VSCode."
   images={[
     {
-      src: extensions,
-      alt: `Seção de extensões do visual Studio Code, em que se vê a extensão "WSL" instalada e sua descrição breve, além das extensões "Error Lens" e "vscode-pdf". Também se veem as extensões "AsciiDoc" e "Brazilian Portuguese - Code Spell Checker" desabilitadas, nas quais aparece um botão escrito "Install in WSL: Ubuntu". No canto inferior esquerdo do aplicativo, o botão de conexões remotas agora mostra o texto "WSL: Ubuntu".`,
+      src: backupAndSync,
+      alt: "Menu de contas do Visual Studio Code, em que se seleciona a opção de se fazer sincronização.",
     },
   ]}
 />
+
+Então, o VSCode abrirá um outro menu no centro do canto superior, em que você deve marcar todas as caixas de seleção e pressionar o botão `Sign in`.
+No próximo menu, selecione a opção `Sign in with Github`.
+
+<Figure
+  caption="Menu de sincronização do VSCode."
+  images={[
+    {
+      src: whatToSync,
+      alt: "Menu de seleção de quais recursos sincronizar. Todos estão selecionados.",
+    },
+    {
+      src: whichService,
+      alt: "Menu de seleção qual serviço usar para se conectar, em que se seleciona o GitHub.",
+    },
+  ]}
+/>
+
+O seu navegador abrirá o site do GitHub.
+Caso você não esteja logado, pode fazer log-in neste momento.
+Então, o GitHub mostra a conta conectada.
+
+<Figure
+  caption="Seleção da conta do GitHub."
+  images={[
+    {
+      src: whichAccount,
+      alt: "Página do GitHub, em que se seleciona a conta em que conectar.",
+    },
+  ]}
+/>
+
+Selecione o botão `Continue`.
+O VSCode vai começar a fazer a sincronização.
 
 ## Extensões
 
@@ -192,6 +262,18 @@ Para cada uma dessas extensões, clique com o botão direito sobre e selecione *
 
 Isso será importante mais tarde, quando criarmos perfis específicos para cada linguagem de programação.
 
+Conectando-se pelo VSCode no WSL, algumas podem requerer que você clique em `Install in WSL: Fedora` para que funcionem corretamente.
+
+<Figure
+  caption={`Seção de extensões do visual Studio Code, em que se pode selecionar a extensão "Braziian portuguese - Code Spell Checker" para ser instalada no WSL.`}
+  images={[
+    {
+      src: extensions,
+      alt: `Seção de extensões do visual Studio Code, em que se vê a extensão "WSL" instalada e sua descrição breve. Também se vê a extensão "Braziian portuguese - Code Spell Checker" desabilitada, na qual aparece um botão escrito "Install in WSL: FedoraLinux-42".`,
+    },
+  ]}
+/>
+
 ## Configurações
 
 Para configurar o Visual Studio Code, você pode acessar as configurações do editor clicando no ícone de engrenagem no canto inferior esquerdo da janela.
@@ -214,115 +296,12 @@ Eu preparei um conjunto de configurações para o Visual Studio Code que inclui 
 Copie o conteúdo abaixo.
 Então, abra o arquivo `settings.json` do seu Visual Studio Code e cole nele o conteúdo copiado.
 
-```json
-{
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2,
-    "prettier.tabWidth": 2
-  },
-  "cSpell.language": "en,en-US,pt,pt-BR",
-  "cSpell.userWords": ["catppuccin"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.markdownlint": "explicit"
-  },
-  "editor.detectIndentation": false,
-  "editor.fontFamily": "'MesloLGL Nerd Font Mono', 'FiraCode Nerd Font Mono'",
-  "editor.fontWeight": "400",
-  "editor.formatOnSave": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.mouseWheelZoom": true,
-  "editor.selectionClipboard": false,
-  "editor.semanticHighlighting.enabled": true,
-  "editor.tabSize": 4,
-  "editor.wordWrap": "bounded",
-  "explorer.confirmDragAndDrop": false,
-  "files.associations": {
-    "*.css": "css"
-  },
-  "files.autoSave": "afterDelay",
-  "git.autofetch": true,
-  "git.openRepositoryInParentFolders": "always",
-  "github.copilot.enable": {
-    "*": true,
-    "markdown": true,
-    "plaintext": true,
-    "scminput": true
-  },
-  "markdownlint.config": {
-    "MD024": false,
-    "default": true
-  },
-  "markdownlint.run": "onSave",
-  "terminal.integrated.fontFamily": "'MesloLGL Nerd Font Mono', 'FiraCode Nerd Font Mono'",
-  "terminal.integrated.minimumContrastRatio": 1,
-  "workbench.colorTheme": "Catppuccin Latte",
-  "workbench.iconTheme": "catppuccin-latte",
-  "workbench.settings.applyToAllProfiles": [
-    "[css]",
-    "[html]",
-    "[javascript]",
-    "[json]",
-    "[jsonc]",
-    "[markdown]",
-    "cspell.language",
-    "cspell.userWords",
-    "editor.codeActionsOnSave",
-    "editor.detectIndentation",
-    "editor.fontFamily",
-    "editor.fontWeight",
-    "editor.formatOnSave",
-    "editor.inlineSuggest.enabled",
-    "editor.mouseWheelZoom",
-    "editor.selectionClipboard",
-    "editor.semanticHighlighting.enabled",
-    "editor.tabSize",
-    "editor.wordWrap",
-    "explorer.confirmDragAndDrop",
-    "files.associations",
-    "files.autoSave",
-    "git.autofetch",
-    "git.openRepositoryInParentFolders",
-    "github.copilot.enable",
-    "markdownlint.config",
-    "markdownlint.run",
-    "terminal.integrated.fontFamily",
-    "terminal.integrated.minimumContrastRatio",
-    "workbench.colorTheme",
-    "workbench.iconTheme"
-  ]
-}
-```
+<Code code={settings} lang="json" title="settings.json" showLineNumbers />
 
 Você também pode acessar esse arquivo no [repositório do livro](https://github.com/gabdumal/book_andesito/blob/main/public/settings/vscode/initial/settings.json).
 
-A última opção, `workbench.settings.applyToAllProfiles`, é importante para que as configurações sejam aplicadas a todos os perfis do Visual Studio Code.
-Veremos mais sobre eles mais tarde.
+A opção `workbench.settings.applyToAllProfiles` é muito importante, pois ela define quais configurações serão aplicadas a todos os perfis do Visual Studio Code.
+Veremos mais sobre eles nos próximos capítulos.
 Para todas as definições que você deseja que sejam aplicadas, independentemente do perfil selecionado, adicione o nome da configuração à lista.
 
 Sinta-se livre para alterar as configurações conforme sua preferência.

@@ -38,10 +38,10 @@ export default defineConfig({
           label: "WSL",
           slug: "wsl",
         },
-        // {
-        //   label: "VSCode",
-        //   slug: "vscode",
-        // },
+        {
+          label: "VSCode",
+          slug: "vscode",
+        },
         // {
         //   items: [
         //     {

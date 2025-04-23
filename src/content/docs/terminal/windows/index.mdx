@@ -3,33 +3,34 @@ title: Windows Terminal
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import { Kbd } from "starlight-kbd/components";
 
-import openFolder from "/src/assets/content/docs/terminal/windows/open_folder.png";
-import selectTerminal from "/src/assets/content/docs/terminal/windows/select_terminal.png";
-import confirm from "/src/assets/content/docs/terminal/windows/confirm.png";
-import editShortcut from "/src/assets/content/docs/terminal/windows/edit_shortcut.png";
-import setKeybinding from "/src/assets/content/docs/terminal/windows/set_keybinding.png";
-import openConfigurations from "/src/assets/content/docs/terminal/windows/open_configurations.png";
-import initialConfigs from "/src/assets/content/docs/terminal/windows/initial_configs.png";
-import lightTheme from "/src/assets/content/docs/terminal/windows/light_theme.png";
-import defaultProfile from "/src/assets/content/docs/terminal/windows/default_profile.png";
-import jsonFile from "/src/assets/content/docs/terminal/windows/json_file.png";
-import schemes from "/src/assets/content/docs/terminal/windows/schemes.png";
-import themes from "/src/assets/content/docs/terminal/windows/themes.png";
-import schemesList from "/src/assets/content/docs/terminal/windows/schemes_list.png";
-import themesList from "/src/assets/content/docs/terminal/windows/themes_list.png";
+import Figure from "@components/Figure.astro";
 
-Este subcapítulo aborda o **Windows Terminal**, um emulador de terminal moderno para usuários do Windows.
+import openFolder from "@assets/content/docs/terminal/windows/open_folder.png";
+import selectTerminal from "@assets/content/docs/terminal/windows/select_terminal.png";
+import confirm from "@assets/content/docs/terminal/windows/confirm.png";
+import editShortcut from "@assets/content/docs/terminal/windows/edit_shortcut.png";
+import setKeybinding from "@assets/content/docs/terminal/windows/set_keybinding.png";
+import openConfigurations from "@assets/content/docs/terminal/windows/open_configurations.png";
+import initialConfigs from "@assets/content/docs/terminal/windows/initial_configs.png";
+import lightTheme from "@assets/content/docs/terminal/windows/light_theme.png";
+import defaultProfile from "@assets/content/docs/terminal/windows/default_profile.png";
+import jsonFile from "@assets/content/docs/terminal/windows/json_file.png";
+import schemes from "@assets/content/docs/terminal/windows/schemes.png";
+import themes from "@assets/content/docs/terminal/windows/themes.png";
+import schemesList from "@assets/content/docs/terminal/windows/schemes_list.png";
+import themesList from "@assets/content/docs/terminal/windows/themes_list.png";
+import profiles from "@assets/content/docs/terminal/windows/profiles.png";
+import fedoraAsDefault from "@assets/content/docs/terminal/windows/fedora_as_default.png";
 
-Ele é instalado por padrão no Windows 11.
-Para o Windows 10, você pode baixá-lo na [Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare).
+Este subcapítulo aborda o [**Windows Terminal**](https://github.com/microsoft/terminal), um emulador de terminal moderno para usuários do Windows.
+Acesse sua página na [Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare) e instale-o.
 
 ## Atalho de teclado
 
 Vamos criar um atalho de teclas para abrir o Windows Terminal.
-Abra o `Executar` com <Keyboard keys={["Win", "R"]} />, digite `shell:AppsFolder`, e pressione <Keyboard keys={["Enter"]} />.
+Abra o `Executar` com <Kbd linux={"Super+R"} windows={"Win+R"} />, digite `shell:AppsFolder`, e pressione <Kbd linux={"Enter"} windows={"Enter"} />.
 
 <Figure
   caption="Abrindo a pasta de aplicativos pelo Executar."
@@ -77,7 +78,7 @@ Agora, clique com o botão direito do mouse no atalho criado na área de trabalh
   ]}
 />
 
-Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas <Keyboard keys={["Ctrl", "Alt", "T"]} />.
+Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas <Kbd linux={"Ctrl+Alt+T"} windows={"Ctrl+Alt+T"} />.
 
 <Figure
   caption="Definindo a combinação de teclas para abrir o Windows Terminal."
@@ -88,6 +89,9 @@ Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de te
     },
   ]}
 />
+
+Clique em `Aplicar` e depois em `OK`.
+Agora, sempre que você pressionar <Kbd linux={"Ctrl+Alt+T"} windows={"Ctrl+Alt+T"} />, o Windows Terminal será aberto.
 
 ## Perfis
 
@@ -148,7 +152,9 @@ Eu defini o tema como `One Half Light` e o tamanho da fonte como 16.
   ]}
 />
 
-Toda essa interface apenas edita um arquivo de configuração, que pode ser acessado diretamente pelo botão `Abrir JSON`.
+Toda essa interface apenas edita um arquivo de configuração, que pode ser acessado diretamente pelo botão `Abrir o arquivo JSON`, que fica no canto inferior esquerdo da janela.
+
+Como já instalamos o Visual Studio Code, ele será usado para abrir o aqrquivo de configurações.
 
 <Figure
   caption="Arquivo JSON de definições do Windows Terminal."
@@ -160,7 +166,7 @@ Toda essa interface apenas edita um arquivo de configuração, que pode ser aces
   ]}
 />
 
-Eu gosto de usar um tema bastante popular chamado `Catppuccin`.
+Eu gosto de usar um tema bastante popular chamado [**Catppuccin**](https://catppuccin.com/).
 Ele é um projeto que oferece personalização para uma série de programas.
 Você pode optar entre quatro variantes: Latte, Frappé, Macchiato e Mocha.
 
@@ -220,26 +226,32 @@ Você pode aplicar o tema da mesma forma como selecionamos o tema claro e o `One
 Tendo instalado o WSL no computador, você verá uma nova entrada para o Fedora na aba de perfis do **Windows Terminal**.
 
 <Figure
-  caption="Opção do Ubuntu na lista de perfis do Windows Terminal."
+  caption="Opção do Fedora na lista de perfis do Windows Terminal."
   images={[
     {
-      src: ubuntuProfile,
-      alt: `Lista de perfis do Windows Terminal, em que são exibidas as opções: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell" e "Ubuntu".`,
+      src: profiles,
+      alt: `Lista de perfis do Windows Terminal, em que são exibidas as opções: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell" e "FedoraLinux-42".`,
     },
   ]}
 />
 
-Eu acho mais prático ter o Ubuntu como padrão quando inicio o terminal.
+Eu acho mais prático ter o Fedora como padrão quando inicio o terminal.
 Para isso, abra as configurações do Windows Terminal.
 Na seção `Startup` (ou `Inicialização`), você pode definir o perfil padrão.
-Selecione a entrada do ubuntu com o ícone do pinguim Tux e clique em `Salvar`.
+Selecione a entrada do Fedora, que tem o ícone azul com uma letra "F" estilizada, e clique em `Salvar`.
 
 <Figure
-  caption="Definindo o perfil do Ubuntu como a opção de inicialização padrão do Windows Terminal."
+  caption="Definindo o perfil do Fedora como a opção de inicialização padrão do Windows Terminal."
   images={[
     {
-      src: ubuntuDefault,
+      src: fedoraAsDefault,
       alt: "Configurações do Windows Terminal, em que se define o perfil padrão de inicialização.",
     },
   ]}
 />
+
+Outra coisa que eu gosto de fazer é ocultar os perfis que não uso.
+Pra isso, acesse o perfil que deseja ocultar, e ative a opção `Ocultar perfil da lista suspensa`.
+Podemos fazer isso para o `Prompt de comando` e para o `Azure Cloud Shell`.
+
+Não se esqueça de **salvar** as definições depois de editá-las.

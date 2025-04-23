@@ -7,6 +7,7 @@ import { Code } from "@astrojs/starlight/components";
 
 import Figure from "@components/Figure.astro";
 import Link from "@components/Link.astro";
+import { Kbd } from "starlight-kbd/components";
 
 import downloadOptions from "@assets/content/docs/vscode/download_options.png";
 import otherOptions from "@assets/content/docs/vscode/other_options.png";
@@ -226,7 +227,7 @@ O VSCode vai começar a fazer a sincronização.
 
 O Visual Studio Code possui uma grande quantidade de extensões que podem ser instaladas para adicionar funcionalidades ao editor.
 
-Para instalar uma extensão no Visual Studio Code, clique no ícone de quadrados no canto esquerdo da janela, ou pressione `Ctrl+Shift+X`.
+Para instalar uma extensão no Visual Studio Code, clique no ícone de quadrados no canto esquerdo da janela, ou pressione <Kbd linux="Ctrl+Shift+X" windows="Ctrl+Shift+X" />.
 
 Então, pesquise pelo nome da extensão desejada e clique no botão `Install`.
 
@@ -279,7 +280,7 @@ Conectando-se pelo VSCode no WSL, algumas podem requerer que você clique em `In
 Para configurar o Visual Studio Code, você pode acessar as configurações do editor clicando no ícone de engrenagem no canto inferior esquerdo da janela.
 
 Alternativamente, você pode editar o arquivo `settings.json` diretamente.
-Para isso, abra a paleta de comandos com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
+Para isso, abra a paleta de comandos com <Kbd linux="Ctrl+Shift+P" windows="Ctrl+Shift+P" /> e digite `Preferences: Open User Settings (JSON)`.
 
 <Figure
   caption="Abrindo o arquivo de configurações do Visual Studio Code pela paleta de comandos."

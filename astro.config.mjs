@@ -42,23 +42,23 @@ export default defineConfig({
           label: "VSCode",
           slug: "vscode",
         },
-        // {
-        //   items: [
-        //     {
-        //       label: "Introdução",
-        //       slug: "terminal",
-        //     },
-        //     {
-        //       label: "GNOME Terminal",
-        //       slug: "terminal/gnome",
-        //     },
-        //     {
-        //       label: "Windows Terminal",
-        //       slug: "terminal/windows",
-        //     },
-        //   ],
-        //   label: "Terminal",
-        // },
+        {
+          items: [
+            {
+              label: "Introdução",
+              slug: "terminal",
+            },
+            // {
+            //   label: "GNOME Terminal",
+            //   slug: "terminal/gnome",
+            // },
+            {
+              label: "Windows Terminal",
+              slug: "terminal/windows",
+            },
+          ],
+          label: "Terminal",
+        },
         // {
         //   label: "Git",
         //   slug: "git",

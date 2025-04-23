@@ -3,13 +3,16 @@ title: Zsh
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import { Code } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
-import welcome from "/src/assets/content/docs/shell/zsh/welcome.png";
-import installOmz from "/src/assets/content/docs/shell/zsh/install_omz.png";
-import zshCodeInitial from "/src/assets/content/docs/shell/zsh/zsh_code_initial.png";
-import codeTrusted from "/src/assets/content/docs/shell/zsh/code_trusted.png";
+import Figure from "@components/Figure.astro";
+
+import welcome from "@assets/content/docs/shell/zsh/welcome.png";
+import installOmz from "@assets/content/docs/shell/zsh/install_omz.png";
+import zshCodeInitial from "@assets/content/docs/shell/zsh/zsh_code_initial.png";
+import trustCode from "@assets/content/docs/shell/zsh/trust_code.png";
+import settings from "/public/configuration/zsh/initial/.zshrc?raw";
 
 O **Zsh** é um shell que busca ser mais poderoso e flexível que o Bash (o shell padrão do Ubuntu e do Fedora)
 Ele permite a instalação de uma série de plugins de forma mais simplificada.
@@ -19,52 +22,48 @@ Para instalar o Zsh, vamos seguir as instruções do [site](https://github.com/o
 
 ## Instalação
 
-### Ubuntu e WSL
+### Fedora e WSL
 
-Execute o comando abaixo no terminal:
+Execute o comando abaixo no terminal.
 
-```bash
-sudo apt install zsh -y
-```
-
-Verifique a instalação com o comando:
-
-```bash
-zsh --version
-```
-
-E então o defina como o shell padrão:
-
-```bash
-chsh -s $(which zsh)
-```
-
-### Fedora
-
-Execute o comando abaixo no terminal:
-
-```bash
+```bash title="Fedora ou WSL" frame="terminal"
 sudo dnf install zsh -y
 ```
 
-Verifique a instalação com o comando:
+Verifique a instalação com o comando abaixo.
 
-```bash
+```bash title="Fedora ou WSL" frame="terminal"
+zsh --version
+# zsh 5.9 (x86_64-redhat-linux-gnu)
+```
+
+E então o defina como o shell padrão da seguinte forma.
+
+```bash title="Fedora ou WSL" frame="terminal"
+sudo chsh $USER -s /bin/zsh
+```
+
+---
+
+### Mint
+
+Execute o comando abaixo no terminal.
+
+```bash title="Mint" frame="terminal"
+sudo apt install zsh -y
+```
+
+Verifique a instalação com o comando abaixo.
+
+```bash title="Mint" frame="terminal"
 zsh --version
 ```
 
-E então o defina como o shell padrão:
+E então o defina como o shell padrão da seguinte forma.
 
-```bash
-sudo lchsh $USER
+```bash title="Mint" frame="terminal"
+chsh -s $(which zsh)
 ```
-
-### Windows
-
-Infelizmente, o Zsh não é suportado nativamente no Windows.
-Ainda assim, instalaremos alguns plugins no PowerShell para aprimorá-lo.
-
----
 
 ### Arquivo de configuração
 
@@ -72,11 +71,11 @@ Após instalar o Zsh, **feche** o terminal e abra-o novamente.
 Se tudo correr bem, você verá o texto de boas-vindas.
 
 <Figure
-  caption="Texto de boas-vindas do Zsh no Windows Terminal rodando o Ubuntu."
+  caption="Texto de boas-vindas do Zsh no Windows Terminal rodando o Fedora."
   images={[
     {
       src: welcome,
-      alt: `Terminal do Ubuntu WSL com texto de boas-vindas do Zsh. São apresentadas quatro opções de configuração: (q) sair sem criar o arquivo de configuração, (0) criar um arquivo de configuração vazio, (1) continuar para o menu e (2) criar um arquivo com as configurações recomendadas.`,
+      alt: `Terminal do Fedora WSL com texto de boas-vindas do Zsh. São apresentadas quatro opções de configuração em inglês: (q) sair sem criar o arquivo de configuração, (0) criar um arquivo de configuração vazio, (1) continuar para o menu e (2) criar um arquivo com as configurações recomendadas.`,
     },
   ]}
 />
@@ -84,7 +83,7 @@ Se tudo correr bem, você verá o texto de boas-vindas.
 O Zsh está pedindo para você criar um arquivo de configuração para ele.
 O shell, assim como diversos outros programas no Linux utilizam arquivos de configuração para definir suas opções.
 
-Pressione <Keyboard keys={["0"]} /> para criar um arquivo vazio.
+Pressione <Kbd linux={"0"} /> para criar um arquivo vazio.
 Não se preocupe, vamos preenchê-lo mais adiante.
 
 O arquivo de configuração do Zsh é o `.zshrc`, assim mesmo, com ponto no começo e sem extensão.
@@ -95,13 +94,25 @@ Sua localização é na pasta do seu usuário.
 O **Oh My Zsh** é um framework para gerenciar a configuração do zsh.
 Ele é altamente _customizável_ e _extensível_, graças a uma grande quantidade de _plugins_ e _temas_ disponíveis.
 
-Uma vez que ele depende do Zsh, sua instalação pode ser feita no Ubuntu, no Fedora e no WSL, mas não no PowerShell.
-
 ### Instalação
 
 Suas instruções de instalação estão disponíveis no seu [repositório no GitHub](https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#basic-installation).
 
-Execute o seguinte comando no terminal para instalar o Oh My Zsh:
+Para executarmos seu script de instalação, precisamos de um programa chamado `wget`.
+
+Você pode instalá-lo da seguinte forma no Fedora ou WSL.
+
+```bash title="Fedora ou WSL" frame="terminal"
+sudo dnf install wget -y
+```
+
+Ou como a seguir no Mint.
+
+```bash title="Mint" frame="terminal"
+sudo apt install wget -y
+```
+
+Então, execute o seguinte comando no terminal para instalar o Oh My Zsh:
 
 ```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -110,11 +121,11 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 Além de instalar o Oh My Zsh, o script de instalação também configura o arquivo `.zshrc` de forma a carregar o framework.
 
 <Figure
-  caption="Script de instalação do Oh My Zsh sendo executado no Ubuntu WSL."
+  caption="Script de instalação do Oh My Zsh sendo executado no Fedora WSL."
   images={[
     {
       src: installOmz,
-      alt: `Terminal do Ubuntu WSL, em que se executa o script de instalação do Oh My Zsh.`,
+      alt: `Terminal do Fedora WSL, em que se executa o script de instalação do Oh My Zsh.`,
     },
   ]}
 />
@@ -128,11 +139,11 @@ Como já instalamos o Visual Studio Code, podemos usá-lo.
 
 Digite no terminal o seguinte comando:
 
-```bash
+```bash title="Fedora, WSL ou Mint" frame="terminal"
 code ~/.zshrc
 ```
 
-O `~` é um atalho para a pasta do usuário, ou seja, `/home/gabriel` no meu caso.
+O `~` é um atalho para a pasta do usuário, ou seja, `/home/gabriel-dev` no meu caso.
 Dentro dela, está o arquivo `.zshrc`.
 
 <Figure
@@ -145,14 +156,14 @@ Dentro dela, está o arquivo `.zshrc`.
   ]}
 />
 
-Caso dentro do VSCode haja um aviso de que o arquivo está em modo restrito, clique em "Manage".
-Então, na próxima página clique em "Trust".
+Caso dentro do VSCode haja um aviso de que o arquivo está em modo restrito, clique em **Manage**.
+Então, na próxima página clique em **Trust**.
 
 <Figure
   caption="Permitindo confiar no arquivo de configuração do Zsh no VSCode."
   images={[
     {
-      src: codeTrusted,
+      src: trustCode,
       alt: `Tela de autorização para confiar no arquivo de configuração do Zsh no VSCode.`,
     },
   ]}
@@ -164,23 +175,9 @@ Então, na verdade, não tem quase nada sendo definido no arquivo.
 
 Por isso, vamos **apagar** tudo, e adicionar as seguintes linhas:
 
-```bash
+<Code code={settings} lang="bash" title="~/.zshrc" />
 
-# Shell configuration
-ZSH_THEME="robbyrussell"
-
-## Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-## Path configuration
-PATH=$PATH:~/.local/bin
-
-## Source Oh my Zsh
-source $ZSH/oh-my-zsh.sh
-
-## Plugins
-plugins=(git)
-```
+Lembre-se de **salvar** o arquivo.
 
 Por enquanto não definimos nada novo.
 Vamos fazer isso no próximo subcapítulo.

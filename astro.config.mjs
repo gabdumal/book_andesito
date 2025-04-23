@@ -67,7 +67,7 @@ export default defineConfig({
           items: [
             { label: "Introdução", slug: "shell" },
             { label: "PowerShell", slug: "shell/powershell" },
-            // { label: "Zsh", slug: "shell/zsh" },
+            { label: "Zsh", slug: "shell/zsh" },
             // { label: "Temas", slug: "shell/themes" },
             // { label: "Plugins", slug: "shell/plugins" },
           ],

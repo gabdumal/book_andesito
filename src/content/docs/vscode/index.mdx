@@ -4,10 +4,10 @@ author: Gabriel Malosto
 ---
 
 import { Code } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 import Link from "@components/Link.astro";
-import { Kbd } from "starlight-kbd/components";
 
 import downloadOptions from "@assets/content/docs/vscode/download_options.png";
 import otherOptions from "@assets/content/docs/vscode/other_options.png";
@@ -22,7 +22,7 @@ import whichAccount from "@assets/content/docs/vscode/which_account.png";
 import extensions from "@assets/content/docs/vscode/extensions.png";
 import applyingExtensionToAllProfiles from "@assets/content/docs/vscode/applying_extension_to_all_profiles.png";
 import openingUserSettings from "@assets/content/docs/vscode/opening_user_settings.png";
-import settings from "/public/settings/vscode/initial/settings.json?raw";
+import settings from "/public/configuration/vscode/initial/settings.json?raw";
 
 A fim de escrever código, você precisará de um editor de texto apropriado.
 É interessante que ele seja voltado para o desenvolvimento de software, com funcionalidades como _syntax highlighting_, _code completion_, _debugging_, etc.
@@ -297,7 +297,7 @@ Eu preparei um conjunto de configurações para o Visual Studio Code que inclui 
 Copie o conteúdo abaixo.
 Então, abra o arquivo `settings.json` do seu Visual Studio Code e cole nele o conteúdo copiado.
 
-<Code code={settings} lang="json" title="settings.json" showLineNumbers />
+<Code code={settings} lang="json" title="settings.json" />
 
 Você também pode acessar esse arquivo no [repositório do livro](https://github.com/gabdumal/book_andesito/blob/main/public/settings/vscode/initial/settings.json).
 

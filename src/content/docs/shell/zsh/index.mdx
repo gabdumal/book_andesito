@@ -14,7 +14,7 @@ import zshCodeInitial from "@assets/content/docs/shell/zsh/zsh_code_initial.png"
 import trustCode from "@assets/content/docs/shell/zsh/trust_code.png";
 import settings from "/public/configuration/zsh/initial/.zshrc?raw";
 
-O **Zsh** é um shell que busca ser mais poderoso e flexível que o Bash (o shell padrão do Ubuntu e do Fedora)
+O [**Zsh**](https://www.zsh.org/) é um shell que busca ser mais poderoso e flexível que o Bash (o shell padrão do Ubuntu e do Fedora)
 Ele permite a instalação de uma série de plugins de forma mais simplificada.
 
 Vamos instalá-lo já pensando em utilizar seu framework de customização [**Oh My Zsh**](https://github.com/ohmyzsh/ohmyzsh).
@@ -91,7 +91,7 @@ Sua localização é na pasta do seu usuário.
 
 ## Oh My Zsh
 
-O **Oh My Zsh** é um framework para gerenciar a configuração do zsh.
+O [**Oh My Zsh**](https://github.com/ohmyzsh/ohmyzsh?tab=coc-ov-file) é um framework para gerenciar a configuração do zsh.
 Ele é altamente _customizável_ e _extensível_, graças a uma grande quantidade de _plugins_ e _temas_ disponíveis.
 
 ### Instalação
@@ -102,19 +102,19 @@ Para executarmos seu script de instalação, precisamos de um programa chamado `
 
 Você pode instalá-lo da seguinte forma no Fedora ou WSL.
 
-```bash title="Fedora ou WSL" frame="terminal"
+```zsh title="Fedora ou WSL" frame="terminal"
 sudo dnf install wget -y
 ```
 
 Ou como a seguir no Mint.
 
-```bash title="Mint" frame="terminal"
+```zsh title="Mint" frame="terminal"
 sudo apt install wget -y
 ```
 
 Então, execute o seguinte comando no terminal para instalar o Oh My Zsh:
 
-```bash
+```zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
@@ -139,7 +139,7 @@ Como já instalamos o Visual Studio Code, podemos usá-lo.
 
 Digite no terminal o seguinte comando:
 
-```bash title="Fedora, WSL ou Mint" frame="terminal"
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 code ~/.zshrc
 ```
 
@@ -175,7 +175,7 @@ Então, na verdade, não tem quase nada sendo definido no arquivo.
 
 Por isso, vamos **apagar** tudo, e adicionar as seguintes linhas:
 
-<Code code={settings} lang="bash" title="~/.zshrc" />
+<Code code={settings} lang="zsh" title="~/.zshrc" />
 
 Lembre-se de **salvar** o arquivo.
 

@@ -15,6 +15,11 @@ export default defineConfig({
       ],
       defaultLocale: "root",
       description: "Guia de configuração de ambiente de desenvolvimento.",
+      expressiveCode: {
+        frames: {
+          removeCommentsWhenCopyingTerminalFrames: false,
+        },
+      },
       locales: {
         root: {
           label: "Português",
@@ -68,7 +73,7 @@ export default defineConfig({
             { label: "Introdução", slug: "shell" },
             { label: "PowerShell", slug: "shell/powershell" },
             { label: "Zsh", slug: "shell/zsh" },
-            // { label: "Temas", slug: "shell/themes" },
+            { label: "Temas", slug: "shell/themes" },
             // { label: "Plugins", slug: "shell/plugins" },
           ],
           label: "Shell",

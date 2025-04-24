@@ -16,6 +16,7 @@ import openConfigurations from "@assets/content/docs/terminal/windows/open_confi
 import initialConfigs from "@assets/content/docs/terminal/windows/initial_configs.png";
 import lightTheme from "@assets/content/docs/terminal/windows/light_theme.png";
 import defaultProfile from "@assets/content/docs/terminal/windows/default_profile.png";
+import settingFontOnWindows from "/src/assets/content/docs/terminal/windows/setting_font_on_windows.png";
 import jsonFile from "@assets/content/docs/terminal/windows/json_file.png";
 import schemes from "@assets/content/docs/terminal/windows/schemes.png";
 import themes from "@assets/content/docs/terminal/windows/themes.png";
@@ -152,9 +153,22 @@ Eu defini o tema como `One Half Light` e o tamanho da fonte como 16.
   ]}
 />
 
+Esses dois são opcionais, mas precisamos definir a **fonte** como alguma compatível com símbolos Nerd Font.
+Então, procure por `FiraCode Nerd Font Mono` na lista de fontes disponíveis e a selecione.
+
+<Figure
+  caption="Definindo a fonte FiraCode Mono no Windows Terminal."
+  images={[
+    {
+      src: settingFontOnWindows,
+      alt: "Janela de configurações do Windows Terminal aberta na aba de aparência do perfil padrão. Na opção de fonte, busca-se pela FiraCode Nerd Font Mono.",
+    },
+  ]}
+/>
+
 Toda essa interface apenas edita um arquivo de configuração, que pode ser acessado diretamente pelo botão `Abrir o arquivo JSON`, que fica no canto inferior esquerdo da janela.
 
-Como já instalamos o Visual Studio Code, ele será usado para abrir o aqrquivo de configurações.
+Como já instalamos o Visual Studio Code, ele será usado para abrir o arquivo de configurações.
 
 <Figure
   caption="Arquivo JSON de definições do Windows Terminal."

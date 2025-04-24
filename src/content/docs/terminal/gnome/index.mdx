@@ -7,31 +7,21 @@ import { Kbd } from "starlight-kbd/components";
 
 import Figure from "/src/components/Figure.astro";
 
-import searchingTerminalOnUbuntu from "/src/assets/content/docs/terminal/gnome/searching_terminal_on_ubuntu.png";
-import openingTerminalFromTerminal from "/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.gif";
+import openingTerminalFromTerminal from "/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.webp";
 import openingKeyboardSettings from "/src/assets/content/docs/terminal/gnome/opening_keyboard_settings.png";
 import settingTerminalShortcut from "/src/assets/content/docs/terminal/gnome/setting_terminal_shortcut.png";
-import openingPreferences from "/src/assets/content/docs/terminal/gnome/opening_preferences.png";
 import preferences from "/src/assets/content/docs/terminal/gnome/preferences.png";
-import profile from "/src/assets/content/docs/terminal/gnome/profile.png";
 import installingCatppuccin from "/src/assets/content/docs/terminal/gnome/installing_catppuccin.png";
 import settingTheme from "/src/assets/content/docs/terminal/gnome/setting_theme.png";
-import changedFontSize from "/src/assets/content/docs/terminal/gnome/changed_font_size.png";
+import changingFontSize from "/src/assets/content/docs/terminal/gnome/changing_font_size.png";
+import selectingFiraCode from "/src/assets/content/docs/terminal/gnome/selecting_firacode.png";
 import result from "/src/assets/content/docs/terminal/gnome/result.png";
 
 Este subcapítulo aborda o **GNOME Terminal**, o emulador de terminal padrão do **Mint**, do **Ubuntu**, do **Debian** e de muitas outras distribuições.
 
 Pesquise por `Terminal` no menu do seu sistema operacional e clique no ícone do aplicativo para abri-lo.
-
-<Figure
-  caption="Buscando pelo Terminal no menu de apps do GNOME."
-  images={[
-    {
-      src: searchingTerminalOnUbuntu,
-      alt: `Menu de apps do GNOME no Mint, em que se busca por "terminal".`,
-    },
-  ]}
-/>
+Outra forma de abrir o terminal é por um **atalho** das teclas <Kbd linux={"Ctrl+Alt+T"}/>.
+Ele já vem configurado por padrão no Mint.
 
 O GNOME terminal também pode ser aberto por um comando!
 Digite `gnome-terminal` no terminal e pressione <Kbd linux={"Enter"}/>.
@@ -79,19 +69,13 @@ Pressione `Add` e pronto!
 
 O GNOME Terminal permite a criação de perfis, que são configurações personalizadas para o terminal.
 
-Abra o menu do terminal e selecione `Preferences`.
+Clique com o botão direito do mouse no centro da janela do terminal e o menu do terminal e selecione `Preferences`.
 
-<Figure
-  caption="Abrindo o menu de preferências do GNOME Terminal."
-  images={[
-    {
-      src: openingPreferences,
-      alt: "GNOME Terminal, em que se seleciona o botão de menu no canto superior direito.",
-    },
-  ]}
-/>
+As configurações são divididas em duas partes: `Global` e `Profiles`.
+A primeira aba de `Global` é `General`, que define algumas preferências gerais do terminal.
 
-Eu prefiro um tema claro, então selecionei `Light style` na opção de variante de tema.
+Eu prefiro um tema claro, e defini meu sistema para seguir esse tema.
+Então, na opção `Theme variant`, selecionei `Follow system style`.
 
 <Figure
   caption="Selecionando a variante de tema clara."
@@ -105,28 +89,22 @@ Eu prefiro um tema claro, então selecionei `Light style` na opção de variante
 
 Por padrão, o GNOME Terminal tem um perfil chamado `Unnamed`.
 Clicando nele, podemos ver as definições padrão.
-
-<Figure
-  caption={`Definições padrão do perfil "Unnamed".`}
-  images={[
-    {
-      src: profile,
-      alt: `Preferências do GNOME Terminal na seção de perfis, em que se mostra as definições padrão do perfil "Unnamed".`,
-    },
-  ]}
-/>
-
 Você pode alterar todas as configurações do terminal, como fonte, cores, cursor, etc.
-Porém, é meio trabalhoso fazer tudo isso.
 
+Porém, é meio trabalhoso fazer tudo isso.
 Então, eu gosto de usar um tema bastante popular chamado `Catppuccin`!
 Ele é um projeto que oferece personalização para uma série de programas.
 Você pode optar entre quatro variantes: Latte, Frappé, Macchiato e Mocha.
 
 Para instalar o tema, execute o script de instalação oferecido no [repositório do projeto](https://github.com/catppuccin/gnome-terminal?tab=readme-ov-file#usage).
 
-```bash
-curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.3.0/install.py | python3 -
+Ele tem como dependência o Python 3.
+Provavelmente você já o tem instalado, mas caso não tenha, pode seguir as instruções do [capítulo de Python](../../python/install).
+
+O comando para instalar o tema é o seguinte.
+
+```zsh title="Mint" frame="terminal"
+curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/install.py | python3 -
 ```
 
 <Figure
@@ -154,18 +132,29 @@ Para isso, clique no botão `▾` ao lado do nome do tema, e selecione `Set as d
   ]}
 />
 
-Por último, eu gosto de aumentar o tamanho da fonte para 16.
-
-Clique na caixa de seleção com a legenda `Custom font:`, e então clique no botão ao lado, com o texto `Monospace 12`.
-
-Você pode então selecionar sua fonte de preferência, e o tamanho dela.
+Por último, temos que configurar a fonte para alguma compatível com o padrão Nerd Font.
+Para isso, clique na caixa de seleção com a legenda `Custom font:`, e então clique no botão ao lado, com o texto `Monospace 12`.
 
 <Figure
   caption="Definições do perfil após mudar o tamanho da fonte."
   images={[
     {
-      src: changedFontSize,
+      src: changingFontSize,
       alt: "Preferências do GNOME Terminal, em que se altera o tamanho da fonte.",
+    },
+  ]}
+/>
+
+Uma janela para selecionar sua fonte vai se abrir.
+Pesquise por `FiraCode Nerd Font Mono` e a selecione.
+Se quiser, você pode aumentar o tamanho da fonte na parte inferior do menu.
+
+<Figure
+  caption="Menu de seleção de fonte."
+  images={[
+    {
+      src: selectingFiraCode,
+      alt: `Menu de seleção de fontes do GNOME Terminal, em que se busca pelo texto "FiraCode", e se seleciona a fonte "FiraCode Nerd Font Mono".`,
     },
   ]}
 />

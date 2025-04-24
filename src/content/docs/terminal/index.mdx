@@ -3,6 +3,13 @@ title: Introdução
 author: Gabriel Malosto
 ---
 
+import { Steps } from "@astrojs/starlight/components";
+import Figure from "/src/components/Figure.astro";
+
+import firaCode from "/src/assets/content/docs/terminal/fira_code.png";
+import fontsSettingsOnWindows from "/src/assets/content/docs/terminal/fonts_settings_on_windows.png";
+import searchingTerminalOnCinnamon from "/src/assets/content/docs/terminal/searching_terminal_on_cinnamon.png";
+
 De uma maneira ou de outra, precisaremos utilizar o terminal para realizar tarefas como desenvolvedores de software.
 
 Ele pode parecer um pouco estranho, desengonçado, até meio feio, mas é uma ferramenta poderosa e versátil.
@@ -40,3 +47,112 @@ O Fedora também o utilizava como padrão até pouco tempo atrás, mas decidiu t
 
 O emulador recomendado pelo Windows é o [**Windows Terminal**](https://github.com/microsoft/terminal), que é mais moderno e oferece mais recursos que o tradicional Prompt de Comando.
 Ele também suporta múltiplas abas, customização, perfis e integração com o WSL.
+
+## Fontes
+
+Antes de começarmos a instalar as ferramentas, precisamos garantir que temos uma fonte adequada para o terminal e que seja compatível com programas que vamos instalar depois.
+
+Existe um padrão de fontes chamado [**Nerd Fonts**](https://www.nerdfonts.com/) que é muito utilizado para terminais, pois ele inclui ícones e símbolos que são utilizados por várias ferramentas, como o Starship e o Oh My Zsh.
+
+Acesse o site [nerdfonts.com](https://www.nerdfonts.com/font-downloads) e escolha a que mais lhe agradar.
+Neste exemplo, vamos instalar a fonte [**Fira Code**](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip).
+Encontre-a na lista de fontes e clique no botão **Download**.
+
+<Figure
+  caption="Opção de download da fonte FiraCode no site Nerd Fonts."
+  images={[
+    {
+      src: firaCode,
+      alt: "Parte da página de downloads do site Nerd Fonts, em que se mostra a opção pela fonte FiraCode.",
+    },
+  ]}
+/>
+
+### Instalação
+
+O pacote Zip contém vários arquivos, que definem variações da fonte.
+
+#### Windows
+
+**Extraia** o conteúdo do pacote em uma pasta de sua escolha.
+No Windows, podemos instalar as fontes pelo aplicativo de **Configurações**.
+Abra-o, acesse a aba **Personalização** e clique na opção **Fontes**.
+
+Clique no botão **Procurar e instalar fontes**.
+Encontre a pasta em que você extraiu o zip, e selecione e todos os arquivos de fonte (finalizados na extensão `.ttf`).
+Então, clique no botão `Escolher fontes`.
+
+<Figure
+  caption="Configurações na seção de Fontes."
+  images={[
+    {
+      src: fontsSettingsOnWindows,
+      alt: `Janela do aplicativo de configurações do Windows na seção de Fontes, em que se vê um retângulo tracejado com um botão centralizado em que se lê "Procurar e instalar fontes".`,
+    },
+  ]}
+/>
+
+#### Linux
+
+No **Linux**, vamos seguir os seguintes passos.
+Você pode segui-los graficamente pelo gerenciador de arquivos, ou pelo terminal, como mostrado abaixo.
+
+<Steps>
+
+1. Encontre a pasta onde você baixou o arquivo `zip`. Provavelmente foi para `~/Downloads`.
+1. Extraia o pacote.
+1. Entre na pasta `~/.local/share`.
+1. Crie uma pasta chamada `fonts` (caso não exista) e entre nela.
+1. Copie os arquivos que você extraiu do zip para essa pasta `fonts`.
+
+</ Steps>
+
+Pesquise por `Terminal` no menu de aplicativos e abra-o.
+
+<Figure
+  caption="Buscando pelo Terminal no menu de apps do Cinnamon."
+  images={[
+    {
+      src: searchingTerminalOnCinnamon,
+      alt: `Menu de apps do Mint, em que se busca por "terminal".`,
+    },
+  ]}
+/>
+
+Execute o comando abaixo para **mover-se** para a pasta `~/Downloads`.
+Se foi para alguma outra pasta, mude o caminho após o comando `cd`.
+
+```zsh title="Fedora ou Mint" frame="terminal"
+cd ~/Downloads
+ls
+# FiraCode.zip
+```
+
+Descompacte o arquivo.
+
+```zsh title="Fedora ou Mint" frame="terminal"
+unzip FiraCode.zip
+ls
+# FiraCodeNerdFont-Bold.ttf
+# FiraCodeNerdFontMono-SemiBold.ttf
+# FiraCodeNerdFont-Retina.ttf
+# ...
+```
+
+Copie os arquivos para o diretório padrão de fontes do sistema.
+
+```zsh title="Fedora ou Mint" frame="terminal"
+## Garante que a pasta exista
+mkdir -p ~/.local/share/fonts
+
+## Copia os arquivos
+cp *.ttf ~/.local/share/fonts
+
+## Move-se para a pasta de fontes e verifica se os aquivos foram copiados
+cd ~/.local/share/fonts
+ls
+# FiraCodeNerdFont-Bold.ttf
+# FiraCodeNerdFontMono-SemiBold.ttf
+# FiraCodeNerdFont-Retina.ttf
+# ...
+```

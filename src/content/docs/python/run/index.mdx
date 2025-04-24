@@ -3,6 +3,9 @@ title: Executando um script
 author: Gabriel Malosto
 ---
 
+import { Code } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
+
 import Figure from "/src/components/Figure.astro";
 
 import hello from "/src/assets/content/docs/python/run/hello.png";
@@ -11,57 +14,50 @@ import openingProfiles from "/src/assets/common/opening_profiles.png";
 import creatingProfile from "/src/assets/content/docs/python/run/creating_profile.png";
 import selectingProfile from "/src/assets/content/docs/python/run/selecting_profile.png";
 import emptySettings from "/src/assets/content/docs/python/run/empty_settings.png";
+import vscodeSettingsForPython from "/public/configuration/vscode/python/settings.json?raw";
 import workspace from "/src/assets/content/docs/python/run/workspace.png";
 import launch from "/src/assets/content/docs/python/run/launch.png";
 import selectLauncher from "/src/assets/content/docs/python/run/select_launcher.png";
 import debug from "/src/assets/content/docs/python/run/debug.png";
 
-O Python é um linguagem interpretada, que executa um arquivo linha por linha.
+O [**Python**](https://www.python.org/) é um linguagem interpretada, que executa um arquivo linha por linha.
 Dessa forma, não é necessário compilar o código antes de executá-lo.
 Basta chamar o interpretador Python e passar o arquivo como argumento.
 
 Eu gosto de organizar meus projetos em uma pasta chamada `dev` na raiz da minha pasta de usuário.
-A criação dessa pasta foi tratada no capítulo [Windows Subsystem for Linux](../../wsl/index.mdx).
+A criação dessa pasta foi tratada no capítulo [Windows Subsystem for Linux](../../wsl).
 
 ## Olá, Mundo
 
-Para os sistemas **Ubuntu** e **Fedora**, basta executar o seguinte comando para criar a pasta `dev`:
+Para os sistemas **Linux**, basta executar o seguinte comando para criar a pasta `dev`.
+O argumento `-p` é usado para não gerar um conflito.
+Caso essa pasta já exista, o comando simplesmente não faz nada.
 
-```bash
-mkdir ~/dev
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p ~/dev
+cd ~/dev
 ```
 
-Já para o **Windows**, você pode executar o seguinte comando no PowerShell:
+Então, vamos criar dentro dela uma pasta chamada `python`.
 
-```powershell
-mkdir $HOME/dev
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev
+mkdir -p ~/dev/python
+cd python
 ```
 
-Então, vamos criar dentro dela uma pasta chamada `python` e um arquivo chamado `hello.py`:
+Por fim, criemos o arquivo `hello.py` dentro da pasta `python`.
+Seu conteúdo é uma simples chamada da função `print`, do Python.
 
-Para os sistemas **Ubuntu**, **Fedora** e **WSL**, execute o seguinte comando:
-
-```bash
-mkdir ~/dev/python
-```
-
-Já para o **Windows**, execute o seguinte comando no PowerShell:
-
-```powershell
-mkdir $HOME/dev/python
-```
-
-Por fim, criemos o arquivo `hello.py` dentro da pasta `python`:
-
-```powershell
-cd $HOME/dev/python
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 echo "print('Hello, World!')" > hello.py
 ```
 
-Para executar o arquivo, basta chamar o interpretador Python e passar o arquivo como argumento:
+Para executar o arquivo, basta chamar o interpretador Python e passar o arquivo como argumento.
 
-```powershell
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 python hello.py
+# Hello, World!
 ```
 
 <Figure
@@ -69,7 +65,7 @@ python hello.py
   images={[
     {
       src: hello,
-      alt: `Terminal com o PowerShell, em que se executa o comando para imprimir "Hello, World!"`,
+      alt: `Terminal com o Zsh, em que se executa o comando para imprimir "Hello, World!"`,
     },
   ]}
 />
@@ -78,28 +74,33 @@ python hello.py
 
 Vamos criar um projeto para editar no Visual Studio Code.
 
-Crie uma pasta dentro do diretório `python` recém-criado chamada `hello_person`:
+Crie uma pasta dentro do diretório `python` recém-criado chamada `hello_person`.
 
-```powershell
-mkdir $HOME/dev/python/hello_person
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/python
+mkdir -p hello_person
 ```
 
-Então, abra o Visual Studio Code nessa pasta:
+Então, abra o Visual Studio Code nessa pasta.
 
-```powershell
-code $HOME/dev/python/hello_person
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/python
+code hello_person
 ```
 
-Por dentro do VSCode, crie um arquivo chamado `main.py` e adicione o seguinte código:
+Por dentro do VSCode, crie um arquivo chamado `main.py` e adicione o seguinte código.
 
 ```python
 name = input('Qual é o seu nome? ')
 print(f'Olá, {name}!')
 ```
 
-Abra o terminal do Visual Studio Code e execute o script:
+Abra o **terminal** do Visual Studio Code e execute o script a seguir.
+Em teclados de padrão en-US, o atalho para abrir o terminal é <Kbd linux={"Ctrl+`"}/>.
+Em teclados pt-BR, provavelmente não há um atalho definido.
+Você pode abrir o terminal pelo menu `Terminal > New Terminal`.
 
-```powershell
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 python main.py
 ```
 
@@ -113,11 +114,18 @@ python main.py
   ]}
 />
 
-Nós podemos melhor a experiência de desenvolvimento no Visual Studio Code instalando algumas extensões.
+Nós podemos melhorar a experiência de desenvolvimento no Visual Studio Code instalando algumas extensões.
 
 ### Perfis
 
 Para não misturar definições de linguagens diferentes, vamos utilizar o recurso de **Perfis** do Visual Studio Code.
+
+Antes de começarmos, garanta que você definiu que as extensões do perfil **Default** sejam aplicadas para todos os perfis, como mostrado no capítulo [Visual Studio Code](../../vscode#extensões).
+Para fazer isso, selecione cada entrada da lista de extensões e clique no botão `Apply Extensions to all Profiles`.
+
+Abra o menu de configurações no canto inferior esquerdo da tela.
+Seu ícone padrão é o de uma engrenagem.
+Então, selecione a entrada `Profiles`.
 
 <Figure
   caption={`Abrindo a tela de configuração de perfis do Visual Studio Code.`}
@@ -129,7 +137,7 @@ Para não misturar definições de linguagens diferentes, vamos utilizar o recur
   ]}
 />
 
-Clique no botão **New Profile**.
+Clique no botão **New Profile**, na parte superior esquerda da janela que se abrir.
 Dê o nome de **Python** para o perfil.
 Selecione o ícone de _cobra_.
 Então, clique em **Create**.
@@ -149,10 +157,8 @@ Nele, estavam definidos alguns perfis que eu já criei.
 A fim de não confundir, apaguei-os na edição.
 Para você, a lista terá apenas o perfil **Default**.
 
-Garanta que você definiu que as extensões do perfil **Default** sejam aplicadas para todos os perfis, como mostrado no capítulo [Visual Studio Code](../../vscode/index.mdx#extensões).
-
-Agora, abra novamente a lista de perfis e selecione o ícone de _check_ na opção **Python**.
-Isso aplicará o perfil criado na pasta atualmente aberta no Visual Studio Code.
+Agora, abra novamente a lista de perfis e selecione o ícone de `check` na opção **Python**.
+Isso aplicará o perfil criado à pasta atualmente aberta no Visual Studio Code.
 
 <Figure
   caption={`Selecionando o perfil "Python" no Visual Studio Code.`}
@@ -166,7 +172,8 @@ Isso aplicará o perfil criado na pasta atualmente aberta no Visual Studio Code.
 
 #### Extensões e Configurações padrão
 
-Se você abrir o arquivo de configuração do Visual Studio Code pela paleta de comandos, verá que o arquivo estará vazio.
+Se abrir o arquivo de configuração do Visual Studio Code pela paleta de comandos, verá que o arquivo estará vazio.
+Você pode fazer isso executando <Kbd linux={"Ctrl+Shift+P"}/> e pesquisando por `Preferences: Open User Settings (JSON)` no menu que se abrir.
 
 Isso ocorre porque o Visual Studio Code cria um arquivo de configuração para cada perfil.
 Dessa forma, as extensões instaladas e as configurações definidas para um perfil não interferem nos outros.
@@ -182,24 +189,23 @@ Dessa forma, as extensões instaladas e as configurações definidas para um per
 />
 
 Mas e se eu quiser que certas configurações sejam aplicadas a todos os perfis?
-É para isso que definimos, nas configurações do perfil **Default**, o atributo `"workbench.settings.applyToAllProfiles"`.
+É para isso que [definimos](../../vscode#configurações), nas configurações do perfil **Default**, o atributo `"workbench.settings.applyToAllProfiles"`.
 
-Ele espera a lista de definições que serão aplicadas a todos os perfis.
+Ele lista as definições que serão aplicadas a todos os perfis.
 Sempre que você definir uma nova configuração no perfil **Default**, lembre-se de adicionar o nome dela nessa lista.
-
-Mas e se eu quiser que certas extensões sejam aplicadas a todos os perfis?
-É para isso que definimos, para cada uma das extensões do perfil **Default**, a opção **Apply to all profiles**.
 
 #### Extensões específicas para Python
 
 Agora que entendemos como funcionam os perfis, vamos instalar algumas extensões específicas para a linguagem Python.
+Garanta que você selecionou o perfil criado para o Python.
+Se estiver correto, o ícone de configurações no canto inferior esquerdo do VSCode agora será, na verdade, o ícone de cobra que selecionamos.
 
 Recomendo instalar as seguintes extensões:
 
 - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 - [Python Debugger](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
 - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
-- [Pyhton Environment Manager](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-environment-manager)
+- [Python Environments](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs)
 - [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
 - [Even Better TOML](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml)
 
@@ -207,10 +213,17 @@ Recomendo instalar as seguintes extensões:
 
 Agora, vamos definir algumas configurações específicas para a linguagem Python.
 
-Copie o conteúdo do arquivo [`settings.json`](/book_andesito/src/assets/content/docs/python/run/settings.json) e cole no arquivo de configuração do perfil **Python**.
-Lembre-se de **salvar** o arquivo após a edição.
+Copie o conteúdo abaixo e cole no arquivo de configuração do perfil **Python**.
+Para abri-lo, execute <Kbd linux={"Ctrl+Shift+P"}/> e pesquise por `Preferences: Open User Settings (JSON)`.
 
----
+<Code
+  code={vscodeSettingsForPython}
+  lang="json"
+  title="[...]/Code/User/profiles/[ID]/settings.json"
+  frame="code"
+/>
+
+Lembre-se de **salvar** o arquivo após a edição.
 
 Agora, o Visual Studio Code apresenta uma série de ferramentas para facilitar o desenvolvimento de aplicações em Python.
 
@@ -219,17 +232,20 @@ Agora, o Visual Studio Code apresenta uma série de ferramentas para facilitar o
   images={[
     {
       src: workspace,
-      alt: `Script "main"aberto no Visual Studio Code. Ferramentas das extensões estão disponíveis na interface.`,
+      alt: `Script "main" aberto no Visual Studio Code. Ferramentas das extensões estão disponíveis na interface.`,
     },
   ]}
 />
 
 ### Executando e depurando
 
-Para executar ou depurar um arquivo pela interface do Visual Studio Code, basta selecionar no botão **Run** na barra lateral, e então clicar no botão **Run and Debug**.
+Para executar ou depurar um arquivo pela interface do Visual Studio Code, basta selecionar o botão `Run` na barra lateral.
+Ele apresenta um ícone de `play` junto ao de um `bug`.
+Sua aba também pode ser aberta pelo atalho <Kbd linux={"Ctrl+Shift+D"}/>.
 
+Então, clique no botão `Run and Debug`.
 O VSCode pedirá para selecionar o depurador a ser utilizado.
-Da lista de opções, escolha **Python Debugger**.
+Da lista de opções, escolha `Python Debugger`.
 
 <Figure
   caption={`Selecionando o depurador "Python Debugger" no Visual Studio Code.`}
@@ -241,8 +257,8 @@ Da lista de opções, escolha **Python Debugger**.
   ]}
 />
 
-Então, o Visual Studio Code abrirá uma lista de opções para como executar o programa.
-Nesse caso, escolha **Python File**.
+Então, o Visual Studio Code abrirá uma lista de opções para especificar como executar o programa.
+Nessa etapa, escolha `Python File`.
 
 <Figure
   caption={`Selecionando como executar o código no Visual Studio Code.`}

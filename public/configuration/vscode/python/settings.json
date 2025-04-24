@@ -31,15 +31,14 @@
     "venv"
   ],
   "files.exclude": {
+    "**/__init__.py": true,
+    "**/__pycache__": true,
     "**/.DS_Store": true,
     "**/.git": true,
     "**/.ipynb_checkpoints": true,
     "**/.mypy_cache": true,
     "**/.pytest_cache": true,
-    "**/.venv": true,
-    "**/__init__.py": true,
-    "**/__pycache__": true
+    "**/.venv": true
   },
-  "pylint.args": ["--disable=C0116"],
   "python.analysis.extraPaths": ["./src"]
 }

@@ -78,15 +78,15 @@ export default defineConfig({
           ],
           label: "Shell",
         },
-        // {
-        //   items: [
-        //     { label: "Introdução", slug: "python" },
-        //     { label: "Instalação", slug: "python/install" },
-        //     { label: "Executando", slug: "python/run" },
-        //     { label: "Ambientes virtuais", slug: "python/venv" },
-        //   ],
-        //   label: "Python",
-        // },
+        {
+          items: [
+            { label: "Introdução", slug: "python" },
+            { label: "Instalação", slug: "python/install" },
+            { label: "Executando", slug: "python/run" },
+            // { label: "Ambientes virtuais", slug: "python/venv" },
+          ],
+          label: "Python",
+        },
         // {
         //   items: [
         //     { label: "Introdução", slug: "c_cpp" },

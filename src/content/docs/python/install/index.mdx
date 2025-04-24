@@ -5,50 +5,35 @@ author: Gabriel Malosto
 
 import Figure from "/src/components/Figure.astro";
 
-import installing from "/src/assets/content/docs/python/install/installing.png";
-import testingInstallation from "/src/assets/content/docs/python/install/testing_installation.png";
+O [**Python**](https://www.python.org/) é instalado por padrão no Linux, bastando verificar se as ferramentas auxiliares estão instaladas.
 
-O Python é instalado por padrão no Ubuntu (e WSL) e no Fedora, bastando verificar se as ferramentas auxiliares estão instaladas.
-Já no Windows, é necessário instalar o Python manualmente.
+Para isso, execute o seguinte comando no Fedora.
 
-## Linux
-
-{/* TODO */}
-
-## Windows
-
-Para instalar o Python no Windows, podemos utilizar a ferramenta [**Winget**](https://winget.run/pkg/Python/Python.3.10).
-
-Por motivos de compatibilidade com o **LLVM**, é recomendado instalar a versão 3.10.
-Abra o **Powershell** como **administrador** e execute o comando:
-
-```powershell
-winget install -e --id Python.Python.3.10
+```zsh title="Fedora ou WSL" frame="terminal"
+sudo dnf install python3 -y
+python3 --version
+# Python 3.13.3
 ```
 
-<Figure
-  caption="Instalação do Python para Windows."
-  images={[
-    {
-      src: installing,
-      alt: "Terminal com o PowerShell, em que se executa o comando para instalar o Python.",
-    },
-  ]}
-/>
+Ou este no Mint e derivados do Debian.
 
-Para verificar se a instalação foi bem-sucedida, **feche** e abra o **Powershell** novamente, então digite os comandos:
-
-```bash
-python --version
-pip --version
+```zsh title="Mint" frame="terminal"
+sudo apt install python3 -y
+python3 --version
+# Python 3.13.3
 ```
 
-<Figure
-  caption="Verificando se a instalação do Python foi bem-sucedida."
-  images={[
-    {
-      src: testingInstallation,
-      alt: "Terminal com o PowerShell, em que se verifica a versão do Python e do pip.",
-    },
-  ]}
-/>
+{/* TODO: Test on Mint */}
+
+## Pip
+
+O [**Pip**](https://pip.pypa.io/en/stable/installation/) é um gerenciador de pacotes para o Python.
+
+Em geral, ele já vem instalado junto com o Python, mas você pode garantir sua atualização executando o seguinte comando.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+python3 -m pip install --upgrade pip
+# Successfully installed pip-25.0.1
+```
+
+{/* TODO: Test on Mint */}

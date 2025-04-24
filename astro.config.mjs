@@ -74,7 +74,7 @@ export default defineConfig({
             { label: "PowerShell", slug: "shell/powershell" },
             { label: "Zsh", slug: "shell/zsh" },
             { label: "Temas", slug: "shell/themes" },
-            // { label: "Plugins", slug: "shell/plugins" },
+            { label: "Plugins", slug: "shell/plugins" },
           ],
           label: "Shell",
         },

@@ -3,15 +3,16 @@ title: Plugins
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import { Code } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
-import installingZoxidePowerShell from "/src/assets/content/docs/shell/plugins/installing_zoxide_powershell.png";
-import configuringZoxidePowerShell from "/src/assets/content/docs/shell/plugins/configuring_zoxide_powershell.png";
-import installingFzfZsh from "/src/assets/content/docs/shell/plugins/installing_fzf_zsh.png";
-import installingZoxideZsh from "/src/assets/content/docs/shell/plugins/installing_zoxide_zsh.png";
-import checkingZoxideZsh from "/src/assets/content/docs/shell/plugins/checking_zoxide_zsh.png";
-import configuringZshPlugins from "/src/assets/content/docs/shell/plugins/configuring_zsh_plugins.png";
+import Figure from "/src/components/Figure.astro";
+
+import powerShellSettings from "/public/configuration/powershell/plugins/Microsoft.PowerShell_profile.ps1?raw";
+import configuringZoxideOnPowerShell from "/src/assets/content/docs/shell/plugins/configuring_zoxide_on_powershell.png";
+import zshSettingsWithFzfAndZoxide from "/public/configuration/zsh/plugins/fzf_and_zoxide/.zshrc?raw";
+import zshSettingsWithZshAutosuggestions from "/public/configuration/zsh/plugins/zsh_autosuggestions/.zshrc?raw";
+import zshSettingsWithZshSyntaxHighlighting from "/public/configuration/zsh/plugins/zsh_syntax_highlighting/.zshrc?raw";
 
 Plugins são uma forma de estender as funcionalidades do shell.
 Para os sistemas que configuramos com o **Zsh**, utilizaremos o **Oh My Zsh**
@@ -35,36 +36,40 @@ Vamos tratar da sua instalação adiante.
 
 ### PowerShell
 
-Para instalar o FZF no PowerShell, execute o seguinte comando:
+Para instalar o FZF no PowerShell, execute o comando abaixo.
 
-```powershell
+```powershell title="PowerShell" frame="terminal"
 winget install fzf
 ```
 
-E então, instale o Zoxide com o seguinte comando:
+Então, **feche** e reabra o terminal.
 
-```powershell
+Em seguida, instale o Zoxide com o comando a seguir.
+
+```powershell title="PowerShell" frame="terminal"
 winget install ajeetdsouza.zoxide
 ```
 
-<Figure
-  caption="Instalando o FZF e o Zoxide no PowerShell."
-  images={[
-    {
-      src: installingZoxidePowerShell,
-      alt: "Terminal com o PowerShell, em que se executam os comandos para instalar o FZF e o Zoxide.",
-    },
-  ]}
-/>
+**Feche** e reabra o terminal novamente.
+
+Para confirmar a instalação, execute os comandos abaixo.
+
+```powershell title="PowerShell" frame="terminal"
+fzf --version
+# 0.61.3 (d24b58ef)
+zoxide --version
+# zoxide 0.9.7
+```
 
 Então, precisamos adicionar as seguintes linhas ao **final** do seu arquivo de configuração do PowerShell:
 
-```powershell
-## Plugins
-
-### Zoxide
-Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
-```
+<Code
+  lang="powershell"
+  title="$HOME/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+  code={powerShellSettings}
+  frame="code"
+  ins={[10, 11, 12, 13, 14]}
+/>
 
 Lembre-se que, para abrir o arquivo de configuração do PowerShell, você deve executar o comando `code $PROFILE` no terminal.
 O arquivo aberto dependerá da versão do PowerShell que você está utilizando.
@@ -73,7 +78,7 @@ O arquivo aberto dependerá da versão do PowerShell que você está utilizando.
   caption="Configurando o Zoxide no PowerShell."
   images={[
     {
-      src: configuringZoxidePowerShell,
+      src: configuringZoxideOnPowerShell,
       alt: "Arquivo de configuração do PowerShell aberto no Visual Studio Code, em que foi adicionada a configuração do Zoxide.",
     },
   ]}
@@ -83,105 +88,110 @@ Salve o arquivo, feche o editor, e então **feche** e abra novamente o PowerShel
 
 ### Zsh
 
-Para instalar o FZF no Zsh, execute os seguintes comandos:
+Para instalar o FZF no Zsh, execute um dos seguintes comandos, conforme especificado pela [documentação oficial](https://github.com/junegunn/fzf).
 
-```bash
-mkdir -p ~/Downloads
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/Downloads/.fzf
-~/Downloads/.fzf/install
+Para o Fedora ou o WSL usando o Fedora como distro, utilize a ferramenta `dnf`.
+
+```zsh title="Fedora ou WSL" frame="terminal"
+sudo dnf install fzf -y
 ```
 
-Quando perguntado sobre ativar os recursos do FZF, pressione a tecla <Keyboard keys={["y"]} /> e então pressione <Keyboard keys={["Enter"]} /> para cada.
+Para o Mint ou outros derivados do Debian, utilize a ferramenta `apt`.
 
-<Figure
-  caption="Instalando o FZF no Zsh."
-  images={[
-    {
-      src: installingFzfZsh,
-      alt: "Terminal com o Zsh, em que se executam os comandos para instalar o FZF.",
-    },
-  ]}
-/>
+```zsh title="Mint" frame="terminal"
+sudo apt install fzf -y
+```
 
-Para instalar o Zoxide, execute o seguinte comando:
+Então, **feche** e reabra o terminal.
 
-```bash
+Você pode verificar se a instalação foi bem-sucedida executando o seguinte comando.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+fzf --version
+# 0.61.1 (Fedora)
+```
+
+{/* TODO: Test on Mint */}
+
+Para instalar o Zoxide, execute o seguinte comando, conforme especificado pela [documentação oficial](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation).
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 ```
 
-<Figure
-  caption="Instalando o Zoxide no Zsh."
-  images={[
-    {
-      src: installingZoxideZsh,
-      alt: "Terminal com o Zsh, em que se executa o comando para instalar o Zoxide.",
-    },
-  ]}
+Para verificar se a instalação foi bem-sucedida, execute o seguinte comando.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+zoxide --version
+# zoxide 0.9.7
+```
+
+Então, devemos atualizar o arquivo de configurações `~/.zshrc`, adicionando as seguintes linhas ao bloco `Plugins`:
+
+<Code
+  code={zshSettingsWithFzfAndZoxide}
+  lang="zsh"
+  title="~/.zshrc"
+  frame="code"
+  ins={[16, 17, 18, 19, 20, 21, 22, 23, 24, 25]}
 />
-
-Possivelmente o FZF editou seu arquivo de configuração do Zsh.
-Vamos excluir a linha que ele adicionou.
-Então devemos adicionar as seguintes linhas ao bloco `Plugins`:
-
-```bash
-### FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source <(fzf --zsh)
-
-### Zoxide
-eval "$(zoxide init --cmd cd zsh)"
-```
-
-O arquivo de configuração do Zsh deve ficar assim:
-
-```bash
-# Shell configuration
-ZSH_THEME="robbyrussell"
-
-## Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-## Path configuration
-PATH=$PATH:~/.local/bin
-
-## Source Oh my Zsh
-source $ZSH/oh-my-zsh.sh
-
-## Theme
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG="$HOME/.config/starship.toml"
-
-## Plugins
-plugins=(git)
-
-### FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source <(fzf --zsh)
-
-### Zoxide
-eval "$(zoxide init --cmd cd zsh)"
-```
 
 Salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
 
-Para testar se a instalação foi bem sucedida, execute os seguintes comandos:
+## Zsh Autosuggestions
 
-```bash
-fzf --version
-zoxide --version
+O [**Zsh Autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) é um plugin que sugere comandos enquanto você digita.
+Isso é especialmente útil quando você se lembra de parte de um comando, mas não dele todo.
+
+Esse plugin está disponível apenas para o Zsh &mdash; sinto muito, pessoal do PowerShell 😔.
+O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
+
+Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
+Faça isso executando o seguinte comando:
+
+```zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
-<Figure
-  caption="Verificando as versões do FZF e do Zoxide no Zsh."
-  images={[
-    {
-      src: checkingZoxideZsh,
-      alt: "Terminal com o Zsh, em que se verifica as versões do FZF e do Zoxide.",
-    },
-  ]}
+Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
+Fazemos isso adicionando mais uma linha ao atributo `plugins`, em que havia apenas o `git`.
+
+<Code
+  code={zshSettingsWithZshAutosuggestions}
+  lang="zsh"
+  title="~/.zshrc"
+  frame="code"
+  ins={[19, 20, 21]}
+  mark={[18]}
 />
 
-{/* TODO: Ensinar a instalar o The Fuck, considerando que ele exige instalar o Python. */}
+Lembre-se de salvar o arquivo, fechar o editor, e então **fechar** e abrir novamente o terminal para que as alterações tenham efeito.
+
+## Zsh Syntax Highlighting
+
+O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) é um plugin que destaca comandos enquanto você digita.
+
+Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
+
+Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
+Faça isso executando o seguinte comando:
+
+```zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
+Da mesma forma, basta adicionar a linha `zsh-syntax-highlighting` ao atributo `plugins`.
+
+<Code
+  code={zshSettingsWithZshSyntaxHighlighting}
+  lang="zsh"
+  title="~/.zshrc"
+  frame="code"
+  ins={[21]}
+/>
+
+Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
 
 ## The Fuck
 
@@ -200,69 +210,6 @@ Como dependências, o The Fuck exige que se tenha instalado:
 
 - python (3.5+)
 - pip
-- python-dev -->
+- python-dev
 
-## Zsh Autosuggestions
-
-O [**Zsh Autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) é um plugin que sugere comandos enquanto você digita.
-Isso é especialmente útil quando você se lembra de parte de um comando, mas não dele todo.
-
-Esse plugin está disponível apenas para o Zsh &mdash; sinto muito, pessoal do PowerShell 😔.
-O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
-
-Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
-Faça isso executando o seguinte comando:
-
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
-
-Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
-Fazemos isso adicionando mais uma linha ao atributo `plugins`, em que havia apenas o `git`.
-
-```bash
-## Plugins
-plugins=(
-    git
-    zsh-autosuggestions
-)
-```
-
-Lembre-se de salvar o arquivo, fechar o editor, e então **fechar** e abrir novamente o terminal para que as alterações tenham efeito.
-
-## Zsh Syntax Highlighting
-
-O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) é um plugin que destaca comandos enquanto você digita.
-
-Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
-
-Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
-Faça isso executando o seguinte comando:
-
-```bash
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-
-Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
-Da mesma forma, basta adicionar a linha `zsh-syntax-highlighting` ao atributo `plugins`.
-
-```bash
-## Plugins
-plugins=(
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
-```
-
-<Figure
-  caption="Configurando os plugins Zsh Autosuggestions e Zsh Syntax Highlighting."
-  images={[
-    {
-      src: configuringZshPlugins,
-      alt: "Arquivo de configuração do Zsh aberto no Visual Studio Code, em que foram adicionadas as configurações dos plugins Zsh Autosuggestions e Zsh Syntax Highlighting.",
-    },
-  ]}
-/>
-
-Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
+{/* TODO: Ensinar a instalar o The Fuck, considerando que ele exige instalar o Python. */}

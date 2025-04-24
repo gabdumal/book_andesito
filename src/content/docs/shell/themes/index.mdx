@@ -3,7 +3,7 @@ title: Temas
 author: Gabriel Malosto
 ---
 
-import { Code, Steps } from "@astrojs/starlight/components";
+import { Code } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "/src/components/Figure.astro";
@@ -188,6 +188,7 @@ Adicione as seguintes linhas ao arquivo.
   lang="powershell"
   title="$HOME/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
   code={powerShellSettings}
+  frame="code"
 />
 
 <Figure
@@ -283,17 +284,15 @@ Vamos editá-lo usando o VSCode com o seguinte comando abaixo.
 code ~/.zshrc
 ```
 
-Adicione as seguintes linhas ao arquivo logo antes da seção de plugins.
+Atualize o arquivo da seguinte forma.
 
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
-## Theme
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG="$HOME/.config/starship.toml"
-```
-
-O resultado final deve ser similar a este.
-
-<Code code={zshSettings} lang="zsh" title="~/.zshrc" ins={[13, 14, 15]} />
+<Code
+  code={zshSettings}
+  lang="zsh"
+  title="~/.zshrc"
+  frame="code"
+  ins={[12, 13, 14, 15]}
+/>
 
 Salve o arquivo e feche o editor.
 Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
@@ -367,5 +366,6 @@ Se você preferir desativar o prompt transitório no PowerShell, basta remover a
   lang="powershell"
   title="$HOME/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
   code={powerShellSettings}
+  frame="code"
   del={[9]}
 />

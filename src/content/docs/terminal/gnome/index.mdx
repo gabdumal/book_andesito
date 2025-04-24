@@ -3,8 +3,9 @@ title: GNOME Terminal
 author: Gabriel Malosto
 ---
 
+import { Kbd } from "starlight-kbd/components";
+
 import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
 
 import searchingTerminalOnUbuntu from "/src/assets/content/docs/terminal/gnome/searching_terminal_on_ubuntu.png";
 import openingTerminalFromTerminal from "/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.gif";
@@ -18,22 +19,22 @@ import settingTheme from "/src/assets/content/docs/terminal/gnome/setting_theme.
 import changedFontSize from "/src/assets/content/docs/terminal/gnome/changed_font_size.png";
 import result from "/src/assets/content/docs/terminal/gnome/result.png";
 
-Este subcapítulo aborda o **GNOME Terminal**, o emulador de terminal padrão do **Ubuntu** e do **Fedora**.
+Este subcapítulo aborda o **GNOME Terminal**, o emulador de terminal padrão do **Mint**, do **Ubuntu**, do **Debian** e de muitas outras distribuições.
 
-Pesquise por `Terminal` no menu do GNOME e clique no ícone do aplicativo para abri-lo.
+Pesquise por `Terminal` no menu do seu sistema operacional e clique no ícone do aplicativo para abri-lo.
 
 <Figure
   caption="Buscando pelo Terminal no menu de apps do GNOME."
   images={[
     {
       src: searchingTerminalOnUbuntu,
-      alt: `Menu de apps do GNOME no Ubuntu, em que se busca por "terminal".`,
+      alt: `Menu de apps do GNOME no Mint, em que se busca por "terminal".`,
     },
   ]}
 />
 
 O GNOME terminal também pode ser aberto por um comando!
-Digite `gnome-terminal` no terminal e pressione <Keyboard keys={["Enter"]}/>.
+Digite `gnome-terminal` no terminal e pressione <Kbd linux={"Enter"}/>.
 
 <Figure
   caption="Abrindo o GNOME Terminal a partir do terminal."
@@ -47,8 +48,8 @@ Digite `gnome-terminal` no terminal e pressione <Keyboard keys={["Enter"]}/>.
 
 ## Atalho de teclado
 
-Um atalho de teclas comumente utilizado para abrir o terminal é <Keyboard keys={["Ctrl", "Alt", "T"]}/>.
-O Ubuntu o tem configurado por padrão.
+Um atalho de teclas comumente utilizado para abrir o terminal é <Kbd linux={"Ctrl+Alt+T"}/>.
+O Mint o tem configurado por padrão.
 Já no Fedora, você pode defini-lo em `Settings > Keyboard > View and Customize Shortcuts > Custom Shortcuts`.
 
 <Figure
@@ -61,7 +62,7 @@ Já no Fedora, você pode defini-lo em `Settings > Keyboard > View and Customize
   ]}
 />
 
-Então, defina o nome como `Terminal`, o comando como `gnome-terminal` e o atalho de teclado como <Keyboard keys={["Ctrl", "Alt", "T"]}/>.
+Então, defina o nome como `Terminal`, o comando como `gnome-terminal` e o atalho de teclado como <Kbd linux={"Ctrl+Alt+T"}/>.
 Pressione `Add` e pronto!
 
 <Figure

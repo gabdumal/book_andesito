@@ -3,8 +3,6 @@ title: Instalação
 author: Gabriel Malosto
 ---
 
-import { Aside } from "@astrojs/starlight/components";
-
 import Figure from "/src/components/Figure.astro";
 
 import downloadOptions from "/src/assets/content/docs/c_cpp/compiler/install/download_options.png";
@@ -18,21 +16,13 @@ import defaultProfile from "/src/assets/content/docs/c_cpp/compiler/install/defa
 import newTerminal from "/src/assets/content/docs/c_cpp/compiler/install/new_terminal.png";
 import openingCode from "/src/assets/content/docs/c_cpp/compiler/install/opening_code.png";
 
-Neste capítulo, vamos instalar as ferramentas de compilação para C e C++ para o Linux, em que se inclui o WSL, e no Windows.
-
-<Aside type="danger">
-  Instalar ferramentas de compilação e depuração de C e C++ para o Windows é
-  mais complicado, instável e carece de boa documentação. Algumas
-  funcionalidades precisam de muitas correções obscuras para funcionarem ou nem
-  sequer é possível fazê-las funcionar. Recomendamos que você instale alguma
-  distribuição Linux ou o [WSL](../wsl).
-</Aside>
+Neste capítulo, vamos instalar as ferramentas de compilação para C e C++ para o Fedora, o WSL usando o Fedora e o Mint, além de outros derivados do Debian compatíveis.
 
 ## Linux
 
 ### Ubuntu e WSL
 
-Para instalar as ferramentas no Ubuntu ou no WSL, execute os seguintes comandos no terminal:
+Para instalar as ferramentas no Mint ou em outras distribuições baseadas no Debian, execute os seguintes comandos no terminal:
 
 ```bash
 sudo apt update && sudo apt upgrade

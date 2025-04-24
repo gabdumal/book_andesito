@@ -53,10 +53,10 @@ export default defineConfig({
               label: "Introdução",
               slug: "terminal",
             },
-            // {
-            //   label: "GNOME Terminal",
-            //   slug: "terminal/gnome",
-            // },
+            {
+              label: "GNOME Terminal",
+              slug: "terminal/gnome",
+            },
             {
               label: "Windows Terminal",
               slug: "terminal/windows",
@@ -87,59 +87,59 @@ export default defineConfig({
           ],
           label: "Python",
         },
-        // {
-        //   items: [
-        //     { label: "Introdução", slug: "c_cpp" },
-        //     {
-        //       items: [
-        //         {
-        //           label: "Introdução",
-        //           slug: "c_cpp/compiler",
-        //         },
-        //         {
-        //           label: "Instalação",
-        //           slug: "c_cpp/compiler/install",
-        //         },
-        //         {
-        //           label: "Programas em C",
-        //           slug: "c_cpp/compiler/run_c",
-        //         },
-        //         {
-        //           label: "Configurando o VSCode",
-        //           slug: "c_cpp/compiler/vscode",
-        //         },
-        //         {
-        //           label: "Programas em C++",
-        //           slug: "c_cpp/compiler/run_cpp",
-        //         },
-        //       ],
-        //       label: "Compilador",
-        //     },
-        //     {
-        //       items: [
-        //         { label: "Introdução", slug: "c_cpp/debugger" },
-        //         { label: "Instalação", slug: "c_cpp/debugger/install" },
-        //         { label: "Programas em C", slug: "c_cpp/debugger/run_c" },
-        //         { label: "Programas em C++", slug: "c_cpp/debugger/run_cpp" },
-        //       ],
-        //       label: "Depurador",
-        //     },
-        //     {
-        //       items: [
-        //         {
-        //           label: "Introdução",
-        //           slug: "c_cpp/cmake",
-        //         },
-        //         {
-        //           label: "Instalação",
-        //           slug: "c_cpp/cmake/install",
-        //         },
-        //       ],
-        //       label: "CMake",
-        //     },
-        //   ],
-        //   label: "C e C++",
-        // },
+        {
+          items: [
+            { label: "Introdução", slug: "c_cpp" },
+            {
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "c_cpp/compiler",
+                },
+                {
+                  label: "Instalação",
+                  slug: "c_cpp/compiler/install",
+                },
+                // {
+                //   label: "Programas em C",
+                //   slug: "c_cpp/compiler/run_c",
+                // },
+                // {
+                //   label: "Configurando o VSCode",
+                //   slug: "c_cpp/compiler/vscode",
+                // },
+                // {
+                //   label: "Programas em C++",
+                //   slug: "c_cpp/compiler/run_cpp",
+                // },
+              ],
+              label: "Compilador",
+            },
+            // {
+            //   items: [
+            //     { label: "Introdução", slug: "c_cpp/debugger" },
+            //     { label: "Instalação", slug: "c_cpp/debugger/install" },
+            //     { label: "Programas em C", slug: "c_cpp/debugger/run_c" },
+            //     { label: "Programas em C++", slug: "c_cpp/debugger/run_cpp" },
+            //   ],
+            //   label: "Depurador",
+            // },
+            // {
+            //   items: [
+            //     {
+            //       label: "Introdução",
+            //       slug: "c_cpp/cmake",
+            //     },
+            //     {
+            //       label: "Instalação",
+            //       slug: "c_cpp/cmake/install",
+            //     },
+            //   ],
+            //   label: "CMake",
+            // },
+          ],
+          label: "C e C++",
+        },
         // {
         //   label: "JavaScript",
         //   slug: "javascript",

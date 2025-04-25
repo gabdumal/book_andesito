@@ -3,6 +3,7 @@
     "astrojs",
     "clangd",
     "openssh",
+    "ptyxis",
     "rustup",
     "tseslint",
     "winget",

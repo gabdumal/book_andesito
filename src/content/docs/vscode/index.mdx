@@ -68,17 +68,21 @@ Para instalar o Visual Studio Code no Fedora, podemos adicionar o repositório o
 
 Utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions).
 
-```bash title="Fedora: Ptyxis" frame="terminal"
+```bash title="Fedora" frame="terminal"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 ```
 
 Em seguida, instale o Visual Studio Code.
 
-```bash title="Fedora: Ptyxis" frame="terminal"
+```bash title="Fedora" frame="terminal"
 dnf check-update
-sudo dnf install code
+sudo dnf install code -y
 ```
+
+O sistema pode pedir para você digitar a senha do seu usuário.
+Neste caso, digite-a e pressione <Kbd linux="Enter" />.
+Por padrão, o Fedora não mostra os caracteres enquanto você digita a senha, mas pode ficar tranquilo, pois ela está sendo digitada.
 
 ### Mint
 
@@ -86,7 +90,7 @@ Para instalar o Visual Studio Code no Mint, e em outros sistemas que utilizam o 
 
 Para isso, utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_debian-and-Fedora-based-distributions).
 
-```bash title="Mint: Gnome Terminal" frame="terminal"
+```bash title="Mint" frame="terminal"
 sudo apt-get install wget gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
@@ -96,11 +100,16 @@ rm -f packages.microsoft.gpg
 
 Em seguida, atualize a lista de pacotes e instale o Visual Studio Code.
 
-```bash title="Mint: Gnome Terminal" frame="terminal"
+```bash title="Mint" frame="terminal"
 sudo apt install apt-transport-https
 sudo apt update
 sudo apt install code
 ```
+
+O sistema pode pedir para você confirmar a instalação.
+Neste caso, pressione <Kbd linux="y" /> e depois <Kbd linux="Enter" />.
+Ele também pode pedir para você digitar a senha do seu usuário.
+Neste caso, digite-a e pressione <Kbd linux="Enter" />.
 
 ## Executando
 
@@ -177,7 +186,7 @@ Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para 
 
 O Visual Studio Code permite sincronizar suas configurações por meio da sua conta do GitHub.
 No canto inferior esquerdo da tela, existe um ícone de uma pessoa.
-Clique nele, e, em seguida, clice na opção `Backup and Sync Settings...` do menu que se abrir.
+Clique nele, e, em seguida, clique na opção `Backup and Sync Settings...` do menu que se abrir.
 
 <Figure
   caption="Menu de contas do VSCode."
@@ -266,11 +275,11 @@ Isso será importante mais tarde, quando criarmos perfis específicos para cada 
 Conectando-se pelo VSCode no WSL, algumas podem requerer que você clique em `Install in WSL: Fedora` para que funcionem corretamente.
 
 <Figure
-  caption={`Seção de extensões do visual Studio Code, em que se pode selecionar a extensão "Braziian portuguese - Code Spell Checker" para ser instalada no WSL.`}
+  caption={`Seção de extensões do visual Studio Code, em que se pode selecionar a extensão "Brazilian portuguese - Code Spell Checker" para ser instalada no WSL.`}
   images={[
     {
       src: extensions,
-      alt: `Seção de extensões do visual Studio Code, em que se vê a extensão "WSL" instalada e sua descrição breve. Também se vê a extensão "Braziian portuguese - Code Spell Checker" desabilitada, na qual aparece um botão escrito "Install in WSL: FedoraLinux-42".`,
+      alt: `Seção de extensões do visual Studio Code, em que se vê a extensão "WSL" instalada e sua descrição breve. Também se vê a extensão "Brazilian portuguese - Code Spell Checker" desabilitada, na qual aparece um botão escrito "Install in WSL: FedoraLinux-42".`,
     },
   ]}
 />

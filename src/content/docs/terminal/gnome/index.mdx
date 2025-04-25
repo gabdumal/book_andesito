@@ -8,8 +8,6 @@ import { Kbd } from "starlight-kbd/components";
 import Figure from "/src/components/Figure.astro";
 
 import openingTerminalFromTerminal from "/src/assets/content/docs/terminal/gnome/opening_terminal_from_terminal.webp";
-import openingKeyboardSettings from "/src/assets/content/docs/terminal/gnome/opening_keyboard_settings.png";
-import settingTerminalShortcut from "/src/assets/content/docs/terminal/gnome/setting_terminal_shortcut.png";
 import preferences from "/src/assets/content/docs/terminal/gnome/preferences.png";
 import installingCatppuccin from "/src/assets/content/docs/terminal/gnome/installing_catppuccin.png";
 import settingTheme from "/src/assets/content/docs/terminal/gnome/setting_theme.png";
@@ -36,35 +34,6 @@ Digite `gnome-terminal` no terminal e pressione <Kbd linux={"Enter"}/>.
   ]}
 />
 
-## Atalho de teclado
-
-Um atalho de teclas comumente utilizado para abrir o terminal é <Kbd linux={"Ctrl+Alt+T"}/>.
-O Mint o tem configurado por padrão.
-Já no Fedora, você pode defini-lo em `Settings > Keyboard > View and Customize Shortcuts > Custom Shortcuts`.
-
-<Figure
-  caption="Selecionando menu de atalhos de teclado nas configurações do GNOME."
-  images={[
-    {
-      src: openingKeyboardSettings,
-      alt: "Configurações do GNOME, em que está aberto o menu de atalhos de teclado.",
-    },
-  ]}
-/>
-
-Então, defina o nome como `Terminal`, o comando como `gnome-terminal` e o atalho de teclado como <Kbd linux={"Ctrl+Alt+T"}/>.
-Pressione `Add` e pronto!
-
-<Figure
-  caption="Definindo o atalho de teclado para abrir o terminal."
-  images={[
-    {
-      src: settingTerminalShortcut,
-      alt: "Configurações do GNOME, em que se define o atalho de teclado para abrir o terminal.",
-    },
-  ]}
-/>
-
 ## Perfis
 
 O GNOME Terminal permite a criação de perfis, que são configurações personalizadas para o terminal.
@@ -74,7 +43,9 @@ Clique com o botão direito do mouse no centro da janela do terminal e o menu do
 As configurações são divididas em duas partes: `Global` e `Profiles`.
 A primeira aba de `Global` é `General`, que define algumas preferências gerais do terminal.
 
-Eu prefiro um tema claro, e defini meu sistema para seguir esse tema.
+### Estilo
+
+Eu prefiro um estilo claro, e defini meu sistema para seguir assim.
 Então, na opção `Theme variant`, selecionei `Follow system style`.
 
 <Figure
@@ -86,6 +57,8 @@ Então, na opção `Theme variant`, selecionei `Follow system style`.
     },
   ]}
 />
+
+### Cores
 
 Por padrão, o GNOME Terminal tem um perfil chamado `Unnamed`.
 Clicando nele, podemos ver as definições padrão.
@@ -131,6 +104,8 @@ Para isso, clique no botão `▾` ao lado do nome do tema, e selecione `Set as d
     },
   ]}
 />
+
+### Fonte
 
 Por último, temos que configurar a fonte para alguma compatível com o padrão Nerd Font.
 Para isso, clique na caixa de seleção com a legenda `Custom font:`, e então clique no botão ao lado, com o texto `Monospace 12`.

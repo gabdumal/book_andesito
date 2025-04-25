@@ -70,13 +70,11 @@ git config user.name
 
 ### Editor de texto
 
-Para definir o editor de texto padrão, execute o comando abaixo, substituindo `code` pelo comando que abre o Visual Studio Code no seu sistema.
+Para definir o editor de texto padrão, execute o comando abaixo.
 
 ```bash title="Fedora, WSL ou Mint" frame="terminal"
 git config --global core.editor "code --wait"
 ```
-
-{/* TODO: Verificar no Linux */}
 
 ### Branch padrão
 
@@ -103,6 +101,8 @@ A instalação depende do sistema operacional que você está utilizando, como e
 Para instalar o GitHub CLI no Fedora ou no WSL usando o Fedora como distro, vamos seguir a [documentação](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#fedora-centos-red-hat-enterprise-linux-dnf).
 
 Este comando adiciona o repositório do GitHub CLI ao seu sistema, e então instala o pacote.
+Quando o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} />.
+Provavelmente, ele solicitará duas vezes.
 
 ```bash bash title="Fedora ou WSL" frame="terminal"
 sudo dnf install dnf5-plugins
@@ -134,8 +134,8 @@ O resultado deve ser similar.
 
 ```bash title="Fedora, WSL ou Mint" frame="terminal"
 gh --version
-# gh version 2.71.0 (2025-04-23)
-# https://github.com/cli/cli/releases/tag/v2.71.0
+# gh version 2.71.2 (2025-04-24)
+# https://github.com/cli/cli/releases/tag/v2.71.2
 ```
 
 ### Autenticação

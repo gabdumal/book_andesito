@@ -13,6 +13,7 @@ import configuringZoxideOnPowerShell from "/src/assets/content/docs/shell/plugin
 import zshSettingsWithFzfAndZoxide from "/public/configuration/zsh/plugins/fzf_and_zoxide/.zshrc?raw";
 import zshSettingsWithZshAutosuggestions from "/public/configuration/zsh/plugins/zsh_autosuggestions/.zshrc?raw";
 import zshSettingsWithZshSyntaxHighlighting from "/public/configuration/zsh/plugins/zsh_syntax_highlighting/.zshrc?raw";
+import zshSettingsWithTheFuck from "/public/configuration/zsh/plugins/the_fuck/.zshrc?raw";
 
 Plugins são uma forma de estender as funcionalidades do shell.
 Para os sistemas que configuramos com o **Zsh**, utilizaremos o **Oh My Zsh**
@@ -191,7 +192,7 @@ Da mesma forma, basta adicionar a linha `zsh-syntax-highlighting` ao atributo `p
   ins={[21]}
 />
 
-Como sempre, salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
+Salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
 
 ## The Fuck
 
@@ -201,14 +202,29 @@ O tempo todo eu esqueço de adicionar o `sudo` na frente dos comandos.
 
 Pensando nisso, foi criado o [**The Fuck**](https://github.com/nvbn/thefuck).
 Ele é um plugin que corrige esses pequenos erros nos comandos, sejam uma letra trocada, ou todo um atributo esquecido.
-
 Quando receber um erro, digite `fuck`, e o plugin tentará corrigi-lo para você.
 
-O The Fuck é instalado por meio do gerenciado de pacotes do Python, o Pip.
-Para garantir que ele esteja instalado, confira a seção [Python > Instalação](../../python/install).
+Para instalá-lo, execute o seguinte comando no Fedora ou no WSL usando o Fedora.
 
-Então, execute o seguinte comando no Zsh.
-
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
-pip3 install thefuck --upgrade
+```zsh title="Fedora ou WSL" frame="terminal"
+sudo dnf install thefuck -y
 ```
+
+Ou o seguinte comando no Mint ou em outras distribuições baseadas no Debian.
+
+```zsh title="Mint" frame="terminal"
+sudo apt install thefuck -y
+```
+
+Da mesma forma, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
+Adicione as seguintes linhas ao fim do arquivo.
+
+<Code
+  code={zshSettingsWithTheFuck}
+  lang="zsh"
+  title="~/.zshrc"
+  frame="code"
+  ins={[30, 31, 32]}
+/>
+
+Salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.

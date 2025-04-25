@@ -54,6 +54,10 @@ export default defineConfig({
               slug: "terminal",
             },
             {
+              label: "Ptyxis",
+              slug: "terminal/ptyxis",
+            },
+            {
               label: "GNOME Terminal",
               slug: "terminal/gnome",
             },

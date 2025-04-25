@@ -68,7 +68,7 @@ chsh -s $(which zsh)
 ### Arquivo de configuração
 
 Após instalar o Zsh, **feche** o terminal e abra-o novamente.
-Se tudo correr bem, você verá o texto de boas-vindas.
+Pode aparecer para você o texto de boas-vindas.
 
 <Figure
   caption="Texto de boas-vindas do Zsh no Windows Terminal rodando o Fedora."
@@ -87,7 +87,15 @@ Pressione <Kbd linux={"0"} /> para criar um arquivo vazio.
 Não se preocupe, vamos preenchê-lo mais adiante.
 
 O arquivo de configuração do Zsh é o `.zshrc`, assim mesmo, com ponto no começo e sem extensão.
-Sua localização é na pasta do seu usuário.
+Sua localização é na pasta do seu usuário, `~`.
+
+Se essa mensagem não aparecer, você pode confirmar se tudo correu bem com o comando abaixo.
+O resultado deve ser o caminho do executável do Zsh: `/usr/bin/zsh`.
+
+```bash title="Fedora, WSL ou Mint" frame="terminal"
+sh -c 'ps -p $$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe'
+# /usr/bin/zsh
+```
 
 ## Oh My Zsh
 
@@ -112,11 +120,14 @@ Ou como a seguir no Mint.
 sudo apt install wget -y
 ```
 
-Então, execute o seguinte comando no terminal para instalar o Oh My Zsh:
+Então, execute o seguinte comando no terminal para instalar o Oh My Zsh.
 
 ```zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
+Se o sistema pedir para você confirmar a instalação, pressione <Kbd linux={"y"} /> e depois <Kbd linux={"Enter"} />.
+Ele também pode pedir para você digitar a senha do seu usuário.
 
 Além de instalar o Oh My Zsh, o script de instalação também configura o arquivo `.zshrc` de forma a carregar o framework.
 

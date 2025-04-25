@@ -5,230 +5,64 @@ author: Gabriel Malosto
 
 import Figure from "/src/components/Figure.astro";
 
-import downloadOptions from "/src/assets/content/docs/c_cpp/compiler/install/download_options.png";
-import vsInstaller from "/src/assets/content/docs/c_cpp/compiler/install/vs_installer.png";
-import installingMsvc from "/src/assets/content/docs/c_cpp/compiler/install/installing_msvc.png";
-import optionsList from "/src/assets/content/docs/c_cpp/compiler/install/options_list.png";
-import testingCl from "/src/assets/content/docs/c_cpp/compiler/install/testing_cl.png";
-import initialDirectory from "/src/assets/content/docs/c_cpp/compiler/install/initial_directory.png";
-import initPsDev from "/src/assets/content/docs/c_cpp/compiler/install/init_ps_dev.png";
-import defaultProfile from "/src/assets/content/docs/c_cpp/compiler/install/default_profile.png";
-import newTerminal from "/src/assets/content/docs/c_cpp/compiler/install/new_terminal.png";
-import openingCode from "/src/assets/content/docs/c_cpp/compiler/install/opening_code.png";
-
 Neste capítulo, vamos instalar as ferramentas de compilação para C e C++ para o Fedora, o WSL usando o Fedora e o Mint, além de outros derivados do Debian compatíveis.
 
-## Linux
+Instalaremos os pacotes do [**LLVM**](https://www.llvm.org/), que é um projeto focado em desenvolver diversas ferramentas de compilação, incluindo o compilador [**Clang**](https://clang.llvm.org/).
+Também instalaremos o [**Ninja**](https://ninja-build.org/), um gerador de build com foco em velocidade.
 
-### Ubuntu e WSL
+## Fedora e WSL
+
+Para obter as ferramentas no Fedora ou no WSL usando o Fedora, vamos instalar os pacotes listados oficialmente pelo Fedora para o projeto [LLVM](https://packages.fedoraproject.org/pkgs/llvm/) e para o [Ninja](https://packages.fedoraproject.org/pkgs/ninja-build/).
+Execute os seguintes comandos no terminal.
+
+```zsh title="Fedora ou WSL" frame="terminal"
+sudo dnf upgrade -y
+sudo dnf install llvm llvm-cmake-utils llvm-devel \
+  llvm-doc llvm-googletest llvm-libs llvm-static \
+  llvm-test clang clang-analyzer clang-devel clang-libs \
+  clang-resource-filesystem clang-tools-extra \
+  clang-tools-extra-devel compiler-rt git-clang-format \
+  libomp libomp-devel lld lld-devel lld-libs lldb \
+  lldb-devel python3-clang python3-lit python3-lldb \
+  libcxx libcxx-devel libcxx-static libcxxabi \
+  libcxxabi-devel libcxxabi-static llvm-bolt \
+  llvm-filesystem llvm-libunwind llvm-libunwind-devel \
+  llvm-libunwind-static mlir mlir-devel mlir-static \
+  polly polly-devel python3-mlir -y
+sudo dnf install ninja-build python3-ninja -y
+```
+
+Você pode verificar a instalação com os comandos abaixo.
+
+```zsh title="Fedora ou WSL" frame="terminal"
+clang --version
+# clang version 20.1.3 (Fedora 20.1.3-1.fc42)
+# Target: x86_64-redhat-linux-gnu
+# Thread model: posix
+# InstalledDir: /usr/lib64/llvm20/bin
+# Configuration file: /etc/clang/x86_64-redhat-linux-gnu-clang.cfg
+ninja --version
+# 1.12.1
+```
+
+## Mint
 
 Para instalar as ferramentas no Mint ou em outras distribuições baseadas no Debian, execute os seguintes comandos no terminal:
 
-```bash
-sudo apt update && sudo apt upgrade
-sudo apt install wget
-sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-sudo apt --fix-broken install
-sudo apt install llvm clang clang-format clang-tools clang-tidy clangd ninja-build lldb
+```zsh title="Mint" frame="terminal"
+# sudo apt update && sudo apt upgrade
+# sudo apt install wget
+# sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+# sudo apt --fix-broken install
+# sudo apt install llvm clang clang-format clang-tools clang-tidy clangd ninja-build lldb
+sudo apt install clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 ```
 
-Você pode verificar a instalação com o comando `clang --version`.
-O resultado deve ser como o seguinte, podendo variar de acordo com a versão instalada:
+Você pode verificar a instalação com os comandos abaixo.
 
-```bash
+```zsh title="Mint" frame="terminal"
 Ubuntu clang version 18.1.8 (++20240731025043+3b5b5c1ec4a3-1~exp1~20240731145144.92)
 Target: x86_64-pc-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
 ```
-
-Também verifique a instalação do ninja com o comando `ninja --version`.
-O resultado deve ser `1.11.1` ou superior.
-
-### Fedora
-
-{/* TODO */}
-
-## Windows
-
-{/* TODO: Install clang tools and clangd and ninja */}
-
-O **Microsoft Visual Studio** (MSVC) é uma IDE popular para desenvolvimento em C e C++ no Windows.
-Muitas das suas funcionalidades são pagas, apesar de existir uma versão gratuita chamada **Community**.
-
-Essa IDE é diferente do **Visual Studio _Code_**, o qual estamos utilizando neste livro.
-
-Nós queremos apenas as ferramentas de compilação do **MSVC**.
-Não é necessário instalar todo o Visual Studio.
-
-Dessa forma, acesse a página de [downloads](https://visualstudio.microsoft.com/pt-br/downloads/#build-tools-for-visual-studio-2022) do Visual Studio e baixe a versão **Ferramentas de Build para Visual Studio 2022** (ou superior).
-
-<Figure
-  caption={`Opções de download das ferramentas do Visual Studio, em que se seleciona a opção "Ferramentas de Build para Visual Studio 2022".`}
-  images={[
-    {
-      src: downloadOptions,
-      alt: `Página de downloads do website do Visual Studio. A seção "Ferramentas de Build para Visual Studio 2022" está destacada.`,
-    },
-  ]}
-/>
-
-Execute o instalador baixado e prossiga com a instalação.
-
-<Figure
-  caption="Instalação do gerenciador do Visual Studio."
-  images={[
-    {
-      src: vsInstaller,
-      alt: `Janela do instalador do gerenciador do Visual Studio.`,
-    },
-  ]}
-/>
-
-Na tela de seleção de cargas de trabalho, selecione apenas a opção **Desenvolvimento para desktop com C++**.
-
-No menu lateral na esquerda, selecione as seguintes opções:
-
-- Ferramentas de compilação MSVC v143 - VS 2022 C++ x64/x86 (mais recente)
-- SDK do Windows 11 _(ou a opção selecionada para o seu sistema)_
-- Ferramentas do CMake do C++ para Windows
-- Recursos principais de ferramentas de teste &mdash; Ferramentas de Build
-- AddressSanitizer do C++
-- ATL do C++ para as mais recentes ferramentas do build v143 (x86 e x64)
-- MFC do C++ para as mais recentes ferramentas do build v143 (x86 e x64)
-- Suporte do C++/CLI para as ferramentas do build v143 (Mais recente)
-- Módulos do C++ para as ferramentas do build v143 (x86 e x64, experimental)
-
-<Figure
-  caption="Tela de seleção de cargas de trabalho no gerenciador do Visual Studio."
-  images={[
-    {
-      src: installingMsvc,
-      alt: `Janela do gerenciador do Visual Studio com as opções de cargas de trabalho selecionadas. Dentre as opções, é selecionada a carga de trabalho "Desenvolvimento para desktop com C++". Na parte direita da tela, selecionam-se as opções supracitadas.`,
-    },
-  ]}
-/>
-
-Clique em **Instalar** e aguarde o término da instalação.
-
-Abra o menu de opções de perfis do Windows Terminal.
-Você verá que duas novas entradas foram adicionadas:
-
-- Developer Command Prompt for VS 2022
-- Developer PowerShell for VS 2022
-
-<Figure
-  caption="Lista de opções de shell para o Windows Terminal."
-  images={[
-    {
-      src: optionsList,
-      alt: `Menu de perfis do Windows Terminal. São eles: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell", "Developer Command Prompt for VS 2022" e "Developer PowerShell for VS 2022", "PowerShell".`,
-    },
-  ]}
-/>
-
-Para acessar as ferramentas instaladas, você deve utilizar o perfil **Developer PowerShell for VS 2022**.
-
-Abra uma sessão nele e execute o comando `cl` para verificar se o compilador **Clang** foi instalado corretamente.
-
-<Figure
-  caption="Testando se a instalação do MSVC foi bem-sucedida."
-  images={[
-    {
-      src: testingCl,
-      alt: `Terminal do Windows Terminal com o comando "cl" sendo executado.`,
-    },
-  ]}
-/>
-
-### Configuração do perfil
-
-É interessante trocar a pasta inicial desse perfil para a pasta do seu usuário.
-Acesse as configurações do perfil **Developer PowerShell for VS 2022**.
-Abra a opção **Diretório inicial**, e troque o valor para `%USERPROFILE%`.
-Então, **salve** as configurações.
-
-<Figure
-  caption="Diretório de inicialização do perfil definido como a pasta do usuário."
-  images={[
-    {
-      src: initialDirectory,
-      alt: `Janela de configurações do Windows Terminal para o perfil "Developer PowerShell for VS 2022". A opção "Diretório inicial" está selecionada, e o valor "%USERPROFILE%" está inserido.`,
-    },
-  ]}
-/>
-
-Se você deseja utilizar o **PowerShell 7** no perfil de desenvolvedor, você pode alterar o comando de inicialização do perfil.
-Abra a opção **Linha de comando**.
-
-O primeiro termo do comando é `powershell.exe`, que se refere à versão 5 do PowerShell.
-Para utilizar o **PowerShell 7**, altere **apenas** este primeiro termo para `pwsh.exe`.
-
-<Figure
-  caption="Opção de inicialização do PowerShell para desenvolvimento do VS 2022 atualizada para usar o PowerShell 7."
-  images={[
-    {
-      src: initPsDev,
-      alt: `Janela de configurações do Windows Terminal para o perfil "Developer PowerShell for VS 2022". A opção "Linha de comando" está selecionada, e o valor "pwsh.exe" está inserido no início do comando.`,
-    },
-  ]}
-/>
-
-Então, **salve** as configurações.
-
-### Configuração do terminal
-
-Você pode também definir esse perfil como padrão, para que ele seja aberto automaticamente ao iniciar o Windows Terminal.
-
-Faça isso na seção **Inicialização** e na opção **Perfil padrão**.
-
-<Figure
-  caption="Perfil de desenvolvimento definido como o padrão de inicialização do Windows Terminal."
-  images={[
-    {
-      src: defaultProfile,
-      alt: `Janela de configurações do Windows Terminal na seção "Inicialização". A opção "Perfil padrão" está selecionada, e o valor "Developer PowerShell for VS 2022" está inserido.`,
-    },
-  ]}
-/>
-
-**Salve** as configurações e **feche** o Windows Terminal.
-
-Para testar se a configuração foi bem-sucedida, abra o Windows Terminal e digite `$PSVersionTable`.
-
-<Figure
-  caption="Windows Terminal inicializado com o perfil de desenvolvimento."
-  images={[
-    {
-      src: newTerminal,
-      alt: `PowerShell aberto no Windows Terminal. O comando "$PSVersionTable" foi executado, e o resultado é exibido na tela.`,
-    },
-  ]}
-/>
-
-### Visual Studio Code
-
-Para carregar as ferramentas de compilação no VSCode, é necessário primeiro abrir o Windows Terminal no perfil de desenvolvimento.
-
-Então, execute o comando `code` para abrir o Visual Studio Code.
-Se quiser abri-lo na pasta atual, utilize `code .`.
-
-Para testar se a configuração foi bem-sucedida, abra o terminal integrado do VSCode e execute o comando `cl`.
-
-<Figure
-  caption={`Abrindo o Visual Studio Code a partir do Windows Terminal.`}
-  images={[
-    {
-      src: openingCode,
-      alt: `Visual Studio Code aberto por meio do Windows Terminal. O comando "cl" foi executado no terminal integrado.`,
-    },
-  ]}
-/>
-
-### Considerações
-
-A instalação do **MSVC** utiliza o **Clang** como parte do seu conjunto de ferramentas.
-Na verdade, o comando `cl` não é exatamente o compilador Clang, mas sim um wrapper que o chama.
-
-Se você precisar do compilador Clang puro, você pode instalá-lo separadamente, junto com outras ferramentas do LLVM.
-Faremos isso no subcapítulo sobre o [depurador LLDB](debugger).

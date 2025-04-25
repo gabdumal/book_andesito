@@ -13,7 +13,6 @@ import configuringZoxideOnPowerShell from "/src/assets/content/docs/shell/plugin
 import zshSettingsWithFzfAndZoxide from "/public/configuration/zsh/plugins/fzf_and_zoxide/.zshrc?raw";
 import zshSettingsWithZshAutosuggestions from "/public/configuration/zsh/plugins/zsh_autosuggestions/.zshrc?raw";
 import zshSettingsWithZshSyntaxHighlighting from "/public/configuration/zsh/plugins/zsh_syntax_highlighting/.zshrc?raw";
-import zshSettingsWithTheFuck from "/public/configuration/zsh/plugins/the_fuck/.zshrc?raw";
 
 Plugins são uma forma de estender as funcionalidades do shell.
 Para os sistemas que configuramos com o **Zsh**, utilizaremos o **Oh My Zsh**
@@ -95,24 +94,24 @@ Para o Fedora ou o WSL usando o Fedora como distro, utilize a ferramenta `dnf`.
 
 ```zsh title="Fedora ou WSL" frame="terminal"
 sudo dnf install fzf -y
-```
-
-Para o Mint ou outros derivados do Debian, utilize a ferramenta `apt`.
-
-```zsh title="Mint" frame="terminal"
-sudo apt install fzf -y
-```
-
-Então, **feche** e reabra o terminal.
-
-Você pode verificar se a instalação foi bem-sucedida executando o seguinte comando.
-
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
 fzf --version
 # 0.61.1 (Fedora)
 ```
 
-{/* TODO: Test on Mint */}
+Para o Mint ou outros derivados do Debian, a versão do FZF disponível nos repositórios é a `0.44.1`, que não oferece os recursos necessários.
+Então, por enquanto, vamos baixar uma versão um pouco mais atualizada diretamente do repositório oficial.
+
+```zsh title="Mint" frame="terminal"
+wget https://github.com/junegunn/fzf/releases/download/0.48.0/fzf-0.48.0-linux_amd64.tar.gz
+tar -xzf fzf-0.48.0-linux_amd64.tar.gz
+sudo mv fzf /usr/local/bin/
+fzf --version
+# 0.48.0 (091b7ea)
+```
+
+{/* TODO: When repositories update, change installing method to `apt install fzf`. */}
+
+Então, **feche** e reabra o terminal.
 
 Para instalar o Zoxide, execute o seguinte comando, conforme especificado pela [documentação oficial](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation).
 
@@ -190,41 +189,6 @@ Da mesma forma, basta adicionar a linha `zsh-syntax-highlighting` ao atributo `p
   title="~/.zshrc"
   frame="code"
   ins={[21]}
-/>
-
-Salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
-
-## The Fuck
-
-Primeiramente, perdoem-me o palavreado.
-Mas sabe quando você digita um comando enorme, mas percebe só depois de executar que errou uma coisinha só?
-O tempo todo eu esqueço de adicionar o `sudo` na frente dos comandos.
-
-Pensando nisso, foi criado o [**The Fuck**](https://github.com/nvbn/thefuck).
-Ele é um plugin que corrige esses pequenos erros nos comandos, sejam uma letra trocada, ou todo um atributo esquecido.
-Quando receber um erro, digite `fuck`, e o plugin tentará corrigi-lo para você.
-
-Para instalá-lo, execute o seguinte comando no Fedora ou no WSL usando o Fedora.
-
-```zsh title="Fedora ou WSL" frame="terminal"
-sudo dnf install thefuck -y
-```
-
-Ou o seguinte comando no Mint ou em outras distribuições baseadas no Debian.
-
-```zsh title="Mint" frame="terminal"
-sudo apt install thefuck -y
-```
-
-Da mesma forma, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
-Adicione as seguintes linhas ao fim do arquivo.
-
-<Code
-  code={zshSettingsWithTheFuck}
-  lang="zsh"
-  title="~/.zshrc"
-  frame="code"
-  ins={[30, 31, 32]}
 />
 
 Salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.

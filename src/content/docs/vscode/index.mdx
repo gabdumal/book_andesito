@@ -68,6 +68,12 @@ Para instalar o Visual Studio Code no Fedora, podemos adicionar o repositório o
 
 Utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions).
 
+O sistema pode pedir para você confirmar a instalação.
+Neste caso, pressione <Kbd linux="y" /> e depois <Kbd linux="Enter" />.
+Ele também pode pedir para você digitar a senha do seu usuário.
+Neste caso, digite-a e pressione <Kbd linux="Enter" />.
+Por padrão, o Fedora não mostra os caracteres enquanto você digita a senha, mas pode ficar tranquilo, pois ela está sendo digitada.
+
 ```bash title="Fedora" frame="terminal"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
@@ -80,15 +86,16 @@ dnf check-update
 sudo dnf install code -y
 ```
 
-O sistema pode pedir para você digitar a senha do seu usuário.
-Neste caso, digite-a e pressione <Kbd linux="Enter" />.
-Por padrão, o Fedora não mostra os caracteres enquanto você digita a senha, mas pode ficar tranquilo, pois ela está sendo digitada.
-
 ### Mint
 
 Para instalar o Visual Studio Code no Mint, e em outros sistemas que utilizam o gerenciador de pacotes `apt` (como Fedora, Debian, Pop!\_OS, entre outros), também podemos adicionar o repositório oficial.
 
 Para isso, utilize os seguintes comandos, conforme recomendado pelo [site oficial](https://code.visualstudio.com/docs/setup/linux#_debian-and-Fedora-based-distributions).
+
+O sistema pode pedir para você confirmar a instalação.
+Neste caso, pressione <Kbd linux="y" /> e depois <Kbd linux="Enter" />.
+Ele também pode pedir para você digitar a senha do seu usuário.
+Neste caso, digite-a e pressione <Kbd linux="Enter" />.
 
 ```bash title="Mint" frame="terminal"
 sudo apt-get install wget gpg
@@ -101,15 +108,10 @@ rm -f packages.microsoft.gpg
 Em seguida, atualize a lista de pacotes e instale o Visual Studio Code.
 
 ```bash title="Mint" frame="terminal"
-sudo apt install apt-transport-https
+sudo apt install apt-transport-https -y
 sudo apt update
-sudo apt install code
+sudo apt install code -y
 ```
-
-O sistema pode pedir para você confirmar a instalação.
-Neste caso, pressione <Kbd linux="y" /> e depois <Kbd linux="Enter" />.
-Ele também pode pedir para você digitar a senha do seu usuário.
-Neste caso, digite-a e pressione <Kbd linux="Enter" />.
 
 ## Executando
 

@@ -140,6 +140,8 @@ Para instalar o Starship, execute o comando:
 sudo curl -sS https://starship.rs/install.sh | sh
 ```
 
+Quando perguntado se deseja prosseguir com a instalação, pressione a tecla <Kbd linux={"y"} /> e então a tecla <Kbd linux={"Enter"} />.
+
 <Figure
   caption="Executando comando de instalação do Starship no Zsh."
   images={[
@@ -149,8 +151,6 @@ sudo curl -sS https://starship.rs/install.sh | sh
     },
   ]}
 />
-
-Quando perguntado se deseja prosseguir com a instalação, pressione a tecla <Kbd linux={"y"} /> e então a tecla <Kbd linux={"Enter"} />.
 
 O instalador exibirá uma mensagem informando que o Starship foi instalado com sucesso, e que é necessário adicionar o script de inicialização ao arquivo de configurações do shell.
 
@@ -197,32 +197,32 @@ Vamos utilizar o tema [Nerd Font Symbols](https://starship.rs/presets/nerd-font)
 O Starship também tem um arquivo de configuração chamado `starship.toml`, que é onde você pode definir as configurações do prompt.
 Por padrão, este arquivo pode não existir.
 
-Para criar um no **Linux** (incluindo o WSL), execute o comando abaixo.
-
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
-mkdir -p ~/.config && touch ~/.config/starship.toml
-```
-
-Já no **Windows** com o PowerShell, execute os comandos:
+Para criar um no **Windows** com o PowerShell, execute os comandos a seguir.
 
 ```powershell title="PowerShell" frame="terminal"
 mkdir -Force $HOME\.config
 New-Item -Path $HOME\.config\starship.toml -ItemType File
 ```
 
+Já no **Linux** (incluindo o WSL), execute o comando abaixo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p ~/.config && touch ~/.config/starship.toml
+```
+
 Depois de criado, precisamos copiar o conteúdo de um preset para dentro desse arquivo.
 O starship oferece um comando para fazer justamente isso.
 
-No **Linux** (incluindo o WSL), execute o comando:
-
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
-starship preset nerd-font-symbols -o $STARSHIP_CONFIG
-```
-
-Já no **Windows** com o PowerShell, execute o comando:
+No **Windows** com o PowerShell, execute o comando a seguir.
 
 ```powershell title="PowerShell" frame="terminal"
 starship.exe preset nerd-font-symbols -o $ENV:STARSHIP_CONFIG
+```
+
+Já no **Linux** (incluindo o WSL), execute o comando abaixo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+starship preset nerd-font-symbols -o $STARSHIP_CONFIG
 ```
 
 ### Considerações

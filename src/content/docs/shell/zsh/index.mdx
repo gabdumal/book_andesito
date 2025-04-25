@@ -30,6 +30,10 @@ Execute o comando abaixo no terminal.
 sudo dnf install zsh -y
 ```
 
+O sistema pode pedir para você digitar a senha do seu usuário.
+Neste caso, digite-a e pressione <Kbd linux="Enter" />.
+Por padrão, o Fedora não mostra os caracteres enquanto você digita a senha, mas pode ficar tranquilo, pois ela está sendo digitada.
+
 Verifique a instalação com o comando abaixo.
 
 ```bash title="Fedora ou WSL" frame="terminal"
@@ -43,6 +47,8 @@ E então o defina como o shell padrão da seguinte forma.
 sudo chsh $USER -s /bin/zsh
 ```
 
+**Reinicie** o computador para que a mudança tenha efeito.
+
 ---
 
 ### Mint
@@ -53,10 +59,14 @@ Execute o comando abaixo no terminal.
 sudo apt install zsh -y
 ```
 
+O sistema pode pedir para você digitar a senha do seu usuário.
+Neste caso, digite-a e pressione <Kbd linux="Enter" />.
+
 Verifique a instalação com o comando abaixo.
 
 ```bash title="Mint" frame="terminal"
 zsh --version
+zsh 5.9 (x86_64-ubuntu-linux-gnu)
 ```
 
 E então o defina como o shell padrão da seguinte forma.
@@ -64,6 +74,8 @@ E então o defina como o shell padrão da seguinte forma.
 ```bash title="Mint" frame="terminal"
 chsh -s $(which zsh)
 ```
+
+**Reinicie** o computador para que a mudança tenha efeito.
 
 ### Arquivo de configuração
 
@@ -108,7 +120,7 @@ Suas instruções de instalação estão disponíveis no seu [repositório no Gi
 
 Para executarmos seu script de instalação, precisamos de um programa chamado `wget`.
 
-Você pode instalá-lo da seguinte forma no Fedora ou WSL.
+Você pode instalar o pacote da seguinte forma no Fedora ou WSL.
 
 ```zsh title="Fedora ou WSL" frame="terminal"
 sudo dnf install wget -y
@@ -120,14 +132,11 @@ Ou como a seguir no Mint.
 sudo apt install wget -y
 ```
 
-Então, execute o seguinte comando no terminal para instalar o Oh My Zsh.
+Então, para ambos os sistemas, execute o seguinte comando no terminal para instalar o Oh My Zsh.
 
 ```zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-
-Se o sistema pedir para você confirmar a instalação, pressione <Kbd linux={"y"} /> e depois <Kbd linux={"Enter"} />.
-Ele também pode pedir para você digitar a senha do seu usuário.
 
 Além de instalar o Oh My Zsh, o script de instalação também configura o arquivo `.zshrc` de forma a carregar o framework.
 

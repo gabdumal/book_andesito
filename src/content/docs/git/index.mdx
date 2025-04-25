@@ -26,6 +26,14 @@ sudo dnf install git
 Quando o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} />.
 O processo pode demorar um pouco no WSL, basta aguardar.
 
+Para confirmar se o git foi instalado corretamente, digite o seguinte comando no terminal.
+O resultado deve ser algo como a linha marcada com `#`, ou alguma versão superior.
+
+```bash title="Fedora ou WSL" frame="terminal"
+git --version
+# git version 2.49.0
+```
+
 ### Mint
 
 Para instalar o Git no Mint ou outras distros baseadas no Debian, execute o comando:
@@ -36,14 +44,12 @@ sudo apt install git
 
 Quando o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} />.
 
-### Confirmação
-
 Para confirmar se o git foi instalado corretamente, digite o seguinte comando no terminal.
 O resultado deve ser algo como a linha marcada com `#`, ou alguma versão superior.
 
-```bash title="Fedora, WSL ou Mint" frame="terminal"
+```bash title="Mint" frame="terminal"
 git --version
-# git version 2.49.0
+# git version 2.43.0
 ```
 
 ## Configuração
@@ -115,6 +121,7 @@ sudo dnf install gh --repo gh-cli
 Para instalar o GitHub CLI no Mint, vamos seguir a [documentação](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt).
 
 Este comando adiciona o repositório do GitHub CLI em seu sistema, e então instala o pacote.
+Se o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} />.
 
 ```bash title="Mint" frame="terminal"
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \

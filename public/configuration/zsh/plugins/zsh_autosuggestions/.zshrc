@@ -17,7 +17,6 @@ export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 ### Plugins
 plugins=(
     git
-    zsh-autosuggestions
 )
 
 #### FZF
@@ -26,3 +25,6 @@ source <(fzf --zsh)
 
 #### Zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+#### Zsh Autosuggestions
+source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -50,19 +50,21 @@ ninja --version
 Para instalar as ferramentas no Mint ou em outras distribuições baseadas no Debian, execute os seguintes comandos no terminal:
 
 ```zsh title="Mint" frame="terminal"
-# sudo apt update && sudo apt upgrade
-# sudo apt install wget
-# sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-# sudo apt --fix-broken install
-# sudo apt install llvm clang clang-format clang-tools clang-tidy clangd ninja-build lldb
-sudo apt install clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+sudo apt install clang-format clang-tidy clang-tools \
+  clang clangd libc++-dev libc++1 libc++abi-dev \
+  libc++abi1 libclang-dev libclang1 liblldb-dev \
+  libllvm-ocaml-dev libomp-dev libomp5 lld lldb \
+  llvm-dev llvm-runtime llvm python3-clang -y
+sudo apt install ninja-build -y
 ```
 
 Você pode verificar a instalação com os comandos abaixo.
 
 ```zsh title="Mint" frame="terminal"
-Ubuntu clang version 18.1.8 (++20240731025043+3b5b5c1ec4a3-1~exp1~20240731145144.92)
-Target: x86_64-pc-linux-gnu
-Thread model: posix
-InstalledDir: /usr/bin
+clang --version
+# Ubuntu clang version 18.1.8 (++20240731025043+3b5b5c1ec4a3-1~exp1~20240731145144.92)
+# Target: x86_64-pc-linux-gnu
+# Thread model: posix
+# InstalledDir: /usr/bin
+ninja --version
 ```

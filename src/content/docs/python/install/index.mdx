@@ -5,7 +5,7 @@ author: Gabriel Malosto
 
 import Figure from "/src/components/Figure.astro";
 
-O [**Python**](https://www.python.org/) é instalado por padrão no Linux, bastando verificar se as ferramentas auxiliares estão instaladas.
+O [**Python**](https://www.python.org/) é instalado por padrão no Linux, bastando verificar e instalar ferramentas auxiliares.
 
 Para isso, execute o seguinte comando no Fedora.
 
@@ -20,16 +20,14 @@ Ou este no Mint e derivados do Debian.
 ```zsh title="Mint" frame="terminal"
 sudo apt install python3 python3-dev python3-setuptools -y
 python3 --version
-# Python 3.??.??
+# Python 3.12.3
 ```
-
-{/* TODO: Test on Mint */}
 
 ## Pip
 
 O [**Pip**](https://pip.pypa.io/en/stable/installation/) é um gerenciador de pacotes para o Python.
 
-Você pode garantir sua instalação executando o seguinte comando no Fedora ou no WSL usando o Fedora.
+Você pode garantir sua instalação executando o seguinte comando no Fedora ou no WSL usando os seguintes comandos.
 
 ```zsh title="Fedora ou WSL" frame="terminal"
 python3 -m ensurepip
@@ -37,11 +35,10 @@ python3 -m pip install --upgrade pip
 # Successfully installed pip-25.0.1
 ```
 
-Ou este no Mint e derivados do Debian.
+Ou estes no Mint e derivados do Debian.
 
 ```zsh title="Mint" frame="terminal"
 sudo apt install python3-venv python3-pip -y
 pip3 --version
+# pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)
 ```
-
-{/* TODO: Test on Mint */}

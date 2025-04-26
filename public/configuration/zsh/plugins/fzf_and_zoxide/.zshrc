@@ -15,7 +15,9 @@ eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
 ### Plugins
-plugins=(git)
+plugins=(
+    git
+)
 
 #### FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

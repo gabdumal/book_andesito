@@ -126,14 +126,14 @@ zoxide --version
 # zoxide 0.9.7
 ```
 
-Então, devemos atualizar o arquivo de configurações `~/.zshrc`, adicionando as seguintes linhas ao bloco `Plugins`:
+Então, devemos atualizar o arquivo de configurações `~/.zshrc`, adicionando as seguintes linhas ao fim do arquivo de configuração.
 
 <Code
   code={zshSettingsWithFzfAndZoxide}
   lang="zsh"
   title="~/.zshrc"
   frame="code"
-  ins={[16, 17, 18, 19, 20, 21, 22, 23, 24, 25]}
+  ins={{ range: "21-27" }}
 />
 
 Salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.
@@ -154,15 +154,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ```
 
 Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
-Fazemos isso adicionando mais uma linha ao atributo `plugins`, em que havia apenas o `git`.
+Fazemos isso adicionando as seguintes linhas ao fim do arquivo de configuração.
 
 <Code
   code={zshSettingsWithZshAutosuggestions}
   lang="zsh"
   title="~/.zshrc"
   frame="code"
-  ins={[19, 20, 21]}
-  mark={[18]}
+  ins={{ range: "28-30" }}
 />
 
 Lembre-se de salvar o arquivo, fechar o editor, e então **fechar** e abrir novamente o terminal para que as alterações tenham efeito.
@@ -174,21 +173,21 @@ O [**Zsh Syntax Highlighting**](https://github.com/zsh-users/zsh-syntax-highligh
 Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio do **Oh My Zsh**.
 
 Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
-Faça isso executando o seguinte comando:
+Faça isso executando o seguinte comando.
 
 ```zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
 Então, vamos editar o arquivo de configuração do Zsh para habilitar o plugin.
-Da mesma forma, basta adicionar a linha `zsh-syntax-highlighting` ao atributo `plugins`.
+Basta adicionar as seguintes linhas fim do arquivo de configuração:
 
 <Code
   code={zshSettingsWithZshSyntaxHighlighting}
   lang="zsh"
   title="~/.zshrc"
   frame="code"
-  ins={[21]}
+  ins={{ range: "31-33" }}
 />
 
 Salve o arquivo, feche o editor, e então **feche** e abra novamente o terminal para que as alterações tenham efeito.

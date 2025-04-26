@@ -11,4 +11,6 @@ PATH=$PATH:~/.local/bin
 source $ZSH/oh-my-zsh.sh
 
 ### Plugins
-plugins=(git)
+plugins=(
+    git
+)

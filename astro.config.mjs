@@ -1,6 +1,5 @@
 // @ts-check
 import starlight from "@astrojs/starlight";
-import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import starlightKbd from "starlight-kbd";
 
@@ -104,10 +103,10 @@ export default defineConfig({
                   label: "Instalação",
                   slug: "c_cpp/compiler/install",
                 },
-                // {
-                //   label: "Programas em C",
-                //   slug: "c_cpp/compiler/run_c",
-                // },
+                {
+                  label: "Programas em C",
+                  slug: "c_cpp/compiler/run_c",
+                },
                 // {
                 //   label: "Configurando o VSCode",
                 //   slug: "c_cpp/compiler/vscode",
@@ -177,6 +176,6 @@ export default defineConfig({
   ],
   site: "https://gabdumal.github.io",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [],
   },
 });

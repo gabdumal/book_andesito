@@ -3,26 +3,29 @@ title: Compilando programas em C
 author: Gabriel Malosto
 ---
 
-import { Aside } from "@astrojs/starlight/components";
+import { Code } from "@astrojs/starlight/components";
 
-import Figure from "/src/components/Figure.astro";
+import Figure from "@components/Figure.astro";
 
-import compileHello from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_hello.png";
-import runHello from "/src/assets/content/docs/c_cpp/compiler/run_c/run_hello.png";
-import compileRunSeparate from "/src/assets/content/docs/c_cpp/compiler/run_c/compile_run_separate.png";
+import helloWorldCode from "/public/code/c_cpp_projects/hello_world/hello_world.c?raw";
+import compileHello from "@assets/content/docs/c_cpp/compiler/run_c/compile_hello.png";
+import runHello from "@assets/content/docs/c_cpp/compiler/run_c/run_hello.png";
+import mainFromSeparateFunctionCode from "/public/code/c_cpp_projects/separate_function/main.c?raw";
+import functionsFromSeparateFunctionCode from "/public/code/c_cpp_projects/separate_function/functions.c?raw";
+import compileRunSeparate from "@assets/content/docs/c_cpp/compiler/run_c/compile_run_separate.png";
 
-Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C.
+Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos na linguagem [**C**](https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html).
 
 No terminal, abra a pasta `dev` que criamos anteriormente para guardar nossos projetos.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev
 ```
 
 Dentro dela, crie um diretório chamado `c_cpp_projects` e navegue para dentro dele.
 
-```bash
-mkdir c_cpp_projects
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p c_cpp_projects
 cd c_cpp_projects
 ```
 
@@ -30,74 +33,74 @@ cd c_cpp_projects
 
 Crie um outro diretório chamado `hello_world e também navegue para dentro nele.
 
-```bash
-mkdir hello_world
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p hello_world
 cd hello_world
 ```
 
 Crie um arquivo chamado `hello_world.c`.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch hello_world.c
 ```
 
 Abra o Visual Studio Code neste diretório.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 code .
 ```
 
-<Aside type="caution">
-  Caso esteja usando o WSl, certifique-se que a extensão [Remote -
-  WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
-  esteja instalada no Visual Studio Code. Então, garanta que a janela aberta do
-  VSCode esteja conectada ao WSL.
-</Aside>
+:::caution
+Caso esteja usando o WSl, certifique-se que a extensão [Remote -
+WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+esteja instalada no Visual Studio Code. Então, garanta que a janela aberta do
+VSCode esteja conectada ao WSL.
+:::
 
 Copie o seguinte código para o arquivo `hello_world.c`.
-Lembre-se de salvar o arquivo.
+Lembre-se de **salvar** o arquivo.
 
-```c
-#include <stdio.h>
-
-int main() {
-    printf("Hello, world!\nThis is my first code in C.\n");
-    return 0;
-}
-```
-
-Você também pode acessar esse programa no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/hello_world).
+<Code
+  lang="c"
+  title="hello_world/hello_world.c"
+  code={helloWorldCode}
+  frame="code"
+/>
 
 Vamos utilizar o **Clang** para compilar o código.
 O comando de compilação do Clang tem a seguinte estrutura:
 
-```bash
-clang [opções] <arquivo>.c -include -o <executavel>
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+clang [opções] <arquivo>.c -include -o <executável>
 ```
 
-- [opções] são as opções de compilação, como:
-
-  - -o \<arquivo\> para especificar o arquivo de saída;
-  - -include para incluir um arquivo de cabeçalho;
-  - -c para compilar sem ligar os arquivos;
-  - -g para incluir informações de debug;
-  - entre outras.
-
-- \<arquivo\>.c é o nome do arquivo que será compilado.
-
-- \<executavel\> é o nome do arquivo executável de saída.
+<ul>
+  <li>
+    `[opções]` são os argumentos de compilação, como:
+    <ul>
+      <li>`-o <arquivo>` para especificar o arquivo de saída;</li>
+      <li>`-include` para incluir um arquivo de cabeçalho;</li>
+      <li>`-g` para incluir informações de debug;</li>
+      <li>entre outras.</li>
+    </ul>
+  </li>
+  <li>
+    `<arquivo>.c` é o nome do arquivo que será compilado.
+  </li>
+  <li>
+    `<executável>` é o nome do arquivo executável de saída.
+  </li>
+</ul>
 
 Assim, com o terminal aberto na pasta `~/dev/c_cpp_projects/hello_world`, execute:
 
-{/* TODO: Verificar como fazer no Windows */}
-
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 clang hello_world.c -o hello_world
 ```
 
 Se tudo ocorrer bem, um arquivo executável será criado.
-Para Linux e WSL, ele se chamará `hello_world`.
-Já para o Windows, ele será `hello_world.exe`.
+Ele se chamará apenas `hello_world`.
+Diferentemente do Windows, em que o executável tem a extensão `.exe`, no Linux não é necessário adicionar nenhuma extensão ao arquivo executável.
 
 <Figure
   caption={`Compilação do arquivo "hello_world.c".`}
@@ -111,7 +114,7 @@ Já para o Windows, ele será `hello_world.exe`.
 
 Para executar o programa, basta chamar o arquivo executável.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 ./hello_world
 ```
 
@@ -129,59 +132,52 @@ Para executar o programa, basta chamar o arquivo executável.
 
 Retorne para a pasta `c_cpp_projects`.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev/c_cpp_projects
 ```
 
 Crie um novo diretório chamado `separate_function` e navegue para dentro dele.
 
-```bash
-mkdir separate_function
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p separate_function
 cd separate_function
 ```
 
 Crie um arquivo chamado `main.c`.
 Então abra o Visual Studio Code no diretório atual.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch main.c
 code .
 ```
 
 Copie o seguinte código para o arquivo `main.c`.
 
-```c
-#include <stdio.h>
-
-int sum(int a, int b);
-
-int main() {
-    int a = 5, b = 7;
-    int result = sum(a, b);
-    printf("The sum of %d and %d is %d.\n", a, b, result);
-    return 0;
-}
-```
+<Code
+  lang="c"
+  title="separate_function/main.c"
+  code={mainFromSeparateFunctionCode}
+  frame="code"
+/>
 
 Crie um outro arquivo chamado `functions.c` e cole nele o código a seguir.
 
-```c
-int sum(int a, int b) {
-    return a + b;
-}
-```
-
-Você também pode acessar esse projeto no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/separate_function).
+<Code
+  lang="c"
+  title="separate_function/functions.c"
+  code={functionsFromSeparateFunctionCode}
+  frame="code"
+/>
 
 A função principal `main` chama a função `sum`, que está definida em outro arquivo.
 Então, para fazer a compilação, precisamos passar os dois arquivos para o compilador.
 Internamente, o compilador fará a compilação de cada arquivo separadamente e, em seguida, fará a ligação entre eles.
 
-Para compilar o projeto, execute o comando abaixo no terminal.
-Perceba que você também pode colocar opção -o antes dos arquivos de entrada.
-Ela define o nome do arquivo de saída.
+Para **compilar** o projeto, execute o comando abaixo no terminal.
+Definimos os arquivos de entrada `main.c` e `functions.c`.
+Então, usamos a opção `-o` para especificar o nome do arquivo de saída, que será um executável.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 clang main.c functions.c -o separate_function
 ```
 

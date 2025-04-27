@@ -3,21 +3,29 @@ title: Compilando programas em C++
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import { Code, FileTree } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
-import compileRunHello from "/src/assets/content/docs/c_cpp/compiler/run_cpp/compile_run_hello.png";
-import compileRunBinary from "/src/assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary.png";
-import constructTasksJson from "/src/assets/content/docs/c_cpp/compiler/run_cpp/construct_tasks_json.png";
-import fillBuildTask from "/src/assets/content/docs/c_cpp/compiler/run_cpp/fill_build_task.png";
-import buildLocal from "/src/assets/content/docs/c_cpp/compiler/run_cpp/build_local.png";
-import localOutput from "/src/assets/content/docs/c_cpp/compiler/run_cpp/local_output.png";
+import Figure from "@components/Figure.astro";
 
-Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos em C++.
+import mainFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/main.cpp?raw";
+import nodeHeaderFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/node/node.hpp?raw";
+import nodeFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/node/node.cpp?raw";
+import treeHeaderFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/tree/tree.hpp?raw";
+import treeFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/tree/tree.cpp?raw";
+import compileRunHello from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_hello.png";
+import compileRunBinary from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary.png";
+import constructTasksJson from "@assets/content/docs/c_cpp/compiler/run_cpp/construct_tasks_json.png";
+import fillBuildTask from "@assets/content/docs/c_cpp/compiler/run_cpp/fill_build_task.png";
+import vscodeTasksForBinaryTree from "/public/code/c_cpp_projects/binary_tree/.vscode/tasks.json?raw";
+import buildLocal from "@assets/content/docs/c_cpp/compiler/run_cpp/build_local.png";
+import localOutput from "@assets/content/docs/c_cpp/compiler/run_cpp/local_output.png";
+
+Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos na linguagem [**C++**](https://cplusplus.com).
 
 No terminal, abra a pasta `c_cpp_projects` que criamos anteriormente para guardar nossos projetos.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev/c_cpp_projects
 ```
 
@@ -25,17 +33,17 @@ cd ~/dev/c_cpp_projects
 
 Crie um diretório chamado `binary_tree`, entre nele e abra-o no Visual Studio Code.
 
-```bash
-mkdir binary_tree
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p binary_tree
 cd binary_tree
 code .
 ```
 
 Lembre-se de ativar o perfil `C/C++` que criamos no capítulo [Configurando o VSCode](vscode).
 
-Crie um arquivo chamado `main.cpp` e adicione o seguinte código:
+Crie um arquivo chamado `main.cpp` e adicione o seguinte código.
 
-```cpp
+```cpp title="main.cpp" frame="code"
 #include <iostream>
 
 using namespace std;
@@ -50,13 +58,13 @@ int main()
 Para compilar o código, utilizamos o comando `clang++`, em vez de apenas `clang`.
 A estrutura do comando é a mesma.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 clang++ main.cpp -o binary_tree
 ```
 
 Para executar o programa, basta chamar o arquivo binário gerado:
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 ./binary_tree
 ```
 
@@ -75,53 +83,88 @@ Para executar o programa, basta chamar o arquivo binário gerado:
 Vamos editar este projeto para de fato representar uma árvore binária.
 Crie duas pastas dentro do projeto: `tree` e `node`.
 
-```bash
-mkdir tree node
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p tree node
 ```
 
 - Dentro de tree, crie um arquivo `tree.cpp` e um `tree.hpp`.
 - Dentro de node, crie um arquivo `node.cpp` e um `node.hpp`.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch tree/tree.cpp tree/tree.hpp node/node.cpp node/node.hpp
 ```
 
-- Na raiz do projeto, crie os arquivos `.clang-format` e `.clang-tidy`.
+- Na raiz do projeto, crie os arquivos `main.cpp`, `.clang-format` e `.clang-tidy`.
 
-```bash
-touch .clang-format .clang-tidy
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+touch main.cpp .clang-format .clang-tidy
 ```
 
-- Use os snippets para preencher o conteúdo dos arquivos.
+- Use os **snippets** para preencher o conteúdo dos arquivos de formatação e de linting.
 
-Acesse o projeto pelo [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/binary_tree).
-Nele, você encontrará a implementação de uma árvore binária e seus nós.
-**Copie** o conteúdo de todos os arquivos para os respectivos arquivos criados.
+A estrutura do projeto deve ficar da seguinte forma.
+
+<FileTree>
+
+- node
+  - node.cpp
+  - node.hpp
+- tree
+  - tree.cpp
+  - tree.hpp
+- .clang-format
+- .clang-tidy
+- main.cpp
+
+</FileTree>
+
+**Copie** o conteúdo de todos os arquivos abaixo para os respectivos arquivos criados.
+Não se esqueça de **salvar** cada um deles.
+
+<Code lang="cpp" title="main.cpp" code={mainFromBinaryTree} frame="code" />
+
+<Code
+  lang="cpp"
+  title="node/node.hpp"
+  code={nodeHeaderFromBinaryTree}
+  frame="code"
+/>
+
+<Code lang="cpp" title="node/node.cpp" code={nodeFromBinaryTree} frame="code" />
+
+<Code
+  lang="cpp"
+  title="tree/tree.hpp"
+  code={treeHeaderFromBinaryTree}
+  frame="code"
+/>
+
+<Code lang="cpp" title="tree/tree.cpp" code={treeFromBinaryTree} frame="code" />
 
 ### Compilação
 
 Para compilar o projeto, precisamos passar todos os arquivos para o compilador.
 Fazemos isso usando o comando `clang++` da seguinte maneira:
 
-```bash
-clang++ <arquivos.cpp> -I <pastas_com_arquivos.hpp> -o <executavel>
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+clang++ <arquivos.cpp> -I <pastas_com_arquivos.hpp> -o <executável>
 ```
 
 - `<arquivos.cpp>`: todos os arquivos `.cpp` do projeto.
 - `<pastas_com_arquivos.hpp>`: todas as pastas que contêm arquivos `.hpp` do projeto.
-- `<executavel>`: nome do arquivo binário gerado.
+- `<executável>`: nome do arquivo binário gerado.
 
 Ou seja, precisamos especificar a localização de todos os arquivos que desejamos incluir e compilar.
 Dado que nosso projeto tem mais de uma pasta internamente, precisamos especificar a localização de todas elas.
-Execute o seguinte:
+Execute o código a seguir.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 clang++ tree/tree.cpp node/node.cpp main.cpp -I tree -I node -o binary_tree
 ```
 
 Para executar o programa, basta chamar o arquivo binário gerado:
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 ./binary_tree
 ```
 
@@ -141,18 +184,23 @@ Se tudo estiver correto, você verá os nós da árvore binária sendo impressos
 
 Assim como fizemos para projetos em **C**, podemos configurar tarefas de compilação para **C++** no Visual Studio Code.
 
-Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](vscode), já está configurada uma tarefa de compilação para **C++**.
+Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](../vscode), já está configurada uma tarefa de compilação para **C++**.
 
 Infelizmente, essa tarefa apenas compila arquivos `.cpp` que estejam na raiz do projeto.
 Uma vez que nosso projeto tem arquivos em pastas diferentes, precisamos especificar a localização de todos eles.
 Dessa forma, a tarefa de compilação global não é suficiente para compilar o projeto `binary_tree`.
 Precisamos criar um arquivo de tarefa personalizado para isso.
 
-Nós configuramos também alguns snippets para facilitar a construção do arquivo `tasks.json`.
+Nós configuramos também alguns **snippets** para facilitar a construção do arquivo `tasks.json`.
 Crie uma pasta chamada `.vscode` na raiz do projeto e um arquivo chamado `tasks.json` dentro dela.
 
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p .vscode
+touch .vscode/tasks.json
+```
+
 Garanta que o perfil `C/C++` esteja ativo e abra o arquivo `tasks.json`.
-Digite nele `tasks-json` e pressione <Keyboard keys={["Enter"]} /> para preencher o arquivo com o snippet.
+Digite nele `tasks-json` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o snippet.
 
 <Figure
   caption={`Construção do arquivo "tasks.json".`}
@@ -164,7 +212,7 @@ Digite nele `tasks-json` e pressione <Keyboard keys={["Enter"]} /> para preenche
   ]}
 />
 
-Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Keyboard keys={["Enter"]} /> para preencher o arquivo com o snippet.
+Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o snippet.
 
 <Figure
   caption={`Preenchimento da tarefa de compilação "cpp-build-task".`}
@@ -176,11 +224,11 @@ Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Keyboard k
   ]}
 />
 
-Observe o campo `args`.
-Ele contém os argumentos que passamos para o comando de compilação.
+Observe o campo `args` do arquivo `tasks.json`.
+Ele contém os **argumentos** que passamos para o comando de compilação.
 Atualmente, ele recebe todos os arquivos `.cpp` que estejam na raiz do projeto.
 
-```json
+```json title="tasks.json" frame="code" {5,7,9}
 "args": [
   "-fcolor-diagnostics",
   "-fansi-escape-codes",
@@ -195,51 +243,27 @@ Atualmente, ele recebe todos os arquivos `.cpp` que estejam na raiz do projeto.
 
 Precisamos passar, além desses, todos os arquivos `.cpp` que estão nas pastas `tree` e `node`.
 Para isso, adicionamos uma linha para cada pasta, iniciando com o atalho `${workspaceFolder}`, o qual indica a pasta raiz do projeto.
+Também trocamos o nome da tarefa para `Clang: build C++ project (Local)`.
 
-O arquivo `tasks.json` deve ficar da forma abaixo, assim como no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/binary_tree/.vscode/tasks.json).
+O arquivo `tasks.json` deve ficar da forma abaixo.
 
-```json
-{
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "args": [
-        "-fcolor-diagnostics",
-        "-fansi-escape-codes",
-        "-g",
-        "${workspaceFolder}/*.cpp",
-        "${workspaceFolder}/node/*.cpp",
-        "${workspaceFolder}/tree/*.cpp",
-        "-I",
-        "${workspaceFolder}",
-        "-o",
-        "${workspaceFolder}/${workspaceFolderBasename}"
-      ],
-      "command": "/usr/bin/clang++",
-      "detail": "Tarefa de compilação de um projeto em C++. Compila todos os arquivos C++ na raiz do projeto em um único executável.",
-      "group": {
-        "kind": "build"
-      },
-      "label": "Clang: build C++ project (all files in root) (Linux, Local)",
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": ["$gcc"],
-      "type": "cppbuild"
-    }
-  ]
-}
-```
+<Code
+  lang="json"
+  title=".vscode/tasks.json"
+  code={vscodeTasksForBinaryTree}
+  frame="code"
+  mark={{ range: "9-11" }}
+/>
 
-Poderemos então usar o atalho <Keyboard keys={["Ctrl", "Shift", "B"]} /> para abrir o painel de tarefas de compilação.
-Então selecione a `Clang: build C++ project (all files in root) (Linux, Local)`.
+Poderemos então usar o atalho <Kbd linux={"Ctrl+Shift+B"} /> para abrir o painel de tarefas de compilação.
+Então selecione a `Clang: build C++ project (Local)`.
 
 <Figure
   caption={`Compilação do projeto "binary_tree" com a tarefa personalizada.`}
   images={[
     {
       src: buildLocal,
-      alt: `Visual Studio Code com o painel de tarefas aberto, mostrando a tarefa "Clang: build C++ project (all files in root) (Linux, Local)" selecionada.`,
+      alt: `Visual Studio Code com o painel de tarefas aberto, mostrando a tarefa "Clang: build C++ project (Local)" selecionada.`,
     },
   ]}
 />

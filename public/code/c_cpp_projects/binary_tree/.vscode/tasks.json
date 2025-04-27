@@ -19,7 +19,7 @@
       "group": {
         "kind": "build"
       },
-      "label": "Clang: build C++ project (Linux, Local)",
+      "label": "Clang: build C++ project (Local)",
       "options": {
         "cwd": "${workspaceFolder}"
       },

@@ -1,5 +1,5 @@
 {
-  "Build task (C++: all files in root) (Local)": {
+  "Build task (C++) (Local)": {
     "body": [
       "    {",
       "      \"args\": [",
@@ -17,7 +17,7 @@
       "      \"group\": {",
       "        \"kind\": \"build\"",
       "      },",
-      "      \"label\": \"Clang: build C++ project (all files in root) (Local)\",",
+      "      \"label\": \"Clang: build C++ project (Local)\",",
       "      \"options\": {",
       "        \"cwd\": \"\\${workspaceFolder}\"",
       "      },",
@@ -28,7 +28,7 @@
     "description": "Build a project in C++ if all files are in the root directory",
     "prefix": "cpp-build-task",
   },
-  "Build task (C: all files in root) (Local)": {
+  "Build task (C) (Local)": {
     "body": [
       "    {",
       "      \"args\": [",
@@ -46,7 +46,7 @@
       "      \"group\": {",
       "        \"kind\": \"build\"",
       "      },",
-      "      \"label\": \"Clang: build C project (all files in root) (Local)\",",
+      "      \"label\": \"Clang: build C project (Local)\",",
       "      \"options\": {",
       "        \"cwd\": \"\\${workspaceFolder}\"",
       "      },",
@@ -177,13 +177,13 @@
     "description": "Clang Tidy configuration",
     "prefix": "clang-tidy",
   },
-  "Debug launcher (C++: all files in root) (Local)": {
+  "Debug launcher (C++) (Local)": {
     "body": [
       "     {",
       "      \"args\": [],",
       "      \"cwd\": \"\\${workspaceFolder}\",",
-      "      \"name\": \"LLDB: build and launch C++ project (all files in root) (Local)\",",
-      "      \"preLaunchTask\": \"Clang: build C++ project (all files in root) (Local)\",",
+      "      \"name\": \"LLDB: build and launch C++ project (Local)\",",
+      "      \"preLaunchTask\": \"Clang: build C++ project (Local)\",",
       "      \"program\": \"\\${workspaceFolder}/\\${workspaceFolderBasename}\",",
       "      \"request\": \"launch\",",
       "      \"terminal\": \"console\",",
@@ -193,13 +193,13 @@
     "description": "Launch a program in C++ using LLDB",
     "prefix": "cpp-launch",
   },
-  "Debug launcher (C: all files in root) (Local)": {
+  "Debug launcher (C) (Local)": {
     "body": [
       "     {",
       "      \"args\": [],",
       "      \"cwd\": \"\\${workspaceFolder}\",",
-      "      \"name\": \"LLDB: build and launch C project (all files in root) (Local)\",",
-      "      \"preLaunchTask\": \"Clang: build C project (all files in root) (Local)\",",
+      "      \"name\": \"LLDB: build and launch C project (Local)\",",
+      "      \"preLaunchTask\": \"Clang: build C project (Local)\",",
       "      \"program\": \"\\${workspaceFolder}/\\${workspaceFolderBasename}\",",
       "      \"request\": \"launch\",",
       "      \"terminal\": \"console\",",

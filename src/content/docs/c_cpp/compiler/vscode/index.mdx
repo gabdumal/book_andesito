@@ -3,27 +3,34 @@ title: Configurando o Visual Studio Code
 author: Gabriel Malosto
 ---
 
-import { Aside } from "@astrojs/starlight/components";
+import { Code } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import Figure from "@components/Figure.astro";
 
-import openingProfiles from "/src/assets/common/opening_profiles.png";
-import createProfile from "/src/assets/content/docs/c_cpp/compiler/vscode/create_profile.png";
-import selectProfile from "/src/assets/content/docs/c_cpp/compiler/vscode/select_profile.png";
-import searchSnippets from "/src/assets/content/docs/c_cpp/compiler/vscode/search_snippets.png";
-import newSnippetsFile from "/src/assets/content/docs/c_cpp/compiler/vscode/new_snippets_file.png";
-import globalSnippets from "/src/assets/content/docs/c_cpp/compiler/vscode/global_snippets.png";
-import defaultSnippetsFile from "/src/assets/content/docs/c_cpp/compiler/vscode/default_snippets_file.png";
-import useSnippet from "/src/assets/content/docs/c_cpp/compiler/vscode/use_snippet.png";
-import usedSnippet from "/src/assets/content/docs/c_cpp/compiler/vscode/used_snippet.png";
-import compileRunLinked from "/src/assets/content/docs/c_cpp/compiler/vscode/compile_run_linked.png";
-import runBuildTask from "/src/assets/content/docs/c_cpp/compiler/vscode/run_build_task.png";
-import selectTask from "/src/assets/content/docs/c_cpp/compiler/vscode/select_task.png";
-import buildOutput from "/src/assets/content/docs/c_cpp/compiler/vscode/build_output.png";
-import openUserTasks from "/src/assets/content/docs/c_cpp/compiler/vscode/open_user_tasks.png";
-import othersTasks from "/src/assets/content/docs/c_cpp/compiler/vscode/others_tasks.png";
-import defaultTask from "/src/assets/content/docs/c_cpp/compiler/vscode/default_task.png";
+import openingProfiles from "@assets/common/opening_profiles.png";
+import createProfile from "@assets/content/docs/c_cpp/compiler/vscode/create_profile.png";
+import selectProfile from "@assets/content/docs/c_cpp/compiler/vscode/select_profile.png";
+import vscodeSettings from "/public/configuration/vscode/c_cpp/settings.json?raw";
+import searchSnippets from "@assets/content/docs/c_cpp/compiler/vscode/search_snippets.png";
+import newSnippetsFile from "@assets/content/docs/c_cpp/compiler/vscode/new_snippets_file.png";
+import globalSnippets from "@assets/content/docs/c_cpp/compiler/vscode/global_snippets.png";
+import defaultSnippetsFile from "@assets/content/docs/c_cpp/compiler/vscode/default_snippets_file.png";
+import vscodeSnippet from "/public/configuration/vscode/c_cpp/snippets/global.code-snippets?raw";
+import useSnippet from "@assets/content/docs/c_cpp/compiler/vscode/use_snippet.png";
+import usedSnippet from "@assets/content/docs/c_cpp/compiler/vscode/used_snippet.png";
+import nodeHeaderFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.h?raw";
+import nodeFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.c?raw";
+import mainFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/main.c?raw";
+import compileRunLinked from "@assets/content/docs/c_cpp/compiler/vscode/compile_run_linked.png";
+import vscodeTasksForLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json?raw";
+import runBuildTask from "@assets/content/docs/c_cpp/compiler/vscode/run_build_task.png";
+import selectTask from "@assets/content/docs/c_cpp/compiler/vscode/select_task.png";
+import buildOutput from "@assets/content/docs/c_cpp/compiler/vscode/build_output.png";
+import openUserTasks from "@assets/content/docs/c_cpp/compiler/vscode/open_user_tasks.png";
+import othersTasks from "@assets/content/docs/c_cpp/compiler/vscode/others_tasks.png";
+import defaultTask from "@assets/content/docs/c_cpp/compiler/vscode/default_task.png";
+import vscodeTasks from "/public/configuration/vscode/c_cpp/tasks.json?raw";
 
 Para compilar e executar programas em C no Visual Studio Code, devemos instalar algumas extensões.
 Recomendamos criar um perfil para o C e C++, o que manterá as configurações para essas linguagens separadas.
@@ -46,7 +53,7 @@ Clique no botão **New Profile**.
 Uma nova entrada surgirá na lista de perfis.
 
 Dê um nome ao perfil, como `C/C++`.
-Escolha o ícone de sua preferências.
+Escolha o ícone de sua preferência.
 
 <Figure
   caption={`Criando um novo perfil chamado "C/C++".`}
@@ -70,10 +77,10 @@ Agora, selecione o perfil ao clicar no ícone de check ao lado da entrada dele n
   ]}
 />
 
-<Aside type="caution">
-  lembre-se de sempre selecionar este perfil ao abrir o Visual Studio Code em um
-  projeto de C ou C++, para que as configurações sejam aplicadas.
-</Aside>
+:::caution
+lembre-se de sempre selecionar este perfil ao abrir o Visual Studio Code em um
+projeto de C ou C++, para que as configurações sejam aplicadas.
+:::
 
 ## Extensões
 
@@ -84,13 +91,13 @@ Tendo ativado o perfil `C/C++`, instale as seguinte extensões no Visual Studio 
 - [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd): fornece recursos de análise de código para o Clang;
 - [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb): permite a depuração de programas em C e C++.
 
-Se você estiver usando o WSL, certifique-se de clicar nos botões **Install in WSL: Ubuntu** para cada extensão da lista de instaladas que oferecer essa opção.
+Se você estiver usando o WSL, certifique-se de clicar nos botões **Install in WSL: FedoraLinux-42** para cada extensão da lista de instaladas que oferecer essa opção.
 
 ## Configurações
 
 Vamos adicionar algumas configurações padrão para o perfil `C/C++`.
 
-Abra a paleta de comandos do Visual Studio Code com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Preferences: Open User
+Abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Preferences: Open User
 Settings (JSON)`, ou o equivalente em português.
 
 Isso abrirá um arquivo chamado `settings.json`, responsável por definir as configurações desse perfil.
@@ -98,72 +105,37 @@ Toda vez que você muda alguma opção no menu de configurações do Visual Stud
 
 Copie o conteúdo a seguir e cole no arquivo `settings.json` aberto.
 
-```json
-{
-  "C_Cpp.default.cStandard": "c23",
-  "C_Cpp.default.cppStandard": "c++23",
-  "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
-  "C_Cpp.default.intelliSenseMode": "clang-x64",
-  "C_Cpp.intelliSenseEngine": "disabled",
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2,
-    "prettier.tabWidth": 2
-  },
-  "editor.formatOnSave": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.semanticHighlighting.enabled": true,
-  "files.eol": "\n",
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "git.autofetch": true,
-  "git.openRepositoryInParentFolders": "always",
-  "security.allowedUNCHosts": ["wsl$", "wsl.localhost"]
-}
-```
+<Code
+  lang="json"
+  title="<...>/Code/User/profiles/<ID>/settings.json"
+  code={vscodeSettings}
+  frame="code"
+/>
 
 Perceba que, abrindo o arquivo `settings.json` quando se usa o perfil `C/C++`, você verá as configurações específicas para este perfil, e não as configurações gerais do Visual Studio Code.
 É este mesmo o objetivo que temos.
 
 A configuração definida no arquivo `settings.json` faz o seguinte:
 
-- O compilador Clang é definido como o compilador padrão;
+- O Clang é definido como o compilador padrão;
 - Ativamos o IntelliSense para o Clang;
 - As versões do C e do C++ são definidas como C23 e C++23, respectivamente;
 - Definimos o formatador padrão como a extensão `clangd`, e desativamos a formatação da extensão `C/C++`;
-- Entre outras definições úteis.
+- Definimos a configuração de execução e depuração de programas compilados;
+- Fazemos outras definições úteis.
 
 Salve o arquivo e feche o Visual Studio Code.
 
-<Aside type="tip">
-  Caso você venha a precisar compilar um projeto para uma versão mais velha que
-  a 23, basta alterar o valor das chaves `C_Cpp.default.cStandard` e
-  `C_Cpp.default.cppStandard` para a versão desejada.
-</Aside>
+:::tip
+Caso você venha a precisar compilar um projeto para uma versão mais velha que
+a 23, basta alterar o valor das entradas `C_Cpp.default.cStandard` e
+`C_Cpp.default.cppStandard` para a versão desejada.
+:::
 
 ## Snippets
 
-Snippets são trechos de código que podem ser inseridos rapidamente no editor.
-Eles possuem um atalho que, ao ser digitado e pressionado <Keyboard keys={["Tab"]} />, expande o trecho para o código completo.
+**Snippets** são trechos de código que podem ser inseridos rapidamente no editor.
+Eles possuem um atalho que, ao ser digitado e pressionado <Kbd linux={"Tab"} />, preenche o código completo.
 
 Estamos utilizando o `clang-format` como formatador de texto e o `clang-tidy` como linter.
 Para configurá-los, basta criar um arquivo `.clang-format` e um `.clang-tidy` na raiz do projeto.
@@ -172,7 +144,7 @@ Entretanto, criar e configurar esses arquivos manualmente pode ser trabalhoso.
 Por isso, podemos utilizar um snippet para criar esses arquivos automaticamente.
 
 Garanta que você tenha selecionado o perfil `C/C++`.
-Então abra a paleta de comandos do Visual Studio Code com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Snippets: Configure Snippets`.
+Então abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Snippets: Configure Snippets`.
 
 <Figure
   caption={`Abrindo a configuração de snippets do Visual Studio Code.`}
@@ -196,7 +168,7 @@ Selecione a opção `New Global Snippets file`.
   ]}
 />
 
-Digite o nome `global` e pressione <Keyboard keys={["Enter"]} />.
+Digite o nome `global` e pressione <Kbd linux={"Enter"} />.
 
 <Figure
   caption={`Nomeando o arquivo de snippets como "global".`}
@@ -222,17 +194,24 @@ Este é o conteúdo padrão dele:
   ]}
 />
 
-Apague todo o conteúdo dele.
-Em seguida, acesse o arquivo [`global.code-snippets`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/snippets/global.code-snippets) no repositório do livro.
-Copie o conteúdo do arquivo remote e cole no arquivo local que foi aberto no Visual Studio Code.
-Lembre-se de salvar após a edição.
+**Apague** todo o conteúdo dele.
 
-Para usar os snippets, feche e abra o Visual Studio Code.
+Em seguida, copie o conteúdo a seguir e cole no arquivo `global.code-snippets` que foi aberto.
+Lembre-se de **salvar** após a edição.
 
-Então, abra o diretório `separate_function` que criamos anteriormente.
+<Code
+  lang="json"
+  title="<...>/Code/User/profiles/<ID>/snippets/global.code-snippets"
+  code={vscodeSnippet}
+  frame="code"
+/>
+
+Então, **feche** o Visual Studio Code.
+
+Abra VSCode no diretório `separate_function` que criamos anteriormente.
 Crie um arquivo chamado `.clang-format` e outro chamado `.clang-tidy` na raiz do projeto.
 
-Em seguida, abra o arquivo `.clang-format`, digite `clang-format` e pressione <Keyboard keys={["Enter"]} />.
+Em seguida, abra o arquivo `.clang-format`, digite `clang-format` e pressione <Kbd linux={"Enter"} />.
 
 <Figure
   caption={`Utilizando o snippet "clang-format".`}
@@ -257,14 +236,15 @@ O arquivo `.clang-format` será preenchido com as configurações definidas no s
 />
 
 Agora, faça o mesmo para o arquivo `.clang-tidy`.
+Abra-o e digite `clang-tidy`, então pressione <Kbd linux={"Enter"} />.
 
-<Aside type="tip">
-  Caso deseje alterar as configurações do arquivo `.clang-format`, basta
-  editá-lo. O LLVM disponibiliza a
-  [documentação](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
-  acerca das opções de formatação. Igualmente, está disponível a
-  [documentação](https://clang.llvm.org/extra/clang-tidy/) do Clang Tidy.
-</Aside>
+:::tip
+Caso deseje alterar as configurações do arquivo `.clang-format`, basta
+editá-lo. O LLVM disponibiliza a
+[documentação](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
+acerca das opções de formatação. Igualmente, está disponível a
+[documentação](https://clang.llvm.org/extra/clang-tidy/) do Clang Tidy, ensinando como configurar o arquivo `.clang-tidy`.
+:::
 
 ## Projeto
 
@@ -272,147 +252,60 @@ Vamos criar um projeto para construir uma lista encadeada de nós.
 
 No terminal, navegue para a pasta `c_cpp_projects` que criamos anteriormente.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev/c_cpp_projects
 ```
 
 Crie um diretório chamado `linked_nodes` e navegue para dentro dele.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir linked_nodes
 cd linked_nodes
 ```
 
 Abra o Visual Studio Code no diretório atual.
 
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 code .
 ```
 
-Selecione o **perfil `C/C++`** que criamos anteriormente.
+Selecione o **perfil** `C/C++` que criamos anteriormente.
 
 ### Arquivos
 
 Crie um arquivo chamado `node.h` e cole o seguinte código nele.
 
-```c
-#ifndef __NODE_H__
-#define __NODE_H__
-
-struct Node {
-        int data;
-        struct Node *next;
-};
-
-struct Node *createNode();
-void setData(struct Node *node, int data);
-int getData(struct Node *node);
-void setNext(struct Node *node, struct Node *next);
-struct Node *getNext(struct Node *node);
-
-#endif  // __NODE_H__
-```
+<Code lang="c" title="node.h" code={nodeHeaderFromLinkedNodes} frame="code" />
 
 Então, crie um arquivo chamado `node.c` e cole o código a seguir.
 
-```c
-#include "node.h"
+<Code lang="c" title="node.c" code={nodeFromLinkedNodes} frame="code" />
 
-#include <stdio.h>
-#include <stdlib.h>
+Por fim, crie um arquivo chamado `main.c` e cole o código a seguir.
 
-struct Node *createNode() {
-    struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
-    if (new_node != NULL) {
-        new_node->data = 0;
-        new_node->next = NULL;
-    }
-    return new_node;
-}
-
-void setData(struct Node *node, int data) {
-    if (node != NULL) {
-        node->data = data;
-    }
-}
-
-int getData(struct Node *node) {
-    if (node != NULL) {
-        return node->data;
-    }
-    return -1;
-}
-
-void setNext(struct Node *node, struct Node *next) {
-    if (node != NULL) {
-        node->next = next;
-    }
-}
-
-struct Node *getNext(struct Node *node) {
-    if (node != NULL) {
-        return node->next;
-    }
-    return NULL;
-}
-```
-
-Por fim, crie um arquivo chamado `main.` e cole o código a seguir.
-
-```c
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "node.h"
-
-int main() {
-    printf("Creating a linked list with 10 nodes\n");
-
-    struct Node *node = createNode();
-    struct Node *head = node;
-    setData(node, 1);
-
-    for (int i = 2; i <= 10; i++) {
-        struct Node *new_node = createNode();
-        setData(new_node, i);
-        setNext(node, new_node);
-        node = new_node;
-    }
-
-    printf("Traversing the linked list\n");
-
-    node = head;
-
-    while (node != NULL) {
-        printf("%d\t", getData(node));
-        node = getNext(node);
-    }
-
-    printf("\n");
-
-    return 0;
-}
-```
-
-Você também pode acessar esse projeto no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/linked_nodes).
+<Code lang="c" title="main.c" code={mainFromLinkedNodes} frame="code" />
 
 Para configurar a formatação e o linter, crie os arquivos `.clang-format` e `.clang-tidy` na raiz do projeto.
 Então utilize os snippets `clang-format` e `clang-tidy` para preenchê-los.
 
 ### Compilação
 
-Você verá que o Visual Studio Code já reconhece o projeto e identifica as bibliotecas e funções utilizadas.
+Se você tiver ativado o perfil `C/C++`, o Visual Studio Code já deve reconhecer o projeto, identificando os arquivos de cabeçalho e de código, além das bibliotecas utilizadas.
 
 Vamos compilar o projeto pelo terminal integrado do Visual Studio Code.
-Abra o terminal integrado com <Keyboard keys={["Ctrl", "`"]} /> e execute o comando abaixo.
+Abra o terminal integrado com <Kbd linux={"Ctrl+`"} />, se você tiver configurado esse atalho, ou a partir dos menus `Terminal > New Terminal` e execute o comando abaixo.
 
-{/* TODO: Check for Windows */}
-
-```bash
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 clang main.c node.c -include node.h -o linked_nodes
 ```
 
-Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `linked_nodes`. Para executar o programa, digite `./linked_nodes` e pressione <Keyboard keys={["Enter"]} />.
+Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `linked_nodes`.
+
+Para executar o programa, digite o comando abaixo e pressione <Kbd linux={"Enter"} />.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+./linked_nodes
+```
 
 <Figure
   caption={`Compilação e execução do projeto "linked_nodes".`}
@@ -429,18 +322,23 @@ Agora, em vez de rodar o comando no terminal, vamos utilizar a interface gráfic
 Crie uma pasta chamada `.vscode` na raiz do projeto.
 Ela é responsável por guardar configurações específicas do Visual Studio Code para o projeto.
 
-{/* TODO: Check for Windows */}
+Dentro dela, crie um arquivo chamado `tasks.json` e copie para ele o conteúdo abaixo.
 
-Dentro dela, crie um arquivo chamado `tasks.json` e copie para ele o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json) do repositório do livro.
+<Code
+  lang="json"
+  title=".vscode/tasks.json"
+  code={vscodeTasksForLinkedNodes}
+  frame="code"
+/>
 
-O que o arquivo faz é definir uma tarefa chamada `Clang: build C project (all files in root)` para o Linux e outra para o Windows.
-Essa tarefa compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na raiz do projeto.
-O executável gerado terá o nome da pasta aberta no Visual Studio Code.
+O que o arquivo faz é definir uma tarefa chamada `Clang: build C project (all files in root)` para o Linux.
+Essa tarefa compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na **raiz** do projeto.
+O executável gerado terá o nome da **pasta** aberta no Visual Studio Code, `linked_nodes`.
 
 Clique no arquivo `main.c` no Visual Studio Code para focar a visualização nele.
 
-Abra a paleta de comandos com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Tasks: Run Task`.
-Você também pode executar esse comando com o atalho <Keyboard keys={["Ctrl", "Shift", "B"]} />.
+Abra a paleta de comandos com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Tasks: Run Build Task`.
+Você também pode executar esse comando com o atalho <Kbd linux={"Ctrl+Shift+B"} />.
 
 <Figure
   caption={`Selecionando a opção de executar tarefa  de compilação no Visual Studio Code.`}
@@ -452,14 +350,14 @@ Você também pode executar esse comando com o atalho <Keyboard keys={["Ctrl", "
   ]}
 />
 
-Seleciona a tarefa `Clang: build C project (all files in root)` de acordo com o seu sistema operacional.
+Seleciona a tarefa `Clang: build C project (all files in root) (Local)`.
 
 <Figure
   caption={`Selecionando a tarefa de compilação do projeto.`}
   images={[
     {
       src: selectTask,
-      alt: `Menu de tarefas do Visual Studio Code, em que se seleciona a tarefa "Clang: build C project (all files in root) (Linux)".`,
+      alt: `Menu de tarefas do Visual Studio Code, em que se seleciona a tarefa "Clang: build C project (all files in root) (Local)".`,
     },
   ]}
 />
@@ -478,8 +376,9 @@ Ele exibirá o resultado da compilação no terminal integrado.
 />
 
 Para executar, podemos chamar o arquivo executável diretamente no terminal integrado.
-
-Neste caso, digite `./linked_nodes` e pressione <Keyboard keys={["Enter"]} />.
+Fique atento que não é possível interagir com essa sessão que compilou o projeto.
+Você precisa criar uma nova sessão de terminal.
+Então, digite `./linked_nodes` e pressione <Kbd linux={"Enter"} />.
 
 ### Configurações
 
@@ -488,7 +387,7 @@ Felizmente, o Visual Studio Code permite que você salve as configurações de c
 **Ative** o perfil `C/C++`, para que as configurações sejam salvas apenas para esse perfil.
 Dessa forma, eliminamos o risco de conflitos entre diferentes configurações de compilação e depuração.
 
-Para salvar as tarefas de compilação, abra a paleta de comandos com <Keyboard keys={["Ctrl", "Shift", "P"]} /> e pesquise por `Tasks: Open User Tasks`.
+Para salvar as tarefas de compilação, abra a paleta de comandos com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Tasks: Open User Tasks`.
 
 <Figure
   caption={`Abrindo o arquivo de tarefas do usuário.`}
@@ -524,19 +423,25 @@ Será aberto o arquivo padrão de tarefas do perfil `C/C++`.
   ]}
 />
 
-Copie o conteúdo do arquivo [`tasks.json`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/tasks.json) do repositório do livro e cole no arquivo `tasks.json` aberto no Visual Studio Code.
-Lembre-se de salvar.
+Copie o conteúdo abaixo e cole no arquivo `tasks.json` aberto no Visual Studio Code.
+Lembre-se de **salvar**.
+
+<Code
+  lang="json"
+  title="<...>/Code/User/profiles/<ID>/tasks.json"
+  code={vscodeTasks}
+  frame="code"
+/>
 
 Assim, a tarefa estará disponível para todos os projetos que utilizarem o perfil `C/C++`.
 
-<Aside type="caution">
-  Essa tarefa de compilação é específica para projetos que possuem todos os
-  arquivos de código-fonte na **raiz** do projeto. Caso você tenha uma estrutura
-  de pastas diferente, será necessário criar um arquivo na pasta `.vscode` de
-  cada projeto com a tarefa de compilação específica. Então, você deve editar o
-  comando definido no arquivo para especificar os arquivos de entrada.
-</Aside>
+:::caution
+Essa tarefa de compilação é específica para projetos que possuem todos os
+arquivos de código-fonte na **raiz** do projeto. Caso você tenha uma estrutura
+de pastas diferente, será necessário criar um arquivo na pasta `.vscode` de
+cada projeto com a tarefa de compilação específica. Então, você deve editar o
+comando definido no arquivo para especificar os arquivos de entrada.
+:::
 
-Se você estiver desenvolvendo um projeto com outras pessoas que não fizeram a mesma configuração que você, então recomendo criar o arquivo `tasks.json` na pasta `.vscode` mesmo, para que elas possam compilar o projeto sem problemas.
-
-Os arquivos modificados do perfil do Visual Studio Code ficarão como no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/).
+Se você estiver desenvolvendo um projeto com outras pessoas que não fizeram a mesma configuração que você, então recomendo criar o arquivo `tasks.json` na pasta `.vscode`.
+Assim, as configurações estarão disponíveis no repositório do projeto para todos, de forma que cada um possa compilar o projeto sem precisar configurar nada.

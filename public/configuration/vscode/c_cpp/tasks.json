@@ -16,13 +16,11 @@
       "group": {
         "kind": "build"
       },
-      "label": "Clang: build C project (all files in root) (Linux)",
+      "label": "Clang: build C project (all files in root)",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": [
-        "$gcc"
-      ],
+      "problemMatcher": ["$gcc"],
       "type": "cppbuild"
     },
     {
@@ -41,13 +39,11 @@
       "group": {
         "kind": "build"
       },
-      "label": "Clang: build C++ project (all files in root) (Linux)",
+      "label": "Clang: build C++ project (all files in root)",
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "problemMatcher": [
-        "$gcc"
-      ],
+      "problemMatcher": ["$gcc"],
       "type": "cppbuild"
     }
   ],

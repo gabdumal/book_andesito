@@ -3,18 +3,19 @@ title: Depurando programas em C++
 author: Gabriel Malosto
 ---
 
+import { Code } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 
+import vscodeLaunchForBinaryTree from "/public/code/c_cpp_projects/binary_tree/.vscode/launch.json?raw";
 import breakpoint from "@assets/content/docs/c_cpp/debugger/run_cpp/breakpoint.png";
 
-Também configuramos a depuração para projetos em C++ para quando todos os arquivos estiverem na raiz do projeto.
+Também configuramos a depuração para projetos na linguagem [**C++**](https://cplusplus.com) para quando todos os arquivos estiverem na raiz do projeto.
 
 Para projetos que tiverem estruturas de diretórios mais complexas, é necessário criar um arquivo de depuração customizado.
 
-No terminal, abra o projeto `binary_tree` que criamos anteriormente para guardar nossos projetos.
-Então o abra no Visual Studio Code.
+Abra no Visual Studio Code o projeto `binary_tree` que criamos anteriormente.
 
 ```bash
 cd ~/dev/c_cpp_projects/binary_tree
@@ -23,9 +24,14 @@ code .
 
 Crie um arquivo chamado `launch.json` na pasta `.vscode` do projeto.
 
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p .vscode
+touch .vscode/launch.json
+```
+
 Utilize o snippet `launch-json` para inicializar o arquivo com o seguinte código:
 
-```json
+```json title=".vscode/launch.json" frame="code" {2}
 {
   "configurations": [],
   "version": "0.2.0"
@@ -35,55 +41,24 @@ Utilize o snippet `launch-json` para inicializar o arquivo com o seguinte códig
 Dentro do vetor `configurations`, utilize o snippet `cpp-launch`.
 O conteúdo do arquivo será o seguinte:
 
-```json
-{
-  "configurations": [
-    {
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "name": "LLDB: build and launch C++ project (all files in root) (Local)",
-      "preLaunchTask": "Clang: build C++ project (all files in root) (Local)",
-      "program": "${workspaceFolder}/${workspaceFolderBasename}",
-      "request": "launch",
-      "terminal": "console",
-      "type": "lldb"
-    }
-  ],
-  "version": "0.2.0"
-}
-```
+<Code
+  lang="json"
+  title=".vscode/tasks.json"
+  code={vscodeLaunchForBinaryTree}
+  frame="code"
+/>
 
-Como alteramos o nome da tarefa de compilação no arquivo `tasks.json` para `Clang: build C++ project (Local)`, temos que atualizar o `launch.json` para refletir essa mudança, como mostrado no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/binary_tree/.vscode).
+Agora ponha um breakpoint na linha 10 do arquivo `main.cpp`, em que há o seguinte trecho de código.
 
-```json
-{
-  "configurations": [
-    {
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "name": "LLDB: build and launch C++ project (Local)",
-      "preLaunchTask": "Clang: build C++ project (Local)",
-      "program": "${workspaceFolder}/${workspaceFolderBasename}",
-      "request": "launch",
-      "terminal": "console",
-      "type": "lldb"
-    }
-  ],
-  "version": "0.2.0"
-}
-```
-
-Agora ponha um breakpoint na linha 10 do arquivo `main.cpp`, em que há o seguinte trecho de código:
-
-```cpp
+```cpp title="main.cpp" frame="code"
 tree.insert(3);
 ```
 
-Acesse o menu de depuração, com um ícone de bug.
+Acesse o menu de depuração clicando no ícone de **bug** ou pelo atalho <Kbd linux={"Ctrl+Shift+D"} />.
 No seletor de configuração, escolha a opção `LLDB: build and launch C++ project (Local)`.
-Então clique no botão de play verde.
+Então clique no botão de **play** verde.
 
-o código será compilado e executado no modo de depuração.
+O código será compilado e executado no modo de depuração.
 Então, será interrompido no breakpoint selecionado.
 
 Você pode executar linha a linha usando a tecla <Kbd linux={"F10"} />.

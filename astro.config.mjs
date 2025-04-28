@@ -122,7 +122,7 @@ export default defineConfig({
               items: [
                 { label: "Introdução", slug: "c_cpp/debugger" },
                 { label: "Programas em C", slug: "c_cpp/debugger/run_c" },
-                // { label: "Programas em C++", slug: "c_cpp/debugger/run_cpp" },
+                { label: "Programas em C++", slug: "c_cpp/debugger/run_cpp" },
               ],
               label: "Depurador",
             },

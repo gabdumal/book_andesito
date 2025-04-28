@@ -3,8 +3,9 @@ title: Rust
 author: Gabriel Malosto
 ---
 
+import { Kbd } from "starlight-kbd/components";
+
 import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
 
 import downloadOptionsWindows from "/src/assets/content/docs/rust/download_options_windows.png";
 import windowsInstaller from "/src/assets/content/docs/rust/windows_installer.png";
@@ -66,7 +67,7 @@ O instalador abre uma janela de terminal que guiará você pelo processo de inst
   ]}
 />
 
-Pressione a tecla <Keyboard keys={["1"]} /> e <Keyboard keys={["Enter"]} /> para instalar o Rust e suas ferramentas.
+Pressione a tecla <Kbd linux={"1"} /> e <Kbd linux={"Enter"} /> para instalar o Rust e suas ferramentas.
 
 <Figure
   caption="Finalização da instalação do rust para Windows."

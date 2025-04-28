@@ -5,6 +5,7 @@ import starlightKbd from "starlight-kbd";
 
 // https://astro.build/config
 export default defineConfig({
+  base: "book_andesito",
   integrations: [
     starlight({
       customCss: [

@@ -3,7 +3,7 @@ title: Ruby
 author: Gabriel Malosto
 ---
 
-import Keyboard from "/src/components/Keyboard.astro";
+import { Kbd } from "starlight-kbd/components";
 
 https://www.ruby-lang.org/pt/
 
@@ -25,11 +25,11 @@ https://rubyinstaller.org/downloads/
 
 ![alt text](/book_andesito/src/assets/content/docs/ruby/image-7.png)
 
-`1,2,3` <Keyboard keys={["Enter"]} />
+`1,2,3` <Kbd linux={"Enter"} />
 
 ![alt text](/book_andesito/src/assets/content/docs/ruby/image-3.png)
 
-<Keyboard keys={["Enter"]} />
+<Kbd linux={"Enter"} />
 
 `ruby --version`
 `ruby 3.3.5 (2024-09-03 revision ef084cc8f4) [x64-mingw-ucrt]`

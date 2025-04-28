@@ -20,6 +20,7 @@ Neste capítulo, vamos aprender a compilar e executar programas com um único ar
 No terminal, **abra** a pasta `dev` que criamos anteriormente para guardar nossos projetos.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p ~/dev
 cd ~/dev
 ```
 
@@ -180,6 +181,7 @@ Então, usamos a opção `-o` para especificar o nome do arquivo de saída, que 
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 clang main.c functions.c -o separate_function
+./separate_function
 ```
 
 <Figure

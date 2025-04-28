@@ -16,7 +16,7 @@ import searchSnippets from "@assets/content/docs/c_cpp/compiler/vscode/search_sn
 import newSnippetsFile from "@assets/content/docs/c_cpp/compiler/vscode/new_snippets_file.png";
 import globalSnippets from "@assets/content/docs/c_cpp/compiler/vscode/global_snippets.png";
 import defaultSnippetsFile from "@assets/content/docs/c_cpp/compiler/vscode/default_snippets_file.png";
-import vscodeSnippet from "/public/configuration/vscode/c_cpp/snippets/global.code-snippets?raw";
+import vscodeSnippet from "/public/configuration/vscode/c_cpp/snippets/c_cpp.code-snippets?raw";
 import useSnippet from "@assets/content/docs/c_cpp/compiler/vscode/use_snippet.png";
 import usedSnippet from "@assets/content/docs/c_cpp/compiler/vscode/used_snippet.png";
 import nodeHeaderFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.h?raw";
@@ -168,40 +168,40 @@ Então abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shi
   ]}
 />
 
-**Digite** o nome `global` e pressione <Kbd linux={"Enter"} />.
+**Digite** o nome `c_cpp` e pressione <Kbd linux={"Enter"} />.
 
 <Figure
-  caption={`Nomeando o arquivo de snippets como "global".`}
+  caption={`Nomeando o arquivo de snippets como "c_cpp".`}
   images={[
     {
       src: globalSnippets,
-      alt: `Campo de texto para nomear o arquivo de snippets, com o nome "global" preenchido.`,
+      alt: `Campo de texto para nomear o arquivo de snippets, com o nome "c_cpp" preenchido.`,
     },
   ]}
 />
 
 O arquivo de configuração de snippets para o **perfil** `C/C++` será aberto.
-Seu nome é `global.code-snippets`.
+Seu nome é `c_cpp.code-snippets`.
 Este é o conteúdo padrão dele.
 
 <Figure
-  caption={`Conteúdo padrão do arquivo de snippets "global".`}
+  caption={`Conteúdo padrão do arquivo de snippets "c_cpp".`}
   images={[
     {
       src: defaultSnippetsFile,
-      alt: `Arquivo de snippets "global" com o conteúdo padrão, que ensina a definir um snippet.`,
+      alt: `Arquivo de snippets "c_cpp" com o conteúdo padrão, que ensina a definir um snippet.`,
     },
   ]}
 />
 
 **Apague** todo o conteúdo dele.
 
-Em seguida, copie o conteúdo a seguir e **cole** no arquivo `global.code-snippets` que foi aberto.
+Em seguida, copie o conteúdo a seguir e **cole** no arquivo `c_cpp.code-snippets` que foi aberto.
 Lembre-se de **salvar** após a edição.
 
 <Code
   lang="json"
-  title="<...>/Code/User/profiles/<ID>/snippets/global.code-snippets"
+  title="<...>/Code/User/profiles/<ID>/snippets/c_cpp.code-snippets"
   code={vscodeSnippet}
   frame="code"
 />
@@ -337,7 +337,7 @@ Para garantirmos isso, **crie** um arquivo chamado `.gitignore` na raiz do proje
 O conteúdo deve ser o seguinte.
 
 <Code
-  lang="gitignore"
+  lang="diff"
   title=".gitignore"
   code={gitignoreForLinkedNodes}
   frame="code"

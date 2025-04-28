@@ -3,10 +3,11 @@ title: Depurando programas em C++
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
-import Keyboard from "/src/components/Keyboard.astro";
+import { Kbd } from "starlight-kbd/components";
 
-import breakpoint from "/src/assets/content/docs/c_cpp/debugger/run_cpp/breakpoint.png";
+import Figure from "@components/Figure.astro";
+
+import breakpoint from "@assets/content/docs/c_cpp/debugger/run_cpp/breakpoint.png";
 
 Também configuramos a depuração para projetos em C++ para quando todos os arquivos estiverem na raiz do projeto.
 
@@ -40,8 +41,8 @@ O conteúdo do arquivo será o seguinte:
     {
       "args": [],
       "cwd": "${workspaceFolder}",
-      "name": "LLDB: build and launch C++ project (all files in root) (Linux, Local)",
-      "preLaunchTask": "Clang: build C++ project (all files in root) (Linux, Local)",
+      "name": "LLDB: build and launch C++ project (all files in root) (Local)",
+      "preLaunchTask": "Clang: build C++ project (all files in root) (Local)",
       "program": "${workspaceFolder}/${workspaceFolderBasename}",
       "request": "launch",
       "terminal": "console",
@@ -52,7 +53,7 @@ O conteúdo do arquivo será o seguinte:
 }
 ```
 
-Como alteramos o nome da tarefa de compilação no arquivo `tasks.json` para `Clang: build C++ project (Linux, Local)`, temos que atualizar o `launch.json` para refletir essa mudança, como mostrado no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/binary_tree/.vscode).
+Como alteramos o nome da tarefa de compilação no arquivo `tasks.json` para `Clang: build C++ project (Local)`, temos que atualizar o `launch.json` para refletir essa mudança, como mostrado no [repositório do livro](https://github.com/gabdumal/book_andesito/tree/main/public/code/c_cpp_projects/binary_tree/.vscode).
 
 ```json
 {
@@ -60,8 +61,8 @@ Como alteramos o nome da tarefa de compilação no arquivo `tasks.json` para `Cl
     {
       "args": [],
       "cwd": "${workspaceFolder}",
-      "name": "LLDB: build and launch C++ project (Linux, Local)",
-      "preLaunchTask": "Clang: build C++ project (Linux, Local)",
+      "name": "LLDB: build and launch C++ project (Local)",
+      "preLaunchTask": "Clang: build C++ project (Local)",
       "program": "${workspaceFolder}/${workspaceFolderBasename}",
       "request": "launch",
       "terminal": "console",
@@ -79,13 +80,13 @@ tree.insert(3);
 ```
 
 Acesse o menu de depuração, com um ícone de bug.
-No seletor de configuração, escolha a opção `LLDB: build and launch C++ project (Linux, Local)`.
+No seletor de configuração, escolha a opção `LLDB: build and launch C++ project (Local)`.
 Então clique no botão de play verde.
 
 o código será compilado e executado no modo de depuração.
 Então, será interrompido no breakpoint selecionado.
 
-Você pode executar linha a linha usando a tecla <Keyboard keys={["F10"]} />.
+Você pode executar linha a linha usando a tecla <Kbd linux={"F10"} />.
 Observando a variável `tree.root`, poderá perceber que a árvore está sendo construída conforme o esperado.
 
 <Figure

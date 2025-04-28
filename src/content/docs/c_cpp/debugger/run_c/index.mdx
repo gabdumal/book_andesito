@@ -3,45 +3,46 @@ title: Depurando programas em C
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
+import { Kbd } from "starlight-kbd/components";
 
-import selectLauncher from "/src/assets/content/docs/c_cpp/debugger/run_c/select_launcher.png";
-import launchOutput from "/src/assets/content/docs/c_cpp/debugger/run_c/launch_output.png";
-import breakpoint from "/src/assets/content/docs/c_cpp/debugger/run_c/breakpoint.png";
+import Figure from "@components/Figure.astro";
 
-Vamos utilizar a interface gráfica do Visual Studio Code para depurar programas em C.
+import selectLauncher from "@assets/content/docs/c_cpp/debugger/run_c/select_launcher.png";
+import launchOutput from "@assets/content/docs/c_cpp/debugger/run_c/launch_output.png";
+import breakpoint from "@assets/content/docs/c_cpp/debugger/run_c/breakpoint.png";
 
-No terminal, abra o projeto `linked_nodes` que criamos anteriormente e o abra no Visual Studio Code.
+Vamos utilizar a interface gráfica do Visual Studio Code para depurar programas na linguagem [**C**](https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html).
 
-```bash
+Abra o projeto `linked_nodes`, que criamos anteriormente, no Visual Studio Code.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev/c_cpp_projects/linked_nodes
 code .
 ```
 
-Para executarmos um programa, devemos configurar mais um arquivo chamado `launch.json`.
+Para executarmos um programa pela interface gráfica, devemos configurar mais um arquivo no nosso projeto, chamado `launch.json`.
 
-Se você tiver seguido os passos recomendados pelo capítulo [Configurando o VSCode](../compiler/vscode), ele estará definido no [`settings.json`](https://github.com/gabdumal/book_andesito/tree/main/public/settings/vscode/c_cpp/c_cpp_profile/settings.json) do perfil `C/C++`.
+Se você tiver seguido os passos recomendados pelo capítulo [Configurando o VSCode](../compiler/vscode), já teremos definido configurações de _launch_ globais, por meio do arquivo `launch.json` do perfil `C/C++`.
 
-Acesse o menu de depuração clicando no ícone de **bug** na barra lateral do Visual Studio Code.
-
+Acesse o menu de depuração clicando no ícone de **bug** na barra lateral do Visual Studio Code ou pelo atalho de teclado <Kbd linux={"Ctrl+Shift+D"} />.
 No topo do menu de depuração há um seletor para escolher a configuração de depuração.
-Clique nele e selecione a opção `LLDB: build and launch C project (all files in root)` para o seu sistema operacional.
+Clique nele e selecione a opção `LLDB: build and launch C project (all files in root)`.
 
 <Figure
   caption="Selecionando a configuração de depuração no Visual Studio Code."
   images={[
     {
       src: selectLauncher,
-      alt: `Menu de seleção da configuração de depuração do Visual Studio Code, em que se vê a opção "LLDB: build and launch C project (all files in root) (Linux)" selecionada.`,
+      alt: `Menu de seleção da configuração de depuração do Visual Studio Code, em que se vê a opção "LLDB: build and launch C project (all files in root)" selecionada.`,
     },
   ]}
 />
 
-Clique no botão de play verde ao lado do seletor.
+Então, clique no botão de **play** verde ao lado do seletor.
 
 O Visual Studio Code irá compilar o projeto a partir da tarefa de compilação que configuramos anteriormente e abrirá uma nova janela de terminal com a saída desse processo.
 
-Em seguida, ele executará o programa, o que aparecerá na aba `Debug console`, ao lado daquela do terminal, no canto inferior da tela.
+Em seguida, ele executará o programa, o que aparecerá na aba `Debug console`, ao lado da aba do terminal, no canto inferior da tela.
 
 <Figure
   caption="Saída da compilação e execução do programa no Visual Studio Code."
@@ -53,15 +54,15 @@ Em seguida, ele executará o programa, o que aparecerá na aba `Debug console`, 
   ]}
 />
 
-Coloque um breakpoint na linha 20 do arquivo `main.c`, em que há o seguinte trecho de código:
+Coloque um **breakpoint** na linha 20 do arquivo `main.c`, em que há o seguinte trecho de código.
 
-```c
+```c title="main.c" frame="code"
 printf("Traversing the linked list\n");
 ```
 
-Para fazer isso, basta clicar no espaço em branco logo à esquerda do número da linha.
+Para fazer isso, basta **clicar** no espaço em branco logo à esquerda do número da linha.
 
-Então, clique novamente no botão de play verde para executar o programa.
+Então, clique novamente no botão de **play** verde para executar o programa.
 
 <Figure
   caption="Usando um breakpoint no Visual Studio Code."

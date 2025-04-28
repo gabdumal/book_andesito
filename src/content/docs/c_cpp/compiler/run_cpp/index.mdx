@@ -14,7 +14,7 @@ import nodeFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/node/nod
 import treeHeaderFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/tree/tree.hpp?raw";
 import treeFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/tree/tree.cpp?raw";
 import compileRunHello from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_hello.png";
-import compileRunBinary from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary.png";
+import compileRunBinaryTree from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary_tree.png";
 import constructTasksJson from "@assets/content/docs/c_cpp/compiler/run_cpp/construct_tasks_json.png";
 import fillBuildTask from "@assets/content/docs/c_cpp/compiler/run_cpp/fill_build_task.png";
 import vscodeTasksForBinaryTree from "/public/code/c_cpp_projects/binary_tree/.vscode/tasks.json?raw";
@@ -23,7 +23,7 @@ import localOutput from "@assets/content/docs/c_cpp/compiler/run_cpp/local_outpu
 
 Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos na linguagem [**C++**](https://cplusplus.com).
 
-No terminal, abra a pasta `c_cpp_projects` que criamos anteriormente para guardar nossos projetos.
+No terminal, **abra** a pasta `c_cpp_projects` que criamos anteriormente para guardar nossos projetos.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev/c_cpp_projects
@@ -31,7 +31,7 @@ cd ~/dev/c_cpp_projects
 
 ## Programa
 
-Crie um diretório chamado `binary_tree`, entre nele e abra-o no Visual Studio Code.
+**Crie** um diretório chamado `binary_tree`, entre nele e abra-o no Visual Studio Code.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p binary_tree
@@ -39,9 +39,9 @@ cd binary_tree
 code .
 ```
 
-Lembre-se de ativar o perfil `C/C++` que criamos no capítulo [Configurando o VSCode](vscode).
+Lembre-se de ativar o **perfil** `C/C++` que criamos no capítulo [Configurando o VSCode](vscode).
 
-Crie um arquivo chamado `main.cpp` e adicione o seguinte código.
+**Crie** um arquivo chamado `main.cpp` e adicione o seguinte código.
 
 ```cpp title="main.cpp" frame="code"
 #include <iostream>
@@ -55,17 +55,19 @@ int main()
 }
 ```
 
-Para compilar o código, utilizamos o comando `clang++`, em vez de apenas `clang`.
+Para **compilar** o código, utilizamos o comando `clang++`, em vez de apenas `clang`.
 A estrutura do comando é a mesma.
+Antes de executá-lo, vamos criar uma pasta chamada `build` para guardar o arquivo binário gerado.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-clang++ main.cpp -o binary_tree
+mkdir -p build
+clang++ main.cpp -o build/binary_tree
 ```
 
-Para executar o programa, basta chamar o arquivo binário gerado:
+Para **executar** o programa, basta chamar o arquivo binário gerado.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-./binary_tree
+./build/binary_tree
 ```
 
 <Figure
@@ -81,20 +83,20 @@ Para executar o programa, basta chamar o arquivo binário gerado:
 ## Projeto
 
 Vamos editar este projeto para de fato representar uma árvore binária.
-Crie duas pastas dentro do projeto: `tree` e `node`.
+**Crie** duas pastas dentro do projeto: `tree` e `node`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p tree node
 ```
 
-- Dentro de tree, crie um arquivo `tree.cpp` e um `tree.hpp`.
-- Dentro de node, crie um arquivo `node.cpp` e um `node.hpp`.
+- Dentro de tree, **crie** um arquivo `tree.cpp` e um `tree.hpp`.
+- Dentro de node, **crie** um arquivo `node.cpp` e um `node.hpp`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch tree/tree.cpp tree/tree.hpp node/node.cpp node/node.hpp
 ```
 
-- Na raiz do projeto, crie os arquivos `main.cpp`, `.clang-format` e `.clang-tidy`.
+- Na raiz do projeto, **crie** os arquivos `main.cpp`, `.clang-format` e `.clang-tidy`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch main.cpp .clang-format .clang-tidy
@@ -141,9 +143,19 @@ Não se esqueça de **salvar** cada um deles.
 
 <Code lang="cpp" title="tree/tree.cpp" code={treeFromBinaryTree} frame="code" />
 
+Antes de compilar o projeto, vamos inicializar o controle de versão com o **Git**.
+Execute os comandos abaixo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+echo "/build" > .gitignore
+git init
+git add .
+git commit -m "Initialize project"
+```
+
 ### Compilação
 
-Para compilar o projeto, precisamos passar todos os arquivos para o compilador.
+Para **compilar** o projeto, precisamos passar todos os arquivos para o compilador.
 Fazemos isso usando o comando `clang++` da seguinte maneira:
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
@@ -156,16 +168,16 @@ clang++ <arquivos.cpp> -I <pastas_com_arquivos.hpp> -o <executável>
 
 Ou seja, precisamos especificar a localização de todos os arquivos que desejamos incluir e compilar.
 Dado que nosso projeto tem mais de uma pasta internamente, precisamos especificar a localização de todas elas.
-Execute o código a seguir.
+**Execute** o código a seguir.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-clang++ tree/tree.cpp node/node.cpp main.cpp -I tree -I node -o binary_tree
+clang++ tree/tree.cpp node/node.cpp main.cpp -I tree -I node -o build/binary_tree
 ```
 
-Para executar o programa, basta chamar o arquivo binário gerado:
+Para executar o programa, basta **chamar** o arquivo binário gerado.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-./binary_tree
+./build/binary_tree
 ```
 
 Se tudo estiver correto, você verá os nós da árvore binária sendo impressos no terminal em ordem crescente.
@@ -174,7 +186,7 @@ Se tudo estiver correto, você verá os nós da árvore binária sendo impressos
   caption={`Compilação e execução do projeto "binary_tree".`}
   images={[
     {
-      src: compileRunBinary,
+      src: compileRunBinaryTree,
       alt: `Terminal com os comandos para compilar e executar o projeto "binary_tree", cujo resultado é "1 3 4 5 7 8 9"`,
     },
   ]}
@@ -183,7 +195,6 @@ Se tudo estiver correto, você verá os nós da árvore binária sendo impressos
 ### Configurações
 
 Assim como fizemos para projetos em **C**, podemos configurar tarefas de compilação para **C++** no Visual Studio Code.
-
 Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](../vscode), já está configurada uma tarefa de compilação para **C++**.
 
 Infelizmente, essa tarefa apenas compila arquivos `.cpp` que estejam na raiz do projeto.
@@ -192,15 +203,15 @@ Dessa forma, a tarefa de compilação global não é suficiente para compilar o 
 Precisamos criar um arquivo de tarefa personalizado para isso.
 
 Nós configuramos também alguns **snippets** para facilitar a construção do arquivo `tasks.json`.
-Crie uma pasta chamada `.vscode` na raiz do projeto e um arquivo chamado `tasks.json` dentro dela.
+**Crie** uma pasta chamada `.vscode` na raiz do projeto e um arquivo chamado `tasks.json` dentro dela.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p .vscode
 touch .vscode/tasks.json
 ```
 
-Garanta que o perfil `C/C++` esteja ativo e abra o arquivo `tasks.json`.
-Digite nele `tasks-json` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o snippet.
+Garanta que o **perfil** `C/C++` esteja ativo e abra o arquivo `tasks.json`.
+Digite nele `tasks-json` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o **snippet**.
 
 <Figure
   caption={`Construção do arquivo "tasks.json".`}
@@ -212,7 +223,7 @@ Digite nele `tasks-json` e pressione <Kbd linux={"Enter"} /> para preencher o ar
   ]}
 />
 
-Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o snippet.
+Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o **snippet**.
 
 <Figure
   caption={`Preenchimento da tarefa de compilação "cpp-build-task".`}
@@ -237,13 +248,12 @@ Atualmente, ele recebe todos os arquivos `.cpp` que estejam na raiz do projeto.
   "-I",
   "${workspaceFolder}",
   "-o",
-  "${workspaceFolder}/${workspaceFolderBasename}"
+  "${workspaceFolder}/build/${workspaceFolderBasename}"
 ],
 ```
 
 Precisamos passar, além desses, todos os arquivos `.cpp` que estão nas pastas `tree` e `node`.
-Para isso, adicionamos uma linha para cada pasta, iniciando com o atalho `${workspaceFolder}`, o qual indica a pasta raiz do projeto.
-Também trocamos o nome da tarefa para `Clang: build C++ project (Local)`.
+Para isso, **adicionamos** uma linha para cada pasta, iniciando com o atalho `${workspaceFolder}`, o qual indica a pasta raiz do projeto.
 
 O arquivo `tasks.json` deve ficar da forma abaixo.
 
@@ -256,7 +266,7 @@ O arquivo `tasks.json` deve ficar da forma abaixo.
 />
 
 Poderemos então usar o atalho <Kbd linux={"Ctrl+Shift+B"} /> para abrir o painel de tarefas de compilação.
-Então selecione a `Clang: build C++ project (Local)`.
+Então **selecione** a `Clang: build C++ project (Local)`.
 
 <Figure
   caption={`Compilação do projeto "binary_tree" com a tarefa personalizada.`}

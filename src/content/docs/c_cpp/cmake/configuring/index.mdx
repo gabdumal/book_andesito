@@ -90,12 +90,14 @@ Assim como antes, você pode compilar esse projeto diretamente pelo `clang++` ou
 O comando de compilação é o seguinte.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-clang++ main.cpp node/node.cpp edge/edge.cpp graph/graph.cpp -I node -I edge -I graph -o oriented_graph
+mkdir -p build
+clang++ main.cpp node/node.cpp edge/edge.cpp graph/graph.cpp -I node -I edge -I graph -o build/oriented_graph
 ```
 
 Ao executar o programa, você verá a seguinte saída.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
+./build/oriented_graph
 # 1 3 4 5 2
 ```
 

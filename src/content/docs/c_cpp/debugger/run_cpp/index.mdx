@@ -15,21 +15,21 @@ Também configuramos a depuração para projetos na linguagem [**C++**](https://
 
 Para projetos que tiverem estruturas de diretórios mais complexas, é necessário criar um arquivo de depuração customizado.
 
-Abra no Visual Studio Code o projeto `binary_tree` que criamos anteriormente.
+**Abra** no Visual Studio Code o projeto `binary_tree` que criamos anteriormente.
 
 ```zsh
 cd ~/dev/c_cpp_projects/binary_tree
 code .
 ```
 
-Crie um arquivo chamado `launch.json` na pasta `.vscode` do projeto.
+**Crie** um arquivo chamado `launch.json` na pasta `.vscode` do projeto.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p .vscode
 touch .vscode/launch.json
 ```
 
-Utilize o snippet `launch-json` para inicializar o arquivo com o seguinte código:
+Utilize o **snippet** `launch-json` para inicializar o arquivo com o seguinte código:
 
 ```json title=".vscode/launch.json" frame="code" {2}
 {
@@ -38,7 +38,7 @@ Utilize o snippet `launch-json` para inicializar o arquivo com o seguinte códig
 }
 ```
 
-Dentro do vetor `configurations`, utilize o snippet `cpp-launch`.
+Dentro do vetor `configurations`, utilize o **snippet** `cpp-launch`.
 O conteúdo do arquivo será o seguinte:
 
 <Code
@@ -48,20 +48,20 @@ O conteúdo do arquivo será o seguinte:
   frame="code"
 />
 
-Agora ponha um breakpoint na linha 10 do arquivo `main.cpp`, em que há o seguinte trecho de código.
+Agora, ponha um **breakpoint** na linha 10 do arquivo `main.cpp`, em que há o seguinte trecho de código.
 
 ```cpp title="main.cpp" frame="code"
 tree.insert(3);
 ```
 
 Acesse o menu de depuração clicando no ícone de **bug** ou pelo atalho <Kbd linux={"Ctrl+Shift+D"} />.
-No seletor de configuração, escolha a opção `LLDB: build and launch C++ project (Local)`.
+No seletor de configuração, **escolha** a opção `LLDB: build and launch C++ project (Local)`.
 Então clique no botão de **play** verde.
 
 O código será compilado e executado no modo de depuração.
 Então, será interrompido no breakpoint selecionado.
 
-Você pode executar linha a linha usando a tecla <Kbd linux={"F10"} />.
+Você pode **executar** linha a linha usando a tecla <Kbd linux={"F10"} />.
 Observando a variável `tree.root`, poderá perceber que a árvore está sendo construída conforme o esperado.
 
 <Figure
@@ -73,3 +73,5 @@ Observando a variável `tree.root`, poderá perceber que a árvore está sendo c
     },
   ]}
 />
+
+{/* TODO: Write about setting arguments on launch.json */}

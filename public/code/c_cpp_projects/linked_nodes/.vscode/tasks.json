@@ -9,7 +9,7 @@
         "-I",
         "${workspaceFolder}",
         "-o",
-        "${workspaceFolder}/${workspaceFolderBasename}"
+        "${workspaceFolder}/build/${workspaceFolderBasename}"
       ],
       "command": "clang",
       "detail": "Tarefa de compilação de um projeto em C. Compila todos os arquivos C na raiz do projeto em um único executável.",

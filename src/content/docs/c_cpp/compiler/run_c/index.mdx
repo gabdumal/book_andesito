@@ -4,6 +4,7 @@ author: Gabriel Malosto
 ---
 
 import { Code } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 
@@ -16,13 +17,13 @@ import compileRunSeparate from "@assets/content/docs/c_cpp/compiler/run_c/compil
 
 Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos na linguagem [**C**](https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html).
 
-No terminal, abra a pasta `dev` que criamos anteriormente para guardar nossos projetos.
+No terminal, **abra** a pasta `dev` que criamos anteriormente para guardar nossos projetos.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev
 ```
 
-Dentro dela, crie um diretório chamado `c_cpp_projects` e navegue para dentro dele.
+Dentro dela, **crie** um diretório chamado `c_cpp_projects` e **navegue** para dentro dele.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p c_cpp_projects
@@ -31,20 +32,20 @@ cd c_cpp_projects
 
 ## Programa
 
-Crie um outro diretório chamado `hello_world e também navegue para dentro nele.
+**Crie** um outro diretório chamado `hello_world e também **navegue** para dentro nele.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p hello_world
 cd hello_world
 ```
 
-Crie um arquivo chamado `hello_world.c`.
+**Crie** um arquivo chamado `hello_world.c`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch hello_world.c
 ```
 
-Abra o Visual Studio Code neste diretório.
+**Abra** o Visual Studio Code neste diretório.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 code .
@@ -57,7 +58,7 @@ esteja instalada no Visual Studio Code. Então, garanta que a janela aberta do
 VSCode esteja conectada ao WSL.
 :::
 
-Copie o seguinte código para o arquivo `hello_world.c`.
+**Copie** o seguinte código para o arquivo `hello_world.c`.
 Lembre-se de **salvar** o arquivo.
 
 <Code
@@ -92,7 +93,7 @@ clang [opções] <arquivo>.c -include -o <executável>
   </li>
 </ul>
 
-Assim, com o terminal aberto na pasta `~/dev/c_cpp_projects/hello_world`, execute:
+Assim, com o terminal aberto na pasta `~/dev/c_cpp_projects/hello_world`, **execute**:
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 clang hello_world.c -o hello_world
@@ -112,7 +113,7 @@ Diferentemente do Windows, em que o executável tem a extensão `.exe`, no Linux
   ]}
 />
 
-Para executar o programa, basta chamar o arquivo executável.
+Para executar o programa, basta chamar o arquivo **executável**.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 ./hello_world
@@ -130,28 +131,28 @@ Para executar o programa, basta chamar o arquivo executável.
 
 ## Projeto
 
-Retorne para a pasta `c_cpp_projects`.
+**Retorne** para a pasta `c_cpp_projects`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev/c_cpp_projects
 ```
 
-Crie um novo diretório chamado `separate_function` e navegue para dentro dele.
+**Crie** um novo diretório chamado `separate_function` e **navegue** para dentro dele.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p separate_function
 cd separate_function
 ```
 
-Crie um arquivo chamado `main.c`.
-Então abra o Visual Studio Code no diretório atual.
+**Crie** um arquivo chamado `main.c`.
+Então **abra** o Visual Studio Code no diretório atual.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch main.c
 code .
 ```
 
-Copie o seguinte código para o arquivo `main.c`.
+**Copie** o seguinte código para o arquivo `main.c`.
 
 <Code
   lang="c"
@@ -160,7 +161,7 @@ Copie o seguinte código para o arquivo `main.c`.
   frame="code"
 />
 
-Crie um outro arquivo chamado `functions.c` e cole nele o código a seguir.
+**Crie** um outro arquivo chamado `functions.c` e **cole** nele o código a seguir.
 
 <Code
   lang="c"
@@ -169,11 +170,11 @@ Crie um outro arquivo chamado `functions.c` e cole nele o código a seguir.
   frame="code"
 />
 
-A função principal `main` chama a função `sum`, que está definida em outro arquivo.
+A função principal `main` **chama** a função `sum`, que está definida em outro arquivo.
 Então, para fazer a compilação, precisamos passar os dois arquivos para o compilador.
 Internamente, o compilador fará a compilação de cada arquivo separadamente e, em seguida, fará a ligação entre eles.
 
-Para **compilar** o projeto, execute o comando abaixo no terminal.
+Para **compilar** o projeto, **execute** o comando abaixo no terminal.
 Definimos os arquivos de entrada `main.c` e `functions.c`.
 Então, usamos a opção `-o` para especificar o nome do arquivo de saída, que será um executável.
 
@@ -190,3 +191,68 @@ clang main.c functions.c -o separate_function
     },
   ]}
 />
+
+## Git
+
+Podemos usar o Git para versionar nossos projetos.
+Para isso, precisamos **inicializar** o repositório Git no diretório do projeto.
+Faça isso com o comando abaixo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+git init
+```
+
+É interessante também criar um arquivo chamado `.gitignore` para que arquivos privados ou desnecessários não sejam enviados para o repositório.
+Um desses arquivos é o executável que acabamos de criar.
+
+**Crie** o arquivo `.gitignore` e adicione o nome do executável `separate_function` dentro dele.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+echo "separate_function" > .gitignore
+```
+
+Então, precisamos adicionar os arquivos ao repositório, o que comumente é chamado de **staging**.
+O comando abaixo **adiciona** todos os arquivos do diretório atual, exceto aqueles que estão listados no arquivo `.gitignore`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+git add .
+```
+
+Podemos **verificar** quais arquivos foram adicionados com o comando abaixo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+git status
+# On branch main
+
+# No commits yet
+
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+# 	new file:   .clang-format
+# 	new file:   .clang-tidy
+# 	new file:   .gitignore
+# 	new file:   functions.c
+# 	new file:   main.c
+```
+
+Por fim, faremos o **commit** dos arquivos com a mensagem `Initialize project`.
+Para definir a mensagem, usamos a opção `-m` seguida do texto entre aspas.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+git commit -m "Initialize project"
+```
+
+Podemos **verificar** o histórico de commits com o comando abaixo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+git log
+# commit 45b6e7e35917c5ccace23370cae78f0bbf61d3b2 (HEAD -> main)
+# Author: Gabriel Malosto <gabriel@email.com>
+# Date:   Mon Apr 28 00:51:26 2025 -0300
+
+# 	Initialize project
+# (END)
+```
+
+O log abre um ambiente de leitura, em que podemos navegar pelas mensagens de commit.
+Para **sair** dele, pressione <Kbd linux={"q"} />.

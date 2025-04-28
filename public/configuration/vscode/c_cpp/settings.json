@@ -42,7 +42,7 @@
         "cwd": "${workspaceFolder}",
         "name": "LLDB: build and launch C project (all files in root)",
         "preLaunchTask": "Clang: build C project (all files in root)",
-        "program": "${workspaceFolder}/${workspaceFolderBasename}",
+        "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
         "request": "launch",
         "terminal": "console",
         "type": "lldb"
@@ -52,7 +52,7 @@
         "cwd": "${workspaceFolder}",
         "name": "LLDB: build and launch C++ project (all files in root)",
         "preLaunchTask": "Clang: build C++ project (all files in root)",
-        "program": "${workspaceFolder}/${workspaceFolderBasename}",
+        "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
         "request": "launch",
         "terminal": "console",
         "type": "lldb"

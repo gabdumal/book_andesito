@@ -22,7 +22,7 @@ import usedSnippet from "@assets/content/docs/c_cpp/compiler/vscode/used_snippet
 import nodeHeaderFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.h?raw";
 import nodeFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.c?raw";
 import mainFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/main.c?raw";
-import compileRunLinked from "@assets/content/docs/c_cpp/compiler/vscode/compile_run_linked.png";
+import gitignoreForLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/.gitignore?raw";
 import vscodeTasksForLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json?raw";
 import runBuildTask from "@assets/content/docs/c_cpp/compiler/vscode/run_build_task.png";
 import selectTask from "@assets/content/docs/c_cpp/compiler/vscode/select_task.png";
@@ -52,7 +52,7 @@ Para criar um perfil no Visual Studio Code, clique no ícone de engrenagem no ca
 Clique no botão **New Profile**.
 Uma nova entrada surgirá na lista de perfis.
 
-Dê um nome ao perfil, como `C/C++`.
+Dê o **nome** `C/C++` ao perfil.
 Escolha o ícone de sua preferência.
 
 <Figure
@@ -65,7 +65,7 @@ Escolha o ícone de sua preferência.
   ]}
 />
 
-Agora, selecione o perfil ao clicar no ícone de check ao lado da entrada dele na lista de perfis.
+Agora, **selecione** o perfil ao clicar no ícone de check ao lado da entrada dele na lista de perfis.
 
 <Figure
   caption={`Selecionando o perfil "C/C++".`}
@@ -84,7 +84,7 @@ projeto de C ou C++, para que as configurações sejam aplicadas.
 
 ## Extensões
 
-Tendo ativado o perfil `C/C++`, instale as seguinte extensões no Visual Studio Code:
+Tendo ativado o **perfil** `C/C++`, instale as seguinte extensões no Visual Studio Code:
 
 - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph): visualiza o histórico de commits do Git;
 - [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools): fornece suporte para desenvolvimento em C e C++;
@@ -97,13 +97,13 @@ Se você estiver usando o WSL, certifique-se de clicar nos botões **Install in 
 
 Vamos adicionar algumas configurações padrão para o perfil `C/C++`.
 
-Abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Preferences: Open User
+Abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e **pesquise** por `Preferences: Open User
 Settings (JSON)`, ou o equivalente em português.
 
 Isso abrirá um arquivo chamado `settings.json`, responsável por definir as configurações desse perfil.
 Toda vez que você muda alguma opção no menu de configurações do Visual Studio Code, o que ele faz é adicionar ou modificar uma linha nesse arquivo por baixo dos panos.
 
-Copie o conteúdo a seguir e cole no arquivo `settings.json` aberto.
+Copie o conteúdo a seguir e **cole** no arquivo `settings.json` aberto.
 
 <Code
   lang="json"
@@ -112,7 +112,7 @@ Copie o conteúdo a seguir e cole no arquivo `settings.json` aberto.
   frame="code"
 />
 
-Perceba que, abrindo o arquivo `settings.json` quando se usa o perfil `C/C++`, você verá as configurações específicas para este perfil, e não as configurações gerais do Visual Studio Code.
+Perceba que, abrindo o arquivo `settings.json` quando se usa o **perfil** `C/C++`, você verá as configurações específicas para este perfil, e não as configurações gerais do Visual Studio Code.
 É este mesmo o objetivo que temos.
 
 A configuração definida no arquivo `settings.json` faz o seguinte:
@@ -124,7 +124,7 @@ A configuração definida no arquivo `settings.json` faz o seguinte:
 - Definimos a configuração de execução e depuração de programas compilados;
 - Fazemos outras definições úteis.
 
-Salve o arquivo e feche o Visual Studio Code.
+**Salve** o arquivo e feche o Visual Studio Code.
 
 :::tip
 Caso você venha a precisar compilar um projeto para uma versão mais velha que
@@ -143,8 +143,8 @@ Para configurá-los, basta criar um arquivo `.clang-format` e um `.clang-tidy` n
 Entretanto, criar e configurar esses arquivos manualmente pode ser trabalhoso.
 Por isso, podemos utilizar um snippet para criar esses arquivos automaticamente.
 
-Garanta que você tenha selecionado o perfil `C/C++`.
-Então abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Snippets: Configure Snippets`.
+Garanta que você tenha selecionado o **perfil** `C/C++`.
+Então abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e **pesquise** por `Snippets: Configure Snippets`.
 
 <Figure
   caption={`Abrindo a configuração de snippets do Visual Studio Code.`}
@@ -156,7 +156,7 @@ Então abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shi
   ]}
 />
 
-Selecione a opção `New Global Snippets file`.
+**Selecione** a opção `New Global Snippets file`.
 
 <Figure
   caption={`Criando um novo arquivo de snippets.`}
@@ -168,7 +168,7 @@ Selecione a opção `New Global Snippets file`.
   ]}
 />
 
-Digite o nome `global` e pressione <Kbd linux={"Enter"} />.
+**Digite** o nome `global` e pressione <Kbd linux={"Enter"} />.
 
 <Figure
   caption={`Nomeando o arquivo de snippets como "global".`}
@@ -180,9 +180,9 @@ Digite o nome `global` e pressione <Kbd linux={"Enter"} />.
   ]}
 />
 
-O arquivo de configuração de snippets para o perfil `C/C++` será aberto.
+O arquivo de configuração de snippets para o **perfil** `C/C++` será aberto.
 Seu nome é `global.code-snippets`.
-Este é o conteúdo padrão dele:
+Este é o conteúdo padrão dele.
 
 <Figure
   caption={`Conteúdo padrão do arquivo de snippets "global".`}
@@ -196,7 +196,7 @@ Este é o conteúdo padrão dele:
 
 **Apague** todo o conteúdo dele.
 
-Em seguida, copie o conteúdo a seguir e cole no arquivo `global.code-snippets` que foi aberto.
+Em seguida, copie o conteúdo a seguir e **cole** no arquivo `global.code-snippets` que foi aberto.
 Lembre-se de **salvar** após a edição.
 
 <Code
@@ -208,10 +208,10 @@ Lembre-se de **salvar** após a edição.
 
 Então, **feche** o Visual Studio Code.
 
-Abra VSCode no diretório `separate_function` que criamos anteriormente.
-Crie um arquivo chamado `.clang-format` e outro chamado `.clang-tidy` na raiz do projeto.
+**Abra** VSCode no diretório `separate_function` que criamos anteriormente.
+**Crie** um arquivo chamado `.clang-format` e outro chamado `.clang-tidy` na raiz do projeto.
 
-Em seguida, abra o arquivo `.clang-format`, digite `clang-format` e pressione <Kbd linux={"Enter"} />.
+Em seguida, **abra** o arquivo `.clang-format`, digite `clang-format` e pressione <Kbd linux={"Enter"} />.
 
 <Figure
   caption={`Utilizando o snippet "clang-format".`}
@@ -236,7 +236,7 @@ O arquivo `.clang-format` será preenchido com as configurações definidas no s
 />
 
 Agora, faça o mesmo para o arquivo `.clang-tidy`.
-Abra-o e digite `clang-tidy`, então pressione <Kbd linux={"Enter"} />.
+Abra-o e **digite** `clang-tidy`, então pressione <Kbd linux={"Enter"} />.
 
 :::tip
 Caso deseje alterar as configurações do arquivo `.clang-format`, basta
@@ -250,20 +250,20 @@ acerca das opções de formatação. Igualmente, está disponível a
 
 Vamos criar um projeto para construir uma lista encadeada de nós.
 
-No terminal, navegue para a pasta `c_cpp_projects` que criamos anteriormente.
+No terminal, **navegue** para a pasta `c_cpp_projects` que criamos anteriormente.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 cd ~/dev/c_cpp_projects
 ```
 
-Crie um diretório chamado `linked_nodes` e navegue para dentro dele.
+**Crie** um diretório chamado `linked_nodes` e navegue para dentro dele.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p linked_nodes
 cd linked_nodes
 ```
 
-Abra o Visual Studio Code no diretório atual.
+**Abra** o Visual Studio Code no diretório atual.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 code .
@@ -273,56 +273,93 @@ Selecione o **perfil** `C/C++` que criamos anteriormente.
 
 ### Arquivos
 
-Crie um arquivo chamado `node.h` e cole o seguinte código nele.
+**Crie** um arquivo chamado `node.h` e cole o seguinte código nele.
 
 <Code lang="c" title="node.h" code={nodeHeaderFromLinkedNodes} frame="code" />
 
-Então, crie um arquivo chamado `node.c` e cole o código a seguir.
+Então, **crie** um arquivo chamado `node.c` e cole o código a seguir.
 
 <Code lang="c" title="node.c" code={nodeFromLinkedNodes} frame="code" />
 
-Por fim, crie um arquivo chamado `main.c` e cole o código a seguir.
+Por fim, **crie** um arquivo chamado `main.c` e cole o código a seguir.
 
 <Code lang="c" title="main.c" code={mainFromLinkedNodes} frame="code" />
 
-Para configurar a formatação e o linter, crie os arquivos `.clang-format` e `.clang-tidy` na raiz do projeto.
-Então utilize os snippets `clang-format` e `clang-tidy` para preenchê-los.
+Para configurar a formatação e o linter, **crie** os arquivos `.clang-format` e `.clang-tidy` na raiz do projeto.
+Então utilize os **snippets** `clang-format` e `clang-tidy` para preenchê-los.
 
 ### Compilação
 
 Se você tiver ativado o perfil `C/C++`, o Visual Studio Code já deve reconhecer o projeto, identificando os arquivos de cabeçalho e de código, além das bibliotecas utilizadas.
 
+#### Terminal
+
 Vamos compilar o projeto pelo terminal integrado do Visual Studio Code.
-Abra o terminal integrado com <Kbd linux={"Ctrl+`"} />, se você tiver configurado esse atalho, ou a partir dos menus `Terminal > New Terminal` e execute o comando abaixo.
+Dessa vez, criaremos uma pasta que guardará os arquivos de compilação.
+Por convenção, daremos a ela o nome `build`.
+
+**Abra** o terminal integrado com <Kbd linux={"Ctrl+`"} />, se você tiver configurado esse atalho, ou a partir dos menus `Terminal > New Terminal` e execute os comandos abaixo.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-clang main.c node.c -include node.h -o linked_nodes
+mkdir -p build
+clang main.c node.c -include node.h -o build/linked_nodes
 ```
 
-Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `linked_nodes`.
+Esse comando **compila** os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `build/linked_nodes`.
 
-Para executar o programa, digite o comando abaixo e pressione <Kbd linux={"Enter"} />.
+Para executar o programa, **digite** o comando abaixo e pressione <Kbd linux={"Enter"} />.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-./linked_nodes
+./build/linked_nodes
 ```
 
-<Figure
-  caption={`Compilação e execução do projeto "linked_nodes".`}
-  images={[
-    {
-      src: compileRunLinked,
-      alt: `Terminal integrado do Visual Studio Code exibindo a compilação e execução do projeto "linked_nodes".`,
-    },
-  ]}
+O resultado da execução deve ser como o seguinte.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+# dev/c_cpp_projects/linked_nodes
+mkdir -p build
+clang main.c node.c -include node.h -o build/linked_nodes
+
+# dev/c_cpp_projects/linked_nodes
+./build/linked_nodes
+# Creating a linked list with 10 nodes
+# Traversing the linked list
+# 1   	2   	3   	4   	5   	6   	7   	8   	9   	10
+```
+
+#### Git
+
+Queremos versionar o projeto por meio do Git.
+Entretanto, não queremos que os arquivos executáveis sejam enviados para o repositório.
+
+Para garantirmos isso, **crie** um arquivo chamado `.gitignore` na raiz do projeto e cole o seguinte conteúdo nele.
+
+<Code
+  lang="gitignore"
+  title=".gitignore"
+  code={gitignoreForLinkedNodes}
+  frame="code"
 />
+
+Como estamos compilando o projeto para dentro da pasta `build`, **listamos** ela no arquivo `.gitignore`.
+Assim, quaisquer arquivos dentro dela não serão enviados para o repositório.
+
+Para inicializar o repositório Git e fazer o primeiro commit, **execute** os comandos abaixo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+git init
+git add .
+git commit -m "Initialize project"
+```
+
+#### Interface gráfica
 
 Agora, em vez de rodar o comando no terminal, vamos utilizar a interface gráfica do Visual Studio Code para compilar o projeto.
 
-Crie uma pasta chamada `.vscode` na raiz do projeto.
+**Crie** uma pasta chamada `.vscode` na raiz do projeto.
 Ela é responsável por guardar configurações específicas do Visual Studio Code para o projeto.
 
-Dentro dela, crie um arquivo chamado `tasks.json` e copie para ele o conteúdo abaixo.
+Dentro dela, **crie** um arquivo chamado `tasks.json` e copie para ele o conteúdo abaixo.
 
 <Code
   lang="json"
@@ -331,13 +368,13 @@ Dentro dela, crie um arquivo chamado `tasks.json` e copie para ele o conteúdo a
   frame="code"
 />
 
-O que o arquivo faz é definir uma tarefa chamada `Clang: build C project (all files in root)` para o Linux.
-Essa tarefa compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na **raiz** do projeto.
-O executável gerado terá o nome da **pasta** aberta no Visual Studio Code, `linked_nodes`.
+O que o arquivo faz é definir uma tarefa chamada `Clang: build C project (all files in root) (Local)`.
+Essa tarefa **compila** o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na **raiz** do projeto.
+O executável gerado terá o nome da **pasta** aberta no Visual Studio Code, `linked_nodes`, e será colocado dentro da pasta `build`.
 
 Clique no arquivo `main.c` no Visual Studio Code para focar a visualização nele.
 
-Abra a paleta de comandos com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Tasks: Run Build Task`.
+Abra a paleta de comandos com <Kbd linux={"Ctrl+Shift+P"} /> e **pesquise** por `Tasks: Run Build Task`.
 Você também pode executar esse comando com o atalho <Kbd linux={"Ctrl+Shift+B"} />.
 
 <Figure
@@ -350,7 +387,7 @@ Você também pode executar esse comando com o atalho <Kbd linux={"Ctrl+Shift+B"
   ]}
 />
 
-Seleciona a tarefa `Clang: build C project (all files in root) (Local)`.
+**Selecione** a tarefa `Clang: build C project (all files in root) (Local)`.
 
 <Figure
   caption={`Selecionando a tarefa de compilação do projeto.`}
@@ -375,19 +412,19 @@ Ele exibirá o resultado da compilação no terminal integrado.
   ]}
 />
 
-Para executar, podemos chamar o arquivo executável diretamente no terminal integrado.
+Para executar, podemos chamar o arquivo **executável** diretamente no terminal integrado.
 Fique atento que não é possível interagir com essa sessão que compilou o projeto.
-Você precisa criar uma nova sessão de terminal.
-Então, digite `./linked_nodes` e pressione <Kbd linux={"Enter"} />.
+Você precisa criar uma **nova sessão** de terminal.
+Então, digite `./build/linked_nodes` e pressione <Kbd linux={"Enter"} />.
 
 ### Configurações
 
 Felizmente, o Visual Studio Code permite que você salve as configurações de compilação em arquivos globais para serem utilizadas em outros projetos.
 
-**Ative** o perfil `C/C++`, para que as configurações sejam salvas apenas para esse perfil.
+Ative o **perfil** `C/C++`, para que as configurações sejam salvas apenas para esse perfil.
 Dessa forma, eliminamos o risco de conflitos entre diferentes configurações de compilação e depuração.
 
-Para salvar as tarefas de compilação, abra a paleta de comandos com <Kbd linux={"Ctrl+Shift+P"} /> e pesquise por `Tasks: Open User Tasks`.
+Para salvar as tarefas de compilação, abra a paleta de comandos com <Kbd linux={"Ctrl+Shift+P"} /> e **pesquise** por `Tasks: Open User Tasks`.
 
 <Figure
   caption={`Abrindo o arquivo de tarefas do usuário.`}
@@ -399,7 +436,7 @@ Para salvar as tarefas de compilação, abra a paleta de comandos com <Kbd linux
   ]}
 />
 
-Selecione a opção `Others`.
+**Selecione** a opção `Others`.
 
 <Figure
   caption={`Selecionando a opção "Others".`}
@@ -411,7 +448,7 @@ Selecione a opção `Others`.
   ]}
 />
 
-Será aberto o arquivo padrão de tarefas do perfil `C/C++`.
+Será aberto o arquivo padrão de tarefas do **perfil** `C/C++`.
 
 <Figure
   caption={`Conteúdo do arquivo de tarefas do perfil "C/C++".`}

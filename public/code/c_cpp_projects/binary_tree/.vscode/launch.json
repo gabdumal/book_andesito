@@ -5,7 +5,7 @@
       "cwd": "${workspaceFolder}",
       "name": "LLDB: build and launch C++ project (Local)",
       "preLaunchTask": "Clang: build C++ project (Local)",
-      "program": "${workspaceFolder}/${workspaceFolderBasename}",
+      "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
       "request": "launch",
       "terminal": "console",
       "type": "lldb"

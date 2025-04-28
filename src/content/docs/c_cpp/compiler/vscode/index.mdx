@@ -332,7 +332,9 @@ clang main.c node.c -include node.h -o build/linked_nodes
 Queremos versionar o projeto por meio do Git.
 Entretanto, não queremos que os arquivos executáveis sejam enviados para o repositório.
 
-Para garantirmos isso, **crie** um arquivo chamado `.gitignore` na raiz do projeto e cole o seguinte conteúdo nele.
+Para garantirmos isso, **crie** um arquivo chamado `.gitignore` na raiz do projeto e use o **snippet** `gitignore_c_cpp` para preenchê-lo.
+
+O conteúdo deve ser o seguinte.
 
 <Code
   lang="gitignore"
@@ -343,6 +345,7 @@ Para garantirmos isso, **crie** um arquivo chamado `.gitignore` na raiz do proje
 
 Como estamos compilando o projeto para dentro da pasta `build`, **listamos** ela no arquivo `.gitignore`.
 Assim, quaisquer arquivos dentro dela não serão enviados para o repositório.
+Além disso, o arquivo deve listar a pasta `.cache/`, que contém arquivos auxiliares da extensão `clangd`.
 
 Para inicializar o repositório Git e fazer o primeiro commit, **execute** os comandos abaixo.
 

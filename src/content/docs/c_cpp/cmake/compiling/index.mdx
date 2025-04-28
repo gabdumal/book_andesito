@@ -1,0 +1,75 @@
+---
+title: Compilando um projeto
+author: Gabriel Malosto
+---
+
+import { Code } from "@astrojs/starlight/components";
+
+Agora que definimos todas as **configurações** do projeto, podemos compilar o código.
+Internamente, o **CMake** irá gerar uma série arquivos auxiliares que definem as instruções para compilar o projeto.
+
+Esses arquivos são específicos para cada **ambiente** de desenvolvimento e contêm instruções para compilar, vincular e executar o código diferentemente, de acordo com o sistema operacional e compilador utilizados.
+Podemos dizer que propósito principal do CMake é justamente **generalizar** o processo de compilação, gerando arquivos de configuração específicos para diferentes ambientes.
+
+Esses arquivos **auxiliares** são muitos e podem poluir o diretório do projeto. Para que eles não nos atrapalhem, é comum criar uma pasta chamada `build` e configurar o CMake para gerar os arquivos de compilação lá.
+
+Assim, se ocorrer algum erro durante a compilação, é possível simplesmente deletar a pasta `build` e gerar os arquivos novamente!
+Além disso, podemos criar o arquivo `.gitignore` e incluir essa pasta, de forma que o Git não envie os arquivos de compilação para o repositório remoto.
+
+## Configurações
+
+Vamos utilizar dois comandos para compilar o projeto.
+O primeiro é responsável por **ler** os arquivos `CMakeLists.txt` que escrevemos, **criar** a pasta `build` e **gerar** os arquivos de **configuração** necessários dentro dela.
+
+Este comando tem a seguinte estrutura.
+
+- `cmake`: comando para executar o **CMake**;
+- `-S .`: indica que o arquivo `CMakeLists.txt` principal está na **pasta atual**, que é representada pelo ponto final (`.`); e
+- `-B build`: indica que os arquivos de **configuração** devem ser gerados na pasta `build`.
+- `-G Ninja`: indica que o **Ninja** deve ser utilizado como gerador de arquivos de configuração;
+- `-DCMAKE_C_COMPILER=clang`: indica que o **Clang** deve ser utilizado como compilador C;
+- `-DCMAKE_CXX_COMPILER=clang++`: indica que o **Clang++** deve ser utilizado como compilador C++.
+
+Portanto, execute na raiz do projeto **oriented_graph_with_cmake**.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
+cmake -S . -B build -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+```
+
+{/* TODO: Paste output */}
+
+Se você observar a pasta `build`, verá que ela foi populada com arquivos de configuração gerados pelo **CMake**.
+
+Caso você **não** mude a estrutura de dependências do projeto, não é necessário rodar o comando de configuração novamente.
+Quando você alterar as dependências, **delete** a pasta `build` e rode o comando.
+
+## Compilação
+
+O segundo comando é responsável por de fato **compilar** o projeto.
+Ele tem a seguinte estrutura:
+
+- `cmake`: comando para executar o **CMake**;
+- `--build`: indica que o CMake deve **compilar** o projeto; e
+- `build`: indica a **pasta** em que os arquivos de configuração foram gerados.
+
+Portanto, execute o seguinte comando na raiz do projeto `oriented_graph_with_cmake`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
+cmake --build build
+```
+
+Se tudo correr bem, você não verá nenhum erro, e a última linha de saída será como a seguinte.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+[16/16] Linking CXX executable src/oriented_graph
+```
+
+Você verá que um arquivo `oriented_graph` foi gerado na pasta `build/src`.
+Para executar o programa, basta chamá-lo.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
+./build/src/oriented_graph
+```

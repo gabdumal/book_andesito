@@ -144,10 +144,12 @@ Não se esqueça de **salvar** cada um deles.
 <Code lang="cpp" title="tree/tree.cpp" code={treeFromBinaryTree} frame="code" />
 
 Antes de compilar o projeto, vamos inicializar o controle de versão com o **Git**.
-Execute os comandos abaixo.
+
+**Crie** o arquivo `.gitignore` na raiz do projeto, e o preencha com o **snippet** `gitignore_c_cpp`.
+
+Então, inicialize o repositório Git e faça o primeiro commit.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-echo "/build" >> .gitignore
 git init
 git add .
 git commit -m "Initialize project"

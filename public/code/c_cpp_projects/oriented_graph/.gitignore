@@ -1,1 +1,6 @@
+## Development environment
+.direnv/
+
+## Build
+.cache/
 build/

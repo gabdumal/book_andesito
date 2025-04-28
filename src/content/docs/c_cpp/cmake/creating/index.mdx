@@ -5,8 +5,6 @@ author: Gabriel Malosto
 
 import { Code } from "@astrojs/starlight/components";
 
-import Figure from "@components/Figure.astro";
-
 import mainFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/main.cpp?raw";
 import nodeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/node/node.hpp?raw";
 import nodeFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/node/node.cpp?raw";
@@ -88,23 +86,23 @@ touch node/node.cpp node/node.hpp edge/edge.cpp edge/edge.hpp graph/graph.cpp gr
   frame="code"
 />
 
-Também crie o arquivo `.clang-tidy` na raiz do projeto e o preencha com o snippet `clang-tidy`.
-Igualmente, crie o arquivo `.clang-format` e o preencha com o snippet `clang-format`.
+Também **crie** o arquivo `.clang-tidy` na raiz do projeto e o preencha com o **snippet** `clang-tidy`.
+Igualmente, **crie** o arquivo `.clang-format` e o preencha com o **snippet** `clang-format`.
 
 ## Git
 
-Da mesma forma como fizemos anteriormente, vamos inicializar o repositório Git e criar um arquivo `.gitignore` para que arquivos de compilação não sejam versionados.
+Da mesma forma como fizemos anteriormente, vamos **inicializar** o repositório Git e criar um arquivo `.gitignore` para que arquivos de compilação não sejam versionados.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 git init
-echo "build/" >> .gitignore
+echo -e "\n## Build\n.cache/\nbuild/" >> .gitignore
 git add .
 git commit -m "Initialize project"
 ```
 
 ## Compilação
 
-Assim como antes, você pode compilar esse projeto diretamente pelo `clang++` ou utilizando os arquivos `tasks.json` e `launch.json` do Visual Studio Code.
+Assim como antes, você pode **compilar** esse projeto diretamente pelo `clang++` ou utilizando os arquivos `tasks.json` e `launch.json` do Visual Studio Code.
 
 O comando de compilação é o seguinte.
 

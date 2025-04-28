@@ -20,7 +20,6 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     add_compile_options(
         -Wall -Wextra          # Reasonable warnings
         -Wpedantic             # Strict ISO C++ compliance
-        -Wshadow               # Warn on variable shadowing
         -Wconversion           # Warn on implicit type conversions
         -Wsign-conversion      # Warn on signed/unsigned mismatches
     )

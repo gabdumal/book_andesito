@@ -1,0 +1,236 @@
+---
+title: Configurando o Visual Studio Code
+author: Gabriel Malosto
+---
+
+import { Code } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
+
+import Figure from "@components/Figure.astro";
+
+import vscodeSnippet from "/public/configuration/vscode/c_cpp/snippets/cmake.code-snippets?raw";
+import selectKitForConfigure from "@assets/content/docs/c_cpp/cmake/vscode/select_kit_for_configure.png";
+import selectingClang from "@assets/content/docs/c_cpp/cmake/vscode/selecting_clang.png";
+import selectBuildOnPalette from "@assets/content/docs/c_cpp/cmake/vscode/select_build_on_palette.png";
+import selectBuildButton from "@assets/content/docs/c_cpp/cmake/vscode/select_build_button.png";
+import buildOutput from "@assets/content/docs/c_cpp/cmake/vscode/build_output.png";
+import selectLaunchButton from "@assets/content/docs/c_cpp/cmake/vscode/select_launch_button.png";
+import launchOutput from "@assets/content/docs/c_cpp/cmake/vscode/launch_output.png";
+import selectDebugButton from "@assets/content/docs/c_cpp/cmake/vscode/select_debug_button.png";
+import debugScreen from "@assets/content/docs/c_cpp/cmake/vscode/debug_screen.png";
+import vscodeLaunchForOrientedGraphWithCMake from "/public/code/c_cpp_projects/oriented_graph_with_cmake/.vscode/launch.json?raw";
+
+Podemos aprimorar nosso ambiente de desenvolvimento configurando o Visual Studio Code para trabalhar com o CMake.
+Isso nos permitirá compilar e executar nossos projetos diretamente do editor, sem precisar abrir o terminal.
+
+## Snippets
+
+A estrutura dos arquivos `CMakeLists.txt` é semelhante, independentemente do projeto que você estiver criando.
+Então, podemos criar **snippets** para facilitar sua criação.
+
+Para isso, abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e **busque** por `Snippets: Configure Snippets`.
+Então, **selecione** `New Global Snippets file...`.
+Quando solicitado, **digite** o nome do arquivo como `cmake` e pressione <Kbd linux={"Enter"} />.
+Isso abrirá um arquivo JSON onde podemos definir nossos snippets.
+
+**Copie** o seguinte código para o arquivo aberto.
+
+<Code
+  lang="json"
+  title="<...>/Code/User/profiles/<ID>/snippets/cmake.code-snippets"
+  code={vscodeSnippet}
+  frame="code"
+/>
+
+Lembre-se de **salvar** o arquivo.
+**Feche** e abra o VSCode para que as alterações tenham efeito.
+
+O arquivo `cmake.code-snippets` contém os seguintes **snippets**:
+
+- `cmake-main`: cria um arquivo `CMakeLists.txt` para a raiz do projeto;
+- `cmake-src`: cria um arquivo `CMakeLists.txt` para o diretório `src`;
+- `cmake-library`: cria um arquivo `CMakeLists.txt` para um módulo que você criar dentro do diretório `src`;
+- `cmake-launch`: cria uma entrada de configuração de depuração para o arquivo `launch.json` do projeto.
+
+## Configuração
+
+Podemos configurar o VSCode para que a extensão [**CMake Tools**](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) execute as tarefas de configuração do projeto.
+
+Primeiro, **delete** a pasta `build` que criamos anteriormente.
+
+Então, no VsCode, clique no **ícone** do CMake Tools na barra lateral esquerda.
+Ele é formado por um triângulo e uma chave de boca.
+Essa seção mostra a configuração de compilação do projeto.
+
+<Figure
+  caption={`Seleção de um kit de configuração no menu do CMake Tools.`}
+  images={[
+    {
+      src: selectKitForConfigure,
+      alt: `Menu do CMake Tools, em que se seleciona um kit de configuração.`,
+    },
+  ]}
+/>
+
+Então, no menu que se abrir no centro superior da tela, **selecione** o kit `Clang`.
+Tome cuidado para **não** selecionar o kit `Clang-cl`, uma vez que ele é usado para compilar para Windows.
+
+<Figure
+  caption={`Seleção do kit Clang.`}
+  images={[
+    {
+      src: selectingClang,
+      alt: `Menu de seleção de kit, em que se vê a opção "Clang" selecionada.`,
+    },
+  ]}
+/>
+
+Caso não haja o compilador `Clang`, verifique se ele está **instalado** no seu sistema e suas **variáveis** de ambiente estão configuradas corretamente.
+Então, escolha a opção `[Scan for kits]` para atualizar a lista de kits disponíveis.
+
+## Compilando
+
+Para configurar a compilação do projeto, abra a paleta de comandos do VSCode com <Kbd linux={"Ctrl+Shift+P"} /> e busque por `CMake: Configure`, então **selecione** essa opção.
+
+Já para compilar o projeto, abra a paleta de comando, busque por `CMake: Build` e **selecione** essa opção.
+
+<Figure
+  caption={`Compilando pela paleta de comandos do Visual Studio Code.`}
+  images={[
+    {
+      src: selectBuildOnPalette,
+      alt: `Menu da paleta de comandos do Visual Studio Code, em que se vê a opção "CMake: Build" selecionada.`,
+    },
+  ]}
+/>
+
+Você também pode compilar o projeto clicando no botão `Build`, que tem um ícone de **engrenagem** no canto inferior esquerdo da tela.
+
+<Figure
+  caption={`Compilando pelo botão de Build do CMake Tools.`}
+  images={[
+    {
+      src: selectBuildButton,
+      alt: `Parte inferior esquerda da tela do Visual Studio Code, em que se vê o botão de Build do CMake Tools.`,
+    },
+  ]}
+/>
+
+O VsCode imprimirá na seção de `Output` o processo de compilação do projeto.
+
+<Figure
+  caption={`Saída da compilação do projeto no Visual Studio Code.`}
+  images={[
+    {
+      src: buildOutput,
+      alt: `Seção de Output do Visual Studio Code, em que se vê a saída da compilação do projeto.`,
+    },
+  ]}
+/>
+
+Você verá que a pasta `build` foi criada novamente.
+Dentro dela, estarão os arquivos de compilação do projeto, e o executável `oriented_graph` gerado.
+
+## Executando
+
+Com o projeto compilado, você pode executá-lo diretamente pelo VsCode.
+**Clique** no botão com o ícone de **play** na barra inferior do VsCode.
+Ele tem a função de **Launch**.
+
+<Figure
+  caption={`Executando o projeto pelo botão de Launch do CMake Tools.`}
+  images={[
+    {
+      src: selectLaunchButton,
+      alt: `Parte inferior esquerda da tela do Visual Studio Code, em que se vê o botão de Launch do CMake Tools.`,
+    },
+  ]}
+/>
+
+Você também pode acessar a mesma opção por meio da paleta de comandos do VsCode, pressionando <Kbd linux={"Ctrl+Shift+P"} /> e buscando por `CMake: Run without Debugging`.
+Ou ainda, pressionando <Kbd linux={"Ctrl+F5"} />.
+
+Na seção de `Terminal` do VsCode, você verá a saída do programa `oriented_graph`, que foi executado.
+
+<Figure
+  caption={`Saída do programa na seção de Terminal do Visual Studio Code.`}
+  images={[
+    {
+      src: launchOutput,
+      alt: `Seção de Terminal do Visual Studio Code, em que se vê a saída do programa.`,
+    },
+  ]}
+/>
+
+## Depurando
+
+Para depurar o projeto, garanta que você tem a extensão [**CodeLLDB**](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) instalada.
+Por padrão, o VsCode tenta usar o depurador `GDB` para depuração.
+Dessa forma, a extensão faz a compatibilidade para usarmos o `LLDB`.
+
+Nele, adicionamos uma nova configuração de depuração para rodar um programa sem antes compilá-lo (dado que o CMakeTools já fez isso). Também definimos algumas configurações específicas para o CMake. O nome dessa configuração é LLDB: launch C++ project.
+
+Agora, **adicione** um ponto de depuração na linha `12` do arquivo `main.cpp`.
+Então, clique no botão com o ícone de **besouro** na barra inferior do VsCode.
+Ele tem a função de **Debug**.
+
+<Figure
+  caption={`Depurando o projeto pelo botão de Debug do CMake Tools.`}
+  images={[
+    {
+      src: selectDebugButton,
+      alt: `Parte inferior esquerda da tela do Visual Studio Code, em que se vê o botão de Debug do CMake Tools.`,
+    },
+  ]}
+/>
+
+Você também pode acessar a mesma opção por meio da paleta de comandos do VsCode, pressionando <Kbd linux={"Ctrl+Shift+P"} /> e buscando por `CMake: Debug`.
+
+O VsCode abrirá um terminal externo e executará o programa `oriented_graph` em modo de depuração.
+
+<Figure
+  caption={`Tela de depuração do projeto no Visual Studio Code.`}
+  images={[
+    {
+      src: debugScreen,
+      alt: `Tela de depuração do projeto no Visual Studio Code. O programa está parado na linha 12 do arquivo main.cpp. Na parte esquerda da tela, estão as variáveis do programa, e na parte inferior, o terminal de depuração.`,
+    },
+  ]}
+/>
+
+### Tarefa personalizada
+
+Se você precisar customizar a configuração de depuração, como adicionar argumentos ou variáveis de ambiente, você pode fazer isso por meio do arquivo `launch.json`, que fica dentro da pasta `.vscode` do seu projeto.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p .vscode
+touch .vscode/launch.json
+```
+
+Use o **snippet** `launch-json` para inicializar o arquivo com o seguinte código.
+
+```json title=".vscode/launch.json" frame="code" {1}
+{
+  "configurations": [],
+  "version": "0.2.0"
+}
+```
+
+Então, dentro do vetor `configurations`, use o **snippet** `cmake-launch` para criar uma configuração de depuração personalizada.
+
+O conteúdo do arquivo será como o seguinte.
+
+<Code
+  lang="json"
+  title=".vscode/launch.json"
+  code={vscodeLaunchForOrientedGraphWithCMake}
+  frame="code"
+/>
+
+A entrada `preLaunchTask` define qual tarefa de compilação deve ser executada antes de iniciar a depuração.
+A extensão `CMake Tools` define um conjunto de tarefas padrão, como a `CMake: build`, que usamos.
+Isso faz com que, antes de iniciar a depuração, o projeto seja **compilado**.
+
+Configurar uma tarefa de execução **personalizada** tem outra vantagem.
+A interface de depuração comum do VSCode, que pode ser acessada por meio do atalho <Kbd linux={"Ctrl+Shift+D"} />, passa a funcionar totalmente com o CMake.
+Dessa forma, você pode inclusive depurar o projeto com o **atalho** <Kbd linux={"F5"} />.

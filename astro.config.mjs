@@ -149,6 +149,10 @@ export default defineConfig({
                   label: "Compilando",
                   slug: "c_cpp/cmake/compiling",
                 },
+                {
+                  label: "Configurando o VSCode",
+                  slug: "c_cpp/cmake/vscode",
+                },
               ],
               label: "CMake",
             },

@@ -1,37 +1,36 @@
 #ifndef __GRAPH_HPP__
 #define __GRAPH_HPP__
 
-#include <vector>
 #include <optional>
+#include <vector>
 
-#include "../node/node.hpp"
 #include "../edge/edge.hpp"
+#include "../node/node.hpp"
 
 using namespace std;
 
-class Graph
-{
-private:
-    unsigned long lastNodeId;
-    vector<Node *> nodes;
-    unsigned long lastEdgeId;
-    vector<Edge *> edges;
+class Graph {
+    private:
+        unsigned long last_node_id;
+        vector<Node *> nodes;
+        unsigned long last_edge_id;
+        vector<Edge *> edges;
 
-    Node *getNodeByLabel(unsigned long label) const;
+        Node *getNodeByLabel(unsigned long label) const;
 
-    void clearNodes();
-    void clearEdges();
+        void clearNodes();
+        void clearEdges();
 
-public:
-    Graph();
-    ~Graph();
+    public:
+        Graph();
+        ~Graph();
 
-    optional<int> getNodeData(unsigned long label) const;
+        optional<int> getNodeData(unsigned long label) const;
 
-    void addNode(unsigned long label, int data);
-    void addEdge(unsigned long sourceLabel, unsigned long targetLabel, int weight);
+        void addNode(unsigned long label, int data);
+        void addEdge(unsigned long source_label, unsigned long target_label, int weight);
 
-    vector<unsigned long> depthFirstSearch(unsigned long startLabel) const;
+        vector<unsigned long> depthFirstSearch(unsigned long start_label) const;
 };
 
-#endif // __GRAPH_HPP__
+#endif  // __GRAPH_HPP__

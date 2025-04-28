@@ -212,7 +212,7 @@
   "Ignore auxiliary files on C and C++ projects.": {
     "body": ["## Build", ".cache/", "build/", ""],
     "description": "Ignore auxiliary files on C and C++ projects.",
-    "prefix": "gitignore_c_cpp",
+    "prefix": "gitignore-c-cpp",
   },
   "Launch file": {
     "body": [

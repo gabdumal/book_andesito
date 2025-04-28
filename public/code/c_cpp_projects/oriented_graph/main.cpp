@@ -4,8 +4,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     Graph graph;
 
     graph.addNode(1, 10);
@@ -20,10 +19,9 @@ int main()
     graph.addEdge(3, 4, 40);
     graph.addEdge(4, 5, 50);
 
-    vector<unsigned long> connectedNodes = graph.depthFirstSearch(1);
+    vector<unsigned long> connected_nodes = graph.depthFirstSearch(1);
 
-    for (unsigned long label : connectedNodes)
-    {
+    for (unsigned long label : connected_nodes) {
         cout << label << " ";
     }
 

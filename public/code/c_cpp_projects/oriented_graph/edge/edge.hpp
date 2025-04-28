@@ -3,24 +3,24 @@
 
 #include "../node/node.hpp"
 
-class Edge
-{
-private:
-    unsigned long id;
-    Node *source;
-    Node *target;
-    int weight;
+class Edge {
+    private:
+        unsigned long id;
+        Node *source;
+        Node *target;
+        int weight;
 
-public:
-    Edge(unsigned long id, Node *source, Node *target, int weight);
-    ~Edge() {}
+    public:
+        Edge(unsigned long id, Node *source, Node *target, int weight);
 
-    unsigned long getId() const;
-    Node *getSource() const;
-    Node *getTarget() const;
-    int getWeight() const;
+        ~Edge() {}
 
-    void setWeight(int weight);
+        unsigned long getId() const;
+        Node *getSource() const;
+        Node *getTarget() const;
+        int getWeight() const;
+
+        void setWeight(int weight);
 };
 
-#endif // __EDGE_HPP__
+#endif  // __EDGE_HPP__

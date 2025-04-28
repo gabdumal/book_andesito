@@ -1,9 +1,4 @@
 {
-  "C_Cpp.default.cStandard": "c23",
-  "C_Cpp.default.cppStandard": "c++23",
-  "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
-  "C_Cpp.default.intelliSenseMode": "clang-x64",
-  "C_Cpp.intelliSenseEngine": "disabled",
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -28,6 +23,23 @@
   "[snippets]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
+  },
+  "C_Cpp.default.cppStandard": "c++23",
+  "C_Cpp.default.cStandard": "c23",
+  "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "cmake.configureArgs": [
+    "-DCMAKE_C_COMPILER=clang",
+    "-DCMAKE_CXX_COMPILER=clang++"
+  ],
+  "cmake.debugConfig": {
+    "console": "integratedTerminal",
+    "cwd": "${workspaceFolder}",
+    "externalConsole": false,
+    "MIMode": "lldb",
+    "stopAtEntry": false,
+    "type": "lldb"
   },
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,

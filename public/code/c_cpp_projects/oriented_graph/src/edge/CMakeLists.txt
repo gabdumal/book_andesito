@@ -1,7 +1,7 @@
-# Project
+## Library
 add_library(edge)
 
-# Sources
+## Sources
 target_sources(edge
     PUBLIC
         edge.hpp
@@ -9,13 +9,13 @@ target_sources(edge
         edge.cpp
 )
 
-# Include module
+## Define module
 target_include_directories(edge
     INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
-# Linking libraries
+## Link libraries
 target_link_libraries(edge
     PRIVATE
         node

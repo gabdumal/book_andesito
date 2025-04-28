@@ -138,7 +138,11 @@ export default defineConfig({
                   slug: "c_cpp/cmake/install",
                 },
                 {
-                  label: "Configurando o projeto",
+                  label: "Criando o projeto",
+                  slug: "c_cpp/cmake/creating",
+                },
+                {
+                  label: "Configurando",
                   slug: "c_cpp/cmake/configuring",
                 },
               ],

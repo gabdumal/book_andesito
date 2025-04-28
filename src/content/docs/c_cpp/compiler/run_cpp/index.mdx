@@ -147,7 +147,7 @@ Antes de compilar o projeto, vamos inicializar o controle de versão com o **Git
 Execute os comandos abaixo.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-echo "/build" > .gitignore
+echo "/build" >> .gitignore
 git init
 git add .
 git commit -m "Initialize project"
@@ -195,7 +195,7 @@ Se tudo estiver correto, você verá os nós da árvore binária sendo impressos
 ### Configurações
 
 Assim como fizemos para projetos em **C**, podemos configurar tarefas de compilação para **C++** no Visual Studio Code.
-Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](../vscode), já está configurada uma tarefa de compilação para **C++**.
+Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](vscode), já está configurada uma tarefa de compilação para **C++**.
 
 Infelizmente, essa tarefa apenas compila arquivos `.cpp` que estejam na raiz do projeto.
 Uma vez que nosso projeto tem arquivos em pastas diferentes, precisamos especificar a localização de todos eles.

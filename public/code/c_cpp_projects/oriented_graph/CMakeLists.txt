@@ -1,39 +1,35 @@
-# Version
-cmake_minimum_required(VERSION 3.12...3.30)
+## Version
+cmake_minimum_required(VERSION 3.12...3.31)
 
 if (${CMAKE_VERSION} VERSION_LESS 3.12)
     cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif ()
 
-# Project
+## Project
 project(oriented_graph
         LANGUAGES CXX
 )
 
-# Environment
+## Environment
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Compilation flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+## Warnings
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
+    add_compile_options(
+        -Wall -Wextra          # Reasonable warnings
+        -Wpedantic             # Strict ISO C++ compliance
+        -Wshadow               # Warn on variable shadowing
+        -Wconversion           # Warn on implicit type conversions
+        -Wsign-conversion      # Warn on signed/unsigned mismatches
+    )
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_compile_options(
+        /W4                    # High warning level
+        /permissive-           # Enforce standards compliance
+    )
+endif()
 
-# Directories
-add_subdirectory(node)
-add_subdirectory(edge)
-add_subdirectory(graph)
-
-# Executable
-add_executable(oriented_graph main.cpp)
-
-# Include module
-target_include_directories(oriented_graph
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
-)
-
-# Linking libraries
-target_link_libraries(oriented_graph
-    PRIVATE
-        graph
-)
+## Directories
+add_subdirectory(src)

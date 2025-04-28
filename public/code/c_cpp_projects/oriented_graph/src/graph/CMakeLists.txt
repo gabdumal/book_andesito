@@ -1,7 +1,7 @@
-# Project
+## Library
 add_library(graph)
 
-# Sources
+## Sources
 target_sources(graph
     PUBLIC
         graph.hpp
@@ -9,13 +9,13 @@ target_sources(graph
         graph.cpp
 )
 
-# Include module
+## Define module
 target_include_directories(graph
     INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
-# Linking libraries
+## Link libraries
 target_link_libraries(graph
     PRIVATE
         node

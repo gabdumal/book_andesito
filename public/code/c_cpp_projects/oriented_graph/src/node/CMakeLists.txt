@@ -1,7 +1,7 @@
-# Project
+## Library
 add_library(node)
 
-# Sources
+## Sources
 target_sources(node
     PUBLIC
         node.hpp
@@ -9,7 +9,7 @@ target_sources(node
         node.cpp
 )
 
-# Include module
+## Define module
 target_include_directories(node
     INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}

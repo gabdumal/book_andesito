@@ -1,5 +1,5 @@
 ---
-title: Instalação
+title: Configurando com CMake
 author: Gabriel Malosto
 ---
 
@@ -7,98 +7,331 @@ import { Code } from "@astrojs/starlight/components";
 
 import Figure from "@components/Figure.astro";
 
-import mainFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/main.cpp?raw";
-import nodeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/node/node.hpp?raw";
-import nodeFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/node/node.cpp?raw";
-import edgeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/edge/edge.hpp?raw";
-import edgeFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/edge/edge.cpp?raw";
-import graphHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/graph/graph.hpp?raw";
-import graphFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/graph/graph.cpp?raw";
+import cMakeListsTxtFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/CMakeLists.txt?raw";
+import cMakeListsTxtFromSrcOnOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/CMakeLists.txt?raw";
+import cMakeListsTxtFromSrcNodeOnOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/node/CMakeLists.txt?raw";
+import cMakeListsTxtFromSrcEdgeOnOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/edge/CMakeLists.txt?raw";
+import cMakeListsTxtFromSrcGraphOnOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/graph/CMakeLists.txt?raw";
 
-**Acesse** a pasta `~/dev/c_cpp_projects` que criamos anteriormente.
-Dentro dela, **crie** um diretório chamado `oriented_graph`.
-Acesse-o e **abra** nele o Visual Studio Code.
+Poderíamos usar os arquivos `tasks.json` e `launch.json` para compilar e executar o código, como fizemos anteriormente.
+Entretanto, para projetos maiores, o [**CMake**](https://cmake.org/) permite uma maior escalabilidade.
+Além disso, ele permite definir instruções de compilação diferentes para vários sistemas operacionais, além de argumentos opcionais, como flags de compilação e definições de pré-processador.
+
+## Projeto
+
+Para não bagunçar o projeto `oriented_graph`, vamos copiá-lo para uma nova pasta chamada `oriented_graph_with_cmake`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-mkdir -p ~/dev/c_cpp_projects
 cd ~/dev/c_cpp_projects
-mkdir -p oriented_graph
-cd oriented_graph
+cp -r oriented_graph oriented_graph_with_cmake
+cd oriented_graph_with_cmake
+```
+
+Também podemos adotar a convenção de colocar todos os arquivos de código-fonte dentro de uma pasta chamada `src`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p src
+mv main.cpp src
+mv node src
+mv edge src
+mv graph src
+```
+
+## Configuração geral
+
+O principal arquivo de configuração do CMake é o `CMakeLists.txt`.
+Ele é responsável por definir as configurações do projeto e as dependências necessárias para a compilação.
+
+**Crie** um arquivo chamado `CMakeLists.txt` na raiz da pasta oriented_graph. Atente-se à letras maiúsculas e minúsculas no nome do arquivo, ele precisa estar escrito exatamente como acima.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
+touch CMakeLists.txt
 code .
 ```
 
-Dentro do diretório `oriented_graph`, **crie** um arquivo `main.cpp` e três pastas: `node`, `edge` e `graph`.
-Cada pasta deve conter um arquivo `.cpp` e um arquivo `.hpp` com o mesmo nome da pasta.
+Vamos preencher trecho por trecho do arquivo `CMakeLists.txt` para entender o que cada parte faz.
 
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
-touch main.cpp .clang-tidy .clang-format
-mkdir -p node edge graph
-touch node/node.cpp node/node.hpp edge/edge.cpp edge/edge.hpp graph/graph.cpp graph/graph.hpp
+### Versões
+
+Primeiramente, é necessário definir a **versão** do CMake que será utilizada.
+Na época de escrita deste guia, a versão `3.31.5` era a mais recente disponível.
+
+Nós podemos definir um **intervalo** de versões suportadas, para garantir que o projeto seja compilado corretamente em diferentes ambientes.
+Isso é feito com o comando `cmake_minimum_required`.
+
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=1
+## Version
+cmake_minimum_required(VERSION 3.12...3.31)
 ```
 
-**Copie** o código de cada arquivo a seguir para o seu projeto.
+Em seguida, usamos um comando para garantir que versões anteriores à `3.12` passem por uma política de **compatibilidade** para conseguir realizar a compilação.
 
-<Code lang="cpp" title="main.cpp" code={mainFromOrientedGraph} frame="code" />
-
-<Code
-  lang="cpp"
-  title="node/node.hpp"
-  code={nodeHeaderFromOrientedGraph}
-  frame="code"
-/>
-
-<Code
-  lang="cpp"
-  title="node/node.cpp"
-  code={nodeFromOrientedGraph}
-  frame="code"
-/>
-
-<Code
-  lang="cpp"
-  title="edge/edge.hpp"
-  code={edgeHeaderFromOrientedGraph}
-  frame="code"
-/>
-
-<Code
-  lang="cpp"
-  title="edge/edge.cpp"
-  code={edgeFromOrientedGraph}
-  frame="code"
-/>
-
-<Code
-  lang="cpp"
-  title="graph/graph.hpp"
-  code={graphHeaderFromOrientedGraph}
-  frame="code"
-/>
-
-<Code
-  lang="cpp"
-  title="graph/graph.cpp"
-  code={graphFromOrientedGraph}
-  frame="code"
-/>
-
-Também crie o arquivo `.clang-tidy` na raiz do projeto e o preencha com o snippet `clang-tidy`.
-Igualmente, crie o arquivo `.clang-format` e o preencha com o snippet `clang-format`.
-
-Assim como antes, você pode compilar esse projeto diretamente pelo `clang++` ou utilizando os arquivos `tasks.json` e `launch.json` do Visual Studio Code.
-
-O comando de compilação é o seguinte.
-
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
-mkdir -p build
-clang++ main.cpp node/node.cpp edge/edge.cpp graph/graph.cpp -I node -I edge -I graph -o build/oriented_graph
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=4
+if (${CMAKE_VERSION} VERSION_LESS 3.12)
+    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
+endif ()
 ```
 
-Ao executar o programa, você verá a seguinte saída.
+### Projeto
 
-```zsh title="Fedora, WSL ou Mint" frame="terminal"
-./build/oriented_graph
-# 1 3 4 5 2
+Agora, vamos definir o nome do projeto e a linguagem utilizada, que é o **C++**.
+
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=8
+## Project
+project(oriented_graph
+        LANGUAGES CXX
+)
 ```
 
-Ela representa a ordem de visitação dos nós do grafo em uma busca em profundidade iniciando pelo nó 1.
+### Ambiente
+
+O C++ tem várias versões, e pode ser customizado para diferentes ambientes.
+No nosso caso, queremos usar uma versão mais recente (no momento a `23`) e compatível com o [padrão oficial](https://isocpp.org/std/the-standard).
+Para isso, usamos comandos iniciados em `set` para definir as variáveis de ambiente.
+
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=13
+## Environment
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+```
+
+### Flags de compilação
+
+As **flags** de compilação são opções que podem ser passadas para o compilador para alterar o comportamento da compilação.
+
+No nosso caso, queremos ativar todos os **avisos** de compilação.
+Além disso, é importante manter a compatibilidade com outros compiladores, como o **GCC**, o **Apple Clang** e **MSVC**.
+
+Para isso, usamos o comando `add_compile_options`.
+
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=18
+## Warnings
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
+    add_compile_options(
+        -Wall -Wextra          # Reasonable warnings
+        -Wpedantic             # Strict ISO C++ compliance
+        -Wshadow               # Warn on variable shadowing
+        -Wconversion           # Warn on implicit type conversions
+        -Wsign-conversion      # Warn on signed/unsigned mismatches
+    )
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_compile_options(
+        /W4                    # High warning level
+        /permissive-           # Enforce standards compliance
+    )
+endif()
+```
+
+### Diretórios
+
+Nosso projeto guarda o código-fonte na pasta `src`.
+Para que o CMake consiga encontrar os arquivos dentro dela, precisamos listá-la no arquivo `CMakeLists.txt`.
+
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=34
+## Directories
+add_subdirectory(src)
+```
+
+Outras pastas comumente usadas são:
+
+- `include`: para arquivos de cabeçalho (`.h` ou `.hpp`);
+- `lib`: para bibliotecas externas;
+- `tests`: para testes automatizados;
+- `docs`: para documentação; e
+- `assets`: para arquivos estáticos, como imagens e fontes.
+
+Nosso projeto não possui essas pastas, mas caso você venha a precisar em outros projetos, você usaria o comando `add_subdirectory` para cada uma delas.
+
+### Resultado
+
+No final, o arquivo `CMakeLists.txt` deve ficar da seguinte forma.
+
+<Code
+  lang="cmake"
+  title="CMakeLists.txt"
+  code={cMakeListsTxtFromOrientedGraph}
+  frame="code"
+/>
+
+## Código-fonte
+
+Agora que já temos o arquivo `CMakeLists.txt` configurado, precisamos adicionar os arquivos de código-fonte, que estão na pasta `src`.
+Para isso, vamos criar um novo arquivo `CMakeLists.txt` dentro da pasta `src`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+touch src/CMakeLists.txt
+```
+
+### Executável
+
+Dentro deste novo arquivo `src/CMakeLists.txt`, precisamos definir o nome do arquivo executável que será gerado após a compilação.
+No nosso caso, o nome do executável será `oriented_graph`, e ele será gerado a partir do arquivo `main.cpp`.
+
+```cmake title="src/CMakeLists.txt" frame="code" startLineNumber=1
+## Executable
+add_executable(oriented_graph
+        main.cpp
+)
+```
+
+### Diretórios
+
+Agora, precisamos adicionar os módulos que estão dentro da pasta `src`.
+Para isso, usamos o comando `add_subdirectory` para cada um deles.
+
+```cmake title="src/CMakeLists.txt" frame="code" startLineNumber=6
+## Directories
+add_subdirectory(node)
+add_subdirectory(edge)
+add_subdirectory(graph)
+```
+
+### Dependências
+
+O arquivo principal, `main.cpp`, depende da classe `Graph`.
+Isso é definido pela importação do arquivo de cabeçalho `graph.hpp`, que está dentro da pasta `graph`.
+
+```cpp title="src/main.cpp" frame="code" startLineNumber=3
+#include "graph/graph.hpp"
+```
+
+Para que o CMake consiga vincular esse arquivo, precisamos adicionar a pasta `graph` como um diretório de inclusão.
+Isso é feito com o comando `target_include_directories`.
+Ele vai incluir o diretório `graph` de forma **privada** ao executável `oriented_graph`.
+
+Aqui decidimos usar a keyword `PRIVATE` para que os outros módulos que `main.cpp` importa não sejam disponibilizados para arquivos que venham a incluir `main.cpp`.
+Isso é importante para evitar que outros módulos acessem arquivos que não deveriam.
+
+```cmake title="src/CMakeLists.txt" frame="code" startLineNumber=11
+## Linking libraries
+target_link_libraries(oriented_graph
+    PRIVATE
+        graph
+)
+```
+
+### Resultado
+
+No final, o arquivo `src/CMakeLists.txt` deve ficar da seguinte forma.
+
+<Code
+  lang="cmake"
+  title="src/CMakeLists.txt"
+  code={cMakeListsTxtFromSrcOnOrientedGraph}
+  frame="code"
+/>
+
+## Módulos
+
+A forma de criar diferentes **módulos** no CMake é definir cada um como uma **biblioteca estática**.
+Elas são montadas por um arquivo `*.hpp` que contém funções e variáveis que podem ser utilizadas por outros arquivos do projeto.
+
+Assim como fizemos para a pasta `src`, precisamos criar um arquivo `CMakeLists.txt` para cada módulo.
+Esses arquivos são responsáveis por definir as configurações específicas de cada um.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+touch src/node/CMakeLists.txt
+touch src/edge/CMakeLists.txt
+touch src/graph/CMakeLists.txt
+```
+
+### Biblioteca
+
+Vamos tomar como exemplo o módulo `edge`, precisamos definir o nome da biblioteca, que será `edge`.
+Para isso, acesse o arquivo `src/edge/CMakeLists.txt`, e utilize o comando `add_library`.
+
+```cmake title="src/edge/CMakeLists.txt" frame="code" startLineNumber=1
+## Library
+add_library(edge)
+```
+
+### Código-fonte
+
+Em seguida, precisamos adicionar os arquivos de código-fonte e de cabeçalho que fazem parte do módulo.
+O módulo `edge` possui apenas um arquivo de cabeçalho, o `edge.hpp`, e um arquivo de código-fonte, o `edge.cpp`.
+Usaremos o comando `target_sources` para adicionar esses arquivos à biblioteca.
+
+Os arquivos de cabeçalho são adicionados como **públicos** para que eles possam ser incluídos por outros módulos.
+Já os arquivos de código-fonte são adicionados como **privados**, de forma que outros módulos precisem utilizar o arquivo de cabeçalho para conseguir acessá-los.
+
+```cmake title="src/edge/CMakeLists.txt" frame="code" startLineNumber=4
+## Sources
+target_sources(edge
+    PUBLIC
+        edge.hpp
+    PRIVATE
+        edge.cpp
+)
+```
+
+### Diretórios
+
+Agora, precisamos definir o diretório `edge` como um diretório de inclusão, para que ele possa ser acessado por outros módulos.
+Isso é feito com o comando `target_include_directories`.
+
+O CMake vai incluir o diretório `edge` de forma **pública** à biblioteca `edge`.
+É necessário usar a keyword `PUBLIC` para que outros arquivos consigam incluir a classe `Edge`, definida no arquivo `edge.hpp`.
+
+```cmake title="src/edge/CMakeLists.txt" frame="code" startLineNumber=12
+## Define module
+target_include_directories(edge
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+)
+```
+
+### Dependências
+
+O módulo `edge` depende da classe `Node`.
+Isso é definido pela importação do arquivo de cabeçalho `node.hpp`, que está dentro da pasta `node`.
+
+```cpp title="src/edge/edge.hpp" frame="code" startLineNumber=4
+#include "../node/node.hpp"
+```
+
+Para que o CMake consiga vincular esse arquivo, precisamos adicionar a pasta `node` como um diretório de inclusão.
+Isso é feito com o comando `target_link_libraries`.
+Da mesma forma que fizemos para o executável `oriented_graph`, vamos incluir o diretório `node` de forma **privada** à biblioteca `edge`.
+
+```cmake title="src/edge/CMakeLists.txt" frame="code" startLineNumber=18
+## Link libraries
+target_link_libraries(edge
+    PRIVATE
+        node
+)
+```
+
+O módulo `node` não possui dependências, então não precisamos nos preocupar com isso.
+Já o módulo `graph` depende do módulo `node` e do módulo `edge`.
+Dessa forma, devemos incluir ambos na lista de dependências do comando `target_link_libraries`.
+
+### Resultado
+
+No final, o arquivo `src/node/CMakeLists.txt` deve ficar da seguinte forma.
+
+<Code
+  lang="cmake"
+  title="src/node/CMakeLists.txt"
+  code={cMakeListsTxtFromSrcNodeOnOrientedGraph}
+  frame="code"
+/>
+
+O arquivo `src/edge/CMakeLists.txt` deve ficar da seguinte forma.
+
+<Code
+  lang="cmake"
+  title="src/edge/CMakeLists.txt"
+  code={cMakeListsTxtFromSrcEdgeOnOrientedGraph}
+  frame="code"
+/>
+
+O arquivo `src/graph/CMakeLists.txt` deve ficar da seguinte forma.
+
+<Code
+  lang="cmake"
+  title="src/graph/CMakeLists.txt"
+  code={cMakeListsTxtFromSrcGraphOnOrientedGraph}
+  frame="code"
+/>

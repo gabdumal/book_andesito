@@ -5,7 +5,7 @@ author: Gabriel Malosto
 
 import Figure from "/src/components/Figure.astro";
 
-Neste capítulo, vamos instalar as ferramentas de compilação para C e C++ para o Fedora, o WSL usando o Fedora e o Mint, além de outros derivados do Debian compatíveis.
+Nesta seção, vamos instalar as ferramentas de compilação para C e C++ para o Fedora, para o WSL usando o Fedora e para o Mint, além de outros derivados do Debian compatíveis.
 
 Instalaremos os pacotes do [**LLVM**](https://www.llvm.org/), que é um projeto focado em desenvolver diversas ferramentas de compilação, incluindo o compilador [**Clang**](https://clang.llvm.org/).
 Também instalaremos o [**Ninja**](https://ninja-build.org/), um gerador de build com foco em velocidade.
@@ -50,6 +50,7 @@ ninja --version
 Para instalar as ferramentas no Mint ou em outras distribuições baseadas no Debian, execute os seguintes comandos no terminal:
 
 ```zsh title="Mint" frame="terminal"
+sudo apt update -y && sudo apt upgrade -y
 sudo apt install clang-format clang-tidy clang-tools \
   clang clangd libc++-dev libc++1 libc++abi-dev \
   libc++abi1 libclang-dev libclang1 liblldb-dev \

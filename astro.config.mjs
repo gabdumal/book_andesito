@@ -126,19 +126,19 @@ export default defineConfig({
               ],
               label: "Depurador",
             },
-            // {
-            //   items: [
-            //     {
-            //       label: "Introdução",
-            //       slug: "c_cpp/cmake",
-            //     },
-            //     {
-            //       label: "Instalação",
-            //       slug: "c_cpp/cmake/install",
-            //     },
-            //   ],
-            //   label: "CMake",
-            // },
+            {
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "c_cpp/cmake",
+                },
+                {
+                  label: "Instalação",
+                  slug: "c_cpp/cmake/install",
+                },
+              ],
+              label: "CMake",
+            },
           ],
           label: "C e C++",
         },

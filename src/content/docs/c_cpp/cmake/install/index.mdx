@@ -3,80 +3,35 @@ title: Instalação
 author: Gabriel Malosto
 ---
 
-import Figure from "/src/components/Figure.astro";
+import Figure from "@components/Figure.astro";
 
-import downloadOptions from "/src/assets/content/docs/c_cpp/cmake/install/download_options.png";
-import installingWindows from "/src/assets/content/docs/c_cpp/cmake/install/installing_windows.png";
-import checkingInstallationWindows from "/src/assets/content/docs/c_cpp/cmake/install/checking_installation_windows.png";
-import ninjaDownloadOptions from "/src/assets/content/docs/c_cpp/cmake/install/ninja_download_options.png";
+Vamos instalar o [**CMake**](https://cmake.org/) por meio dos pacotes distribuídos pelas distribuições tratadas.
+Também instalaremos o [**Ninja**](https://ninja-build.org/), um gerador de build com foco em velocidade.
 
-A instalação do **CMake** é simples e pode ser feita de várias formas, dependendo do sistema operacional.
+## Fedora e WSL
 
-Vamos também instalar o **Ninja**, um gerador de build que é mais rápido que o **Make**.
+Para instalar o **CMake** no Fedora ou no WSL usando o Fedora, execute o seguinte comando no terminal.
 
-## Linux
+```zsh title="Fedora ou WSL" frame="terminal"
+sudo dnf upgrade -y
+sudo dnf install cmake ninja-build python3-ninja -y
+cmake --version
+# cmake version ?.??.?
+ninja --version
+# 1.12.1
+```
 
-{/* TODO */}
+{/* TODO: Test on Fedora */}
 
-## Windows
+## Mint
 
-Para instalar o **CMake** no Windows, acesse a página de [downloads](https://cmake.org/download/) do CMake.
+Para instalar o **CMake** no Mint ou em outras distribuições baseadas no Debian, execute o seguinte comando no terminal.
 
-Então, selecione a opção do instalador para Windows x64 mais recente.
-
-<Figure
-  caption="Opções de download do CMake."
-  images={[
-    {
-      src: downloadOptions,
-      alt: "Página de downloads do website do CMake. A versão mais recente para Windows x64 está destacada.",
-    },
-  ]}
-/>
-
-Execute o instalador e siga as instruções.
-Na página **Install Options**, selecione a opção **Add CMake to the PATH environment variable**.
-Então prossiga com a instalação.
-
-<Figure
-  caption="Instalando o CMake no Windows."
-  images={[
-    {
-      src: installingWindows,
-      alt: `Instalador do CMake no Windows, em que se seleciona a opção "Add CMake to the PATH environment variable".`,
-    },
-  ]}
-/>
-
-Para verificar se a instalação foi bem-sucedida, abra o PowerShell e execute o comando `cmake`.
-
-<Figure
-  caption="Verificando se a instalação do CMake no Windows foi bem-sucedida."
-  images={[
-    {
-      src: checkingInstallationWindows,
-      alt: "Terminal com o PowerShell, em que se executa o comando supracitado.",
-    },
-  ]}
-/>
-
-### Ninja
-
-Para instalar o **Ninja**, acesse a página de [downloads](https://github.com/ninja-build/ninja/releases).
-
-Selecione a opção para Windows na versão mais recente, marcada como **latest**.
-
-<Figure
-  caption="Opções de download do Ninja."
-  images={[
-    {
-      src: ninjaDownloadOptions,
-      alt: "Página de downloads do Ninja pelo GitHub. A versão mais recente para Windows está destacada.",
-    },
-  ]}
-/>
-
-Extraia o arquivo Zip baixado.
-Então rode o executável `ninja.exe`.
-
-{/* TODO: Continuar */}
+```zsh title="Mint" frame="terminal"
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install cmake ninja-build -y
+cmake --version
+# cmake version 3.28.3
+ninja --version
+# 1.11.1
+```

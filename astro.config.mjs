@@ -159,10 +159,14 @@ export default defineConfig({
           ],
           label: "C e C++",
         },
-        // {
-        //   label: "JavaScript",
-        //   slug: "javascript",
-        // },
+        {
+          items: [
+            { label: "Introdução", slug: "javascript" },
+            { label: "PNPM", slug: "javascript/pnpm" },
+            { label: "Node", slug: "javascript/node" },
+          ],
+          label: "JavaScript",
+        },
         // {
         //   label: "Java",
         //   slug: "java",

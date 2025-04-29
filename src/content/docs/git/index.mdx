@@ -113,9 +113,9 @@ Quando o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"}
 Provavelmente, ele solicitará duas vezes.
 
 ```bash bash title="Fedora ou WSL" frame="terminal"
-sudo dnf install dnf5-plugins
+sudo dnf install dnf5-plugins -y
 sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
-sudo dnf install gh --repo gh-cli
+sudo dnf install gh --repo gh-cli -y
 ```
 
 #### Mint

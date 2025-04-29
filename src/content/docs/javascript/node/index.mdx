@@ -1,0 +1,31 @@
+---
+title: Node
+author: Gabriel Malosto
+---
+
+import Figure from "@components/Figure.astro";
+
+import installNode from "@assets/content/docs/javascript/node/install_node.png";
+
+O [**Node**](https://nodejs.org/) é um ambiente de execução para JavaScript que permite rodar códigos JavaScript fora do navegador.
+
+Utilizando o PNPM, é possível instalar versões específicas do Node, e trocar entre elas para diferentes projetos.
+
+## Instalação
+
+O processo de instalação é o mesmo em todos os sistemas operacionais tratados por este livro.
+
+Abra o terminal e execute o seguinte comando:
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+pnpm env use --global lts
+node --version
+# v22.15.0
+```
+
+Isso instalará a versão mais recente do Node que é considerada estável.
+
+<Figure
+  caption="Instalação do Node."
+  images={[{ src: installNode, alt: "Instalação do Node no Zsh." }]}
+/>

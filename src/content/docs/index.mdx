@@ -13,11 +13,13 @@ hero:
       icon: right-arrow
 ---
 
+import { Image } from "astro:assets";
 import { Card, CardGrid } from "@astrojs/starlight/components";
 
 import Link from "@components/Link.astro";
 
 import { authorGitHubPage, bookGitHubRepo } from "@constants";
+import qrCode from "/public/qr_code.png";
 
 ## Autoria
 
@@ -44,5 +46,9 @@ import { authorGitHubPage, bookGitHubRepo } from "@constants";
         {"."}
       </p>
     }
+  </Card>
+  <Card title="Compartilhe" icon="rocket">
+    Acesse este livro por outros aparelhos escaneando o QR Code!
+    <Image src={qrCode} alt="QR Code que carrega a URL deste site." />
   </Card>
 </CardGrid>

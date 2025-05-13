@@ -23,6 +23,7 @@ import extensions from "@assets/content/docs/vscode/extensions.png";
 import applyingExtensionToAllProfiles from "@assets/content/docs/vscode/applying_extension_to_all_profiles.png";
 import openingUserSettings from "@assets/content/docs/vscode/opening_user_settings.png";
 import settings from "/public/configuration/vscode/initial/settings.json?raw";
+import settingsWithTheme from "/public/configuration/vscode/initial_with_theme/settings.json?raw";
 
 A fim de escrever código, você precisará de um editor de texto apropriado.
 É interessante que ele seja voltado para o desenvolvimento de software, com funcionalidades como _syntax highlighting_, _code completion_, _debugging_, etc.
@@ -252,8 +253,6 @@ Recomendo a instalação das seguintes:
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 - [Brazilian Portuguese - Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-portuguese-brazilian)
 - [vscode-pdf](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf)
-- [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
-- [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
 
 Se você gostou do meu tema de cores, você pode instalá-lo também:
 
@@ -303,20 +302,51 @@ Para isso, abra a paleta de comandos com <Kbd linux="Ctrl+Shift+P" windows="Ctrl
   ]}
 />
 
-Eu preparei um conjunto de configurações para o Visual Studio Code que inclui algumas definições úteis.
+Eu preparei um conjunto de configurações para o Visual Studio Code que inclui as seguintes definições úteis:
 
-Copie o conteúdo abaixo.
-Então, abra o arquivo `settings.json` do seu Visual Studio Code e cole nele o conteúdo copiado.
+- `editor.defaultFormatter`: define o plugin de formatação padrão para determinada linguagem. Escolhemos o Prettier para JSON.
+- `cSpell.language`: define o idioma do corretor ortográfico. Escolhemos inglês dos Estados Unidos o português do Brasil.
+- `editor.formatOnSave`: define que o editor deve formatar o código automaticamente ao salvar o arquivo.
+- `editor.semanticHighlighting.enabled`: ativa o destaque semântico do código, para melhorar a legibilidade.
+- `files.autoSave`: define que o editor deve salvar automaticamente os arquivos quando o foco sair do editor. -`files.eol`: define o tipo de quebra de linha a ser utilizado. Escolhemos `\n`, que é o padrão do Linux.
+- `files.insertFinalNewline`: define que o editor deve adicionar uma quebra de linha ao final do arquivo.
+- `files.trimFinalNewlines`: garante que haja apenas uma quebra de linha ao final do arquivo.
+- `git.autofetch`: busca automaticamente atualizações do repositório remoto do Git.
+- `markdownlint.run`: define que o plugin de linting de Markdown deve rodar automaticamente ao salvar o arquivo.
+
+  Copie o conteúdo abaixo.
+  Então, abra o arquivo `settings.json` do seu Visual Studio Code e cole nele o conteúdo copiado.
 
 <Code
   code={settings}
   lang="json"
   title="[...]/Code/User/settings.json"
-  mark={{ range: "80-132" }}
+  mark={{ range: "20-32" }}
 />
 
 A opção `workbench.settings.applyToAllProfiles` é muito importante, pois ela define quais configurações serão aplicadas a todos os perfis do Visual Studio Code.
 Veremos mais sobre eles nos próximos capítulos.
 Para todas as definições que você deseja que sejam aplicadas, independentemente do perfil selecionado, adicione o nome da configuração à lista.
+
+Também deixo algumas recomendações estéticas para o Visual Studio Code.
+
+<Code
+  code={settingsWithTheme}
+  lang="json"
+  title="[...]/Code/User/settings.json"
+  mark={{ range: "12-14,16-17,19,26-30,33-35,37-38,40,49-53" }}
+/>
+
+- `editor.fontFamily`: define a fonte padrão do editor. Escolhi a FiraCode Nerd Font Mono, que vamos aprender a instalar no capítulo sobre [Terminal](../terminal#fontes).
+- `editor.fontSize`: define o tamanho da fonte do editor.
+- `editor.fontWeight`: define o peso da fonte do editor. Deixamos em `normal`, mas você pode alterar para `bold` ou `bolder` se preferir e se sua fonte suportar.
+- `editor.lineHeight`: define a altura da linha do editor.
+- `editor.mouseWheelZoom`: aumenta o tamanho da fonte ao usar a tecla <Kbd linux="CTRL"/> e girar a roda do mouse.
+- `editor.wordWrap`: define que o editor deve quebrar as linhas automaticamente com base na largura da janela.
+- `terminal.integrated.fontFamily`: define a fonte do terminal integrado do Visual Studio Code. Escolhi a mesma fonte que utilizamos no editor.
+- `terminal.integrated.fontSize`: define o tamanho da fonte do terminal integrado do Visual Studio Code.
+- `terminal.integrated.lineHeight`: define a altura da linha do terminal integrado do Visual Studio Code.
+- `workbench.colorTheme`: define o tema de cores do Visual Studio Code. Escolhi o Catppuccin Latte, mas você pode escolher outro tema de sua preferência.
+- `workbench.iconTheme`: define o tema de ícones do Visual Studio Code. Também escolhi o Catppuccin Latte, mas você pode escolher outro tema de sua preferência.
 
 Sinta-se livre para alterar as configurações conforme sua preferência.

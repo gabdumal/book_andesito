@@ -49,8 +49,6 @@ sudo chsh $USER -s /bin/zsh
 
 **Reinicie** o computador para que a mudança tenha efeito.
 
----
-
 ### Mint
 
 Execute o comando abaixo no terminal.
@@ -77,7 +75,7 @@ chsh -s $(which zsh)
 
 **Reinicie** o computador para que a mudança tenha efeito.
 
-### Arquivo de configuração
+### Boas-vindas
 
 Após instalar o Zsh, **feche** o terminal e abra-o novamente.
 Pode aparecer para você o texto de boas-vindas.
@@ -102,12 +100,12 @@ O arquivo de configuração do Zsh é o `.zshrc`, assim mesmo, com ponto no come
 Sua localização é na pasta do seu usuário, `~`.
 
 Se essa mensagem não aparecer, você pode confirmar se tudo correu bem com o comando abaixo.
-O resultado deve ser o caminho do executável do Zsh: `/usr/bin/zsh`.
 
 ```bash title="Fedora, WSL ou Mint" frame="terminal"
 sh -c 'ps -p $$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe'
-# /usr/bin/zsh
 ```
+
+O resultado deve ser o caminho do executável do Zsh: `/usr/bin/zsh`.
 
 ## Oh My Zsh
 
@@ -196,6 +194,14 @@ Então, na verdade, não tem quase nada sendo definido no arquivo.
 Por isso, vamos **apagar** tudo, e adicionar as seguintes linhas:
 
 <Code code={settings} lang="zsh" title="~/.zshrc" frame="code" />
+
+O que essas configurações fazem é o seguinte:
+
+- `PATH=$PATH:~/.local/bin`: adiciona o diretório `~/.local/bin` ao `PATH`, para que programas instalados apenas para o seu usuário possam ser encontrados e executados.
+- `ZSH_THEME="robbyrussell"`: define o tema do Zsh. O tema padrão é o `robbyrussell`.
+- `export ZSH="$HOME/.oh-my-zsh"`: define o diretório em que foi instalado o Oh My Zsh.
+- `source $ZSH/oh-my-zsh.sh`: carrega o script do Oh My Zsh.
+- `plugins=(git)`: define os plugins que serão carregados. O plugin `git` é padrão do Oh My Zsh, e adiciona uma série de funcionalidades para o uso do Git.
 
 Lembre-se de **salvar** o arquivo.
 

@@ -3,7 +3,7 @@ title: Criando o projeto
 author: Gabriel Malosto
 ---
 
-import { Code } from "@astrojs/starlight/components";
+import { Code, FileTree } from "@astrojs/starlight/components";
 
 import mainFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/main.cpp?raw";
 import nodeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/node/node.hpp?raw";
@@ -31,12 +31,41 @@ cd oriented_graph
 code .
 ```
 
-Dentro do diretório `oriented_graph`, **crie** um arquivo `main.cpp` e três pastas: `node`, `edge` e `graph`.
-Cada pasta deve conter um arquivo `.cpp` e um arquivo `.hpp` com o mesmo nome da pasta.
+Vamos construir um projeto de código da seguinte forma.
+
+<FileTree>
+
+  - edge
+    - edge.cpp
+    - edge.hpp
+  - graph
+    - graph.cpp
+    - graph.hpp
+  - node
+    - node.cpp
+    - node.hpp
+  - .clang-format
+  - .clang-tidy
+  - .gitignore
+  - main.cpp
+
+</FileTree>
+
+Dentro do diretório `oriented_graph`, **crie** os arquivos `main.cpp`, `.clang-tidy` e `.clang-format`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch main.cpp .clang-tidy .clang-format
+```
+
+Também crie três pastas: `node`, `edge` e `graph`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p node edge graph
+```
+
+Dentro de cada uma, **crie** conter um arquivo `.cpp` e um arquivo `.hpp` com o mesmo nome da pasta.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch node/node.cpp node/node.hpp edge/edge.cpp edge/edge.hpp graph/graph.cpp graph/graph.hpp
 ```
 
@@ -102,7 +131,7 @@ git commit -m "Initialize project"
 
 ## Compilação
 
-Assim como antes, você pode **compilar** esse projeto diretamente pelo `clang++` ou utilizando os arquivos `tasks.json` e `launch.json` do Visual Studio Code.
+Assim como antes, você pode **compilar** esse projeto diretamente pelo comando `clang++` ou utilizando os arquivos `tasks.json` e `launch.json` do Visual Studio Code.
 
 O comando de compilação é o seguinte.
 

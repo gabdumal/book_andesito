@@ -3,7 +3,7 @@ title: Depurando programas em C++
 author: Gabriel Malosto
 ---
 
-import { Code } from "@astrojs/starlight/components";
+import { Code, FileTree } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -22,14 +22,35 @@ cd ~/dev/c_cpp_projects/binary_tree
 code .
 ```
 
-**Crie** um arquivo chamado `launch.json` na pasta `.vscode` do projeto.
+**Crie** um arquivo chamado `launch.json` dentro da pasta `.vscode` do projeto.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p .vscode
 touch .vscode/launch.json
 ```
 
-Utilize o **snippet** `launch-json` para inicializar o arquivo com o seguinte código:
+A estrutura do projeto deve ficar da seguinte forma.
+
+<FileTree>
+
+- .vscode
+  - **launch.json**
+  - tasks.json
+- build
+  - ...
+- node
+  - node.cpp
+  - node.hpp
+- tree
+  - tree.cpp
+  - tree.hpp
+- .clang-format
+- .clang-tidy
+- main.cpp
+
+</FileTree>
+
+Utilize o **snippet** `launch-json` para inicializar o arquivo `launch.json` com o seguinte código:
 
 ```json title=".vscode/launch.json" frame="code" {2}
 {
@@ -50,7 +71,7 @@ O conteúdo do arquivo será o seguinte:
 
 Agora, ponha um **breakpoint** na linha 10 do arquivo `main.cpp`, em que há o seguinte trecho de código.
 
-```cpp title="main.cpp" frame="code"
+```cpp title="main.cpp" frame="code" startLineNumber=10
 tree.insert(3);
 ```
 

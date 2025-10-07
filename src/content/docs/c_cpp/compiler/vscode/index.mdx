@@ -3,7 +3,7 @@ title: Configurando o Visual Studio Code
 author: Gabriel Malosto
 ---
 
-import { Code } from "@astrojs/starlight/components";
+import { Code, FileTree } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -143,6 +143,8 @@ Para configurá-los, basta criar um arquivo `.clang-format` e um `.clang-tidy` n
 Entretanto, criar e configurar esses arquivos manualmente pode ser trabalhoso.
 Por isso, podemos utilizar um snippet para criar esses arquivos automaticamente.
 
+### Configuração
+
 Garanta que você tenha selecionado o **perfil** `C/C++`.
 Então abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e **pesquise** por `Snippets: Configure Snippets`.
 
@@ -208,10 +210,26 @@ Lembre-se de **salvar** após a edição.
 
 Então, **feche** o Visual Studio Code.
 
-**Abra** VSCode no diretório `separate_function` que criamos anteriormente.
+### Utilização
+
+**Abra** o VSCode no diretório `separate_function` que criamos anteriormente.
 **Crie** um arquivo chamado `.clang-format` e outro chamado `.clang-tidy` na raiz do projeto.
 
-Em seguida, **abra** o arquivo `.clang-format`, digite `clang-format` e pressione <Kbd linux={"Enter"} />.
+A estrutura de pastas ficará como a seguir.
+
+<FileTree>
+
+  - separate_function
+    - .clang-format
+    - .clang-tidy
+    - .gitignore
+    - functions.c
+    - main.c
+
+</FileTree>
+
+Em seguida, **abra** o arquivo `.clang-format`.
+Dentro desse arquivo, digite `clang-format` e pressione <Kbd linux={"Enter"} />.
 
 <Figure
   caption={`Utilizando o snippet "clang-format".`}
@@ -273,6 +291,17 @@ Selecione o **perfil** `C/C++` que criamos anteriormente.
 
 ### Arquivos
 
+Vamos criar arquivos dentro dessa pasta, de forma que o projeto ficará como a seguir.
+
+<FileTree>
+
+  - linked_nodes
+    - main.c
+    - node.c
+    - node.h
+
+</FileTree>
+
 **Crie** um arquivo chamado `node.h` e cole o seguinte código nele.
 
 <Code lang="c" title="node.h" code={nodeHeaderFromLinkedNodes} frame="code" />
@@ -287,6 +316,19 @@ Por fim, **crie** um arquivo chamado `main.c` e cole o código a seguir.
 
 Para configurar a formatação e o linter, **crie** os arquivos `.clang-format` e `.clang-tidy` na raiz do projeto.
 Então utilize os **snippets** `clang-format` e `clang-tidy` para preenchê-los.
+
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - linked_nodes
+    - .clang-format
+    - .clang-tidy
+    - main.c
+    - node.c
+    - node.h
+
+</FileTree>
 
 ### Compilação
 
@@ -343,6 +385,20 @@ O conteúdo deve ser o seguinte.
   frame="code"
 />
 
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - linked_nodes
+    - .clang-format
+    - .clang-tidy
+    - .gitignore
+    - main.c
+    - node.c
+    - node.h
+
+</FileTree>
+
 Como estamos compilando o projeto para dentro da pasta `build`, **listamos** ela no arquivo `.gitignore`.
 Assim, quaisquer arquivos dentro dela não serão enviados para o repositório.
 Além disso, o arquivo deve listar a pasta `.cache/`, que contém arquivos auxiliares da extensão `clangd`.
@@ -370,6 +426,23 @@ Dentro dela, **crie** um arquivo chamado `tasks.json` e copie para ele o conteú
   code={vscodeTasksForLinkedNodes}
   frame="code"
 />
+
+
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - linked_nodes
+    - .vscode
+      - tasks.json
+    - .clang-format
+    - .clang-tidy
+    - .gitignore
+    - main.c
+    - node.c
+    - node.h
+
+</FileTree>
 
 O que o arquivo faz é definir uma tarefa chamada `Clang: build C project (all files in root) (Local)`.
 Essa tarefa **compila** o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na **raiz** do projeto.

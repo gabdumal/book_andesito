@@ -39,7 +39,7 @@ cd binary_tree
 code .
 ```
 
-Lembre-se de ativar o **perfil** `C/C++` que criamos no capítulo [Configurando o VSCode](vscode).
+Lembre-se de ativar o **perfil** `C/C++` que criamos no capítulo [Configurando o VSCode](../vscode).
 
 **Crie** um arquivo chamado `main.cpp` e adicione o seguinte código.
 
@@ -54,6 +54,15 @@ int main()
     return 0;
 }
 ```
+
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - binary_tree
+    - main.cpp
+
+</FileTree>
 
 Para **compilar** o código, utilizamos o comando `clang++`, em vez de apenas `clang`.
 A estrutura do comando é a mesma.
@@ -108,6 +117,8 @@ A estrutura do projeto deve ficar da seguinte forma.
 
 <FileTree>
 
+- build
+  - ...
 - node
   - node.cpp
   - node.hpp
@@ -120,7 +131,7 @@ A estrutura do projeto deve ficar da seguinte forma.
 
 </FileTree>
 
-**Copie** o conteúdo de todos os arquivos abaixo para os respectivos arquivos criados.
+**Copie** o conteúdo de todos os trechos de código abaixo para os respectivos arquivos criados.
 Não se esqueça de **salvar** cada um deles.
 
 <Code lang="cpp" title="main.cpp" code={mainFromBinaryTree} frame="code" />
@@ -146,6 +157,26 @@ Não se esqueça de **salvar** cada um deles.
 Antes de compilar o projeto, vamos inicializar o controle de versão com o **Git**.
 
 **Crie** o arquivo `.gitignore` na raiz do projeto, e o preencha com o **snippet** `gitignore-c-cpp`.
+
+
+A estrutura do projeto deve ficar da seguinte forma.
+
+<FileTree>
+
+- build
+  - ...
+- node
+  - node.cpp
+  - node.hpp
+- tree
+  - tree.cpp
+  - tree.hpp
+- .clang-format
+- .clang-tidy
+- **.gitignore**
+- main.cpp
+
+</FileTree>
 
 Então, inicialize o repositório Git e faça o primeiro commit.
 
@@ -197,20 +228,42 @@ Se tudo estiver correto, você verá os nós da árvore binária sendo impressos
 ### Configurações
 
 Assim como fizemos para projetos em **C**, podemos configurar tarefas de compilação para **C++** no Visual Studio Code.
-Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](vscode), já está configurada uma tarefa de compilação para **C++**.
+Se você seguiu os passos recomendados no capítulo [Configurando o VSCode](../vscode), já está configurada uma tarefa de compilação para **C++**.
 
-Infelizmente, essa tarefa apenas compila arquivos `.cpp` que estejam na raiz do projeto.
+Infelizmente, essa tarefa apenas compila os arquivos `.cpp` que estiverem na **raiz** do projeto.
 Uma vez que nosso projeto tem arquivos em pastas diferentes, precisamos especificar a localização de todos eles.
+
 Dessa forma, a tarefa de compilação global não é suficiente para compilar o projeto `binary_tree`.
 Precisamos criar um arquivo de tarefa personalizado para isso.
 
-Nós configuramos também alguns **snippets** para facilitar a construção do arquivo `tasks.json`.
+Nós configuramos alguns **snippets** para facilitar a construção do arquivo `tasks.json`.
 **Crie** uma pasta chamada `.vscode` na raiz do projeto e um arquivo chamado `tasks.json` dentro dela.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p .vscode
 touch .vscode/tasks.json
 ```
+
+
+A estrutura do projeto deve ficar da seguinte forma.
+
+<FileTree>
+
+- .vscode
+  - **tasks.json**
+- build
+  - ...
+- node
+  - node.cpp
+  - node.hpp
+- tree
+  - tree.cpp
+  - tree.hpp
+- .clang-format
+- .clang-tidy
+- main.cpp
+
+</FileTree>
 
 Garanta que o **perfil** `C/C++` esteja ativo e abra o arquivo `tasks.json`.
 Digite nele `tasks-json` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o **snippet**.
@@ -237,7 +290,7 @@ Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Kbd linux=
   ]}
 />
 
-Observe o campo `args` do arquivo `tasks.json`.
+Agora, observe o campo `args` do arquivo `tasks.json`.
 Ele contém os **argumentos** que passamos para o comando de compilação.
 Atualmente, ele recebe todos os arquivos `.cpp` que estejam na raiz do projeto.
 
@@ -255,9 +308,11 @@ Atualmente, ele recebe todos os arquivos `.cpp` que estejam na raiz do projeto.
 ```
 
 Precisamos passar, além desses, todos os arquivos `.cpp` que estão nas pastas `tree` e `node`.
-Para isso, **adicionamos** uma linha para cada pasta, iniciando com o atalho `${workspaceFolder}`, o qual indica a pasta raiz do projeto.
+Para isso, **adicionamos** uma linha para cada pasta.
+O atalho `${workspaceFolder}` representa a pasta raiz do projeto.
+Por isso, cada linha se inicia com ele.
 
-O arquivo `tasks.json` deve ficar da forma abaixo.
+O arquivo `tasks.json` deve ficar como abaixo.
 
 <Code
   lang="json"

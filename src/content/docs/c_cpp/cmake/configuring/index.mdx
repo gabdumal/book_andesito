@@ -3,7 +3,7 @@ title: Configurando um projeto
 author: Gabriel Malosto
 ---
 
-import { Code } from "@astrojs/starlight/components";
+import { Code, FileTree } from "@astrojs/starlight/components";
 
 import cMakeListsTxtFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph_with_cmake/CMakeLists.txt?raw";
 import cMakeListsTxtFromSrcOnOrientedGraph from "/public/code/c_cpp_projects/oriented_graph_with_cmake/src/CMakeLists.txt?raw";
@@ -25,7 +25,8 @@ cp -r oriented_graph oriented_graph_with_cmake
 cd oriented_graph_with_cmake
 ```
 
-Também podemos adotar a convenção de **colocar** todos os arquivos de código-fonte dentro de uma pasta chamada `src`.
+Dessa vez, vamos adotar a convenção de **colocar** todos os arquivos de código-fonte dentro de uma pasta chamada `src`.
+Execute os comandos a seguir para fazê-lo.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p src
@@ -34,6 +35,27 @@ mv node src
 mv edge src
 mv graph src
 ```
+
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - src
+    - edge
+      - edge.cpp
+      - edge.hpp
+    - graph
+      - graph.cpp
+      - graph.hpp
+    - node
+      - node.cpp
+      - node.hpp
+    - main.cpp
+  - .clang-format
+  - .clang-tidy
+  - .gitignore
+
+</FileTree>
 
 ## Configuração geral
 
@@ -47,6 +69,28 @@ cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
 touch CMakeLists.txt
 code .
 ```
+
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - src
+    - edge
+      - edge.cpp
+      - edge.hpp
+    - graph
+      - graph.cpp
+      - graph.hpp
+    - node
+      - node.cpp
+      - node.hpp
+    - main.cpp
+  - .clang-format
+  - .clang-tidy
+  - .gitignore
+  - **CMakeLists.txt**
+
+</FileTree>
 
 Vamos preencher trecho por trecho do arquivo `CMakeLists.txt` para entender o que cada parte faz.
 
@@ -161,6 +205,29 @@ Para isso, vamos **criar** um novo arquivo `CMakeLists.txt` dentro da pasta `src
 touch src/CMakeLists.txt
 ```
 
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - src
+    - edge
+      - edge.cpp
+      - edge.hpp
+    - graph
+      - graph.cpp
+      - graph.hpp
+    - node
+      - node.cpp
+      - node.hpp
+    - **CMakeLists.txt**
+    - main.cpp
+  - .clang-format
+  - .clang-tidy
+  - .gitignore
+  - CMakeLists.txt
+
+</FileTree>
+
 ### Executável
 
 Dentro deste novo arquivo `src/CMakeLists.txt`, precisamos **definir** o nome do arquivo executável que será gerado após a compilação.
@@ -233,6 +300,32 @@ touch src/node/CMakeLists.txt
 touch src/edge/CMakeLists.txt
 touch src/graph/CMakeLists.txt
 ```
+
+A estrutura do projeto ficará como a seguir.
+
+<FileTree>
+
+  - src
+    - edge
+      - **CMakeLists.txt**
+      - edge.cpp
+      - edge.hpp
+    - graph
+      - **CMakeLists.txt**
+      - graph.cpp
+      - graph.hpp
+    - node
+      - **CMakeLists.txt**
+      - node.cpp
+      - node.hpp
+    - CMakeLists.txt
+    - main.cpp
+  - .clang-format
+  - .clang-tidy
+  - .gitignore
+  - CMakeLists.txt
+
+</FileTree>
 
 ### Biblioteca
 

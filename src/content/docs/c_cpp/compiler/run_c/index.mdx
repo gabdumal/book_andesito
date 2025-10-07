@@ -3,7 +3,7 @@ title: Compilando programas em C
 author: Gabriel Malosto
 ---
 
-import { Code } from "@astrojs/starlight/components";
+import { Code, FileTree } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -33,7 +33,7 @@ cd c_cpp_projects
 
 ## Programa
 
-**Crie** um outro diretório chamado `hello_world e também **navegue** para dentro nele.
+**Crie** um outro diretório chamado `hello_world` e também **navegue** para dentro nele.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p hello_world
@@ -45,6 +45,17 @@ cd hello_world
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch hello_world.c
 ```
+
+A estrutura de pastas ficará como a seguir.
+
+<FileTree>
+
+  - dev
+    - c_cpp_projects
+      - hello_world
+        - hello_world.c
+
+</FileTree>
 
 **Abra** o Visual Studio Code neste diretório.
 
@@ -146,10 +157,14 @@ cd separate_function
 ```
 
 **Crie** um arquivo chamado `main.c`.
-Então **abra** o Visual Studio Code no diretório atual.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch main.c
+```
+
+Então **abra** o Visual Studio Code no diretório atual.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 code .
 ```
 
@@ -170,6 +185,18 @@ code .
   code={functionsFromSeparateFunctionCode}
   frame="code"
 />
+
+A estrutura de pastas ficará como a seguir.
+
+<FileTree>
+
+  - dev
+    - c_cpp_projects
+      - separate_function
+        - functions.c
+        - main.c
+
+</FileTree>
 
 A função principal `main` **chama** a função `sum`, que está definida em outro arquivo.
 Então, para fazer a compilação, precisamos passar os dois arquivos para o compilador.
@@ -212,6 +239,19 @@ Um desses arquivos é o executável que acabamos de criar.
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 echo "separate_function" >> .gitignore
 ```
+
+A estrutura de pastas ficará como a seguir.
+
+<FileTree>
+
+  - dev
+    - c_cpp_projects
+      - separate_function
+        - .gitignore
+        - functions.c
+        - main.c
+
+</FileTree>
 
 Então, precisamos adicionar os arquivos ao repositório, o que comumente é chamado de **staging**.
 O comando abaixo **adiciona** todos os arquivos do diretório atual, exceto aqueles que estão listados no arquivo `.gitignore`.

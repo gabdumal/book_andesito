@@ -1,0 +1,280 @@
+---
+title: Depurando programas com argumentos em C++
+author: Gabriel Malosto
+---
+
+import { Code, FileTree } from "@astrojs/starlight/components";
+import { Kbd } from "starlight-kbd/components";
+
+import Figure from "@components/Figure.astro";
+
+import mainFromHelloUser from "/public/code/c_cpp_projects/hello_user/main.cpp?raw";
+import vscodeTasksForHelloUser from "/public/code/c_cpp_projects/hello_user/.vscode/tasks.json?raw";
+import vscodeLaunchForHelloUser from "/public/code/c_cpp_projects/hello_user/.vscode/launch.json?raw";
+import outputOfProgramPath from "@assets/content/docs/c_cpp/debugger/run_cpp_with_arguments/output_of_program_path.png";
+
+Programas executados pelo terminal podem receber **argumentos**.
+Esses são textos e números descritos logo após digitar o nome do programa.
+
+Até agora, utilizamos argumentos para listar os arquivos `*.cpp` quando chamamos o **Clang**.
+
+Vamos criar um programa simples que captura o **nome** de um usuário como argumento e o exibe numa mensagem de boas-vindas.
+
+## Projeto
+
+**Crie** uma pasta chamada `hello_user` dentro de `dev/c_cpp_projects` e navegue para dentro dela.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p ~/dev/c_cpp_projects/hello_user
+cd hello_user
+```
+
+**Crie** a pasta `.vscode` e, dentro dela, os arquivos `tasks.json` e `launch.json`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p .vscode
+touch .vscode/tasks.json .vscode/launch.json
+```
+
+Então, **crie** o arquivo `.gitignore` na raiz do projeto, e o preencha com o **snippet** `gitignore-c-cpp`.
+
+Finalmente, **crie** um arquivo chamado `main.cpp` na raiz do projeto .e o preencha com o código a seguir.
+
+```cpp title="main.cpp" frame="code"
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  cout << "Hello, world!"<< endl;
+
+  return 0;
+}
+```
+
+A estrutura de pastas deve ficar da seguinte forma.
+
+<FileTree>
+
+- dev
+  - c_cpp_projects
+    - hello_user
+      - .vscode
+        - launch.json
+        - tasks.json
+      - .gitignore
+      - main.cpp
+
+</FileTree>
+
+### Compilação
+
+Utilize o **snippet** `tasks-json` para inicializar o arquivo `tasks.json` com o seguinte código:
+
+```json title=".vscode/tasks.json" frame="code" {3}
+{
+  "version": "2.0.0",
+  "tasks": []
+}
+```
+
+Utilize o **snippet** `cpp-build-task` para preencher o vetor `tasks`.
+O conteúdo do arquivo será o seguinte:
+
+<Code
+  lang="json"
+  title=".vscode/tasks.json"
+  code={vscodeTasksForHelloUser}
+  frame="code"
+/>
+
+### Execução
+
+Então, utilize o **snippet** `launch-json` para inicializar o arquivo `launch.json` com o seguinte código:
+
+```json title=".vscode/launch.json" frame="code" {2}
+{
+  "configurations": [],
+  "version": "0.2.0"
+}
+```
+
+Por fim, utilize o **snippet** `cpp-launch` para preencher o vetor `configurations`.
+O conteúdo do arquivo será o seguinte:
+
+```json title=".vscode/launch.json" frame="code" {4}
+{
+  "configurations": [
+    {
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "name": "LLDB: build and launch C++ project (Local)",
+      "preLaunchTask": "Clang: build C++ project (Local)",
+      "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
+      "request": "launch",
+      "terminal": "console",
+      "type": "lldb"
+    }
+  ],
+  "version": "0.2.0"
+}
+```
+
+## Argumentos
+
+Para obtermos os argumentos passados para o programa, precisamos fazer uma pequena alteração na função `main`.
+Vamos incluir nela os parâmetros `int argc` e `char *argv[]`.
+
+```cpp title="main.cpp" frame="code" mark={1} startLineNumber={5}
+int main(int argc, char *argv[]) {
+  cout << "Hello, world!"<< endl;
+
+  return 0;
+}
+```
+
+- O parâmetro **`int argc`** representa a quantidade de argumentos que o usuário informou para o programa.
+- Já o parâmetro **`char *argv[]`** se trata de um vetor de strings que guarda cada argumento informado.
+
+### Programa
+
+O primeiro argumento da lista é sempre o caminho (ou _path_) do arquivo executável chamado.
+Podemos conferir isso com uma modificação no nosso programa.
+Vamos receber o argumento de índice `0` em uma variável.
+Então, imprimiremos seu valor.
+
+Edite o arquivo `main.cpp` da seguinte forma:
+
+```cpp title="main.cpp" frame="code" ins={2,3} startLineNumber={5}
+int main(int argc, char *argv[]) {
+  auto program = argv[0];
+  cout << "This is the program " << program << "." << endl;
+
+  return 0;
+}
+```
+
+Para executar nosso programa, acesse o menu de depuração clicando no ícone de **bug** ou pelo atalho <Kbd linux={"Ctrl+Shift+D"} />.
+Então clique no botão de **play** verde ou, se preferir, use o atalho de teclado <Kbd linux={"F5"} />.
+
+A execução será exibida na aba `Debug console`.
+Você pode acessá-la com o atalho <Kbd linux={"Ctrl+Shift+Y"} />.
+
+<Figure
+  caption="Execução do programa exibindo o caminho do arquivo executado."
+  images={[
+    {
+      src: outputOfProgramPath,
+      alt: `Aba "Debug console" do Visual Studio Code, em que o programa "hello_user" é executado. Ele exibe no console o seguinte texto: "This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.".`,
+    },
+  ]}
+/>
+
+### Opcionais
+
+Agora, vamos receber o segundo argumento, em que o usuário informará seu nome.
+
+Em todos os programas, devemos tratar os argumentos de índice `1` em diante como **opcionais**.
+De fato, o usuário não é obrigado a fornecê-los.
+Assim, é nossa responsabilidade tratar esse caso.
+
+A primeira forma de tratar a entrada de dados é verificar a **quantidade** de argumentos fornecidos.
+
+- Caso ela seja igual a `1`, então apenas o próprio programa foi chamado.
+- De `2` em diante, sabemos que o usuário informou pelo menos um argumento.
+
+Vamos fazer essa verificação.
+Caso o nome do usuário não tenha sido fornecido, imprimiremos que ele é um usuário **desconhecido**.
+
+Edite o arquivo `main.cpp` da seguinte forma:
+
+```cpp title="main.cpp" frame="code" ins={5-11} startLineNumber={5}
+int main(int argc, char *argv[]) {
+  auto program = argv[0];
+  cout << "This is the program " << program << "." << endl;
+
+  cout << "Hello, ";
+
+  if (argc < 2) {
+    cout << "unknown user";
+  }
+
+  cout << "!" << endl;
+
+  return 0;
+}
+```
+
+Compile o programa pelo VSCode.
+Você pode utilizar o atalho <Kbd linux={"Ctrl+Shift+B"} /> e executar a tarefa `Clang: build C++ project (Local)`.
+
+Vamos executar o programa via linha de comando.
+Lembre-se de que, quando o programa é compilado automaticamente pelo VSCode, seu arquivo executável fica dentro da pasta `build`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+./build/hello_user
+# This is the program ./build/hello_user.
+# Hello, unknown user!
+```
+
+Nesse caso, como chamamos o programa manualmente pelo caminho `./build/hello_user`, este foi impresso no terminal.
+Na linha abaixo, o programa imprimiu que somos um usuário desconhecido.
+
+Agora, vamos tratar um argumento **recebido**.
+Caso o número de argumentos fornecido seja pelo menos `2`, receberemos aquele de índice `1` em uma **variável**.
+Nesse caso, poderemos imprimi-lo como o nome do usuário.
+
+Edite o arquivo `main.cpp` da seguinte forma:
+
+<Code
+  lang="cpp"
+  title="main.cpp"
+  code={mainFromHelloUser}
+  frame="code"
+  ins={[13, 14, 15, 16]}
+/>
+
+Compile o projeto pelo VSCode como fizemos anteriormente.
+
+Agora, ao executarmos o programa **manualmente**, vamos passar um nome.
+Ele deve ser escrito logo após o caminho do executável, e separado por um **espaço**.
+Também não devemos usar aspas ou qualquer outro delimitador.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+./build/hello_user Gabriel
+# This is the program ./build/hello_user.
+# Hello, Gabriel!
+```
+
+Parece ótimo!
+
+Mas e se quisermos executar o programa pelo VSCode?
+Ele não sabe qual é o nome do usuário a informar.
+
+Se tentarmos executá-lo, veremos a seguinte saída no "Debug console":
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+# This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.
+# Hello, unknown user!
+```
+
+Podemos resolver isso editando o arquivo `.vscode/launch.json`.
+O vetor **`args`** guarda a lista de argumentos a serem informados para o programa.
+Vamos adicionar dentro dele a string "Alice".
+
+<Code
+  lang="json"
+  title=".vscode/launch.json"
+  code={vscodeLaunchForHelloUser}
+  frame="code"
+  mark={4}
+/>
+
+Agora, se compilarmos e executarmos pelo VScode, o resultado no "Debug console" mostrará o nome "Alice", como a seguir:
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+# This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.
+# Hello, Alice!
+```
+
+Não se esqueça de inicializar o **repositório** e fazer commit das modificações.

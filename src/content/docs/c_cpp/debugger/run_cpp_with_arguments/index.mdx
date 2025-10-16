@@ -26,7 +26,7 @@ Vamos criar um programa simples que captura o **nome** de um usuário como argum
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p ~/dev/c_cpp_projects/hello_user
-cd hello_user
+cd ~/dev/c_cpp_projects/hello_user
 ```
 
 **Crie** a pasta `.vscode` e, dentro dela, os arquivos `tasks.json` e `launch.json`.
@@ -34,6 +34,12 @@ cd hello_user
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p .vscode
 touch .vscode/tasks.json .vscode/launch.json
+```
+
+**Abra** o VSCode na pasta atual.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+code .
 ```
 
 Então, **crie** o arquivo `.gitignore` na raiz do projeto, e o preencha com o **snippet** `gitignore-c-cpp`.

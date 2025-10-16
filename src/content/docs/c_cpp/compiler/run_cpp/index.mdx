@@ -59,8 +59,8 @@ A estrutura do projeto ficará como a seguir.
 
 <FileTree>
 
-  - binary_tree
-    - main.cpp
+- binary_tree
+  - main.cpp
 
 </FileTree>
 
@@ -158,7 +158,6 @@ Antes de compilar o projeto, vamos inicializar o controle de versão com o **Git
 
 **Crie** o arquivo `.gitignore` na raiz do projeto, e o preencha com o **snippet** `gitignore-c-cpp`.
 
-
 A estrutura do projeto deve ficar da seguinte forma.
 
 <FileTree>
@@ -204,6 +203,7 @@ Dado que nosso projeto tem mais de uma pasta internamente, precisamos especifica
 **Execute** o código a seguir.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p build
 clang++ tree/tree.cpp node/node.cpp main.cpp -I tree -I node -o build/binary_tree
 ```
 
@@ -243,7 +243,6 @@ Nós configuramos alguns **snippets** para facilitar a construção do arquivo `
 mkdir -p .vscode
 touch .vscode/tasks.json
 ```
-
 
 A estrutura do projeto deve ficar da seguinte forma.
 

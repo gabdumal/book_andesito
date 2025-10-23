@@ -1,0 +1,44 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "prettier.tabWidth": 2
+  },
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "cSpell.words": [
+    "ipynb",
+    "mealpy",
+    "minmax",
+    "mypy",
+    "ndarray",
+    "pycache",
+    "pylance",
+    "pylint",
+    "pytest",
+    "termcolor",
+    "venv"
+  ],
+  "files.exclude": {
+    "**/__init__.py": true,
+    "**/__pycache__": true,
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.ipynb_checkpoints": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.venv": true
+  },
+  "python.analysis.extraPaths": ["./src"]
+}

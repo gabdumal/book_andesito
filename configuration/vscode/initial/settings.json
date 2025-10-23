@@ -1,0 +1,33 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[snippets]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.language": "en,en-US,pt,pt-BR",
+  "editor.formatOnSave": true,
+  "editor.semanticHighlighting.enabled": true,
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "git.autofetch": true,
+  "markdownlint.run": "onSave",
+  "workbench.settings.applyToAllProfiles": [
+    "cSpell.language",
+    "editor.formatOnSave",
+    "editor.semanticHighlighting.enabled",
+    "files.autoSave",
+    "files.eol",
+    "files.insertFinalNewline",
+    "files.trimFinalNewlines",
+    "git.autofetch",
+    "git.enableCommitSigning",
+    "github.gitProtocol",
+    "markdownlint.run"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "name": "LLDB: build and launch C++ project (Local)",
+      "preLaunchTask": "Clang: build C++ project (Local)",
+      "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
+      "request": "launch",
+      "terminal": "console",
+      "type": "lldb"
+    }
+  ],
+  "version": "0.2.0"
+}

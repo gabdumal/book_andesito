@@ -1,91 +1,124 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-import esLint from "@eslint/js";
+import eslint from "@eslint/js";
 import astroPlugin from "eslint-plugin-astro";
 import perfectionistPlugin from "eslint-plugin-perfectionist";
-import tsEsLint from "typescript-eslint";
+import { defineConfig, globalIgnores } from "eslint/config";
+import tseslint from "typescript-eslint";
 
-/** @type {import("eslint").Linter.Config} */
-export default [
-  {
-    ignores: [".astro/**", ".nix_shell/**", "dist/**", "node_modules/**"],
-  },
-
-  {
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
+/**
+ * A shared ESLint configuration for the repository.
+ *
+ * @type {import("eslint").Linter.Config[]}
+ * */
+const config = defineConfig(
+  globalIgnores([".astro", "build", "dist", "node_modules", "target"]),
 
   /* ESLint rules */
-  esLint.configs.all,
+  eslint.configs.all,
   {
     rules: {
+      camelcase: ["error", { properties: "never" }],
       "capitalized-comments": ["off", { ignoreConsecutiveComments: true }],
+      // Disable, in order to use @typescript-eslint/class-methods-use-this
       "class-methods-use-this": "off",
+      // Disable, in order to use @typescript-eslint/default-param-last
+      "default-param-last": "off",
       "id-length": ["error", { exceptions: ["_"] }],
       "max-lines": "off",
       "max-lines-per-function": ["warn", 70],
       "max-statements": ["error", 20],
-      "no-console": "off",
+      "no-alert": "off",
+      "no-console": ["warn", { allow: ["error"] }],
       "no-continue": "off",
+      "no-empty-pattern": ["error", { allowObjectPatternsAsParameters: true }],
+      // Disable, in order to use @typescript-eslint/no-magic-numbers
       "no-magic-numbers": "off",
+      // Disable, in order to use @typescript-eslint/no-shadow
       "no-shadow": "off",
       "no-ternary": "off",
-      "no-use-before-define": [
-        "off",
-        {
-          classes: false,
-        },
-      ],
+      // Disable, in order to use @typescript-eslint/no-use-before-define
+      "no-use-before-define": "off",
       "no-warning-comments": "warn",
       "one-var": "off",
       "restrict-template-expressions": "off",
-      // Use perfectionist/sort-imports
+      // Disable, in order to use perfectionist/sort-imports
       "sort-imports": "off",
-      // Use perfectionist/sort-object-types
+      // Disable, in order to use perfectionist/sort-object-types
       "sort-keys": "off",
-      // Use perfectionist/sort-variable-declarations
+      // Disable, in order to use perfectionist/sort-variable-declarations
       "sort-vars": "off",
     },
   },
 
   /* TypeScript ESLint rules */
-  ...tsEsLint.configs.strictTypeChecked,
-  ...tsEsLint.configs.stylisticTypeChecked,
+  tseslint.configs.strictTypeChecked,
+  tseslint.configs.stylisticTypeChecked,
+  {
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   {
     rules: {
+      "@typescript-eslint/class-methods-use-this": "error",
+      // Disabled, because it is recommended to use noImplicitReturns in tsconfig.json instead
+      "@typescript-eslint/consistent-return": "off",
       "@typescript-eslint/consistent-type-exports": "error",
       "@typescript-eslint/consistent-type-imports": "error",
-      "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/default-param-last": "error",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-member-accessibility": "error",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-magic-numbers": [
         "error",
         {
           ignoreEnums: true,
           ignoreNumericLiteralTypes: true,
           ignoreReadonlyClassProperties: true,
+          ignoreTypeIndexes: true,
+        },
+      ],
+      "@typescript-eslint/no-misused-promises": [
+        2,
+        {
+          checksVoidReturn: {
+            attributes: false,
+          },
         },
       ],
       "@typescript-eslint/no-shadow": [
         "error",
         {
-          builtinGlobals: true,
+          builtinGlobals: false,
           hoist: "all",
           ignoreFunctionTypeParameterNameValueShadow: false,
           ignoreTypeValueShadow: false,
         },
       ],
-      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-unsafe-type-assertion": "error",
+      "@typescript-eslint/no-use-before-define": "error",
+      "@typescript-eslint/no-useless-empty-export": "error",
+      "@typescript-eslint/prefer-enum-initializers": "error",
       "@typescript-eslint/prefer-literal-enum-member": "off",
+      "@typescript-eslint/prefer-readonly": "error",
+      "@typescript-eslint/prefer-readonly-parameter-types": "off",
       "@typescript-eslint/restrict-template-expressions": [
         "error",
         {
           allowNumber: true,
         },
       ],
+      "@typescript-eslint/strict-boolean-expressions": "error",
+      "@typescript-eslint/switch-exhaustiveness-check": "error",
+    },
+  },
+  {
+    files: ["eslint.config.js"],
+    rules: {
+      "@typescript-eslint/no-magic-numbers": "off",
     },
   },
 
@@ -152,19 +185,15 @@ export default [
       "perfectionist/sort-imports": [
         "error",
         {
-          fallbackSort: { type: "alphabetical" },
+          fallbackSort: { order: "desc", type: "line-length" },
           groups: [
-            ["builtin", "external"],
-            ["internal-type", "internal"],
-            [
-              "parent-type",
-              "parent",
-              "sibling-type",
-              "sibling",
-              "index-type",
-              "index",
-            ],
-            ["object"],
+            "type-import",
+            ["value-builtin", "value-external"],
+            "type-internal",
+            "value-internal",
+            ["type-parent", "type-sibling", "type-index"],
+            ["value-parent", "value-sibling", "value-index"],
+            "ts-equals-import",
             "unknown",
           ],
           ignoreCase: false,
@@ -298,8 +327,6 @@ export default [
     files: ["**/*.astro"],
     processor: "astro/client-side-ts",
   },
+);
 
-  {
-    ignores: ["dist/**"],
-  },
-];
+export { config as default };

@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-shadow
+ 
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }

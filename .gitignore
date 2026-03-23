@@ -1,13 +1,14 @@
 ## Development environment
 .direnv/
 
-# build output
+# build
 dist/
+
 # generated types
 .astro/
 
 # dependencies
-node_modules/
+node_modules
 
 # logs
 npm-debug.log*

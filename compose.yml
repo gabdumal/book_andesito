@@ -1,0 +1,30 @@
+services:
+  dev_environment:
+    build:
+      context: .devcontainer
+      dockerfile: Dockerfile
+    user: root
+    volumes:
+      # Mount the project root
+      - .:/workspace:Z
+      # Named volume for pnpm store cache
+      - pnpm_store:/root/.local/share/pnpm/store
+      # Named volumes for Cargo cache (avoids recompiling deps on rebuild)
+      - cargo_registry:/root/.cargo/registry
+      - cargo_git:/root/.cargo/git
+      - cargo_target:/workspace/target
+    working_dir: /workspace
+    env_file: .env
+    # Keep container running
+    command: sleep infinity
+    networks:
+      - default
+
+volumes:
+  pnpm_store:
+    name: pnpm_store
+  cargo_registry:
+    name: cargo_registry
+  cargo_git:
+    name: cargo_git
+  cargo_target:

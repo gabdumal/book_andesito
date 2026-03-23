@@ -1,0 +1,40 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "DavidAnson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "Gruntfuggly.todo-tree",
+        "mhutchie.git-graph",
+        "redhat.vscode-yaml",
+        "rust-lang.rust-analyzer",
+        "streetsidesoftware.code-spell-checker-portuguese-brazilian",
+        "streetsidesoftware.code-spell-checker",
+        "tamasfe.even-better-toml",
+        "vadimcn.vscode-lldb",
+        "YoavBls.pretty-ts-errors",
+        "ms-azuretools.vscode-containers",
+        "astro-build.astro-vscode"
+      ],
+      "settings": {
+        "[rust]": {
+          "editor.defaultFormatter": "rust-lang.rust-analyzer"
+        },
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "rust-analyzer.check.command": "clippy"
+      }
+    }
+  },
+  "dockerComposeFile": "../compose.yml",
+  "name": "book_andesito",
+  "postCreateCommand": "pnpm install",
+  "remoteUser": "root",
+  "service": "dev_environment",
+  "workspaceFolder": "/workspace"
+}

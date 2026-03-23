@@ -1,37 +1,31 @@
 {
   "author": "Gabriel Malosto",
   "dependencies": {
-    "@astrojs/starlight": "^0.36.1",
-    "@astrojs/ts-plugin": "^1.10.5",
-    "@expressive-code/plugin-line-numbers": "^0.41.3",
+    "@astrojs/starlight": "^0.38.2",
+    "@astrojs/ts-plugin": "^1.10.7",
+    "@expressive-code/plugin-line-numbers": "^0.41.7",
     "@fontsource-variable/atkinson-hyperlegible-mono": "^5.2.5",
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.2.6",
-    "astro": "^5.15.1",
-    "sharp": "^0.34.4",
-    "starlight-kbd": "^0.2.1"
+    "astro": "^6.0.8",
+    "sharp": "^0.34.5",
+    "starlight-kbd": "^0.4.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
-    "@typescript-eslint/parser": "^8.46.2",
-    "eslint": "^9.38.0",
-    "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-perfectionist": "^4.15.1",
+    "@eslint/js": "^10.0.1",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint": "^10.1.0",
+    "eslint-plugin-astro": "^1.6.0",
+    "eslint-plugin-perfectionist": "^5.7.0",
     "gh-pages": "^6.3.0",
-    "globals": "^16.4.0",
-    "prettier": "3.6.2",
+    "globals": "^17.4.0",
+    "prettier": "3.8.1",
     "prettier-plugin-astro": "0.14.1",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.2"
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.57.2"
   },
   "license": "CC-BY-SA-4.0",
   "name": "book_andesito",
   "packageManager": "pnpm@10.18.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
-  },
   "scripts": {
     "astro": "astro",
     "build": "astro build",
@@ -39,8 +33,8 @@
     "dev": "astro dev",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "preview": "astro preview",
-    "start": "astro dev"
+    "lint:fix": "eslint . --fix",
+    "preview": "astro preview"
   },
   "type": "module",
   "version": "0.1.0"

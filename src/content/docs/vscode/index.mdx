@@ -3,16 +3,16 @@ title: Visual Studio Code
 author: Gabriel Malosto
 ---
 
+import { Image } from "astro:assets";
 import { Code } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
-import Link from "@components/Link.astro";
 
 import downloadOptions from "@assets/content/docs/vscode/download_options.png";
 import otherOptions from "@assets/content/docs/vscode/other_options.png";
 import runningCodeViaPowershell from "@assets/content/docs/vscode/running_code_via_powershell.png";
-import runningCodeViaWsl from "@assets/content/docs/vscode/running_code_via_wsl.png";
+import authorizingWslForCode from "@assets/content/docs/vscode/authorizing_wsl_for_code.png";
 import remoteWindowButton from "@assets/content/docs/vscode/remote_window_button.png";
 import connectionsMenu from "@assets/content/docs/vscode/connections_menu.png";
 import backupAndSync from "@assets/content/docs/vscode/backup_and_sync.png";
@@ -35,33 +35,32 @@ Ele é relativamente leve, rápido e possui uma grande quantidade de extensões 
 
 Apresento formas de instalar o Visual Studio Code nos três sistemas operacionais que estamos tratando neste guia: Windows, Fedora e Mint.
 
-### Windows e WSL
+### Windows (e WSL)
 
 Você pode fazer o download do editor pelo [site oficial](https://code.visualstudio.com/Download).
+
 Mesmo que você esteja usando o **WSL**, é necessário instalar o Visual Studio Code no Windows, pois é ele que irá gerenciar as extensões e configurações do editor.
 
-<Figure
-  caption="Opções de downloads do website do Visual Studio Code."
-  images={[
-    {
-      src: downloadOptions,
-      alt: "Página de download do Visual Studio Code, em que se seleciona o instalador do Windows.",
-    },
-  ]}
-/>
+<Figure caption="Opções de downloads do website do Visual Studio Code.">
+  <Image
+    src={downloadOptions}
+    alt={
+      "Página de download do Visual Studio Code, em que se seleciona o instalador do Windows."
+    }
+  />
+</Figure>
 
 Execute o instalador e siga as instruções.
 Quando chegar ao passo `Selecionar tarefas adicionais`, marque todas as opções na seção `Outros`.
 
-<Figure
-  caption="Seleção de tarefas adicionais na instalação do Visual Studio Code."
-  images={[
-    {
-      src: otherOptions,
-      alt: "Instalação do Visual Studio Code, em que se selecionam todas as opções na seção Outros.",
-    },
-  ]}
-/>
+<Figure caption="Seleção de tarefas adicionais na instalação do Visual Studio Code.">
+  <Image
+    src={otherOptions}
+    alt={
+      "Instalação do Visual Studio Code, em que se selecionam todas as opções na seção Outros."
+    }
+  />
+</Figure>
 
 ### Fedora
 
@@ -83,7 +82,7 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 Em seguida, instale o Visual Studio Code.
 
 ```bash title="Fedora" frame="terminal"
-dnf check-update
+sudo dnf check-update
 sudo dnf install code -y
 ```
 
@@ -109,14 +108,14 @@ rm -f packages.microsoft.gpg
 Em seguida, atualize a lista de pacotes e instale o Visual Studio Code.
 
 ```bash title="Mint" frame="terminal"
-sudo apt install apt-transport-https -y
 sudo apt update -y && sudo apt upgrade -y
+sudo apt install apt-transport-https -y
 sudo apt install code -y
 ```
 
 ## Executando
 
-Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos do seu sistema operacional &mdash; seja Windows, Fedora ou Fedora &mdash.
+Para abrir o Visual Studio Code, basta procurar por ele no menu de aplicativos do seu sistema operacional &mdash; seja Windows, Fedora ou Fedora.
 
 ### Fedora e Mint
 
@@ -128,15 +127,14 @@ Já no Mint, ele é o **GNOME Terminal**.
 
 No Windows, você pode executar o comando `code` pelo PowerShell.
 
-<Figure
-  caption="Executando o Visual Studio Code pelo PowerShell."
-  images={[
-    {
-      src: runningCodeViaPowershell,
-      alt: "Janela do PowerShell, em que se executa o comando de abertura do Visual Studio Code. Ao lado, a janela do Visual Studio Code é aberta.",
-    },
-  ]}
-/>
+<Figure caption="Executando o Visual Studio Code pelo PowerShell.">
+  <Image
+    src={runningCodeViaPowershell}
+    alt={
+      "Janela do PowerShell, em que se executa o comando de abertura do Visual Studio Code. Ao lado, a janela do Visual Studio Code é aberta."
+    }
+  />
+</Figure>
 
 Isso abrirá o aplicativo no ecossistema do Windows, o que provavelmente não é o que você quer fazer.
 Idealmente, você deve executar o VSCode integrado no ambiente do WSL, como ensinado abaixo.
@@ -149,39 +147,34 @@ Isso abrirá o aplicativo focado na sua pasta `home` do Fedora.
 Na primeira vez que executar esse comando, o Visual Studio Code pedirá autorização para se conectar com o sistema do WSL.
 Maque a caixa de seleção `Permanently allow host 'wsl.localhost'` e clique no botão `Allow`.
 
-<Figure
-  caption="Executando o Visual Studio Code pelo WSL."
-  images={[
-    {
-      src: runningCodeViaWsl,
-      alt: `Janela do WSL, em que se executa o comando de abertura do Visual Studio Code na pasta "home" do usuário. Ao lado, uma janela do Visual Studio Code pede autorização para se conectar ao WSL.`,
-    },
-  ]}
-/>
+<Figure caption="Autorizando o Visual Studio Code a se conectar com o WSL.">
+  <Image
+    src={authorizingWslForCode}
+    alt={`Janela do Visual Studio Code, que pede autorização para se conectar ao WSL.`}
+  />
+</Figure>
 
 Ou então, pode abrir o VSCode normalmente pelo Menu Iniciar, e então selecionar o botão azul no canto inferior esquerdo, chamado `Open a Remote Window`.
 
-<Figure
-  caption="Botão para abrir uma conexão remota pelo Visual Studio Code."
-  images={[
-    {
-      src: remoteWindowButton,
-      alt: "Porção inferior esquerda do Visual Studio Code, em que há um botão azul, cujo texto auxiliar indica a ação de abrir uma janela remota.",
-    },
-  ]}
-/>
+<Figure caption="Botão para abrir uma conexão remota pelo Visual Studio Code.">
+  <Image
+    src={remoteWindowButton}
+    alt={
+      "Porção inferior esquerda do Visual Studio Code, em que há um botão azul, cujo texto auxiliar indica a ação de abrir uma janela remota."
+    }
+  />
+</Figure>
 
 Então, selecione a opção `WSL` no menu que aparecer.
 
-<Figure
-  caption="Opção WSL selecionada no menu de conexões remotas."
-  images={[
-    {
-      src: connectionsMenu,
-      alt: "Menu de conexões remotas do Visual Studio Code, em que se seleciona a opção 'WSL'.",
-    },
-  ]}
-/>
+<Figure caption="Opção WSL selecionada no menu de conexões remotas.">
+  <Image
+    src={connectionsMenu}
+    alt={
+      "Menu de conexões remotas do Visual Studio Code, em que se seleciona a opção 'WSL'."
+    }
+  />
+</Figure>
 
 Isso irá instalar a extensão do **WSL** no VSCode e atualizar sua janela para se conectar com o **Fedora**.
 
@@ -191,46 +184,43 @@ O Visual Studio Code permite sincronizar suas configurações por meio da sua co
 No canto inferior esquerdo da tela, existe um ícone de uma pessoa.
 Clique nele, e, em seguida, clique na opção `Backup and Sync Settings...` do menu que se abrir.
 
-<Figure
-  caption="Menu de contas do VSCode."
-  images={[
-    {
-      src: backupAndSync,
-      alt: "Menu de contas do Visual Studio Code, em que se seleciona a opção de se fazer sincronização.",
-    },
-  ]}
-/>
+<Figure caption="Menu de contas do VSCode.">
+  <Image
+    src={backupAndSync}
+    alt={
+      "Menu de contas do Visual Studio Code, em que se seleciona a opção de se fazer sincronização."
+    }
+  />
+</Figure>
 
 Então, o VSCode abrirá um outro menu no centro do canto superior, em que você deve marcar todas as caixas de seleção e pressionar o botão `Sign in`.
 No próximo menu, selecione a opção `Sign in with Github`.
 
-<Figure
-  caption="Menu de sincronização do VSCode."
-  images={[
-    {
-      src: whatToSync,
-      alt: "Menu de seleção de quais recursos sincronizar. Todos estão selecionados.",
-    },
-    {
-      src: whichService,
-      alt: "Menu de seleção qual serviço usar para se conectar, em que se seleciona o GitHub.",
-    },
-  ]}
-/>
+<Figure caption="Menu de sincronização do VSCode.">
+  <Image
+    src={whatToSync}
+    alt={
+      "Menu de seleção de quais recursos sincronizar. Todos estão selecionados."
+    }
+  />
+  <Image
+    src={whichService}
+    alt={
+      "Menu de seleção qual serviço usar para se conectar, em que se seleciona o GitHub."
+    }
+  />
+</Figure>
 
 O seu navegador abrirá o site do GitHub.
 Caso você não esteja logado, pode fazer log-in neste momento.
 Então, o GitHub mostra a conta conectada.
 
-<Figure
-  caption="Seleção da conta do GitHub."
-  images={[
-    {
-      src: whichAccount,
-      alt: "Página do GitHub, em que se seleciona a conta em que conectar.",
-    },
-  ]}
-/>
+<Figure caption="Seleção da conta do GitHub.">
+  <Image
+    src={whichAccount}
+    alt={"Página do GitHub, em que se seleciona a conta em que conectar."}
+  />
+</Figure>
 
 Selecione o botão `Continue`.
 O VSCode vai começar a fazer a sincronização.
@@ -253,37 +243,34 @@ Recomendo a instalação das seguintes:
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 - [Brazilian Portuguese - Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-portuguese-brazilian)
 - [vscode-pdf](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf)
+- [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) (se estiver usando o Windows)
 
-Se você gostou do meu tema de cores, você pode instalá-lo também:
+Se você tiver gostado do meu tema de cores, você pode instalá-lo também:
 
 - [Catppuccin for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc)
 - [Catppuccin Icons for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc)
 
 Para cada uma dessas extensões, clique com o botão direito sobre e selecione `Apply Extensions to all Profiles`.
 
-<Figure
-  caption="Aplicando a primeira extensão a todos os perfis do Visual Studio Code."
-  images={[
-    {
-      src: applyingExtensionToAllProfiles,
-      alt: `Janela de extensões do Visual Studio Code, em que se aplica a extensão "Git Graph" a todos os perfis do editor.`,
-    },
-  ]}
-/>
+<Figure caption="Aplicando a primeira extensão a todos os perfis do Visual Studio Code.">
+  <Image
+    src={applyingExtensionToAllProfiles}
+    alt={`Janela de extensões do Visual Studio Code, em que se aplica a extensão "Git Graph" a todos os perfis do editor.`}
+  />
+</Figure>
 
 Isso será importante mais tarde, quando criarmos perfis específicos para cada linguagem de programação.
 
 Conectando-se pelo VSCode no WSL, algumas podem requerer que você clique em `Install in WSL: Fedora` para que funcionem corretamente.
 
 <Figure
-  caption={`Seção de extensões do visual Studio Code, em que se pode selecionar a extensão "Brazilian portuguese - Code Spell Checker" para ser instalada no WSL.`}
-  images={[
-    {
-      src: extensions,
-      alt: `Seção de extensões do visual Studio Code, em que se vê a extensão "WSL" instalada e sua descrição breve. Também se vê a extensão "Brazilian portuguese - Code Spell Checker" desabilitada, na qual aparece um botão escrito "Install in WSL: FedoraLinux-42".`,
-    },
-  ]}
-/>
+  caption={`Seção de extensões do visual Studio Code, em que se pode selecionar a extensão "markdownlint" para ser instalada no WSL.`}
+>
+  <Image
+    src={extensions}
+    alt={`Seção de extensões do visual Studio Code, em que se vê a extensão "markdownlint" desabilitada, ao lado da qual aparece um botão escrito "Install in WSL: fedora".`}
+  />
+</Figure>
 
 ## Configurações
 
@@ -292,15 +279,14 @@ Para configurar o Visual Studio Code, você pode acessar as configurações do e
 Alternativamente, você pode editar o arquivo `settings.json` diretamente.
 Para isso, abra a paleta de comandos com <Kbd linux="Ctrl+Shift+P" windows="Ctrl+Shift+P" /> e digite `Preferences: Open User Settings (JSON)`.
 
-<Figure
-  caption="Abrindo o arquivo de configurações do Visual Studio Code pela paleta de comandos."
-  images={[
-    {
-      src: openingUserSettings,
-      alt: "Janela de paleta de comandos do Visual Studio Code, em que se digita 'Preferences: Open User Settings (JSON)'. A primeira opção é selecionada.",
-    },
-  ]}
-/>
+<Figure caption="Abrindo o arquivo de configurações do Visual Studio Code pela paleta de comandos.">
+  <Image
+    src={openingUserSettings}
+    alt={
+      "Janela de paleta de comandos do Visual Studio Code, em que se digita 'Preferences: Open User Settings (JSON)'. A primeira opção é selecionada."
+    }
+  />
+</Figure>
 
 Eu preparei um conjunto de configurações para o Visual Studio Code que inclui as seguintes definições úteis:
 
@@ -329,6 +315,8 @@ Veremos mais sobre eles nos próximos capítulos.
 Para todas as definições que você deseja que sejam aplicadas, independentemente do perfil selecionado, adicione o nome da configuração à lista.
 
 Também deixo algumas recomendações estéticas para o Visual Studio Code.
+Sinta-se à vontade para customizar o que desejar.
+Apenas lembre-se de colocar os nomes das configurações alteradas na lista `workbench.settings.applyToAllProfiles`.
 
 <Code
   code={settingsWithTheme}
@@ -348,5 +336,3 @@ Também deixo algumas recomendações estéticas para o Visual Studio Code.
 - `terminal.integrated.lineHeight`: define a altura da linha do terminal integrado do Visual Studio Code.
 - `workbench.colorTheme`: define o tema de cores do Visual Studio Code. Escolhi o Catppuccin Latte, mas você pode escolher outro tema de sua preferência.
 - `workbench.iconTheme`: define o tema de ícones do Visual Studio Code. Também escolhi o Catppuccin Latte, mas você pode escolher outro tema de sua preferência.
-
-Sinta-se livre para alterar as configurações conforme sua preferência.

@@ -15,7 +15,8 @@
         "streetsidesoftware.code-spell-checker",
         "tamasfe.even-better-toml",
         "vadimcn.vscode-lldb",
-        "YoavBls.pretty-ts-errors"
+        "YoavBls.pretty-ts-errors",
+        "unifiedjs.vscode-mdx"
       ],
       "settings": {
         "[rust]": {

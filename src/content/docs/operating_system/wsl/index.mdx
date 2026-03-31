@@ -9,24 +9,21 @@ import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 
-import checkVersion from "@assets/content/docs/wsl/check_version.png";
-import windowsVersion from "@assets/content/docs/wsl/windows_version.png";
-import powerShellAdm from "@assets/content/docs/wsl/powershell_adm.png";
-import installingWsl from "@assets/content/docs/wsl/installing_wsl.png";
-import installingFedora from "@assets/content/docs/wsl/installing_fedora.png";
-import settingPassword from "@assets/content/docs/wsl/setting_password.png";
-import upgradingPackages1 from "@assets/content/docs/wsl/upgrading_packages_1.png";
-import upgradingPackages2 from "@assets/content/docs/wsl/upgrading_packages_2.png";
-import upgradingPackages3 from "@assets/content/docs/wsl/upgrading_packages_3.png";
-import upgradingPackages4 from "@assets/content/docs/wsl/upgrading_packages_4.png";
-import fhs from "@assets/content/docs/wsl/fhs.png";
-import homeWsl from "@assets/content/docs/wsl/home_wsl.png";
-import homePowerShell from "@assets/content/docs/wsl/home_powershell.png";
-import rootOnExplorer from "@assets/content/docs/wsl/root_on_explorer.png";
-import showHiddenFilesOnExplorer from "@assets/content/docs/wsl/show_hidden_files_on_explorer.png";
-import creatingFile from "@assets/content/docs/wsl/creating_file.png";
-import homeOnExplorerWithSymlink from "@assets/content/docs/wsl/home_on_explorer_with_symlink.png";
-import symlinkedDevFolder from "@assets/content/docs/wsl/symlinked_dev_folder.png";
+import installingWsl from "@assets/content/docs/operating_system/wsl/installing_wsl.png";
+import installingFedora1 from "@assets/content/docs/operating_system/wsl/installing_fedora_1.png";
+import installingFedora2 from "@assets/content/docs/operating_system/wsl/installing_fedora_2.png";
+import settingPassword from "@assets/content/docs/operating_system/wsl/setting_password.png";
+import upgradingPackages1 from "@assets/content/docs/operating_system/wsl/upgrading_packages_1.png";
+import upgradingPackages2 from "@assets/content/docs/operating_system/wsl/upgrading_packages_2.png";
+import upgradingPackages3 from "@assets/content/docs/operating_system/wsl/upgrading_packages_3.png";
+import upgradingPackages4 from "@assets/content/docs/operating_system/wsl/upgrading_packages_4.png";
+import homeWsl from "@assets/content/docs/operating_system/wsl/home_wsl.png";
+import homePowerShell from "@assets/content/docs/operating_system/wsl/home_powershell.png";
+import rootOnExplorer from "@assets/content/docs/operating_system/wsl/root_on_explorer.png";
+import showHiddenFilesOnExplorer from "@assets/content/docs/operating_system/wsl/show_hidden_files_on_explorer.png";
+import creatingFile from "@assets/content/docs/operating_system/wsl/creating_file.png";
+import homeOnExplorerWithSymlink from "@assets/content/docs/operating_system/wsl/home_on_explorer_with_symlink.png";
+import symlinkedDevFolder from "@assets/content/docs/operating_system/wsl/symlinked_dev_folder.png";
 
 O **Windows Subsystem for Linux (WSL)** é uma ferramenta de código aberto apoiada pela Microsoft que permite a emulação de um sistema operacional Linux dentro do Windows.
 A atual versão na data de escrita deste livro é a **WSL 2**, que traz grandes melhorias em relação à versão anterior.
@@ -44,15 +41,12 @@ Para isso, abra o **PowerShell** e execute o comando abaixo.
 wsl.exe --install --no-distribution
 ```
 
-<Figure
-  caption="Processo de instalação do WSL pelo PowerShell."
-  images={[
-    {
-      src: installingWsl,
-      alt: "Terminal do PowerShell, em que se executa o comando de instalação do WSL, inicialmente sem instalar alguma distribuição.",
-    },
-  ]}
-/>
+<Figure caption="Processo de instalação do WSL pelo PowerShell.">
+  <Image
+    src={installingWsl}
+    alt="Terminal do PowerShell, em que se executa o comando de instalação do WSL, inicialmente sem instalar alguma distribuição."
+  />
+</Figure>
 
 Então, **reinicie** o computador para aplicar as mudanças.
 
@@ -63,59 +57,64 @@ Agora que o WSL está habilitado, podemos instalar a distribuição Fedora, segu
 Para fazer isso, abra o **PowerShell** e execute o comando abaixo.
 
 ```powershell title="PowerShell" frame="terminal"
-wsl --install FedoraLinux-42
+wsl --install FedoraLinux-43 --name fedora
 ```
 
-Então, defina-o como a distribuição padrão com o seguinte comando.
+<Figure caption="Processo de instalação do Fedora pelo terminal.">
+  <Image
+    src={installingFedora1}
+    alt="Terminal do Powershell, em que são exibidas a mensagens da instalação do WSL. O prompt solicita um nome para a criação de usuário."
+  />
+</Figure>
 
-```powershell title="PowerShell" frame="terminal"
-wsl -d FedoraLinux-42
-```
+### Criação de usuário
 
-Após aguardar alguns segundos, o sistema pedirá para criar um **usuário**.
-Eu recomendo usar o mesmo nome de usuário que você utiliza no Windows.
+O WSL solicitará que você digite o nome de usuário desejado para usar dentro do Fedora Linux.
+Eu defini o mesmo **_username_** que o utilizado pela minha instalação do Windows: `gabriel`.
+Fique à vontade para escolher o seu.
 
-<Figure
-  caption="Processo de instalação do Fedora pelo terminal."
-  images={[
-    {
-      src: installingFedora,
-      alt: "Terminal do Powershell, em que são exibidas a mensagens da instalação, inclusive os prompts para criação de usuário.",
-    },
-  ]}
-/>
+<Figure caption="Processo de instalação do Fedora pelo terminal.">
+  <Image
+    src={installingFedora2}
+    alt={`Terminal do Powershell, em que são exibidas a mensagens da instalação do WSL. O prompt de criação de usuário foi preenchido como "gabriel".`}
+  />
+</Figure>
 
-Agora, **feche** essa janela do Powershell.
-
-Após instalar o WSL, você poderá abri-lo diretamente pela entrada criada no menu Iniciar do Windows, chamada `WSL`.
-
-**Abra-o**, e digite o comando abaixo para definir uma senha.
-
-```bash title="WSL" frame="terminal"
-sudo passwd $USER
-```
-
-Outro detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo.
+Agora, vamos definir uma **senha** para o seu usuário do Linux.
+Digite o comando abaixo no terminal e pressione <Kbd linux={"Enter"} />.
+Um detalhe é que, nos sistemas Linux, a senha não aparece enquanto você digita, fica apenas o **espaço em branco** mesmo.
 Não se preocupe, digite-a até o final e pressione <Kbd linux={"Enter"} />.
 Após repetir a senha, pressione <Kbd linux={"Enter"} /> novamente.
 
-O sistema fará as últimas configurações e criara um usuário de administrador para você dentro do Fedora.
+```bash title="PowerShell - WSL" frame="terminal"
+sudo passwd $USER
+```
 
-<Figure
-  caption="Processo de definição da senha do Fedora pelo terminal."
-  images={[
-    {
-      src: settingPassword,
-      alt: "Terminal do WSL, em que são exibidos os prompts para definição da senha do usuário.",
-    },
-  ]}
-/>
+<Figure caption="Processo de definição da senha do Fedora pelo terminal.">
+  <Image
+    src={settingPassword}
+    alt="Terminal do WSL, em que são exibidos os prompts para definição da senha do usuário."
+  />
+</Figure>
 
 Lembre-se da sua senha, pois ela será solicitada sempre que você precisar de permissões de administrador.
 
+### Definindo o Fedora como padrão
+
+Agora, **feche** essa janela do Powershell e **abra** uma nova.
+
+Então, digite o comando abaixo para definir o Fedora recém-instalado como a distribuição padrão do WSL.
+
+```powershell title="PowerShell" frame="terminal"
+wsl -d fedora
+```
+
+Após instalar o WSL, você poderá abri-lo diretamente pela entrada criada no Menu Iniciar do Windows, chamada `WSL`.
+Ela terá o ícone de um pinguim azul.
+
 ### Esqueci a senha do meu usuário no WSL
 
-Em caso de esquecê-la, você pode entrar no wsl como um usuário **root**.
+Em caso de esquecimento da senha do usuário dentro do WSL, você pode trocá-la por meio de um acesso como o usuário **root**.
 Para isso, execute o seguinte comando no **PowerShell**.
 
 ```powershell title="PowerShell" frame="terminal"
@@ -130,8 +129,10 @@ sudo passwd [YOUR_USERNAME]
 
 ## Atualizando os pacotes
 
-A maioria das ferramentas que você instalará no Fedora será por meio do gerenciador de pacotes `dnf`.
-Para atualizar os pacotes, execute o comando abaixo.
+A maioria das ferramentas que você instalará no Fedora será por meio do gerenciador de pacotes **`dnf`**.
+
+Para atualizar os pacotes abra o **WSL** por meio da entrada criada no Menu Iniciar.
+Então, execute o comando abaixo.
 
 ```bash title="WSL" frame="terminal"
 sudo dnf upgrade
@@ -143,80 +144,55 @@ Ela provavelmente solicitará a senha do usuário que você criou anteriormente.
 Quando perguntado se deseja continuar, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} /> para confirmar.
 Isso pode ocorrer mais de uma vez durante a instalação.
 
-<Figure
-  caption="Instalando as versões atualizadas dos pacotes do Fedora."
-  images={[
-    {
-      src: upgradingPackages1,
-      alt: `Terminal do Fedora, primeira captura da execução do comando "sudo dnf upgrade".`,
-    },
-    {
-      src: upgradingPackages2,
-      alt: `Terminal do Fedora, segunda captura da execução do comando "sudo dnf upgrade".`,
-    },
-    {
-      src: upgradingPackages3,
-      alt: `Terminal do Fedora, terceira captura da execução do comando "sudo dnf upgrade".`,
-    },
-    {
-      src: upgradingPackages4,
-      alt: `Terminal do Fedora, quarta captura da execução do comando "sudo dnf upgrade".`,
-    },
-  ]}
-/>
+<Figure caption="Instalando as versões atualizadas dos pacotes do Fedora.">
+  <Image
+    src={upgradingPackages1}
+    alt={`Terminal do Fedora, primeira captura da execução do comando "sudo dnf upgrade".`}
+  />
+  <Image
+    src={upgradingPackages2}
+    alt={`Terminal do Fedora, segunda captura da execução do comando "sudo dnf upgrade".`}
+  />
+  <Image
+    src={upgradingPackages3}
+    alt={`Terminal do Fedora, terceira captura da execução do comando "sudo dnf upgrade".`}
+  />
+  <Image
+    src={upgradingPackages4}
+    alt={`Terminal do Fedora, quarta captura da execução do comando "sudo dnf upgrade".`}
+  />
+</Figure>
 
-## Estrutura de diretórios
+## Conectando os diretórios
 
-Aqui vale um pequeno apanhado de como funciona a estrutura de diretórios no Linux.
-Ela varia um pouco a depender da distribuição, mas a estrutura básica é a mesma.
+Tanto o Linux, como também o Windows, possuem uma pasta especial para cada usuário do sistema, em que ficam guardados seus arquivos e em que se instalam os programas no modo usuário.
+Costumamos chamar essa pasta de "home".
 
-- O sistema todo é organizado dentro de uma pasta, a qual chamamos de `ROOT` ou `/`.
-  - Ela não tem realmente um nome, por isso a referenciamos apenas com uma barra.
-- Dentro dela, temos diversas pastas, que são responsáveis por organizar, por exemplo:
-  - `bin`: programas executáveis instalados a nível de sistema (pelo **apt** ou **dnf**)
-  - `opt`: programas instalados manualmente a nível de sistema.
-  - `usr`: programas instalados pelos usuários.
-  - `etc`: arquivos de configuração do sistema.
-  - `lib`: bibliotecas compartilhadas por programas.
-  - `home`: pastas dos usuários.
-  - `mnt`: referências a dispositivos de armazenamento montados no computador, como pendrives e HDs.
+Em cada um dos sistemas, essa pasta fica em lugares diferentes.
+E, mesmo quando instalamos o WSL, ainda vai haver uma pasta para seu usuário do Windows na localização determinada pra ela, e **outra pasta diferente** para seu usuário do Linux, em outra localização determinada para ela.
 
-Há outras pastas (chamadas comumente de **diretórios**) importantes, mas com o tempo você pega o jeito.
+Essas pastas são tão importantes que elas têm variáveis de ambiente específicas que apontam para si.
+No Linux e no Windows, essas variáveis são chamada de `HOME`, mas elas vão apontar cada uma para a sua pasta específica.
 
-<Figure
-  caption="Estrutura de pastas da raiz do Fedora (WSL)."
-  images={[
-    {
-      src: fhs,
-      alt: `Terminal do Fedora, em que se executa o comando "ls", que exibe a estrutura de pastas da raiz do Fedora.`,
-    },
-  ]}
-/>
+Vamos testar isso.
+Abra o **PowerShell** em uma janela, e o **WSL** em outra.
 
-A que nos interessa no momento é a pasta `home`.
-Dentro dela, o sistema cria uma pasta para cada usuário, nomeada com o nome do usuário.
-Por exemplo, o meu usuário é `gabriel-dev`, então a pasta do meu usuário é `/home/gabriel-dev`.
-
-Essa pasta é tão importante que ela tem uma variável de ambiente que a referencia, chamada de `HOME`.
-
-Digite no terminal o comando `echo $HOME` e veja o que aparece.
-Depois, digite `echo $HOME` no PowerShell e veja o que aparece.
-
-Tanto o Windows quanto o Linux possuem essa variável de ambiente, mas perceba que o caminho é diferente!
+Digite `echo $HOME` na janela do PowerShell e veja o que aparece.
+Então, digite o comando `echo $HOME` na janela do WSL e veja o que aparece.
 
 <Figure
   caption="Comando para exibir a variável de ambiente HOME no Fedora e no PowerShell, respectivamente."
-  images={[
-    {
-      src: homeWsl,
-      alt: `Terminal do Fedora, em que se executa o comando "echo $HOME". A resposta é "/home/gabriel-dev".`,
-    },
-    {
-      src: homePowerShell,
-      alt: `Terminal do PowerShell, em que se executa o comando "echo $HOME". A resposta é "C:\\Users\\gabriel-dev".`,
-    },
-  ]}
-/>
+  horizontal
+>
+  <Image
+    src={homePowerShell}
+    alt={`Terminal do PowerShell, em que se executa o comando "echo $HOME". A resposta é "C:\\Users\\gabriel".`}
+  />
+  <Image
+    src={homeWsl}
+    alt={`Terminal do Fedora, em que se executa o comando "echo $HOME". A resposta é "/home/gabriel".`}
+  />
+</Figure>
 
 De fato, eu uso o mesmo nome de usuário no Fedora e no Windows, mas o caminho da pasta do usuário é diferente porque se tratam de duas pastas completamente distintas.
 
@@ -224,38 +200,32 @@ O WSL cria todo um novo ambiente de emulação dentro do Windows, com suas próp
 Mas como acessar esse ambiente?
 
 Se tudo tiver sido instalado corretamente, você verá uma nova entrada no Explorador de Arquivos chamada `Linux`.
-Dentro dela, haverá uma pasta chamada `FedoraLinux-42` (ou na versão mais atual).
-Essa é justamente a pasta `/` (raiz) do Fedora, a qual mencionamos anteriormente.
+Dentro dela, haverá uma pasta chamada `fedora`.
+Essa é justamente a pasta `/` (raiz) do Fedora, a qual mencionamos [anteriormente](..#estrutura-de-diretórios).
 
-<Figure
-  caption="Pasta raiz do Fedora WSL exibida no Explorador de Arquivos."
-  images={[
-    {
-      src: rootOnExplorer,
-      alt: `Explorador de Arquivos do Windows aberto na pasta "Linux\\FedoraLinux-42".`,
-    },
-  ]}
-/>
+<Figure caption="Pasta raiz do Fedora WSL exibida no Explorador de Arquivos.">
+  <Image
+    src={rootOnExplorer}
+    alt={`Explorador de Arquivos do Windows aberto na pasta "Linux\\fedora".`}
+  />
+</Figure>
 
 Acesse pelo **Explorador de Arquivos** a pasta `home`.
 Ela contém todos os diretórios de usuários registrados no Fedora.
 No momento, existe apenas o usuário que criamos.
-No meu caso, é o `gabriel-dev`.
+No meu caso, é o `gabriel`.
 Clique com o botão direito nela, e selecione **Fixar no Acesso rápido**.
 
 Abra a pasta do seu usuário.
 Garanta que os arquivos ocultos estejam sendo exibidos.
 Você pode fazer isso clicando em: Visualizar > Mostrar > Itens ocultos.
 
-<Figure
-  caption="Exibindo arquivos ocultos no Explorador de Arquivos."
-  images={[
-    {
-      src: showHiddenFilesOnExplorer,
-      alt: `Passos instruindo como exibir arquivos ocultos no explorador de Arquivos do Windows.`,
-    },
-  ]}
-/>
+<Figure caption="Exibindo arquivos ocultos no Explorador de Arquivos.">
+  <Image
+    src={showHiddenFilesOnExplorer}
+    alt={`Passos instruindo como exibir arquivos ocultos no explorador de Arquivos do Windows.`}
+  />
+</Figure>
 
 Vemos que há alguns arquivos dentro do diretório do usuário.
 O arquivo `.bashrc` é o arquivo de configuração do **Bash**, o shell padrão do Fedora.
@@ -273,7 +243,7 @@ Eu gosto de organizar meus projetos numa pasta chamada `dev` na raiz do diretór
 Para criar uma pasta com esse nome, abra o **WSL** e execute o comando abaixo.
 
 ```bash title="WSL" frame="terminal"
-mkdir ~/dev
+mkdir -p ~/dev
 ```
 
 Vamos criar um arquivo de texto dentro dessa pasta para testar o link simbólico.
@@ -282,31 +252,28 @@ Vamos criar um arquivo de texto dentro dessa pasta para testar o link simbólico
 echo "Hello, World!" > ~/dev/hello.txt
 ```
 
-<Figure
-  caption="Criando um arquivo de texto na pasta ~/dev do Fedora."
-  images={[
-    {
-      src: creatingFile,
-      alt: `Terminal do Fedora, em que se executa comandos para criar a pasta "dev", se mover para dentro dela e criar um arquivo de texto.`,
-    },
-  ]}
-/>
+<Figure caption="Criando um arquivo de texto na pasta ~/dev do Fedora.">
+  <Image
+    src={creatingFile}
+    alt={`Terminal do Fedora, em que se executa comandos para criar a pasta "dev", se mover para dentro dela e criar um arquivo de texto.`}
+  />
+</Figure>
 
-Então, abra no terminal um perfil do **PowerShell** como **administrador** e execute o comando abaixo para criar um link simbólico, substituindo a versão do Fedora, se você utilizar uma mais recente que a 42.
+Então, abra no terminal um perfil do **PowerShell** como **administrador** e execute o comando abaixo para criar um link simbólico.
 
 ```powershell title="Powershell" frame="terminal"
-New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\wsl$\FedoraLinux-42\home\$env:USERNAME\dev"
+New-Item -ItemType SymbolicLink -Path "C:\Users\$env:USERNAME\dev" -Target "\\wsl$\fedora\home\$env:USERNAME\dev"
 ```
 
 O resultado será como o seguinte.
 
 ```powershell title="Powershell" frame="terminal"
- Diretório: C:\Users\gabriel-dev
+ Diretório: C:\Users\gabriel
 
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
-d----l        23/04/2025     12:03                dev
+d----l        31/03/2026     15:45                dev
 ```
 
 Então, você poderá acessar a pasta `dev` diretamente pelo Explorador de Arquivos.
@@ -314,26 +281,20 @@ Abra o Executar com <Kbd linux={"Super+R"} windows={"Win+R"} /> e digite `%USERP
 
 Você verá verá que a pasta `dev` está lá, e que apresenta um ícone de atalho.
 
-<Figure
-  caption="Link simbólico mostrado na pasta do usuário do Windows."
-  images={[
-    {
-      src: homeOnExplorerWithSymlink,
-      alt: `Explorador de Arquivos do Windows aberto na pasta do usuário, em que se exibe a pasta "dev" com um ícone de atalho.`,
-    },
-  ]}
-/>
+<Figure caption="Link simbólico mostrado na pasta do usuário do Windows.">
+  <Image
+    src={homeOnExplorerWithSymlink}
+    alt={`Explorador de Arquivos do Windows aberto na pasta do usuário, em que se exibe a pasta "dev" com um ícone de atalho.`}
+  />
+</Figure>
 
 Clique com o botão direito na pasta `dev` e selecione **Fixar no Acesso rápido** para tê-la sempre à mão.
 
 Ao acessar a pasta, você verá o arquivo `hello.txt` que criamos anteriormente no Fedora.
 
-<Figure
-  caption="Pasta ~/dev do Fedora mostrada na estrutura de pastas do Windows."
-  images={[
-    {
-      src: symlinkedDevFolder,
-      alt: `Explorador de Arquivos do Windows aberto na pasta "dev" do Fedora.`,
-    },
-  ]}
-/>
+<Figure caption="Pasta ~/dev do Fedora mostrada na estrutura de pastas do Windows.">
+  <Image
+    src={symlinkedDevFolder}
+    alt={`Explorador de Arquivos do Windows aberto na pasta "dev" do Fedora.`}
+  />
+</Figure>

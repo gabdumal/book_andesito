@@ -3,7 +3,11 @@ title: Sistema operacional
 author: Gabriel Malosto
 ---
 
+import { Image } from "astro:assets";
 import Figure from "@components/Figure.astro";
+
+import fhs from "@assets/content/docs/operating_system/fhs.png";
+import home from "@assets/content/docs/operating_system/home.png";
 
 Computadores são máquinas fantásticas, que permitem executar uma infinidade de aplicativos úteis e interagir com os mais variados dispositivos periféricos.
 
@@ -220,4 +224,27 @@ Ela varia um pouco a depender da distro, mas a estrutura básica é a mesma.
 
 Há outras pastas (chamadas comumente de **diretórios**) importantes, mas com o tempo você pega o jeito.
 
-{/* TODO: Colocar imagem */}
+<Figure caption="Estrutura de pastas da raiz do Fedora.">
+  <Image
+    src={fhs}
+    alt={`Terminal do Fedora, em que se executa o comando "ls", que exibe a estrutura de pastas do diretório raiz.`}
+  />
+</Figure>
+
+A que mais nos interessa é a pasta `home`.
+Dentro dela, o sistema cria uma pasta para cada usuário, nomeada com o _username_ do usuário.
+Por exemplo, o meu usuário é `gabriel`, então a pasta do meu usuário é `/home/gabriel`.
+
+Essa pasta é tão importante que ela tem uma variável de ambiente que a referencia, chamada de `HOME`.
+Digite no terminal o comando `echo $HOME` e veja o que aparece.
+
+Além disso, existe um atalho menor ainda que aponta para essa pasta.
+Ele é o `~`.
+Toda vez que você ler um caminho que começa com `~`, pode saber que ele vai estar dentro da sua pasta de usuário
+
+<Figure caption="Variáveis que apontam para a pasta de usuário.">
+  <Image
+    src={home}
+    alt={`Terminal do Fedora, em que se executam os comando que exibem o conteúdo das variáveis "HOME" e "~".`}
+  />
+</Figure>

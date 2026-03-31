@@ -6,6 +6,7 @@
     "astrojs",
     "clangd",
     "flathub",
+    "gabriel",
     "openssh",
     "ptyxis",
     "rustup",

@@ -6,6 +6,8 @@ services:
       context: .devcontainer
       dockerfile: Dockerfile
     user: root
+    ports:
+      - "4321:4321"
     volumes:
       # Mount the project root
       - .:/workspace:Z

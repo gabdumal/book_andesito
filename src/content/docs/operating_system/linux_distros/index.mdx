@@ -1,0 +1,221 @@
+---
+title: Distros Linux
+author: Gabriel Malosto
+---
+
+import { Kbd } from "starlight-kbd/components";
+import Figure from "@components/Figure.astro";
+
+Neste guia, apresentamos exemplos de configuração de vários programas em duas distros: o Fedora Linux, e o Linux Mint.
+Vamos analisar algumas características principais de cada e cobrir suas instalações.
+
+Antes de discorrermos sobre os dois sistemas, precisamos entender o que é necessário para instalar qualquer um deles.
+
+Primeiro, você precisará de um **pen-drive** com pelo menos **4GB** de armazenamento.
+Os dados desse pen-drive serão apagados para fazer a instalação do sistema, então, antes de prosseguir, faça um **backup** dos arquivos e pastas dentro dele em um lugar seguro (como algum serviço de armazenamento em nuvem).
+
+Quando você transferir a distro para esse pen-drive, ele funcionará como um flash-drive bootável (também chamado de **Live USB**).
+Isso significa que você poderá conectá-lo no seu computador e iniciar a distro transferida por meio dele, durante o processo de ligar o computador.
+Não se preocupe: depois da instalação, você pode facilmente transformar o pen-drive de volta em um flash-drive de arquivos.
+
+Outra recomendação é que você faça um **backup** dos **arquivos** do seu computador em um serviço de armazenamento em nuvem.
+Embora seja possível instalar uma distro Linux ao lado de um sistema operacional já instalado, esse processo é mais complexo e você pode acabar cometendo algum erro na sua primeira tentativa.
+
+Minha sugestão é que você faça um backup de tudo o que achar necessário.
+Esteja seguro de que você pode remover o sistema operacional atual do computador completamente, junto com todos os arquivos.
+Então, após removê-lo, você poderá criar os espaços para instalar dois sistemas operacionais um do lado do outro (como uma distro **Linux** e o **Windows** 11, por exemplo).
+Esse tipo de instalação é chamado de **_dual boot_**.
+
+Com último comentário: várias distros Linux permitem que você faça a encriptação do seu dispositivo de armazenamento (HD ou SSD).
+Isso pode ser interessante para garantir que ninguém tenha acesso aos seus arquivos caso você perca seu laptop.
+Contudo, essa configuração exige alguns passos mais complexos.
+Por isso, recomendo que você não se preocupe com encriptação na sua primeira instalação do Linux.
+
+## Fedora Linux
+
+[**Fedora Linux**](https://fedoraproject.org/) é uma distro Linux mantida por uma comunidade independente de desenvolvedores com apoio direto da empresa [Red Hat](https://www.redhat.com/en) — atualmente subsidiária da [IBM](https://www.ibm.com/us-en).
+
+O Projeto Fedora busca oferecer um conjunto de _software_ por cima do kernel Linux que forneça tecnologias modernas.
+Muitas vezes, ele adota padrões recentes, mesmo quando ainda restam alguns poucos aprimoramentos a serem testados em casos específicos.
+
+Por exemplo, o Fedora apoia a adoção do protocolo gráfico Wayland nos principais ambientes de área de trabalho suportados.
+Isso permite que computadores mais recentes utilizem todas as suas potencialidades (como HDR, e monitores com resoluções diferentes).
+
+Contudo, se você necessitar de alguma função que não foi completamente implementada no Wayland, pode ser mais interessante utilizar uma outra distro, com uma filosofia de atualização menos recente.
+Essa mesma lógica se aplica para outros contextos.
+
+O Projeto Fedora recebe recursos de corporações como a Red Hat, mas mantém autonomia sobre suas decisões.
+A ideia é que os usuários do Fedora possam utilizar um sistema novo e polido.
+Ao mesmo tempo, as contribuições da comunidade que se consolidam são adotadas em distros mais estáveis, como a [Red Hat Enterprise Linux](https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux) mais tarde.
+
+### Instalação
+
+O Fedora Linux é distribuído com um conjunto variado de ambientes de área de trabalho (DEs).
+Os dois mais utilizados são o GNOME e o KDE, mas versões (chamadas de _spins_) com o Cinnamon, Cosmic, Xfce, e outros são oficialmente apoiadas.
+Neste guia, cobrimos a versão [**Fedora Workstation**](https://fedoraproject.org/workstation/), que acompanha o **GNOME** como seu DE.
+O instalador do sistema pode ser baixado [nesta página](https://fedoraproject.org/workstation/download/).
+
+Este vídeo, do canal [Learn Linux TV](https://www.youtube.com/@LearnLinuxTV) no YouTube, ensina a instalar o Fedora Linux Workstation na **versão 43**.
+No momento de escrita desta seção — abril de 2026 —, essa é a versão mais recente, mas o procedimento será similar para as próximas versões.
+
+<Figure caption="Guia de instalação do Fedora Workstation 43.">
+  <iframe
+    class="flex aspect-video"
+    src="https://www.youtube.com/embed/J6Kta3fb_zM?si=6fzByBG8MoPvtR5_"
+    width="1920"
+    height="1080"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  />
+</Figure>
+
+Esse vídeo trata da instalação do Fedora Linux como o único sistema em um computador.
+Caso você queira instalar o Fedora Linux ao lado do Windows 11 no mesmo computador, recomendo que você siga este tutorial do mesmo canal, que ensina a fazer o **_dual boot_**.
+A versão do Fedora utilizada no vídeo é a 42, mas o processo é o mesmo que as versões mais recentes.
+
+<Figure caption="Guia de instalação do Fedora Workstation ao lado do Windows 11.">
+  <iframe
+    class="flex aspect-video"
+    src="https://www.youtube.com/embed/z5xHkNPjPv8?si=5UTD7lvJjmUQMGcN"
+    width="1920"
+    height="1080"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  />
+</Figure>
+
+### Aprimoramentos
+
+Após instalar o Fedora Linux, você pode fazer alguns ajustes para melhorar a experiência de uso.
+Vou limitar minhas sugestões por enquanto às seguintes: instalar melhores drivers e codecs de vídeo e som, e instalar o repositório de aplicativos Flathub.
+
+Antes de qualquer coisa, vamos pegar jeito com o terminal, e utilizá-lo para atualizar os programas do sistema.
+Garanta que você configurou a conexão com a internet.
+Então, abra o aplicativo `Terminal`.
+
+Digite o comando abaixo para atualizar todos os pacotes do sistema.
+
+```bash title="Fedora"  frame="terminal"
+sudo dnf update
+```
+
+Seu terminal pedirá para que você digite a senha que cadastrou no primeiro log-in.
+Por medida de segurança, o Fedora Linux não mostra os pontinhos para cada caractere da senha.
+Não se preocupe, digite-a mesmo assim até o final e pressione <Kbd linux={"Enter"} />.
+
+#### Drivers e codecs
+
+Por padrão, o Fedora Linux traz instalados codecs de vídeo e som FLOSS (_Free, Libre and Open Source Software_).
+Muitas vezes, você prefere utilizar codecs proprietários, que tendem a ter maior compatibilidade com serviços de _streaming_ e jogos.
+Para fazer isso, precisamos ativar um repositório de programas da comunidade do Fedora, chamado [**RPM Fusion**](https://rpmfusion.org/).
+
+Para habilitá-lo, abra o aplicativo `Terminal`.
+Então, digite o comando abaixo e pressione <Kbd linux={"Enter"} />.
+
+```bash title="Fedora"  frame="terminal"
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+```
+
+Em seguida, instale os codecs de multimídia com os comandos a seguir.
+
+```bash title="Fedora"  frame="terminal"
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
+sudo dnf update -y @core
+sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
+sudo dnf update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+```
+
+Por fim, instale os drivers apropriados para a marca da sua placa de vídeo.
+Caso você não tenha uma placa de vídeo dedicada, considere a marca do seu processador.
+
+- Para **Nvidia**, instale o seguinte driver.
+
+  ```bash title="Fedora"  frame="terminal"
+  sudo dnf install -y libva-nvidia-driver
+  ```
+
+- Para **AMD**, instale o seguinte driver.
+
+  ```bash title="Fedora"  frame="terminal"
+  sudo dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
+  sudo dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+  ```
+
+- Para **Intel**, instale o seguinte driver.
+
+  ```bash title="Fedora"  frame="terminal"
+  sudo dnf install -y intel-media-driver
+  ```
+
+#### Repositório Flathub
+
+O [**Flathub**](https://flathub.org/en) é um repositório de aplicativos disponibilizados pelos desenvolvedores oficiais e pela comunidade.
+Ele geralmente é a maneira recomendada de instalar programas com interface gráfica.
+Cada aplicativo pode ser baixado por meio de um arquivo instalável [**Flatpak**](https://flatpak.org/).
+
+Para garantir que o Flathub esteja habilitado no seu computador em vez do repositório padrão de Flatpaks do Fedora, execute os comandos abaixo no terminal.
+
+```bash title="Fedora"  frame="terminal"
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-delete fedora
+```
+
+## Linux Mint
+
+[**Linux Mint**](https://www.linuxmint.com/) é uma distro Linux mantida por uma comunidade independente de desenvolvedores.
+Ele recebe apoio de recursos de algumas corporações, mas em proporção menos expressiva que o Fedora Linux.
+
+O Linux Mint é — em sua versão principal — baseado na distro [Ubuntu](https://ubuntu.com/), que foi conhecida por muito tempo como uma das mais simples de utilizar.
+O objetivo do Mint é fornecer as facilidades do Ubuntu, mas com uma interface gráfica mais tradicional, e com a adoção de tecnologias mais estabilizadas no ecossistema Linux.
+
+### Instalação
+
+São oferecidos como opções de ambientes de área de trabalho o Xfce, o MATE e o Cinnamon, que é desenvolvido pela mesma equipe que desenvolve o próprio Linux Mint, e é bastante apreciado pela sua facilidade.
+Neste guia, adotaremos o **Linux Mint** com o ambiente **Cinnamon**.
+
+Você pode baixar a imagem do sistema [nesta página](https://www.linuxmint.com/download.php).
+Encontre a seção de título "Cinnamon Edition" e clique no botão "Download".
+Isso abrirá uma página que lista — na seção Download mirrors — todos os servidores oficiais por onde você pode instalar o Linux Mint.
+Escolha qualquer opção e aguarde o download do arquivo `.iso`.
+
+Este vídeo, do canal [ExplainingComputers
+](https://www.youtube.com/@ExplainingComputers) no YouTube, ensina a instalar o Linux Mint na **versão 22**.
+No momento de escrita desta seção — abril de 2026 —, a versão mais recente é a 22.3, mas o procedimento é o mesmo para essa e para as próximas versões.
+
+<Figure caption="Guia de instalação do Linux Mint 22.">
+  <iframe
+    class="flex aspect-video"
+    src="https://www.youtube.com/embed/_qZI6i21jB4?si=l6J5RNuTwgOgpYQu"
+    width="1920"
+    height="1080"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  />
+</Figure>
+
+Esse vídeo trata da instalação do Linux Mint como o único sistema em um computador.
+Caso você queira instalar o Linux Mint ao lado do Windows 11 no mesmo computador, recomendo que você siga este tutorial do canal [Learn Linux TV](https://www.youtube.com/@LearnLinuxTV) no YouTube, que ensina a fazer o **_dual boot_**.
+A versão do Linux Mint utilizada no vídeo é a 21, mas o processo é o mesmo que as versões mais recentes.
+
+<Figure caption="Guia de instalação do Linux Mint ao lado do Windows 11.">
+  <iframe
+    class="flex aspect-video"
+    src="https://www.youtube.com/embed/B97KkFDv86s?si=TCSY0q7ZpX-aoMpR"
+    width="1920"
+    height="1080"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  />
+</Figure>

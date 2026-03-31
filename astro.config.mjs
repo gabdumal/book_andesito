@@ -40,12 +40,21 @@ export default defineConfig({
           slug: "introduction",
         },
         {
+          items: [
+            {
+              label: "Introdução",
+              slug: "operating_system",
+            },
+            {
+              label: "Distros Linux",
+              slug: "operating_system/linux_distros",
+            },
+            {
+              label: "WSL",
+              slug: "operating_system/wsl",
+            },
+          ],
           label: "Sistema operacional",
-          slug: "operating_system",
-        },
-        {
-          label: "WSL",
-          slug: "wsl",
         },
         {
           label: "VSCode",

@@ -2,20 +2,20 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "astro-build.astro-vscode",
         "DavidAnson.vscode-markdownlint",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "Gruntfuggly.todo-tree",
         "mhutchie.git-graph",
+        "ms-azuretools.vscode-containers",
         "redhat.vscode-yaml",
         "rust-lang.rust-analyzer",
         "streetsidesoftware.code-spell-checker-portuguese-brazilian",
         "streetsidesoftware.code-spell-checker",
         "tamasfe.even-better-toml",
         "vadimcn.vscode-lldb",
-        "YoavBls.pretty-ts-errors",
-        "ms-azuretools.vscode-containers",
-        "astro-build.astro-vscode"
+        "YoavBls.pretty-ts-errors"
       ],
       "settings": {
         "[rust]": {

@@ -2,3 +2,11 @@
   --sl-font: "Atkinson Hyperlegible Next Variable", sans-serif;
   --sl-font-mono: "Atkinson Hyperlegible Mono Variable", monospace;
 }
+
+.flex {
+  display: flex;
+}
+
+.aspect-video {
+  aspect-ratio: 16/9;
+}

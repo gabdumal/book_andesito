@@ -28,8 +28,8 @@ Desde então, muitas pessoas e organizações colaboraram no projeto, que é usa
   <img
     src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg"
     alt="Tux, o pinguim. É um desenho de um pinguim sentado com a ponta das nadadeiras apoiadas sobre os pés."
-    height="303.5"
     width="256"
+    height="303.5"
   />
 </Figure>
 
@@ -55,8 +55,8 @@ Nesses contextos, é comum que as distros contem com um conjunto de funcionalida
   <img
     src="https://upload.wikimedia.org/wikipedia/en/2/22/Heckert_GNU_white.svg"
     alt="Logomarca do projeto GNU. É um desenho do animal gnu em preto e branco."
-    height="261.5"
     width="267.5"
+    height="261.5"
   />
 </Figure>
 
@@ -102,7 +102,7 @@ O X11 é estável, e muitos aplicativos foram criados contando com o conjunto de
 Contudo, o projeto tendeu a ficar muito complexo com o surgimento de novas tecnologias de _software_ e de _hardware_.
 Por isso, foi proposto um novo protocolo que pensasse do zero uma forma mais moderna e flexível de estruturar um servidor gráfico.
 
-## Wayland
+### Wayland
 
 Surgiu assim o protocolo [**Wayland**](<https://en.wikipedia.org/wiki/Wayland_(protocol)>) em 2008.
 Ele apresenta a implementação de referência Weston, mas é comum que diferentes organizações de desenvolvedores implementem as suas versões.
@@ -113,13 +113,13 @@ Para acessar um serviço, o aplicativo precisa solicitar permissão para fazê-l
 
 Além disso, tecnologias modernas, como HDR, escala de tela fracionada (125%, 133.33%, ...), e algumas ferramentas de acessibilidade apenas puderam ser implementadas pelo Wayland.
 
-## Discussão
+### Discussão
 
 Existem preocupações de segurança no X11.
 Por exemplo, todos os aplicativos conseguem ler o que você digita no teclado o tempo todo, o que pode ser perigoso caso um deles seja mal-intencionado.
 Existem outros cenários similares em relação a gravação e compartilhamento da tela.
 
-O Wayland não oferece essas permissões, mas isso oferece uma complicação: alguns aplicativos que precisam delas podem não funcionar.
+O Wayland não oferece essas permissões, mas isso resulta numa complicação: alguns aplicativos que precisam delas podem não funcionar.
 É responsabilidade dos desenvolvedores de cada aplicativo atualizarem a implementação para solicitarem as permissões corretas para o Wayland, mas ainda existem programas que não foram aprimorados.
 
 Em 2026, ainda estamos em uma época de transição do X11 para o Wayland.
@@ -133,5 +133,89 @@ Caso você se depare com algum problema que ainda não foi solucionado e não h�
 
 ## Ambientes de área de trabalho
 
-Por cima das utilidades do sistema, existe mais uma camada de programas rodando.
-Tratam-se das aplicações de gerenciamento de interface gráfica.
+Por cima do servidor gráfico, existe mais uma camada de sistemas rodando.
+São as aplicações do ambiente de área de trabalho, comumente chamado de [**desktop environment**](https://en.wikipedia.org/wiki/Desktop_environment), ou apenas DE.
+
+É responsabilidade de um DE montar as janelas dos aplicativos que executamos, com as bordas, os títulos e os botões de fechar.
+Os DEs também gerenciam onde na tela as janelas aparecem, e permitem que você as mova, esconda ou feche.
+
+Além disso, os DEs tendem a oferecer um conjunto de aplicativos gráficos pré-instalados, como o explorador de arquivos, as configurações, o mixer de áudio, o gerenciador de conexões de rede, e muitos outros.
+
+Embora seja possível gerenciar tudo isso por comandos no terminal, é muito mais fácil acessar as interfaces gráficas.
+Inclusive, até o aplicativo que abre o terminal é pré-instalado pelo DE.
+
+Outras responsabilidades comuns são gerenciar as telas de log-in e de de bloqueio, as notificações, as senhas salvas no computador, e os atalhos de teclado e de gestos.
+Enfim, muitas atribuições que nós achamos que são de responsabilidade do sistema operacional, na verdade, são feitas pelo ambiente de área de trabalho.
+
+:::note
+O [Windows 1.0](https://en.wikipedia.org/wiki/Windows_1.0) surgiu em 1985 como apenas um ambiente de área de trabalho para o sistema operacional [DOS](https://en.wikipedia.org/wiki/MS-DOS), criado pela empresa IBM.
+Ele oferecia suporte para mouse e permitia executar aplicativos em janelas gráficas, além de oferecer um conjunto de funcionalidades que estendiam o kernel DOS.
+:::
+
+No ecossistema Linux, existe uma enorme variedade de DEs.
+Para não nos alongarmos, trataremos de apenas três.
+
+### GNOME
+
+O [**GNOME**](https://en.wikipedia.org/wiki/GNOME) apresenta um design moderno, que segue um conjunto estrito de diretrizes de interface humana.
+Seu objetivo é ser simples e apto para produtividade, sem oferecer muitas opções de customização.
+Tende a ser bastante adaptável para telas de computadores, de celulares e de tablets, e oferece tecnologias modernas.
+
+<Figure caption="Captura de tela do GNOME.">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/9/97/GNOME_Shell.png"
+    alt="Captura de tela do ambiente de área de trabalho GNOME versão 50, mostrando o modo overview."
+    width="2560"
+    height="1600"
+  />
+</Figure>
+
+### KDE Plasma
+
+O [**KDE Plasma**](https://en.wikipedia.org/wiki/KDE_Plasma) apresenta uma disposição mais tradicional da interface, mas com funcionalidades modernas.
+Ele é bastante flexível, também apresentando versões para outros dispositivos, como celulares e TVs.
+Seu destaque é a grande quantidade de opções de customização da interface, e de temas de personalização.
+
+<Figure caption="Captura de tela do KDE Plasma.">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/1/15/KDE_Plasma_6.4.5_Light.png"
+    alt="Captura de tela do ambiente de área de trabalho KDE Plasma versão 6.4.5 no tema Breeze Light."
+    width="1920"
+    height="1080"
+  />
+</Figure>
+
+### Cinnamon
+
+O [**Cinnamon**](<https://en.wikipedia.org/wiki/Cinnamon_(desktop_environment)>) é um DE desenvolvido em conjunto com a distro [Linux Mint](https://en.wikipedia.org/wiki/Linux_Mint), mas disponível também para outras distros.
+Ele é baseado no GNOME, mas modifica a disposição de elementos para se assemelhar a um ambiente mais tradicional.
+Seu objetivo é ser simples de usar ao mesmo tempo em que apresenta uma experiência mais clássica.
+
+<Figure caption="Captura de tela do Cinnamon.">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/a/ac/LinuxMint22-Wilma-English.png"
+    alt="Captura de tela do ambiente de área de trabalho Cinnamon versão 22, mostrando o aplicativo de configurações e o Mozilla Firefox aberto na página da Wikipédia."
+    width="1920"
+    height="1080"
+  />
+</Figure>
+
+## Estrutura de diretórios
+
+Aqui vale um pequeno apanhado de como funciona a estrutura de diretórios no Linux.
+Ela varia um pouco a depender da distro, mas a estrutura básica é a mesma.
+
+- O sistema todo é organizado dentro de uma pasta denominada`/`.
+  - Ela não tem realmente um nome, por isso a referenciamos apenas com uma barra, e costumamos chamá-la de "raiz" ou _"root"_.
+- Dentro dela, existem diversas pastas, que são responsáveis por organizar o sistema. Algumas são:
+  - `bin`: programas utilitários pré-instalados.
+  - `lib`: bibliotecas compartilhadas pré-instaladas.
+  - `usr`: programas, bibliotecas e arquivos úteis instalados por meio de gerenciadores de pacote (**apt**, **dnf**, ...).
+  - `opt`: programas instalados por meio de instaladores próprios.
+  - `etc`: arquivos de configuração do sistema.
+  - `mnt`: referências a dispositivos de armazenamento montados no computador, como pendrives, HDs, SSDs, etc.
+  - `home`: pastas dos usuários.
+
+Há outras pastas (chamadas comumente de **diretórios**) importantes, mas com o tempo você pega o jeito.
+
+{/* TODO: Colocar imagem */}

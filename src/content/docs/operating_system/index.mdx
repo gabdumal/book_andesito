@@ -1,0 +1,137 @@
+---
+title: Sistema operacional
+author: Gabriel Malosto
+---
+
+import Figure from "@components/Figure.astro";
+
+Computadores são máquinas fantásticas, que permitem executar uma infinidade de aplicativos úteis e interagir com os mais variados dispositivos periféricos.
+
+Como você deve imaginar, um trabalho assim exige que essas máquinas executem uma série de serviços internos de gerenciamento de recursos.
+
+Contudo, tais programas não surgiram no mesmo dia em que Ada Lovelace ou Alan Turing nasceram.
+Na verdade, eles foram resultados de um melhoramento contínuo na interface entre pessoas e computadores, e entre computadores e outros computadores.
+
+Costumamos nomear de sistemas operacionais todo esse conjunto de programas que escondem de nós a complexidade do _hardware_ dos nossos aparelhos.
+Apesar de estarmos acostumados a chamar por esse novo tudo aquilo que vem instalado quando compramos um computador novo, é necessário especificar do que é formado um SO.
+
+Nesse sentido, comecemos pelo **kernel** do sistema operacional, que se trata da camada de _software_ que se comunica diretamente com o _hardware_ do computador.
+É ele quem gerencia o processamento dos programas, o uso de memória, e a conexão com dispositivos periféricos.
+
+## Linux
+
+O [**Linux**](https://en.wikipedia.org/wiki/Linux) é uma família de sistemas operacionais que usam o mesmo kernel.
+Ele foi criado por Linus Torvalds em 1991, inspirado por outro sistema operacional famoso: o [UNIX](https://en.wikipedia.org/wiki/Unix).
+Desde então, muitas pessoas e organizações colaboraram no projeto, que é usado em boa parte da infraestrutura informática até hoje.
+
+<Figure caption="Tux, o macote do Linux.">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg"
+    alt="Tux, o pinguim. É um desenho de um pinguim sentado com a ponta das nadadeiras apoiadas sobre os pés."
+    height="303.5"
+    width="256"
+  />
+</Figure>
+
+:::note
+Em dado momento, Linus Torvalds decidiu que precisava de uma forma melhor de gerenciar as
+melhorias que colaboradores sugeriam. Com isso em mente, ele criou o sistema
+de controle de versão [**Git**](https://en.wikipedia.org/wiki/Git).
+
+Você pode encontrar o código de todo o kernel neste
+[repositório do GitHub](https://github.com/torvalds/linux).
+Contudo, o desenvolvimento não é feito por lá, mas sim por listas de e-mail.
+:::
+
+É comum chamar os sistemas operacionais baseados em Linux de "distros" — o que deriva de "distribuições".
+Uma das mais conhecidas é o sistema [Android](<https://en.wikipedia.org/wiki/Android_(operating_system)>), amplamente utilizado em dispositivos móveis, mas também em TVs, carros e laptops.
+
+## Projeto GNU
+
+Por seu aspecto aberto, livre e customizável, sistemas Linux se consolidaram em servidores e nos computadores dos desenvolvedores de _software_.
+Nesses contextos, é comum que as distros contem com um conjunto de funcionalidades providas pelo [**Projeto GNU**](https://en.wikipedia.org/wiki/GNU_Project).
+
+<Figure caption="Logomarca do projeto GNU.">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/en/2/22/Heckert_GNU_white.svg"
+    alt="Logomarca do projeto GNU. É um desenho do animal gnu em preto e branco."
+    height="261.5"
+    width="267.5"
+  />
+</Figure>
+
+Entre o extenso conjunto de _software_ desenvolvido pelo GNU estão as [_Core Utilities_](https://en.wikipedia.org/wiki/GNU_Core_Utilities).
+Elas oferecem uma série de comandos que permitem ao usuário do computador de fato fazer coisas úteis, como criar arquivos, navegar entre pastas, gerenciar perfis de usuário, e muito mais.
+
+Muito do que nós comumente achamos que faz parte do sistema operacional, na verdade, são apenas programas simples que rodam por cima dele.
+Até mesmo o programa de terminal, em que nós digitamos comandos, não faz parte do SO.
+Ele é simplesmente uma aplicação que faz a comunicação entre nós e o kernel.
+
+O projeto GNU contribui tão expressivamente para o ecossistema do Linux que há quem defenda que deveríamos chamá-lo de [GNU/Linux](https://en.wikipedia.org/wiki/GNU/Linux_naming_controversy).
+Apesar disso, é importante fazer uma diferença entre os conceitos.
+
+- O kernel Linux pode ser utilizado sem os programas do GNU.
+  Um exemplo disso é o Android, que utiliza utilitários desenvolvidos pela Google e por outros projetos.
+- Os programas do GNU podem ser utilizados juntamente a outros sistemas operacionais compatíveis.
+  O projeto distribui suas aplicações para vários sistemas baseados no UNIX ou semelhantes a ele — o que costuma ser chamado de UNIX-like.
+  - Um exemplo de SO baseado em UNIX é o macOS, que também apresenta amplo suporte para ferramentas de desenvolvimento de _software_.
+
+## Servidores gráficos
+
+Para que possamos abrir aplicativos coloridos em janelas animadas, é necessário rodar um conjunto de sistemas responsáveis por calcular quais pixels da tela ligar a cada instante.
+Mais do que isso, eles devem interpretar os locais na tela em que clicamos com o mouse ou tocamos com nossos dedos.
+
+Convencionou-se a chamar esse conjunto de sistemas de [servidor gráfico](https://en.wikipedia.org/wiki/Windowing_system).
+Apesar desse nome, o tal servidor costuma rodar no mesmo computador em que abrimos os aplicativos comuns.
+
+Em computadores compartilhados por dezenas de usuários, como _mainframes_ e máquinas de _data-centers_, o nome "servidor gráfico" faz mais sentido.
+Ele costuma permitir que mais de um usuário execute aplicações gráficas ao mesmo tempo no mesmo computador, até mesmo por meio de conexões remotas.
+
+No nosso contexto, não precisamos nos preocupar com isso.
+O servidor gráfico funciona mais como um subsistema, que roda continuamente debaixo dos panos e oferece funcionalidades para os aplicativos gráficos que queremos executar.
+
+Sem correr o risco de nos alongarmos demais nesse assunto, basta dizer que existem dois servidores gráficos principais no ecossistema Linux.
+Ambos definem um protocolo de funcionalidades que o servidor deve oferecer e os aplicativos podem solicitar.
+
+### X11
+
+O servidor gráfico mais antigo é o [**X11**](https://en.wikipedia.org/wiki/X_Window_System), criado em 1984.
+Diferentes organizações de desenvolvedores se dedicaram a criar implementações do protocolo, mas a mais consolidada é da [Fundação X.Org](https://en.wikipedia.org/wiki/X.Org_Foundation).
+
+O X11 é estável, e muitos aplicativos foram criados contando com o conjunto de funcionalidades que ele oferece.
+Contudo, o projeto tendeu a ficar muito complexo com o surgimento de novas tecnologias de _software_ e de _hardware_.
+Por isso, foi proposto um novo protocolo que pensasse do zero uma forma mais moderna e flexível de estruturar um servidor gráfico.
+
+## Wayland
+
+Surgiu assim o protocolo [**Wayland**](<https://en.wikipedia.org/wiki/Wayland_(protocol)>) em 2008.
+Ele apresenta a implementação de referência Weston, mas é comum que diferentes organizações de desenvolvedores implementem as suas versões.
+Cada usuário pode escolher aquela que melhor atender às suas necessidades.
+
+O Wayland tem como objetivo ser fundamentalmente mais seguro, e fornece um conjunto mais restrito de funcionalidades aos aplicativos do computador.
+Para acessar um serviço, o aplicativo precisa solicitar permissão para fazê-lo.
+
+Além disso, tecnologias modernas, como HDR, escala de tela fracionada (125%, 133.33%, ...), e algumas ferramentas de acessibilidade apenas puderam ser implementadas pelo Wayland.
+
+## Discussão
+
+Existem preocupações de segurança no X11.
+Por exemplo, todos os aplicativos conseguem ler o que você digita no teclado o tempo todo, o que pode ser perigoso caso um deles seja mal-intencionado.
+Existem outros cenários similares em relação a gravação e compartilhamento da tela.
+
+O Wayland não oferece essas permissões, mas isso oferece uma complicação: alguns aplicativos que precisam delas podem não funcionar.
+É responsabilidade dos desenvolvedores de cada aplicativo atualizarem a implementação para solicitarem as permissões corretas para o Wayland, mas ainda existem programas que não foram aprimorados.
+
+Em 2026, ainda estamos em uma época de transição do X11 para o Wayland.
+Cada distro Linux decide se oferece o X11 ou o Wayland.
+Muitas oferecem os dois na mesma instalação, e permitem que você troque entre um e outro na tela de log-in.
+
+Também existe a camada de compatibilidade chamada XWayland, que permite que programas feitos para o X11 rodem em um sistema que usa o Wayland, mas ela não é 100% perfeita.
+
+Minha recomendação é que você teste uma distro que oferece o Wayland.
+Caso você se depare com algum problema que ainda não foi solucionado e não há alternativa a não ser usar o X11 por enquanto, troque para o X11.
+
+## Ambientes de área de trabalho
+
+Por cima das utilidades do sistema, existe mais uma camada de programas rodando.
+Tratam-se das aplicações de gerenciamento de interface gráfica.

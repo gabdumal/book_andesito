@@ -40,8 +40,8 @@ export default defineConfig({
           slug: "introduction",
         },
         {
-          label: "Linux",
-          slug: "linux",
+          label: "Sistema operacional",
+          slug: "operating_system",
         },
         {
           label: "WSL",

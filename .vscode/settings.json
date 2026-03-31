@@ -1,4 +1,7 @@
 {
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "cSpell.words": [
     "astrojs",
     "clangd",

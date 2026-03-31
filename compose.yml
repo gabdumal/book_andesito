@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   dev_environment:
     build:
@@ -7,9 +9,9 @@ services:
     volumes:
       # Mount the project root
       - .:/workspace:Z
-      # Named volume for pnpm store cache
+      # Pnpm store cache
       - pnpm_store:/root/.local/share/pnpm/store
-      # Named volumes for Cargo cache (avoids recompiling deps on rebuild)
+      # Cargo cache
       - cargo_registry:/root/.cargo/registry
       - cargo_git:/root/.cargo/git
       - cargo_target:/workspace/target

@@ -40,6 +40,10 @@ export default defineConfig({
           slug: "introduction",
         },
         {
+          label: "Linux",
+          slug: "linux",
+        },
+        {
           label: "WSL",
           slug: "wsl",
         },

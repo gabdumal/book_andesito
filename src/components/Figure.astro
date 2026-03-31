@@ -1,21 +1,10 @@
 ---
-import type { ImageMetadata } from "astro";
-
-import { Image } from "astro:assets";
-
-interface ImageProps {
-  alt: string;
-  src: ImageMetadata;
-}
-
 interface Props {
   caption: string;
   horizontal?: boolean;
-  images: ImageProps[];
 }
 
-const { caption, horizontal = false, images } = Astro.props;
-const FULL_WIDTH = 100;
+const { caption, horizontal = false } = Astro.props;
 ---
 
 <style>
@@ -26,52 +15,31 @@ const FULL_WIDTH = 100;
     gap: 0.25rem;
   }
 
-  .image-container {
+  .figure-caption {
+    text-align: center;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  .images-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
   }
 
-  .image-container.horizontal {
+  .images-container.horizontal {
     flex-direction: row;
   }
 
-  .image-container.vertical {
+  .images-container.vertical {
     flex-direction: column;
-  }
-
-  .image-item {
-    display: block;
-    width: min-content;
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-  }
-
-  .figure-caption {
-    text-align: center;
-    font-weight: 500;
-    margin-top: 0;
   }
 </style>
 
 <figure class="figure-container">
-  <div class={`image-container ${horizontal ? "horizontal" : "vertical"}`}>
-    {
-      images.map((image) => (
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        <Image
-          alt={image.alt}
-          class="image-item"
-          src={image.src}
-          style={{
-            margin: 0,
-            width: horizontal ? `${FULL_WIDTH / images.length}%` : "",
-          }}
-        />
-      ))
-    }
+  <div class={`images-container ${horizontal ? "horizontal" : "vertical"}`}>
+    <slot />
   </div>
   <figcaption class="figure-caption">
     {caption}

@@ -3,21 +3,23 @@ title: Git
 author: Gabriel Malosto
 ---
 
-import Figure from "@components/Figure.astro";
-import { Steps } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
+import { Steps } from "@astrojs/starlight/components";
+
+import Figure from "@components/Figure.astro";
 
 import githubCode from "@assets/content/docs/git/github_code.png";
 import ghAuthComplete from "@assets/content/docs/git/gh_auth_complete.png";
 
-O **Git** é um sistema de controle de versão distribuído.
+O [**Git**](https://git-scm.com/) é um sistema de controle de versão distribuído.
 Ele é muito utilizado para controle de versão de código fonte e colaboração em projetos de software.
 
 ## Instalação
 
 ### Fedora e WSL
 
-Para instalar o Git no Fedora, ou no WSL utilizando o Fedora como distro, basta executar o comando:
+Para instalar o Git no Fedora &mdash; ou no WSL utilizando o Fedora como distro &mdash; basta executar os comandos abaixo.
 
 ```bash title="Fedora ou WSL" frame="terminal"
 sudo dnf upgrade -y
@@ -32,12 +34,12 @@ O resultado deve ser algo como a linha marcada com `#`, ou alguma versão superi
 
 ```bash title="Fedora ou WSL" frame="terminal"
 git --version
-# git version 2.49.0
+# git version 2.53.0
 ```
 
 ### Mint
 
-Para instalar o Git no Mint ou outras distros baseadas no Debian, execute o comando:
+Para instalar o Git no Mint ou outras distros baseadas no Debian, execute os comandos abaixo.
 
 ```bash title="Mint" frame="terminal"
 sudo apt update -y && sudo apt upgrade -y
@@ -103,7 +105,7 @@ Ele permite fazer login no GitHub e gerenciar repositórios diretamente do termi
 
 ### Instalação
 
-A instalação depende do sistema operacional que você está utilizando, como explicado no [repositório oficial](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt).
+A instalação depende do sistema operacional que você está utilizando, como explicado no [repositório oficial](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#installing-gh-on-linux-and-bsd).
 
 #### Fedora e WSL
 
@@ -127,11 +129,12 @@ Este comando adiciona o repositório do GitHub CLI em seu sistema, e então inst
 Se o sistema pedir para confirmar a instalação, pressione <Kbd linux={"y"} /> e então <Kbd linux={"Enter"} />.
 
 ```bash title="Mint" frame="terminal"
-(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
+(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
 	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
-        && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-        && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+	&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
 	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
 	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
 	&& sudo apt update \
 	&& sudo apt install gh -y
@@ -144,8 +147,8 @@ O resultado deve ser similar.
 
 ```bash title="Fedora, WSL ou Mint" frame="terminal"
 gh --version
-# gh version 2.71.2 (2025-04-24)
-# https://github.com/cli/cli/releases/tag/v2.71.2
+# gh version 2.89.0 (2026-03-26)
+# https://github.com/cli/cli/releases/tag/v2.89.0
 ```
 
 ### Autenticação
@@ -163,8 +166,8 @@ Siga o seguinte passo a passo:
 <Steps>
 
 1. Escolha o método de autenticação. Você deve usar o `GitHub.com`.
-1. Escolha o protocolo de autenticação. Caso você já tenha definido uma chave SSH no GitHub e saiba o que está fazendo, você pode escolher `SSH`. Caso contrário, escolha `HTTPS`.
-1. Quando perguntado sobre autenticar com as credenciais do GitHub, entre <Kbd linux={"y"} />.
+1. Escolha o protocolo de autenticação. A escolha mais comum é `HTTPS`. Caso você já tenha definido uma chave SSH no GitHub e saiba o que está fazendo, você pode escolher `SSH`.
+1. Quando perguntado sobre autenticar com as credenciais do GitHub, digite <Kbd linux={"y"} />.
 1. Quando solicitada a forma de log-in, selecione `Login with a web browser`, e pressione <Kbd linux={"Enter"} />.
 1. O GitHub CLI irá exibir um **código** de oito caracteres e um **link** para acessar no seu navegador.
 1. **Copie** o link e abra em um navegador em que você já esteja logado no GitHub.
@@ -178,24 +181,22 @@ No meu caso, o **WSL** não conseguiu abrir o navegador, então ele exibiu um pe
 
 A tela de autenticação no site do GitHub deve ser como a seguinte.
 
-<Figure
-  caption="Código de autenticação do GitHub CLI colado no navegador."
-  images={[
-    {
-      src: githubCode,
-      alt: "Página de autenticação por código do GitHub. No campo de texto se digita o código fornecido previamente pelo terminal.",
-    },
-  ]}
-/>
+<Figure caption="Código de autenticação do GitHub CLI colado no navegador.">
+  <Image
+    src={githubCode}
+    alt={
+      "Página de autenticação por código do GitHub. No campo de texto se digita o código fornecido previamente pelo terminal."
+    }
+  />
+</Figure>
 
 O prompt de toda a operação deve ser similar a esse.
 
-<Figure
-  caption="Resultado da autenticação pelo navegador."
-  images={[
-    {
-      src: ghAuthComplete,
-      alt: "Terminal do WSl, em que se exibe o resultado da autenticação pelo navegador.",
-    },
-  ]}
-/>
+<Figure caption="Resultado da autenticação pelo navegador.">
+  <Image
+    src={ghAuthComplete}
+    alt={
+      "Terminal do WSl, em que se exibe o resultado da autenticação pelo navegador."
+    }
+  />
+</Figure>

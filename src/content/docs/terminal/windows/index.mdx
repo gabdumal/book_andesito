@@ -3,6 +3,7 @@ title: Windows Terminal
 author: Gabriel Malosto
 ---
 
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -26,70 +27,59 @@ import profiles from "@assets/content/docs/terminal/windows/profiles.png";
 import fedoraAsDefault from "@assets/content/docs/terminal/windows/fedora_as_default.png";
 
 Este subcapítulo aborda o [**Windows Terminal**](https://github.com/microsoft/terminal), um emulador de terminal moderno para usuários do Windows.
-Acesse sua página na [Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare) e instale-o.
+Esse aplicativo é desenvolvido pela Microsoft, e comumente vem instalado por padrão no Windows 11.
+
+Caso você não o tenha instalado, acesse sua página na [Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare) e o instale.
 
 ## Atalho de teclado
 
 Vamos criar um atalho de teclas para abrir o Windows Terminal.
 Abra o `Executar` com <Kbd linux={"Super+R"} windows={"Win+R"} />, digite `shell:AppsFolder`, e pressione <Kbd linux={"Enter"} windows={"Enter"} />.
 
-<Figure
-  caption="Abrindo a pasta de aplicativos pelo Executar."
-  images={[
-    {
-      src: openFolder,
-      alt: "Janela do programa Executar, em que se digita o texto supracitado.",
-    },
-  ]}
-/>
+<Figure caption="Abrindo a pasta de aplicativos pelo Executar.">
+  <Image
+    src={openFolder}
+    alt={"Janela do programa Executar, em que se digita o texto supracitado."}
+  />
+</Figure>
 
 Encontre o ícone do Windows Terminal, clique com o botão direito do mouse e selecione `Criar atalho`.
 
-<Figure
-  caption="Criando um atalho para o Windows Terminal."
-  images={[
-    {
-      src: selectTerminal,
-      alt: "Janela do Explorador de Arquivos aberto da pasta de aplicações do sistema. A entrada do Windows Terminal foi selecionada, e clicada com o botão direito do mouse. Aparece ao seu lado um menu de opções.",
-    },
-  ]}
-/>
+<Figure caption="Criando um atalho para o Windows Terminal.">
+  <Image
+    src={selectTerminal}
+    alt={
+      "Janela do Explorador de Arquivos aberto da pasta de aplicações do sistema. A entrada do Windows Terminal foi selecionada, e clicada com o botão direito do mouse. Aparece ao seu lado um menu de opções."
+    }
+  />
+</Figure>
 
 Clique em `Sim` para criar o atalho na área de trabalho.
 
-<Figure
-  caption="Confirmação da criação do atalho na área de trabalho."
-  images={[
-    {
-      src: confirm,
-      alt: "Janela de confirmação da criação do atalho na área de trabalho.",
-    },
-  ]}
-/>
+<Figure caption="Confirmação da criação do atalho na área de trabalho.">
+  <Image
+    src={confirm}
+    alt={"Janela de confirmação da criação do atalho na área de trabalho."}
+  />
+</Figure>
 
 Agora, clique com o botão direito do mouse no atalho criado na área de trabalho e selecione `Propriedades`.
 
-<Figure
-  caption="Abrindo as propriedades do atalho do Windows Terminal."
-  images={[
-    {
-      src: editShortcut,
-      alt: "Menu de opções do atalho do Windows Terminal.",
-    },
-  ]}
-/>
+<Figure caption="Abrindo as propriedades do atalho do Windows Terminal.">
+  <Image
+    src={editShortcut}
+    alt={"Menu de opções do atalho do Windows Terminal."}
+  />
+</Figure>
 
 Clique sobre a caixa de texto `Tecla de atalho` e pressione a combinação de teclas <Kbd linux={"Ctrl+Alt+T"} windows={"Ctrl+Alt+T"} />.
 
-<Figure
-  caption="Definindo a combinação de teclas para abrir o Windows Terminal."
-  images={[
-    {
-      src: setKeybinding,
-      alt: `Janela de propriedades do atalho do Windows Terminal, com a caixa de texto "Tecla de atalho" selecionada. Dentro dela foram pressionadas as teclas "Ctrl + Alt + T".`,
-    },
-  ]}
-/>
+<Figure caption="Definindo a combinação de teclas para abrir o Windows Terminal.">
+  <Image
+    src={setKeybinding}
+    alt={`Janela de propriedades do atalho do Windows Terminal, com a caixa de texto "Tecla de atalho" selecionada. Dentro dela foram pressionadas as teclas "Ctrl + Alt + T".`}
+  />
+</Figure>
 
 Clique em `Aplicar` e depois em `OK`.
 Agora, sempre que você pressionar <Kbd linux={"Ctrl+Alt+T"} windows={"Ctrl+Alt+T"} />, o Windows Terminal será aberto.
@@ -100,40 +90,35 @@ O Windows Terminal permite a criação de perfis, que são configurações perso
 
 Para acessar as configurações, clique no ícone de seta para baixo no canto superior direito da janela e selecione `Configurações`.
 
-<Figure
-  caption="Menu de abertura das configurações do Windows Terminal."
-  images={[
-    {
-      src: openConfigurations,
-      alt: "Janela do Windows Terminal, em que foi selecionado o botão de abrir o menu de contexto para abrir um novo perfil ou as configurações.",
-    },
-  ]}
-/>
+<Figure caption="Menu de abertura das configurações do Windows Terminal.">
+  <Image
+    src={openConfigurations}
+    alt={
+      "Janela do Windows Terminal, em que foi selecionado o botão de abrir o menu de contexto para abrir um novo perfil ou as configurações."
+    }
+  />
+</Figure>
 
 As configurações são divididas em seções, que permitem configurar o tema, as fontes, os atalhos de teclado, os perfis e outros aspectos do terminal.
 
-<Figure
-  caption="Tela inicial das configurações do Windows Terminal."
-  images={[
-    {
-      src: initialConfigs,
-      alt: `Janela de configurações do Windows Terminal, em que está aberta a primeira tela, referente a "Inicialização".`,
-    },
-  ]}
-/>
+<Figure caption="Tela inicial das configurações do Windows Terminal.">
+  <Image
+    src={initialConfigs}
+    alt={`Janela de configurações do Windows Terminal, em que está aberta a primeira tela, referente a "Inicialização".`}
+  />
+</Figure>
 
 Eu gosto de usar o tema claro no terminal, o que eu posso fazer pela seção `Aparência`.
 Então, posso selecionar a definição `Tema do Aplicativo` como `Claro`.
 
-<Figure
-  caption="Definição do tema claro no Windows Terminal."
-  images={[
-    {
-      src: lightTheme,
-      alt: "Janela de configurações do Windows Terminal, em que está aberta a tela de aparência, com a opção de tema claro selecionada.",
-    },
-  ]}
-/>
+<Figure caption="Definição do tema claro no Windows Terminal.">
+  <Image
+    src={lightTheme}
+    alt={
+      "Janela de configurações do Windows Terminal, em que está aberta a tela de aparência, com a opção de tema claro selecionada."
+    }
+  />
+</Figure>
 
 Entretanto, essa definição apenas muda o tema do aplicativo.
 Para configurar a cor de fundo, as cores do texto, fonte, e aspectos relacionados, é necessário editar um perfil.
@@ -143,42 +128,37 @@ Então selecione a opção `Aparência` no fim do menu.
 
 Eu defini o tema como `One Half Light` e o tamanho da fonte como 16.
 
-<Figure
-  caption="Definições do perfil padrão."
-  images={[
-    {
-      src: defaultProfile,
-      alt: `Janela de configurações do Windows Terminal, em que está aberta a tela dos padrões do terminal, na seção de "Aparência".`,
-    },
-  ]}
-/>
+<Figure caption="Definições do perfil padrão.">
+  <Image
+    src={defaultProfile}
+    alt={`Janela de configurações do Windows Terminal, em que está aberta a tela dos padrões do terminal, na seção de "Aparência".`}
+  />
+</Figure>
 
 Esses dois são opcionais, mas precisamos definir a **fonte** como alguma compatível com símbolos Nerd Font.
 Então, procure por `FiraCode Nerd Font Mono` na lista de fontes disponíveis e a selecione.
 
-<Figure
-  caption="Definindo a fonte FiraCode Mono no Windows Terminal."
-  images={[
-    {
-      src: settingFontOnWindows,
-      alt: "Janela de configurações do Windows Terminal aberta na aba de aparência do perfil padrão. Na opção de fonte, busca-se pela FiraCode Nerd Font Mono.",
-    },
-  ]}
-/>
+<Figure caption="Definindo a fonte FiraCode Mono no Windows Terminal.">
+  <Image
+    src={settingFontOnWindows}
+    alt={
+      "Janela de configurações do Windows Terminal aberta na aba de aparência do perfil padrão. Na opção de fonte, busca-se pela FiraCode Nerd Font Mono."
+    }
+  />
+</Figure>
 
 Toda essa interface apenas edita um arquivo de configuração, que pode ser acessado diretamente pelo botão `Abrir o arquivo JSON`, que fica no canto inferior esquerdo da janela.
 
 Como já instalamos o Visual Studio Code, ele será usado para abrir o arquivo de configurações.
 
-<Figure
-  caption="Arquivo JSON de definições do Windows Terminal."
-  images={[
-    {
-      src: jsonFile,
-      alt: "Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code.",
-    },
-  ]}
-/>
+<Figure caption="Arquivo JSON de definições do Windows Terminal.">
+  <Image
+    src={jsonFile}
+    alt={
+      "Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code."
+    }
+  />
+</Figure>
 
 Eu gosto de usar um tema bastante popular chamado [**Catppuccin**](https://catppuccin.com/).
 Ele é um projeto que oferece personalização para uma série de programas.
@@ -192,27 +172,21 @@ Para aplicar o tema, abra o arquivo `latte.json` do repositório do GitHub (ou o
 
 Então, abra o arquivo de configuração do Windows Terminal e cole o conteúdo copiado dentro da seção `schemes`.
 
-<Figure
-  caption={`Tema Catppuccin Latte sendo aplicado no atributo "schemes".`}
-  images={[
-    {
-      src: schemes,
-      alt: `Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code, com as definições do tema Catppuccin Latte sendo aplicado no atributo "schemes".`,
-    },
-  ]}
-/>
+<Figure caption={`Tema Catppuccin Latte sendo aplicado no atributo "schemes".`}>
+  <Image
+    src={schemes}
+    alt={`Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code, com as definições do tema Catppuccin Latte sendo aplicado no atributo "schemes".`}
+  />
+</Figure>
 
 Depois, copie o conteúdo do arquivo `latteTheme.json` do repositório (ou o correspondente à variante que você escolheu) e cole dentro da seção `themes`.
 
-<Figure
-  caption={`Tema Catppuccin Latte sendo aplicado no atributo "themes".`}
-  images={[
-    {
-      src: themes,
-      alt: `Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code, com as definições do tema Catppuccin Latte sendo aplicado no atributo "themes".`,
-    },
-  ]}
-/>
+<Figure caption={`Tema Catppuccin Latte sendo aplicado no atributo "themes".`}>
+  <Image
+    src={themes}
+    alt={`Trecho do arquivo JSON de definições do Windows Terminal aberto no Visual Studio Code, com as definições do tema Catppuccin Latte sendo aplicado no atributo "themes".`}
+  />
+</Figure>
 
 Salve o arquivo de configuração e feche o Windows Terminal.
 Abra o terminal novamente.
@@ -221,17 +195,16 @@ Agora, você verá que o esquema de cores `Catppuccin Latte` está disponível n
 <Figure
   caption="Tema Catppuccin Latte disponível nas listas de esquema de cores e temas."
   horizontal
-  images={[
-    {
-      src: schemesList,
-      alt: "Lista de esquemas de cores disponíveis no Windows Terminal.",
-    },
-    {
-      src: themesList,
-      alt: "Lista de temas disponíveis no Windows Terminal.",
-    },
-  ]}
-/>
+>
+  <Image
+    src={schemesList}
+    alt={"Lista de esquemas de cores disponíveis no Windows Terminal."}
+  />
+  <Image
+    src={themesList}
+    alt={"Lista de temas disponíveis no Windows Terminal."}
+  />
+</Figure>
 
 Você pode aplicar o tema da mesma forma como selecionamos o tema claro e o `One Half Light` anteriormente.
 
@@ -239,30 +212,26 @@ Você pode aplicar o tema da mesma forma como selecionamos o tema claro e o `One
 
 Tendo instalado o WSL no computador, você verá uma nova entrada para o Fedora na aba de perfis do **Windows Terminal**.
 
-<Figure
-  caption="Opção do Fedora na lista de perfis do Windows Terminal."
-  images={[
-    {
-      src: profiles,
-      alt: `Lista de perfis do Windows Terminal, em que são exibidas as opções: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell" e "FedoraLinux-42".`,
-    },
-  ]}
-/>
+<Figure caption="Opção do Fedora na lista de perfis do Windows Terminal.">
+  <Image
+    src={profiles}
+    alt={`Lista de perfis do Windows Terminal, em que são exibidas as opções: "Windows PowerShell", "Prompt de Comando", "Azure Cloud Shell" e "fedora".`}
+  />
+</Figure>
 
 Eu acho mais prático ter o Fedora como padrão quando inicio o terminal.
 Para isso, abra as configurações do Windows Terminal.
 Na seção `Startup` (ou `Inicialização`), você pode definir o perfil padrão.
 Selecione a entrada do Fedora, que tem o ícone azul com uma letra "F" estilizada, e clique em `Salvar`.
 
-<Figure
-  caption="Definindo o perfil do Fedora como a opção de inicialização padrão do Windows Terminal."
-  images={[
-    {
-      src: fedoraAsDefault,
-      alt: "Configurações do Windows Terminal, em que se define o perfil padrão de inicialização.",
-    },
-  ]}
-/>
+<Figure caption="Definindo o perfil do Fedora como a opção de inicialização padrão do Windows Terminal.">
+  <Image
+    src={fedoraAsDefault}
+    alt={
+      "Configurações do Windows Terminal, em que se define o perfil padrão de inicialização."
+    }
+  />
+</Figure>
 
 Outra coisa que eu gosto de fazer é ocultar os perfis que não uso.
 Pra isso, acesse o perfil que deseja ocultar, e ative a opção `Ocultar perfil da lista suspensa`.

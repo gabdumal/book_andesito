@@ -3,6 +3,7 @@ title: GNOME Terminal
 author: Gabriel Malosto
 ---
 
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -24,15 +25,14 @@ Ele já vem configurado por padrão no Mint.
 O GNOME terminal também pode ser aberto por um comando!
 Digite `gnome-terminal` no terminal e pressione <Kbd linux={"Enter"}/>.
 
-<Figure
-  caption="Abrindo o GNOME Terminal a partir do terminal."
-  images={[
-    {
-      src: openingTerminalFromTerminal,
-      alt: "Terminal do GNOME, em que se executa o comando para abrir outro terminal.",
-    },
-  ]}
-/>
+<Figure caption="Abrindo o GNOME Terminal a partir do terminal.">
+  <Image
+    src={openingTerminalFromTerminal}
+    alt={
+      "Terminal do GNOME, em que se executa o comando para abrir outro terminal."
+    }
+  />
+</Figure>
 
 ## Perfis
 
@@ -48,15 +48,14 @@ A primeira aba de `Global` é `General`, que define algumas preferências gerais
 Eu prefiro um estilo claro, e defini meu sistema para seguir assim.
 Então, na opção `Theme variant`, selecionei `Follow system style`.
 
-<Figure
-  caption="Selecionando a variante de tema clara."
-  images={[
-    {
-      src: preferences,
-      alt: "Preferências do GNOME Terminal, em que se seleciona a variante de tema clara.",
-    },
-  ]}
-/>
+<Figure caption="Selecionando a variante de tema clara.">
+  <Image
+    src={preferences}
+    alt={
+      "Preferências do GNOME Terminal, em que se seleciona a variante de tema clara."
+    }
+  />
+</Figure>
 
 ### Cores
 
@@ -80,68 +79,57 @@ O comando para instalar o tema é o seguinte.
 curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/install.py | python3 -
 ```
 
-<Figure
-  caption="Instalando o tema Catppuccin para o GNOME Terminal."
-  images={[
-    {
-      src: installingCatppuccin,
-      alt: "Terminal do GNOME, em que se executa o script de instalação do tema Catppuccin.",
-    },
-  ]}
-/>
+<Figure caption="Instalando o tema Catppuccin para o GNOME Terminal.">
+  <Image
+    src={installingCatppuccin}
+    alt={
+      "Terminal do GNOME, em que se executa o script de instalação do tema Catppuccin."
+    }
+  />
+</Figure>
 
 Depois de instalado, abra as preferências do terminal e selecione o perfil que mais lhe agrada.
 Eu gosto do `Catppuccin Latte`.
 
 Para isso, clique no botão `▾` ao lado do nome do tema, e selecione `Set as default`.
 
-<Figure
-  caption="Definindo o tema Catppuccin Latte como padrão."
-  images={[
-    {
-      src: settingTheme,
-      alt: "Preferências do GNOME Terminal, em que se define o tema Catppuccin Latte como padrão.",
-    },
-  ]}
-/>
+<Figure caption="Definindo o tema Catppuccin Latte como padrão.">
+  <Image
+    src={settingTheme}
+    alt={
+      "Preferências do GNOME Terminal, em que se define o tema Catppuccin Latte como padrão."
+    }
+  />
+</Figure>
 
 ### Fonte
 
 Por último, temos que configurar a fonte para alguma compatível com o padrão Nerd Font.
 Para isso, clique na caixa de seleção com a legenda `Custom font:`, e então clique no botão ao lado, com o texto `Monospace 12`.
 
-<Figure
-  caption="Definições do perfil após mudar o tamanho da fonte."
-  images={[
-    {
-      src: changingFontSize,
-      alt: "Preferências do GNOME Terminal, em que se altera o tamanho da fonte.",
-    },
-  ]}
-/>
+<Figure caption="Definições do perfil após mudar o tamanho da fonte.">
+  <Image
+    src={changingFontSize}
+    alt={"Preferências do GNOME Terminal, em que se altera o tamanho da fonte."}
+  />
+</Figure>
 
 Uma janela para selecionar sua fonte vai se abrir.
 Pesquise por `FiraCode Nerd Font Mono` e a selecione.
 Se quiser, você pode aumentar o tamanho da fonte na parte inferior do menu.
 
-<Figure
-  caption="Menu de seleção de fonte."
-  images={[
-    {
-      src: selectingFiraCode,
-      alt: `Menu de seleção de fontes do GNOME Terminal, em que se busca pelo texto "FiraCode", e se seleciona a fonte "FiraCode Nerd Font Mono".`,
-    },
-  ]}
-/>
+<Figure caption="Menu de seleção de fonte.">
+  <Image
+    src={selectingFiraCode}
+    alt={`Menu de seleção de fontes do GNOME Terminal, em que se busca pelo texto "FiraCode", e se seleciona a fonte "FiraCode Nerd Font Mono".`}
+  />
+</Figure>
 
 Para carregar as modificações, feche e abra o terminal novamente.
 
-<Figure
-  caption="Aparência final do terminal após mudar o tema."
-  images={[
-    {
-      src: result,
-      alt: "Terminal do GNOME com o tema Catppuccin Latte aplicado.",
-    },
-  ]}
-/>
+<Figure caption="Aparência final do terminal após mudar o tema.">
+  <Image
+    src={result}
+    alt={"Terminal do GNOME com o tema Catppuccin Latte aplicado."}
+  />
+</Figure>

@@ -3,11 +3,14 @@ title: Ptyxis
 author: Gabriel Malosto
 ---
 
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
+import { Steps } from "@astrojs/starlight/components";
 
 import Figure from "@components/Figure.astro";
 
 import openingKeyboardSettings from "@assets/content/docs/terminal/ptyxis/opening_keyboard_settings.png";
+import emptyShortcutsList from "@assets/content/docs/terminal/ptyxis/empty_shortcuts_list.png";
 import settingTerminalShortcut from "@assets/content/docs/terminal/ptyxis/setting_terminal_shortcut.png";
 import ptyxisMenu from "@assets/content/docs/terminal/ptyxis/ptyxis_menu.png";
 import settingTheme from "@assets/content/docs/terminal/ptyxis/setting_theme.png";
@@ -19,40 +22,62 @@ Este subcapítulo aborda o **Ptyxis**, o emulador de terminal padrão do **Fedor
 
 Um atalho de teclas comumente utilizado para abrir o terminal é <Kbd linux={"Ctrl+Alt+T"}/>.
 O Mint o tem configurado por padrão.
-Já no Fedora, você pode defini-lo no aplicativo de configurações.
-Pesquise por `Settings` no menu do seu sistema operacional e clique no ícone do aplicativo para abri-lo.
+Já no Fedora, precisamos defini-lo no aplicativo de configurações.
 
-Então, na barra lateral, selecione `Keyboard`.
-No menu que se abrir, desça a tela e clique na opção `View and Customize Shortcuts`.
-Então, selecione `Custom Shortcuts`.
+<Steps>
 
-<Figure
-  caption="Selecionando menu de atalhos de teclado nas configurações do GNOME."
-  images={[
-    {
-      src: openingKeyboardSettings,
-      alt: "Configurações do GNOME, em que está aberto o menu de atalhos de teclado.",
-    },
-  ]}
-/>
+1. Pesquise por `Settings` (ou `Configurações`) no menu do seu sistema operacional e clique no ícone do aplicativo para abri-lo.
+1. Então, na barra lateral, selecione `Keyboard` (ou `Teclado`).
+1. No menu que se abrir, desça a tela e clique na opção `View and Customize Shortcuts` (ou `Veja e customize atalhos`).
+1. Desça até o fim da lista e **ative** a opção `Activities Overview Shortcut`(ou`Atalho do panorama de atividades`).
+1. Então, selecione `Custom Shortcuts` (ou `Atalhos personalizados`).
 
-Então, defina o nome como `Terminal`, o comando como `ptyxis -s` e o atalho de teclado como <Kbd linux={"Ctrl+Alt+T"}/>.
-Pressione `Add` e pronto!
+</ Steps>
 
-<Figure
-  caption="Definindo o atalho de teclado para abrir o terminal."
-  images={[
-    {
-      src: settingTerminalShortcut,
-      alt: "Configurações do GNOME, em que se define o atalho de teclado para abrir o terminal.",
-    },
-  ]}
-/>
+<Figure caption="Selecionando menu de atalhos de teclado nas configurações do GNOME.">
+  <Image
+    src={openingKeyboardSettings}
+    alt={
+      "Configurações do GNOME, em que está aberto o menu de atalhos de teclado."
+    }
+  />
+</Figure>
+
+<Steps>
+
+1. Clique no botão `Add Shortcut...`.
+1. Defina o nome como `Terminal`, o comando como `ptyxis -s` e o atalho de teclado como <Kbd linux={"Ctrl+Alt+T"}/>.
+1. Clique no botão `Add`.
+
+</ Steps>
+
+<Figure caption="Tela de atalhos de teclado.">
+  <Image
+    src={emptyShortcutsList}
+    alt={
+      "Configurações do GNOME, em que se mostra a lista vazia de atalhos de teclado."
+    }
+  />
+</Figure>
+
+<Figure caption="Definindo o atalho de teclado para abrir o terminal.">
+  <Image
+    src={settingTerminalShortcut}
+    alt={
+      "Configurações do GNOME, em que se define o atalho de teclado para abrir o terminal."
+    }
+  />
+</Figure>
+
+Outro atalho que eu recomendo adicionar é o do **Monitor do Sistema**, que é similar ao Gerenciador de Tarefas, do Windows.
+Adicione um novo atalho, definindo seu nome como `System Monitor`, seu comando como `gnome-system-monitor` e suas teclas como <Kbd linux={"Ctrl+Shift+Esc"}/>.
 
 ## Personalização
 
-O Ptyxis já traz várias configurações de personalização.
-Clique no botão de menu no canto superior direito da janela do terminal.
+O Ptyxis oferece várias configurações de personalização.
+Vamos tratar de algumas nesta seção.
+Abra o Terminal pelo menu de aplicativos ou pelo atalho que acabamos de definir.
+Então, clique no botão de menu no canto superior direito da janela do terminal.
 
 ### Estilo
 
@@ -61,17 +86,16 @@ Eu prefiro deixá-lo seguir o estilo do sistema.
 Para isso, selecione o primeiro círculo, que apresenta uma metade em branco e outra em preto.
 
 Se preferir um tema **escuro**, selecione o círculo que tem um fundo preto.
-O estilo de cores do terminal influencia na lista de temas de cores disponíveis, então escolhe um deles de antemão.
+O estilo de cores do terminal influencia na lista de temas de cores disponíveis, então decida entre um deles de antemão.
 
-<Figure
-  caption="Definindo o estilo de cores do terminal."
-  images={[
-    {
-      src: ptyxisMenu,
-      alt: "Menu do terminal Ptyxis, em que se define o estilo de cores do terminal.",
-    },
-  ]}
-/>
+<Figure caption="Definindo o estilo de cores do terminal.">
+  <Image
+    src={ptyxisMenu}
+    alt={
+      "Menu do terminal Ptyxis, em que se define o estilo de cores do terminal."
+    }
+  />
+</Figure>
 
 ### Cores
 
@@ -81,15 +105,12 @@ A primeira aba, chamada `Appearance`, permite escolher o tema de cores do termin
 Eu gosto de usar um chamado `Catppuccin Latte`.
 Para que ele seja exibido, é necessário clicar no botão `Show all palettes`, no canto superior direito da janela.
 
-<Figure
-  caption="Definindo o estilo de cores do terminal."
-  images={[
-    {
-      src: settingTheme,
-      alt: `Configurações do terminal Ptyxis, na aba "Appearance", em que se seleciona o tema "Catppuccin Latte".`,
-    },
-  ]}
-/>
+<Figure caption="Definindo o estilo de cores do terminal.">
+  <Image
+    src={settingTheme}
+    alt={`Configurações do terminal Ptyxis, na aba "Appearance", em que se seleciona o tema "Catppuccin Latte".`}
+  />
+</Figure>
 
 Se você tiver selecionado um estilo claro, apenas aparecerão temas claros.
 O mesmo vale para os temas escuros.
@@ -97,19 +118,16 @@ Então, se você não estiver vendo o tema que deseja, altere o estilo de cores 
 
 ### Fonte
 
-Agora, vamos aplicar a fonte do padrão NerdFonts que instalamos.
+Agora, vamos aplicar a fonte do projeto **NerdFonts** que instalamos [anteriormente](..#fontes).
 Desça a tela até a seção `Font` nessa mesma aba `Appearance`.
-Desative a opção `Use system font`.
+Desative a opção `Use System Font`.
 Então, clique na opção `Custom Font`.
 
 Na janela que se abrir, selecione a fonte `FiraCode Nerd Font Mono Regular` e clique em `Select`.
 
-<Figure
-  caption="Menu de seleção de fonte."
-  images={[
-    {
-      src: selectingFiraCode,
-      alt: `Menu de seleção de fontes do GNOME Terminal, em que se busca pelo texto "FiraCode", e se seleciona a fonte "FiraCode Nerd Font Mono Regular".`,
-    },
-  ]}
-/>
+<Figure caption="Menu de seleção de fonte.">
+  <Image
+    src={selectingFiraCode}
+    alt={`Menu de seleção de fontes do GNOME Terminal, em que se busca pelo texto "FiraCode", e se seleciona a fonte "FiraCode Nerd Font Mono Regular".`}
+  />
+</Figure>

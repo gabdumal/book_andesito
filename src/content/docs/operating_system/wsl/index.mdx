@@ -3,7 +3,7 @@ title: Windows Subsystem for Linux
 author: Gabriel Malosto
 ---
 
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import { Aside, LinkButton } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
@@ -184,11 +184,11 @@ Então, digite o comando `echo $HOME` na janela do WSL e veja o que aparece.
   caption="Comando para exibir a variável de ambiente HOME no Fedora e no PowerShell, respectivamente."
   horizontal
 >
-  <Image
+  <Picture
     src={homePowerShell}
     alt={`Terminal do PowerShell, em que se executa o comando "echo $HOME". A resposta é "C:\\Users\\gabriel".`}
   />
-  <Image
+  <Picture
     src={homeWsl}
     alt={`Terminal do Fedora, em que se executa o comando "echo $HOME". A resposta é "/home/gabriel".`}
   />

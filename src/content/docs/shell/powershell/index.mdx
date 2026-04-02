@@ -3,11 +3,13 @@ title: PowerShell
 author: Gabriel Malosto
 ---
 
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 
 import installing7 from "@assets/content/docs/shell/powershell/installing_7.png";
+import profilesWithPowerShell from "@assets/content/docs/shell/powershell/profiles_with_powershell.png";
 import hideWindowsPowerShell from "@assets/content/docs/shell/powershell/hide_windows_powershell.png";
 
 O **PowerShell** é uma ferramenta de linha de comando desenvolvida pela Microsoft, que é utilizada para automatizar tarefas e gerenciar configurações do sistema operacional.
@@ -29,34 +31,38 @@ Segundo ele, o comando a ser executado é:
 winget install --id Microsoft.PowerShell --source winget
 ```
 
-<Figure
-  caption="Processo de instalação do PowerShell 7 pelo WinGet."
-  images={[
-    {
-      src: installing7,
-      alt: "Terminal do PowerShell, em que se executa o comando de instalação supracitado.",
-    },
-  ]}
-/>
+<Figure caption="Processo de instalação do PowerShell 7 pelo WinGet.">
+  <Image
+    src={installing7}
+    alt={
+      "Terminal do PowerShell, em que se executa o comando de instalação supracitado."
+    }
+  />
+</Figure>
 
 **Feche** a abra o PowerShell para que as alterações tenham efeito.
 
-Abra as configurações do Windows Terminal com o comando <Kbd linux={"Ctrl+,"} />
+Abra as configurações do Windows Terminal com o comando <Kbd linux={"Ctrl+,"} />.
 
-Você verá que um novo perfil, para o PowerShell 7, foi instalado, chamado simplesmente de **PowerShell** e com ícone preto.
+Você verá que um novo perfil, para o PowerShell 7, foi instalado.
+Ele é chamado simplesmente de **PowerShell** e tem um ícone preto.
 
-Podemos, então, ocultar a exibição do perfil do PowerShell 5.1.
+<Figure caption="Lista de perfis.">
+  <Image
+    src={profilesWithPowerShell}
+    alt={`Lista de perfis, em que se vê "Windows Powershell", "fedora" e "PowerShell".`}
+  />
+</Figure>
+
+Podemos, então, **ocultar** a exibição do perfil do PowerShell 5.1.
 Ele é identificado na entrada `Windows PowerShell`, com ícone azul.
 Selecione-a e ative a opção `Ocultar perfil da lista suspensa`.
 
-<Figure
-  caption="Escondendo o Windows Powershell."
-  images={[
-    {
-      src: hideWindowsPowerShell,
-      alt: `Configurações do perfil "Windows Powershell", em que a opção de escondê-lo está ativa.`,
-    },
-  ]}
-/>
+<Figure caption="Escondendo o Windows Powershell.">
+  <Image
+    src={hideWindowsPowerShell}
+    alt={`Configurações do perfil "Windows Powershell", em que a opção de escondê-lo está ativa.`}
+  />
+</Figure>
 
 Salve, **feche** e abra o Windows Terminal novamente para que as alterações tenham efeito.

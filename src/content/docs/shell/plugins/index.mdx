@@ -6,16 +6,13 @@ author: Gabriel Malosto
 import { Code } from "@astrojs/starlight/components";
 import { Kbd } from "starlight-kbd/components";
 
-import Figure from "@components/Figure.astro";
-
 import powerShellSettings from "/public/configuration/powershell/plugins/Microsoft.PowerShell_profile.ps1?raw";
-import configuringZoxideOnPowerShell from "@assets/content/docs/shell/plugins/configuring_zoxide_on_powershell.png";
 import zshSettingsWithFzfAndZoxide from "/public/configuration/zsh/plugins/fzf_and_zoxide/.zshrc?raw";
 import zshSettingsWithZshAutosuggestions from "/public/configuration/zsh/plugins/zsh_autosuggestions/.zshrc?raw";
 import zshSettingsWithZshSyntaxHighlighting from "/public/configuration/zsh/plugins/zsh_syntax_highlighting/.zshrc?raw";
 
 Plugins são uma forma de estender as funcionalidades do shell.
-Para os sistemas que configuramos com o **Zsh**, utilizaremos o **Oh My Zsh**
+Para os sistemas que configuramos com o **Zsh**, utilizaremos o **Oh My Zsh**.
 Já para o **PowerShell**, instalaremos os plugins diretamente.
 
 ## Zoxide
@@ -30,7 +27,7 @@ O Zoxide permite que você navegue para esse diretório apenas digitando `cd MyP
 Isso é possível porque o Zoxide mantém um histórico dos diretórios que você acessa com mais frequência.
 E então, quando você digita `cd MyProject`, ele automaticamente navega para o diretório `~/Documents/Projects/MyProject`.
 
-O Zoxide tem como dependência o [**FZF**](https://github.com/junegunn/fzf), que é um fuzzy finder.
+O Zoxide tem como dependência o [**FZF**](https://github.com/junegunn/fzf), que é um _fuzzy finder_.
 Ele é uma ferramenta que permite que você pesquise por arquivos e diretórios de forma rápida e eficiente.
 Vamos tratar da sua instalação adiante.
 
@@ -56,37 +53,29 @@ Para confirmar a instalação, execute os comandos abaixo.
 
 ```powershell title="PowerShell" frame="terminal"
 fzf --version
-# 0.61.3 (d24b58ef)
+# 0.70.0 (eacef5ea)
 zoxide --version
-# zoxide 0.9.7
+# zoxide 0.9.9
 ```
 
-Então, precisamos adicionar as seguintes linhas ao **final** do seu arquivo de configuração do PowerShell:
+Então, precisamos adicionar as seguintes linhas ao **final** do seu arquivo de configuração do PowerShell.
+Lembre-se que, para abrir o arquivo de configuração do PowerShell, você deve executar o comando `code $PROFILE` no terminal.
 
 <Code
   lang="powershell"
   title="$HOME/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
   code={powerShellSettings}
   frame="code"
-  ins={[10, 11, 12, 13, 14]}
-/>
-
-Lembre-se que, para abrir o arquivo de configuração do PowerShell, você deve executar o comando `code $PROFILE` no terminal.
-O arquivo aberto dependerá da versão do PowerShell que você está utilizando.
-
-<Figure
-  caption="Configurando o Zoxide no PowerShell."
-  images={[
-    {
-      src: configuringZoxideOnPowerShell,
-      alt: "Arquivo de configuração do PowerShell aberto no Visual Studio Code, em que foi adicionada a configuração do Zoxide.",
-    },
-  ]}
+  ins={[9, 10, 11, 12, 13]}
 />
 
 Salve o arquivo, feche o editor, e então **feche** e abra novamente o PowerShell para que as alterações tenham efeito.
 
 ### Zsh
+
+Tratamos nesta seção da instalação do FZF e do Zoxide nos sistemas que usam o Zsh.
+
+#### FZF
 
 Para instalar o FZF no Zsh, execute um dos seguintes comandos, conforme especificado pela [documentação oficial](https://github.com/junegunn/fzf).
 
@@ -95,23 +84,31 @@ Para o **Fedora** ou o **WSL** usando o Fedora como distro, utilize a ferramenta
 ```zsh title="Fedora ou WSL" frame="terminal"
 sudo dnf install fzf -y
 fzf --version
-# 0.61.3 (Fedora)
+# 0.70.0 (Fedora)
 ```
 
-Para o **Mint** ou outros derivados do Debian, a versão do FZF disponível nos repositórios é a `0.44.1`, que não oferece os recursos necessários.
+Então, **feche** e reabra o terminal.
+
+Já para o **Mint** ou outros derivados do Debian, a versão do FZF disponível nos repositórios é a `0.44.1`, que não oferece os recursos necessários.
 Então, por enquanto, vamos baixar uma versão um pouco mais atualizada diretamente do repositório oficial.
 
 ```zsh title="Mint" frame="terminal"
 wget https://github.com/junegunn/fzf/releases/download/0.48.0/fzf-0.48.0-linux_amd64.tar.gz
 tar -xzf fzf-0.48.0-linux_amd64.tar.gz
-sudo mv fzf /usr/local/bin/
-fzf --version
-# 0.48.0 (091b7ea)
+mv fzf ~/.local/bin/
 ```
 
 {/* TODO: When repositories update, change installing method to `apt install fzf`. */}
 
 Então, **feche** e reabra o terminal.
+Para testar se a instalação foi bem sucedida, execute o comando a seguir.
+
+```zsh title="Mint" frame="terminal"
+fzf --version
+# 0.48.0 (091b7ea)
+```
+
+#### Zoxide
 
 Para instalar o **Zoxide**, execute o seguinte comando, conforme especificado pela [documentação oficial](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation).
 
@@ -119,6 +116,7 @@ Para instalar o **Zoxide**, execute o seguinte comando, conforme especificado pe
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 ```
 
+Então, **feche** e reabra o terminal.
 Para verificar se a instalação foi bem-sucedida, execute o seguinte comando.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"

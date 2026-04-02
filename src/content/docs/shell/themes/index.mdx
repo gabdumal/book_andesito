@@ -4,6 +4,7 @@ author: Gabriel Malosto
 ---
 
 import { Code } from "@astrojs/starlight/components";
+import { Image, Picture } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -11,7 +12,6 @@ import Figure from "@components/Figure.astro";
 import starshipOnPowerShell from "@assets/content/docs/shell/themes/starship_on_powershell.png";
 import powerShellSettings from "/public/configuration/powershell/themes/Microsoft.PowerShell_profile.ps1?raw";
 import editedPowerShell from "@assets/content/docs/shell/themes/edited_powershell.png";
-import powershellError from "@assets/content/docs/shell/themes/powershell_error.png";
 import starshipOnZsh from "@assets/content/docs/shell/themes/starship_on_zsh.png";
 import installedStarshipMessageZsh from "@assets/content/docs/shell/themes/installed_starship_message_zsh.png";
 import zshSettings from "/public/configuration/zsh/themes/.zshrc?raw";
@@ -41,27 +41,20 @@ Para obter o instalador e executar o script de instalação, rode o seguinte com
 winget install --id Starship.Starship
 ```
 
-<Figure
-  caption="Instalando o Starship no PowerShell."
-  images={[
-    {
-      src: starshipOnPowerShell,
-      alt: "Terminal com o PowerShell, em que se executa o comando de instalação do Starship.",
-    },
-  ]}
-/>
+<Figure caption="Instalando o Starship no PowerShell.">
+  <Image
+    src={starshipOnPowerShell}
+    alt={
+      "Terminal com o PowerShell, em que se executa o comando de instalação do Starship."
+    }
+  />
+</Figure>
 
 Após a instalação, é necessário adicionar o script de inicialização do Starship ao seu perfil do PowerShell.
 
 O arquivo de configuração do PowerShell tem o nome `Microsoft.PowerShell_profile.ps1`.
-Seu local de armazenamento pode variar de acordo com a versão do PowerShell.
-
-O arquivo para o PowerShell 5 é encontrado em `$HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`.
-Já para o PowerShell 7, o arquivo é encontrado em `$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`.
-
+Sua localização é `$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`.
 Felizmente, o Windows provê uma variável de ambiente chamada `$PROFILE` que aponta justamente para esse arquivo.
-As instruções deste capítulo valem para qualquer uma das duas versões.
-Basta executar os comandos no terminal da versão que você utiliza.
 
 Vamos abrir o arquivo de configuração com o **VSCode**, executando o comando abaixo.
 
@@ -78,43 +71,17 @@ Adicione as seguintes linhas ao arquivo.
   frame="code"
 />
 
-<Figure
-  caption="Arquivo de configuração do PowerShell com o comando para executar o Starship."
-  images={[
-    {
-      src: editedPowerShell,
-      alt: "Arquivo de configuração do PowerShell aberto no Visual Studio Code, com as linhas de configuração do Starship adicionadas.",
-    },
-  ]}
-/>
+<Figure caption="Arquivo de configuração do PowerShell com o comando para executar o Starship.">
+  <Image
+    src={editedPowerShell}
+    alt={
+      "Arquivo de configuração do PowerShell aberto no Visual Studio Code, com as linhas de configuração do Starship adicionadas."
+    }
+  />
+</Figure>
 
 Salve o arquivo e feche o editor.
 Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
-
-Se estiver usando o PowerShell 5, você possivelmente verá uma mensagem de erro ao abrir o PowerShell.
-
-<Figure
-  caption="Mensagem de erro no PowerShell sobre execução de scripts."
-  images={[
-    {
-      src: powershellError,
-      alt: "Terminal com o PowerShell, em que se exibe uma mensagem de erro sobre a execução de scripts.",
-    },
-  ]}
-/>
-
-Essa mensagem é exibida porque o Windows não permite a execução de scripts por padrão.
-Precisamos alterar a política de execução de scripts para que o Starship funcione.
-
-Para isso, execute o comando abaixo.
-
-```powershell title="PowerShell" frame="terminal"
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-Esse comando define que scripts que sejam assinados por fontes confiáveis podem ser executados.
-
-**Feche** e abra o terminal novamente.
 
 ### Zsh
 
@@ -141,28 +108,27 @@ sudo curl -sS https://starship.rs/install.sh | sh
 ```
 
 Quando perguntado se deseja prosseguir com a instalação, pressione a tecla <Kbd linux={"y"} /> e então a tecla <Kbd linux={"Enter"} />.
+Se prompt solicitar sua senha, digite-a e pressione <Kbd linux={"Enter"} />.
 
-<Figure
-  caption="Executando comando de instalação do Starship no Zsh."
-  images={[
-    {
-      src: starshipOnZsh,
-      alt: "Terminal com o Zsh, em que se executa o comando de instalação do Starship.",
-    },
-  ]}
-/>
+<Figure caption="Executando comando de instalação do Starship no Zsh.">
+  <Image
+    src={starshipOnZsh}
+    alt={
+      "Terminal com o Zsh, em que se executa o comando de instalação do Starship."
+    }
+  />
+</Figure>
 
 O instalador exibirá uma mensagem informando que o Starship foi instalado com sucesso, e que é necessário adicionar o script de inicialização ao arquivo de configurações do shell.
 
-<Figure
-  caption="Mensagem de sucesso da instalação do Starship no Zsh."
-  images={[
-    {
-      src: installedStarshipMessageZsh,
-      alt: "Terminal com o Zsh, em que se exibe a mensagem de sucesso da instalação do Starship.",
-    },
-  ]}
-/>
+<Figure caption="Mensagem de sucesso da instalação do Starship no Zsh.">
+  <Image
+    src={installedStarshipMessageZsh}
+    alt={
+      "Terminal com o Zsh, em que se exibe a mensagem de sucesso da instalação do Starship."
+    }
+  />
+</Figure>
 
 O arquivo de configurações do Zsh é o `~/.zshrc`.
 Vamos editá-lo usando o VSCode com o seguinte comando abaixo.
@@ -181,7 +147,7 @@ Atualize o arquivo da seguinte forma.
   ins={{ range: "17-20" }}
 />
 
-Salve o arquivo e feche o editor.
+Salve o arquivo e **feche** o editor.
 Para que as alterações tenham efeito, **feche** e abra o terminal novamente.
 
 ## Configurando o Starship
@@ -193,6 +159,8 @@ Se quiser aprender mais sobre, acesse a [documentação oficial](https://starshi
 Neste capítulo, vamos utilizar um dos temas já prontos, os quais são chamados de [presets](https://starship.rs/presets/).
 Acesse o link e escolha o tema que mais lhe agrada.
 Vamos utilizar o tema [Nerd Font Symbols](https://starship.rs/presets/nerd-font), mas o passo a passo é similar para qualquer outro.
+
+### Arquivo de configuração
 
 O Starship também tem um arquivo de configuração chamado `starship.toml`, que é onde você pode definir as configurações do prompt.
 Por padrão, este arquivo pode não existir.
@@ -210,6 +178,10 @@ Já no **Linux** (incluindo o WSL), execute o comando abaixo.
 mkdir -p ~/.config && touch ~/.config/starship.toml
 ```
 
+Então, **feche** e reabra o terminal.
+
+### Definição de tema
+
 Depois de criado, precisamos copiar o conteúdo de um preset para dentro desse arquivo.
 O starship oferece um comando para fazer justamente isso.
 
@@ -224,35 +196,3 @@ Já no **Linux** (incluindo o WSL), execute o comando abaixo.
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 starship preset nerd-font-symbols -o $STARSHIP_CONFIG
 ```
-
-### Considerações
-
-O Starship é um framework novo e em constante desenvolvimento.
-Uma funcionalidade que foi implementada para o PowerShell, mas ainda não para o Zsh, é a de definir o prompt de forma transitória.
-
-Isso significa que apenas a linha atual terá todos os detalhes do prompt, e as demais linhas terão um prompt mais simples.
-
-<Figure
-  caption="Comparação do Starship entre o Zsh e o PowerShell respectivamente."
-  horizontal
-  images={[
-    {
-      src: exampleOnZsh,
-      alt: "Prompt do Starship no Zsh, com muitos detalhes em todas as linhas do histórico.",
-    },
-    {
-      src: exampleOnPowerShell,
-      alt: "Prompt do Starship no PowerShell, com menos detalhes, pois o prompt transitório foi ativado.",
-    },
-  ]}
-/>
-
-Se você preferir desativar o prompt transitório no PowerShell, basta remover a última linha do arquivo de configurações.
-
-<Code
-  lang="powershell"
-  title="$HOME/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
-  code={powerShellSettings}
-  frame="code"
-  del={[9]}
-/>

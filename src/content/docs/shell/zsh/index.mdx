@@ -4,6 +4,7 @@ author: Gabriel Malosto
 ---
 
 import { Code } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -12,6 +13,7 @@ import welcome from "@assets/content/docs/shell/zsh/welcome.png";
 import installOmz from "@assets/content/docs/shell/zsh/install_omz.png";
 import zshCodeInitial from "@assets/content/docs/shell/zsh/zsh_code_initial.png";
 import trustCode from "@assets/content/docs/shell/zsh/trust_code.png";
+
 import settings from "/public/configuration/zsh/initial/.zshrc?raw";
 
 O [**Zsh**](https://www.zsh.org/) é um shell que busca ser mais poderoso e flexível que o Bash (o shell padrão do Ubuntu e do Fedora)
@@ -64,7 +66,7 @@ Verifique a instalação com o comando abaixo.
 
 ```bash title="Mint" frame="terminal"
 zsh --version
-zsh 5.9 (x86_64-ubuntu-linux-gnu)
+# zsh 5.9 (x86_64-ubuntu-linux-gnu)
 ```
 
 E então o defina como o shell padrão da seguinte forma.
@@ -77,18 +79,15 @@ chsh -s $(which zsh)
 
 ### Boas-vindas
 
-Após instalar o Zsh, **feche** o terminal e abra-o novamente.
+Após instalar o Zsh, **abra** uma nova janela do terminal.
 Pode aparecer para você o texto de boas-vindas.
 
-<Figure
-  caption="Texto de boas-vindas do Zsh no Windows Terminal rodando o Fedora."
-  images={[
-    {
-      src: welcome,
-      alt: `Terminal do Fedora WSL com texto de boas-vindas do Zsh. São apresentadas quatro opções de configuração em inglês: (q) sair sem criar o arquivo de configuração, (0) criar um arquivo de configuração vazio, (1) continuar para o menu e (2) criar um arquivo com as configurações recomendadas.`,
-    },
-  ]}
-/>
+<Figure caption="Texto de boas-vindas do Zsh no Windows Terminal rodando o Fedora.">
+  <Image
+    src={welcome}
+    alt={`Terminal do Fedora WSL com texto de boas-vindas do Zsh. São apresentadas quatro opções de configuração em inglês: (q) sair sem criar o arquivo de configuração, (0) criar um arquivo de configuração vazio, (1) continuar para o menu e (2) criar um arquivo com as configurações recomendadas.`}
+  />
+</Figure>
 
 O Zsh está pedindo para você criar um arquivo de configuração para ele.
 O shell, assim como diversos outros programas no Linux utilizam arquivos de configuração para definir suas opções.
@@ -131,6 +130,7 @@ sudo apt install wget -y
 ```
 
 Então, para ambos os sistemas, execute o seguinte comando no terminal para instalar o Oh My Zsh.
+Caso o prompt solicite, confirme a configuração com <Kbd linux={"0"} /> e então <Kbd linux={"Enter"} />.
 
 ```zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -138,15 +138,12 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 
 Além de instalar o Oh My Zsh, o script de instalação também configura o arquivo `.zshrc` de forma a carregar o framework.
 
-<Figure
-  caption="Script de instalação do Oh My Zsh sendo executado no Fedora WSL."
-  images={[
-    {
-      src: installOmz,
-      alt: `Terminal do Fedora WSL, em que se executa o script de instalação do Oh My Zsh.`,
-    },
-  ]}
-/>
+<Figure caption="Script de instalação do Oh My Zsh sendo executado no Fedora WSL.">
+  <Image
+    src={installOmz}
+    alt={`Terminal do Fedora WSL, em que se executa o script de instalação do Oh My Zsh.`}
+  />
+</Figure>
 
 ### Configuração
 
@@ -164,28 +161,22 @@ code ~/.zshrc
 O `~` é um atalho para a pasta do usuário, ou seja, `/home/gabriel-dev` no meu caso.
 Dentro dela, está o arquivo `.zshrc`.
 
-<Figure
-  caption="Abrindo o arquivo de configuração do Zsh no Visual Studio Code."
-  images={[
-    {
-      src: zshCodeInitial,
-      alt: `Arquivo de configuração do Zsh exibido no VSCode, com o aviso de arquivo modo restrito.`,
-    },
-  ]}
-/>
+<Figure caption="Abrindo o arquivo de configuração do Zsh no Visual Studio Code.">
+  <Image
+    src={zshCodeInitial}
+    alt={`Arquivo de configuração do Zsh exibido no VSCode, com o aviso de arquivo modo restrito.`}
+  />
+</Figure>
 
 Caso dentro do VSCode haja um aviso de que o arquivo está em modo restrito, clique em **Manage**.
 Então, na próxima página clique em **Trust**.
 
-<Figure
-  caption="Permitindo confiar no arquivo de configuração do Zsh no VSCode."
-  images={[
-    {
-      src: trustCode,
-      alt: `Tela de autorização para confiar no arquivo de configuração do Zsh no VSCode.`,
-    },
-  ]}
-/>
+<Figure caption="Permitindo confiar no arquivo de configuração do Zsh no VSCode.">
+  <Image
+    src={trustCode}
+    alt={`Tela de autorização para confiar no arquivo de configuração do Zsh no VSCode.`}
+  />
+</Figure>
 
 Uou, realmente é um arquivo grande!
 Mas não se preocupe, todas as linhas que começam com `#` são comentários e não são executadas.

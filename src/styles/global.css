@@ -11,6 +11,7 @@
   aspect-ratio: 16/9;
 }
 
-img {
+img,
+picture {
   margin-top: 0rem;
 }

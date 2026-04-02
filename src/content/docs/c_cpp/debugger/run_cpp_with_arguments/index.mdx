@@ -4,14 +4,16 @@ author: Gabriel Malosto
 ---
 
 import { Code, FileTree } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 
+import outputOfProgramPath from "@assets/content/docs/c_cpp/debugger/run_cpp_with_arguments/output_of_program_path.png";
+
 import mainFromHelloUser from "/public/code/c_cpp_projects/hello_user/main.cpp?raw";
 import vscodeTasksForHelloUser from "/public/code/c_cpp_projects/hello_user/.vscode/tasks.json?raw";
 import vscodeLaunchForHelloUser from "/public/code/c_cpp_projects/hello_user/.vscode/launch.json?raw";
-import outputOfProgramPath from "@assets/content/docs/c_cpp/debugger/run_cpp_with_arguments/output_of_program_path.png";
 
 Programas executados pelo terminal podem receber **argumentos**.
 Esses são textos e números descritos logo após digitar o nome do programa.
@@ -163,18 +165,14 @@ int main(int argc, char *argv[]) {
 Para executar nosso programa, acesse o menu de depuração clicando no ícone de **bug** ou pelo atalho <Kbd linux={"Ctrl+Shift+D"} />.
 Então clique no botão de **play** verde ou, se preferir, use o atalho de teclado <Kbd linux={"F5"} />.
 
-A execução será exibida na aba `Debug console`.
-Você pode acessá-la com o atalho <Kbd linux={"Ctrl+Shift+Y"} />.
+A execução será exibida na aba `Debug console`, que pode ser acessada com o atalho <Kbd linux={"Ctrl+Shift+Y"} />.
 
-<Figure
-  caption="Execução do programa exibindo o caminho do arquivo executado."
-  images={[
-    {
-      src: outputOfProgramPath,
-      alt: `Aba "Debug console" do Visual Studio Code, em que o programa "hello_user" é executado. Ele exibe no console o seguinte texto: "This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.".`,
-    },
-  ]}
-/>
+<Figure caption="Execução do programa exibindo o caminho do arquivo executado.">
+  <Image
+    src={outputOfProgramPath}
+    alt={`Aba "Debug console" do Visual Studio Code, em que o programa "hello_user" é executado. Ele exibe no console o seguinte texto: "This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.".`}
+  />
+</Figure>
 
 ### Opcionais
 

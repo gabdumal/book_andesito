@@ -4,12 +4,14 @@ author: Gabriel Malosto
 ---
 
 import { Code, FileTree } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 
-import vscodeLaunchForBinaryTree from "/public/code/c_cpp_projects/binary_tree/.vscode/launch.json?raw";
 import breakpoint from "@assets/content/docs/c_cpp/debugger/run_cpp/breakpoint.png";
+
+import vscodeLaunchForBinaryTree from "/public/code/c_cpp_projects/binary_tree/.vscode/launch.json?raw";
 
 Também configuramos a depuração para projetos na linguagem [**C++**](https://cplusplus.com) para quando todos os arquivos estiverem na raiz do projeto.
 
@@ -85,12 +87,9 @@ Então, será interrompido no breakpoint selecionado.
 Você pode **executar** linha a linha usando a tecla <Kbd linux={"F10"} />.
 Observando a variável `tree.root`, poderá perceber que a árvore está sendo construída conforme o esperado.
 
-<Figure
-  caption="Usando um breakpoint no Visual Studio Code."
-  images={[
-    {
-      src: breakpoint,
-      alt: `Visual Studio Code depurando o arquivo "main.cpp", tendo pausado no breakpoint na linha 1 0.`,
-    },
-  ]}
-/>
+<Figure caption="Usando um breakpoint no Visual Studio Code.">
+  <Image
+    src={breakpoint}
+    alt={`Visual Studio Code depurando o arquivo "main.cpp", tendo pausado no breakpoint na linha 1 0.`}
+  />
+</Figure>

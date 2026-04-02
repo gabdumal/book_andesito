@@ -4,6 +4,7 @@ author: Gabriel Malosto
 ---
 
 import { Code, FileTree } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
@@ -11,25 +12,26 @@ import Figure from "@components/Figure.astro";
 import openingProfiles from "@assets/common/opening_profiles.png";
 import createProfile from "@assets/content/docs/c_cpp/compiler/vscode/create_profile.png";
 import selectProfile from "@assets/content/docs/c_cpp/compiler/vscode/select_profile.png";
-import vscodeSettings from "/public/configuration/vscode/c_cpp/settings.json?raw";
 import searchSnippets from "@assets/content/docs/c_cpp/compiler/vscode/search_snippets.png";
 import newSnippetsFile from "@assets/content/docs/c_cpp/compiler/vscode/new_snippets_file.png";
 import globalSnippets from "@assets/content/docs/c_cpp/compiler/vscode/global_snippets.png";
 import defaultSnippetsFile from "@assets/content/docs/c_cpp/compiler/vscode/default_snippets_file.png";
-import vscodeSnippet from "/public/configuration/vscode/c_cpp/snippets/c_cpp.code-snippets?raw";
 import useSnippet from "@assets/content/docs/c_cpp/compiler/vscode/use_snippet.png";
 import usedSnippet from "@assets/content/docs/c_cpp/compiler/vscode/used_snippet.png";
-import nodeHeaderFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.h?raw";
-import nodeFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.c?raw";
-import mainFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/main.c?raw";
-import gitignoreForLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/.gitignore?raw";
-import vscodeTasksForLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json?raw";
 import runBuildTask from "@assets/content/docs/c_cpp/compiler/vscode/run_build_task.png";
 import selectTask from "@assets/content/docs/c_cpp/compiler/vscode/select_task.png";
 import buildOutput from "@assets/content/docs/c_cpp/compiler/vscode/build_output.png";
 import openUserTasks from "@assets/content/docs/c_cpp/compiler/vscode/open_user_tasks.png";
 import othersTasks from "@assets/content/docs/c_cpp/compiler/vscode/others_tasks.png";
 import defaultTask from "@assets/content/docs/c_cpp/compiler/vscode/default_task.png";
+
+import vscodeSettings from "/public/configuration/vscode/c_cpp/settings.json?raw";
+import vscodeSnippet from "/public/configuration/vscode/c_cpp/snippets/c_cpp.code-snippets?raw";
+import nodeHeaderFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.h?raw";
+import nodeFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/node.c?raw";
+import mainFromLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/main.c?raw";
+import gitignoreForLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/.gitignore?raw";
+import vscodeTasksForLinkedNodes from "/public/code/c_cpp_projects/linked_nodes/.vscode/tasks.json?raw";
 import vscodeTasks from "/public/configuration/vscode/c_cpp/tasks.json?raw";
 
 Para compilar e executar programas em C no Visual Studio Code, devemos instalar algumas extensões.
@@ -41,13 +43,12 @@ Para criar um perfil no Visual Studio Code, clique no ícone de engrenagem no ca
 
 <Figure
   caption={`Abrindo a tela de configuração de perfis do Visual Studio Code.`}
-  images={[
-    {
-      src: openingProfiles,
-      alt: `Menu de configuração do Visual Studio Code, em que se seleciona a opção "Profiles".`,
-    },
-  ]}
-/>
+>
+  <Image
+    src={openingProfiles}
+    alt={`Menu de configuração do Visual Studio Code, em que se seleciona a opção "Profiles".`}
+  />
+</Figure>
 
 Clique no botão **New Profile**.
 Uma nova entrada surgirá na lista de perfis.
@@ -55,27 +56,21 @@ Uma nova entrada surgirá na lista de perfis.
 Dê o **nome** `C/C++` ao perfil.
 Escolha o ícone de sua preferência.
 
-<Figure
-  caption={`Criando um novo perfil chamado "C/C++".`}
-  images={[
-    {
-      src: createProfile,
-      alt: `Tela de criação de perfil do Visual Studio Code, em que se preenche o nome "C/C++" e se escolhe um ícone.`,
-    },
-  ]}
-/>
+<Figure caption={`Criando um novo perfil chamado "C/C++".`}>
+  <Image
+    src={createProfile}
+    alt={`Tela de criação de perfil do Visual Studio Code, em que se preenche o nome "C/C++" e se escolhe um ícone.`}
+  />
+</Figure>
 
 Agora, **selecione** o perfil ao clicar no ícone de check ao lado da entrada dele na lista de perfis.
 
-<Figure
-  caption={`Selecionando o perfil "C/C++".`}
-  images={[
-    {
-      src: selectProfile,
-      alt: `Menu de perfis do Visual Studio Code, em que se seleciona o perfil "C/C++".`,
-    },
-  ]}
-/>
+<Figure caption={`Selecionando o perfil "C/C++".`}>
+  <Image
+    src={selectProfile}
+    alt={`Menu de perfis do Visual Studio Code, em que se seleciona o perfil "C/C++".`}
+  />
+</Figure>
 
 :::caution
 lembre-se de sempre selecionar este perfil ao abrir o Visual Studio Code em um
@@ -148,53 +143,41 @@ Por isso, podemos utilizar um snippet para criar esses arquivos automaticamente.
 Garanta que você tenha selecionado o **perfil** `C/C++`.
 Então abra a paleta de comandos do Visual Studio Code com <Kbd linux={"Ctrl+Shift+P"} /> e **pesquise** por `Snippets: Configure Snippets`.
 
-<Figure
-  caption={`Abrindo a configuração de snippets do Visual Studio Code.`}
-  images={[
-    {
-      src: searchSnippets,
-      alt: `Menu de comandos do Visual Studio Code, em que se pesquisa por "Snippets: Configure Snippets".`,
-    },
-  ]}
-/>
+<Figure caption={`Abrindo a configuração de snippets do Visual Studio Code.`}>
+  <Image
+    src={searchSnippets}
+    alt={`Menu de comandos do Visual Studio Code, em que se pesquisa por "Snippets: Configure Snippets".`}
+  />
+</Figure>
 
 **Selecione** a opção `New Global Snippets file...`.
 
-<Figure
-  caption={`Criando um novo arquivo de snippets.`}
-  images={[
-    {
-      src: newSnippetsFile,
-      alt: `Menu de comandos do Visual Studio Code, em que se seleciona a opção "New Global Snippets file...".`,
-    },
-  ]}
-/>
+<Figure caption={`Criando um novo arquivo de snippets.`}>
+  <Image
+    src={newSnippetsFile}
+    alt={`Menu de comandos do Visual Studio Code, em que se seleciona a opção "New Global Snippets file...".`}
+  />
+</Figure>
 
 **Digite** o nome `c_cpp` e pressione <Kbd linux={"Enter"} />.
 
-<Figure
-  caption={`Nomeando o arquivo de snippets como "c_cpp".`}
-  images={[
-    {
-      src: globalSnippets,
-      alt: `Campo de texto para nomear o arquivo de snippets, com o nome "c_cpp" preenchido.`,
-    },
-  ]}
-/>
+<Figure caption={`Nomeando o arquivo de snippets como "c_cpp".`}>
+  <Image
+    src={globalSnippets}
+    alt={`Campo de texto para nomear o arquivo de snippets, com o nome "c_cpp" preenchido.`}
+  />
+</Figure>
 
 O arquivo de configuração de snippets para o **perfil** `C/C++` será aberto.
 Seu nome é `c_cpp.code-snippets`.
 Este é o conteúdo padrão dele.
 
-<Figure
-  caption={`Conteúdo padrão do arquivo de snippets "c_cpp".`}
-  images={[
-    {
-      src: defaultSnippetsFile,
-      alt: `Arquivo de snippets "c_cpp" com o conteúdo padrão, que ensina a definir um snippet.`,
-    },
-  ]}
-/>
+<Figure caption={`Conteúdo padrão do arquivo de snippets "c_cpp".`}>
+  <Image
+    src={defaultSnippetsFile}
+    alt={`Arquivo de snippets "c_cpp" com o conteúdo padrão, que ensina a definir um snippet.`}
+  />
+</Figure>
 
 **Apague** todo o conteúdo dele.
 
@@ -231,27 +214,23 @@ A estrutura de pastas ficará como a seguir.
 Em seguida, **abra** o arquivo `.clang-format`.
 Dentro desse arquivo, digite `clang-format` e pressione <Kbd linux={"Enter"} />.
 
-<Figure
-  caption={`Utilizando o snippet "clang-format".`}
-  images={[
-    {
-      src: useSnippet,
-      alt: `Arquivo ".clang-format" vazio, em que se digita "clang-format". O Visual Studio Code sugere completar com o snippet "Clang Format configuration".`,
-    },
-  ]}
-/>
+<Figure caption={`Utilizando o snippet "clang-format".`}>
+  <Image
+    src={useSnippet}
+    alt={`Arquivo ".clang-format" vazio, em que se digita "clang-format". O Visual Studio Code sugere completar com o snippet "Clang Format configuration".`}
+  />
+</Figure>
 
 O arquivo `.clang-format` será preenchido com as configurações definidas no snippet `Clang Format configurations`.
 
 <Figure
   caption={`Arquivo ".clang-format" preenchido com as configurações do snippet.`}
-  images={[
-    {
-      src: usedSnippet,
-      alt: `Arquivo ".clang-format" preenchido com as configurações do snippet "Clang Format configuration".`,
-    },
-  ]}
-/>
+>
+  <Image
+    src={usedSnippet}
+    alt={`Arquivo ".clang-format" preenchido com as configurações do snippet "Clang Format configuration".`}
+  />
+</Figure>
 
 Agora, faça o mesmo para o arquivo `.clang-tidy`.
 Abra-o e **digite** `clang-tidy`, então pressione <Kbd linux={"Enter"} />.
@@ -344,7 +323,7 @@ Por convenção, daremos a ela o nome `build`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p build
-clang main.c node.c -include node.h -o build/linked_nodes
+clang main.c node.c -o build/linked_nodes -include node.h
 ```
 
 Esse comando **compila** os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `build/linked_nodes`.
@@ -358,10 +337,6 @@ Para executar o programa, **digite** o comando abaixo e pressione <Kbd linux={"E
 O resultado da execução deve ser como o seguinte.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-# dev/c_cpp_projects/linked_nodes
-mkdir -p build
-clang main.c node.c -include node.h -o build/linked_nodes
-
 # dev/c_cpp_projects/linked_nodes
 ./build/linked_nodes
 # Creating a linked list with 10 nodes
@@ -454,38 +429,31 @@ Você também pode executar esse comando com o atalho <Kbd linux={"Ctrl+Shift+B"
 
 <Figure
   caption={`Selecionando a opção de executar tarefa  de compilação no Visual Studio Code.`}
-  images={[
-    {
-      src: runBuildTask,
-      alt: `Paleta de comandos do Visual Studio Code, em que se pesquisa por "Tasks: Run Build Task".`,
-    },
-  ]}
-/>
+>
+  <Image
+    src={runBuildTask}
+    alt={`Paleta de comandos do Visual Studio Code, em que se pesquisa por "Tasks: Run Build Task".`}
+  />
+</Figure>
 
 **Selecione** a tarefa `Clang: build C project (all files in root) (Local)`.
 
-<Figure
-  caption={`Selecionando a tarefa de compilação do projeto.`}
-  images={[
-    {
-      src: selectTask,
-      alt: `Menu de tarefas do Visual Studio Code, em que se seleciona a tarefa "Clang: build C project (all files in root) (Local)".`,
-    },
-  ]}
-/>
+<Figure caption={`Selecionando a tarefa de compilação do projeto.`}>
+  <Image
+    src={selectTask}
+    alt={`Menu de tarefas do Visual Studio Code, em que se seleciona a tarefa "Clang: build C project (all files in root) (Local)".`}
+  />
+</Figure>
 
 O mesmo comando de compilação será executado, mas pelo Visual Studio Code.
 Ele exibirá o resultado da compilação no terminal integrado.
 
-<Figure
-  caption={`Saída da compilação do projeto "linked_nodes".`}
-  images={[
-    {
-      src: buildOutput,
-      alt: `Terminal integrado do Visual Studio Code exibindo a saída da compilação do projeto "linked_nodes".`,
-    },
-  ]}
-/>
+<Figure caption={`Saída da compilação do projeto "linked_nodes".`}>
+  <Image
+    src={buildOutput}
+    alt={`Terminal integrado do Visual Studio Code exibindo a saída da compilação do projeto "linked_nodes".`}
+  />
+</Figure>
 
 Para executar, podemos chamar o arquivo **executável** diretamente no terminal integrado.
 Fique atento que não é possível interagir com essa sessão que compilou o projeto.
@@ -501,39 +469,30 @@ Dessa forma, eliminamos o risco de conflitos entre diferentes configurações de
 
 Para salvar as tarefas de compilação, abra a paleta de comandos com <Kbd linux={"Ctrl+Shift+P"} /> e **pesquise** por `Tasks: Open User Tasks`.
 
-<Figure
-  caption={`Abrindo o arquivo de tarefas do usuário.`}
-  images={[
-    {
-      src: openUserTasks,
-      alt: `Menu de comandos do Visual Studio Code, em que se pesquisa por "Tasks: Open User Tasks".`,
-    },
-  ]}
-/>
+<Figure caption={`Abrindo o arquivo de tarefas do usuário.`}>
+  <Image
+    src={openUserTasks}
+    alt={`Menu de comandos do Visual Studio Code, em que se pesquisa por "Tasks: Open User Tasks".`}
+  />
+</Figure>
 
 **Selecione** a opção `Others`.
 
-<Figure
-  caption={`Selecionando a opção "Others".`}
-  images={[
-    {
-      src: othersTasks,
-      alt: `Menu de configuração de tarefas do Visual Studio Code, em que se seleciona a opção "Others".`,
-    },
-  ]}
-/>
+<Figure caption={`Selecionando a opção "Others".`}>
+  <Image
+    src={othersTasks}
+    alt={`Menu de configuração de tarefas do Visual Studio Code, em que se seleciona a opção "Others".`}
+  />
+</Figure>
 
 Será aberto o arquivo padrão de tarefas do **perfil** `C/C++`.
 
-<Figure
-  caption={`Conteúdo do arquivo de tarefas do perfil "C/C++".`}
-  images={[
-    {
-      src: defaultTask,
-      alt: `Arquivo de tarefas do Visual Studio Code com o conteúdo padrão para o perfil "C/C++".`,
-    },
-  ]}
-/>
+<Figure caption={`Conteúdo do arquivo de tarefas do perfil "C/C++".`}>
+  <Image
+    src={defaultTask}
+    alt={`Arquivo de tarefas do Visual Studio Code com o conteúdo padrão para o perfil "C/C++".`}
+  />
+</Figure>
 
 Copie o conteúdo abaixo e cole no arquivo `tasks.json` aberto no Visual Studio Code.
 Lembre-se de **salvar**.

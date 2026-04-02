@@ -4,22 +4,24 @@ author: Gabriel Malosto
 ---
 
 import { Code, FileTree } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
 import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
+
+import compileRunHello from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_hello.png";
+import compileRunBinaryTree from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary_tree.png";
+import constructTasksJson from "@assets/content/docs/c_cpp/compiler/run_cpp/construct_tasks_json.png";
+import fillBuildTask from "@assets/content/docs/c_cpp/compiler/run_cpp/fill_build_task.png";
+import buildLocal from "@assets/content/docs/c_cpp/compiler/run_cpp/build_local.png";
+import localOutput from "@assets/content/docs/c_cpp/compiler/run_cpp/local_output.png";
 
 import mainFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/main.cpp?raw";
 import nodeHeaderFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/node/node.hpp?raw";
 import nodeFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/node/node.cpp?raw";
 import treeHeaderFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/tree/tree.hpp?raw";
 import treeFromBinaryTree from "/public/code/c_cpp_projects/binary_tree/tree/tree.cpp?raw";
-import compileRunHello from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_hello.png";
-import compileRunBinaryTree from "@assets/content/docs/c_cpp/compiler/run_cpp/compile_run_binary_tree.png";
-import constructTasksJson from "@assets/content/docs/c_cpp/compiler/run_cpp/construct_tasks_json.png";
-import fillBuildTask from "@assets/content/docs/c_cpp/compiler/run_cpp/fill_build_task.png";
 import vscodeTasksForBinaryTree from "/public/code/c_cpp_projects/binary_tree/.vscode/tasks.json?raw";
-import buildLocal from "@assets/content/docs/c_cpp/compiler/run_cpp/build_local.png";
-import localOutput from "@assets/content/docs/c_cpp/compiler/run_cpp/local_output.png";
 
 Neste capítulo, vamos aprender a compilar e executar programas com um único arquivo e projetos na linguagem [**C++**](https://cplusplus.com).
 
@@ -79,15 +81,12 @@ Para **executar** o programa, basta chamar o arquivo binário gerado.
 ./build/binary_tree
 ```
 
-<Figure
-  caption={`Compilação e execução do programa "Binary Tree".`}
-  images={[
-    {
-      src: compileRunHello,
-      alt: `Terminal com os comandos para compilar e executar o programa "Binary Tree", cujo resultado é "Hello, World!"`,
-    },
-  ]}
-/>
+<Figure caption={`Compilação e execução do programa "Binary Tree".`}>
+  <Image
+    src={compileRunHello}
+    alt={`Terminal com os comandos para compilar e executar o programa "Binary Tree", cujo resultado é "Hello, World!"`}
+  />
+</Figure>
 
 ## Projeto
 
@@ -215,15 +214,12 @@ Para executar o programa, basta **chamar** o arquivo binário gerado.
 
 Se tudo estiver correto, você verá os nós da árvore binária sendo impressos no terminal em ordem crescente.
 
-<Figure
-  caption={`Compilação e execução do projeto "binary_tree".`}
-  images={[
-    {
-      src: compileRunBinaryTree,
-      alt: `Terminal com os comandos para compilar e executar o projeto "binary_tree", cujo resultado é "1 3 4 5 7 8 9"`,
-    },
-  ]}
-/>
+<Figure caption={`Compilação e execução do projeto "binary_tree".`}>
+  <Image
+    src={compileRunBinaryTree}
+    alt={`Terminal com os comandos para compilar e executar o projeto "binary_tree", cujo resultado é "1 3 4 5 7 8 9"`}
+  />
+</Figure>
 
 ### Configurações
 
@@ -267,27 +263,21 @@ A estrutura do projeto deve ficar da seguinte forma.
 Garanta que o **perfil** `C/C++` esteja ativo e abra o arquivo `tasks.json`.
 Digite nele `tasks-json` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o **snippet**.
 
-<Figure
-  caption={`Construção do arquivo "tasks.json".`}
-  images={[
-    {
-      src: constructTasksJson,
-      alt: `Visual Studio Code com o arquivo "tasks.json" aberto, sugerindo o preenchimento com o snippet para construção de tarefas.`,
-    },
-  ]}
-/>
+<Figure caption={`Construção do arquivo "tasks.json".`}>
+  <Image
+    src={constructTasksJson}
+    alt={`Visual Studio Code com o arquivo "tasks.json" aberto, sugerindo o preenchimento com o snippet para construção de tarefas.`}
+  />
+</Figure>
 
 Então, dentro do vetor `tasks`, digite `cpp-build-task` e pressione <Kbd linux={"Enter"} /> para preencher o arquivo com o **snippet**.
 
-<Figure
-  caption={`Preenchimento da tarefa de compilação "cpp-build-task".`}
-  images={[
-    {
-      src: fillBuildTask,
-      alt: `Visual Studio Code com o arquivo "tasks.json" aberto, sugerindo o preenchimento com o snippet para a tarefa de compilação de C++.`,
-    },
-  ]}
-/>
+<Figure caption={`Preenchimento da tarefa de compilação "cpp-build-task".`}>
+  <Image
+    src={fillBuildTask}
+    alt={`Visual Studio Code com o arquivo "tasks.json" aberto, sugerindo o preenchimento com o snippet para a tarefa de compilação de C++.`}
+  />
+</Figure>
 
 Agora, observe o campo `args` do arquivo `tasks.json`.
 Ele contém os **argumentos** que passamos para o comando de compilação.
@@ -326,22 +316,18 @@ Então **selecione** a `Clang: build C++ project (Local)`.
 
 <Figure
   caption={`Compilação do projeto "binary_tree" com a tarefa personalizada.`}
-  images={[
-    {
-      src: buildLocal,
-      alt: `Visual Studio Code com o painel de tarefas aberto, mostrando a tarefa "Clang: build C++ project (Local)" selecionada.`,
-    },
-  ]}
-/>
+>
+  <Image
+    src={buildLocal}
+    alt={`Visual Studio Code com o painel de tarefas aberto, mostrando a tarefa "Clang: build C++ project (Local)" selecionada.`}
+  />
+</Figure>
 
 O Visual Studio Code compilará o projeto e mostrará o resultado no terminal integrado.
 
-<Figure
-  caption={`Saída da compilação do projeto "binary_tree".`}
-  images={[
-    {
-      src: localOutput,
-      alt: `Terminal integrado do Visual Studio Code com a saída da compilação do projeto "binary_tree".`,
-    },
-  ]}
-/>
+<Figure caption={`Saída da compilação do projeto "binary_tree".`}>
+  <Image
+    src={localOutput}
+    alt={`Terminal integrado do Visual Studio Code com a saída da compilação do projeto "binary_tree".`}
+  />
+</Figure>

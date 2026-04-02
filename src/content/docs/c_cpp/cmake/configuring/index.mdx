@@ -40,20 +40,20 @@ A estrutura do projeto ficará como a seguir.
 
 <FileTree>
 
-  - src
-    - edge
-      - edge.cpp
-      - edge.hpp
-    - graph
-      - graph.cpp
-      - graph.hpp
-    - node
-      - node.cpp
-      - node.hpp
-    - main.cpp
-  - .clang-format
-  - .clang-tidy
-  - .gitignore
+- src
+  - edge
+    - edge.cpp
+    - edge.hpp
+  - graph
+    - graph.cpp
+    - graph.hpp
+  - node
+    - node.cpp
+    - node.hpp
+  - main.cpp
+- .clang-format
+- .clang-tidy
+- .gitignore
 
 </FileTree>
 
@@ -74,21 +74,21 @@ A estrutura do projeto ficará como a seguir.
 
 <FileTree>
 
-  - src
-    - edge
-      - edge.cpp
-      - edge.hpp
-    - graph
-      - graph.cpp
-      - graph.hpp
-    - node
-      - node.cpp
-      - node.hpp
-    - main.cpp
-  - .clang-format
-  - .clang-tidy
-  - .gitignore
-  - **CMakeLists.txt**
+- src
+  - edge
+    - edge.cpp
+    - edge.hpp
+  - graph
+    - graph.cpp
+    - graph.hpp
+  - node
+    - node.cpp
+    - node.hpp
+  - main.cpp
+- .clang-format
+- .clang-tidy
+- .gitignore
+- **CMakeLists.txt**
 
 </FileTree>
 
@@ -97,29 +97,21 @@ Vamos preencher trecho por trecho do arquivo `CMakeLists.txt` para entender o qu
 ### Versões
 
 Primeiramente, é necessário definir a **versão** do CMake que será utilizada.
-Na época de escrita deste guia, a versão `3.31.6` era a mais recente disponível.
+Na época de escrita deste guia, a versão `3.31.11` era a mais recente disponível.
 
 Nós podemos definir um **intervalo** de versões suportadas, para garantir que o projeto seja compilado corretamente em diferentes ambientes.
 Isso é feito com o comando `cmake_minimum_required`.
 
 ```cmake title="CMakeLists.txt" frame="code" startLineNumber=1
 ## Version
-cmake_minimum_required(VERSION 3.12...3.31)
-```
-
-Em seguida, usamos um comando para garantir que versões anteriores à `3.12` passem por uma política de **compatibilidade** para conseguir realizar a compilação.
-
-```cmake title="CMakeLists.txt" frame="code" startLineNumber=4
-if (${CMAKE_VERSION} VERSION_LESS 3.12)
-    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
-endif ()
+cmake_minimum_required(VERSION 3.28...3.31)
 ```
 
 ### Projeto
 
 Agora, vamos definir o nome do projeto e a linguagem utilizada, que é o **C++**.
 
-```cmake title="CMakeLists.txt" frame="code" startLineNumber=8
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=4
 ## Project
 project(oriented_graph
         LANGUAGES CXX
@@ -132,7 +124,7 @@ O C++ tem várias versões, e pode ser customizado para diferentes ambientes.
 No nosso caso, queremos usar uma versão mais recente (no momento a `23`) e compatível com o [padrão oficial](https://isocpp.org/std/the-standard).
 Para isso, usamos comandos iniciados em `set` para definir as **variáveis** de ambiente.
 
-```cmake title="CMakeLists.txt" frame="code" startLineNumber=13
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=9
 ## Environment
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -143,24 +135,28 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 As **flags** de compilação são opções que podem ser passadas para o compilador para alterar o comportamento da compilação.
 
-No nosso caso, queremos ativar todos os **avisos** de compilação.
+No nosso caso, queremos ativar alguns os **warnings** (ou avisos) de compilação.
+Vários desses avisos são definidos pelo compilador GCC, e respeitados pelo Clang.
+
+Você pode encontrar uma lista dessas flags na [documentação do GCC](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html).
+Aém disso, a [documentação do Clang](https://clang.llvm.org/docs/DiagnosticsReference.html) mostra quais flags estão implementadas no Clang.
+
 Além disso, é importante manter a compatibilidade com outros compiladores, como o **GCC**, o **Apple Clang** e **MSVC**.
 
 Para isso, usamos o comando `add_compile_options`.
 
-```cmake title="CMakeLists.txt" frame="code" startLineNumber=18
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=14
 ## Warnings
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     add_compile_options(
-        -Wall -Wextra          # Reasonable warnings
-        -Wpedantic             # Strict ISO C++ compliance
-        -Wconversion           # Warn on implicit type conversions
-        -Wsign-conversion      # Warn on signed/unsigned mismatches
+        -Wall -Wextra           # Reasonable warnings
+        -Wpedantic              # Strict ISO C++ compliance
+        -Wconversion            # Warn on implicit type conversions
     )
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     add_compile_options(
-        /W4                    # High warning level
-        /permissive-           # Enforce standards compliance
+        /W4                     # High warning level
+        /permissive-            # Enforce standards compliance
     )
 endif()
 ```
@@ -170,7 +166,7 @@ endif()
 Nosso projeto guarda o código-fonte na pasta `src`.
 Para que o CMake consiga encontrar os arquivos dentro dela, precisamos **listá-la** no arquivo `CMakeLists.txt`.
 
-```cmake title="CMakeLists.txt" frame="code" startLineNumber=34
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=28
 ## Directories
 add_subdirectory(src)
 ```
@@ -209,22 +205,22 @@ A estrutura do projeto ficará como a seguir.
 
 <FileTree>
 
-  - src
-    - edge
-      - edge.cpp
-      - edge.hpp
-    - graph
-      - graph.cpp
-      - graph.hpp
-    - node
-      - node.cpp
-      - node.hpp
-    - **CMakeLists.txt**
-    - main.cpp
-  - .clang-format
-  - .clang-tidy
-  - .gitignore
-  - CMakeLists.txt
+- src
+  - edge
+    - edge.cpp
+    - edge.hpp
+  - graph
+    - graph.cpp
+    - graph.hpp
+  - node
+    - node.cpp
+    - node.hpp
+  - **CMakeLists.txt**
+  - main.cpp
+- .clang-format
+- .clang-tidy
+- .gitignore
+- CMakeLists.txt
 
 </FileTree>
 
@@ -305,25 +301,25 @@ A estrutura do projeto ficará como a seguir.
 
 <FileTree>
 
-  - src
-    - edge
-      - **CMakeLists.txt**
-      - edge.cpp
-      - edge.hpp
-    - graph
-      - **CMakeLists.txt**
-      - graph.cpp
-      - graph.hpp
-    - node
-      - **CMakeLists.txt**
-      - node.cpp
-      - node.hpp
-    - CMakeLists.txt
-    - main.cpp
-  - .clang-format
-  - .clang-tidy
-  - .gitignore
+- src
+  - edge
+    - **CMakeLists.txt**
+    - edge.cpp
+    - edge.hpp
+  - graph
+    - **CMakeLists.txt**
+    - graph.cpp
+    - graph.hpp
+  - node
+    - **CMakeLists.txt**
+    - node.cpp
+    - node.hpp
   - CMakeLists.txt
+  - main.cpp
+- .clang-format
+- .clang-tidy
+- .gitignore
+- CMakeLists.txt
 
 </FileTree>
 

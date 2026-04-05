@@ -7,10 +7,6 @@ import { Kbd } from "starlight-kbd/components";
 
 import Figure from "@components/Figure.astro";
 
-import downloadOptionsWindows from "@assets/content/docs/rust/download_options_windows.png";
-import windowsInstaller from "@assets/content/docs/rust/windows_installer.png";
-import windowsInstalled from "@assets/content/docs/rust/windows_installed.png";
-
 **Rust** é uma linguagem de programação recente, desenvolvida inicialmente pela **Mozilla Research** e atualmente mantida pela **Rust Foundation**.
 Ela é focada em segurança, concorrência e performance, permitindo escrever código de baixo nível evitando acesso direto à memória e bugs comuns em linguagens como C e C++.
 
@@ -33,58 +29,4 @@ A forma recomendada de instalar o Rust é utilizando o [**rustup**](https://rust
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install curl pkg-config libssl-dev
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-{/* TODO */}
-
-### Windows
-
-O Rust para Windows depende do **MSVC** (Microsoft Visual Studio Build Tools) para compilar código nativo.
-Acesse o capítulo sobre o [compilador para C e C++](c_cpp/compiler#windows) para aprender a instalar o MSVC.
-
-Para instalar o rustup no Windows, acesse o [site oficial](https://www.rust-lang.org/tools/install) da linguagem e baixe o instalador referente à sua arquitetura.
-Para a grande maioria dos casos, o instalador de **64 bits** é o mais adequado.
-
-<Figure
-  caption="Opções de download do rustup para Windows."
-  images={[
-    {
-      src: downloadOptionsWindows,
-      alt: "Página de downloads do website do Rust. São exibidas as duas opções de download, para 32 e 64 bits.",
-    },
-  ]}
-/>
-
-O instalador abre uma janela de terminal que guiará você pelo processo de instalação.
-
-<Figure
-  caption="Instalador do rust para Windows."
-  images={[
-    {
-      src: windowsInstaller,
-      alt: "Terminal aberto no PowerShell, em que se executa o instalador do Rust.",
-    },
-  ]}
-/>
-
-Pressione a tecla <Kbd linux={"1"} /> e <Kbd linux={"Enter"} /> para instalar o Rust e suas ferramentas.
-
-<Figure
-  caption="Finalização da instalação do rust para Windows."
-  images={[
-    {
-      src: windowsInstalled,
-      alt: "Terminal com o PowerShell, em que é exibida a mensagem de finalização da instalação do Rust.",
-    },
-  ]}
-/>
-
-Para verificar se a instalação foi bem-sucedida, abra um terminal e execute o comando `rustc --version`.
-O resultado deve ser algo como `rustc 1.82.0 (f6e511eec 2024-10-15)` ou mais recente.
-
-Então, verifique se o **cargo**, o gerenciador de pacotes do Rust, também foi instalado corretamente com o comando `cargo --version`.
-O resultado deve ser algo como `cargo 1.82.0 (8f40fc59f 2024-08-21)` ou mais recente.
-
-```
-
 ```

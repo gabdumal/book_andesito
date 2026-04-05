@@ -4,10 +4,12 @@ author: Gabriel Malosto
 ---
 
 import { Code } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
 
 import Figure from "@components/Figure.astro";
 
 import installPnpm from "@assets/content/docs/javascript/pnpm/install_pnpm.png";
+
 import zshSettingsWithPnpm from "/public/configuration/zsh/pnpm/.zshrc?raw";
 
 O [**PNPM**](https://pnpm.io/) é um gerenciador de pacotes para JavaScript que visa ser mais rápido e resolver problemas comuns em gerenciadores de pacotes como o [**NPM**](https://www.npmjs.com/) e o [**Yarn**](https://yarnpkg.com/).
@@ -17,29 +19,18 @@ Uma das vantagens dele é que ele gerencia também versões do **Node**, como ve
 
 A instalação do **PNPM** é feita através de um script que pode ser baixado e executado diretamente no terminal.
 
-Para instalar o PNPM no Fedora, no WSL usando o Fedora ou no Mint, execute o seguinte comando no terminal.
+Para instalar o PNPM no Fedora (ou no WSL usando o Fedora) ou no Mint, execute o seguinte comando no terminal.
 
-```zsh
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 curl -fsSL https://get.pnpm.io/install.sh | sh -
-pnpm --version
-# 10.10.0
 ```
 
-<Figure
-  caption="Instalação do PNPM."
-  images={[
-    {
-      src: installPnpm,
-      alt: "Instalação do PNPM.",
-    },
-  ]}
-/>
+<Figure caption="Instalação do PNPM.">
+  <Image src={installPnpm} alt={"Instalação do PNPM."} />
+</Figure>
 
-O script de instalação pode adicionar algumas linhas a fim do seu arquivo de configuração do **Zsh**.
+O script de instalação pode adicionar algumas linhas ao fim do seu arquivo de configuração do **Zsh**.
 Queremos formatar essas linhas para encaixar na estrutura que estamos construindo.
-
-Outra coisa interessante é criar um alias para o PNPM.
-Isto é, um "apelido" para que, quando você digitar `npm`, o terminal entenda que você quer dizer `pnpm`.
 
 Para isso, abra o arquivo de configuração do **Zsh** no VSCode.
 
@@ -56,3 +47,10 @@ Então, corrija o arquivo para a seguinte forma.
   frame="code"
   ins={{ range: "34-43" }}
 />
+
+**Feche** e **reabra** o terminal, e execute o comando abaixo para testar se a instalação foi bem sucedida.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+pnpm --version
+# 10.33.0
+```

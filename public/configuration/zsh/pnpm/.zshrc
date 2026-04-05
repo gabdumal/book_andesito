@@ -35,9 +35,8 @@ export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 ## Programs
 
 ### PNPM
-export PNPM_HOME="/home/gabriel/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-alias npm=pnpm

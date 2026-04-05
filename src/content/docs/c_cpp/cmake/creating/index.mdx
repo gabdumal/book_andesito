@@ -5,13 +5,13 @@ author: Gabriel Malosto
 
 import { Code, FileTree } from "@astrojs/starlight/components";
 
-import mainFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/main.cpp?raw";
-import nodeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/node/node.hpp?raw";
-import nodeFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/node/node.cpp?raw";
-import edgeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/edge/edge.hpp?raw";
-import edgeFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/edge/edge.cpp?raw";
-import graphHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/graph/graph.hpp?raw";
-import graphFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/graph/graph.cpp?raw";
+import mainFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/main.cpp?raw";
+import nodeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/node/node.hpp?raw";
+import nodeFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/node/node.cpp?raw";
+import edgeHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/edge/edge.hpp?raw";
+import edgeFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/edge/edge.cpp?raw";
+import graphHeaderFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/graph/graph.hpp?raw";
+import graphFromOrientedGraph from "/public/code/c_cpp_projects/oriented_graph/src/graph/graph.cpp?raw";
 
 Vamos criar um projeto em C++ que utiliza o conceito de **grafo orientado**.
 Um nó pode se conectar por meio de arestas a outros nós, formando um grafo.
@@ -31,10 +31,15 @@ cd oriented_graph
 code .
 ```
 
+Lembre-se de ativar o **perfil** `C/C++` que criamos [anteriormente](../../compiler/vscode#perfil).
+
 Vamos construir um projeto de código da seguinte forma.
+Os arquivos de configuração do ambiente estarão na raiz do projeto.
+Já os arquivos de código serão criados dentro de uma pasta chamada `src`.
 
 <FileTree>
 
+- src
   - edge
     - edge.cpp
     - edge.hpp
@@ -44,26 +49,36 @@ Vamos construir um projeto de código da seguinte forma.
   - node
     - node.cpp
     - node.hpp
-  - .clang-format
-  - .clang-tidy
-  - .gitignore
   - main.cpp
+- .clang-format
+- .clang-tidy
+- .gitignore
 
 </FileTree>
 
-Dentro do diretório `oriented_graph`, **crie** os arquivos `main.cpp`, `.clang-tidy` e `.clang-format`.
+Dentro do diretório `oriented_graph`, **crie** os arquivos `.clang-tidy` e `.clang-format`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-touch main.cpp .clang-tidy .clang-format
+touch .clang-tidy .clang-format
 ```
 
-Também crie três pastas: `node`, `edge` e `graph`.
+Então, preencha-os com os **snippets** `clang-tidy` e `clang-format`.
+
+Agora, **crie** a pasta `src`, **abra-a** e **crie** o arquivo `main.cpp` dentro dela.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+mkdir -p src
+cd src
+touch main.cpp
+```
+
+Dentro da pasta `src`, também **crie** três pastas: `node`, `edge` e `graph`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p node edge graph
 ```
 
-Dentro de cada uma, **crie** conter um arquivo `.cpp` e um arquivo `.hpp` com o mesmo nome da pasta.
+Dentro de cada uma, **crie** um arquivo `.cpp` e um arquivo `.hpp` com o mesmo nome da pasta.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 touch node/node.cpp node/node.hpp edge/edge.cpp edge/edge.hpp graph/graph.cpp graph/graph.hpp
@@ -71,60 +86,70 @@ touch node/node.cpp node/node.hpp edge/edge.cpp edge/edge.hpp graph/graph.cpp gr
 
 **Copie** o código de cada arquivo a seguir para o seu projeto.
 
-<Code lang="cpp" title="main.cpp" code={mainFromOrientedGraph} frame="code" />
+<Code
+  lang="cpp"
+  title="src/main.cpp"
+  code={mainFromOrientedGraph}
+  frame="code"
+/>
 
 <Code
   lang="cpp"
-  title="node/node.hpp"
+  title="src/node/node.hpp"
   code={nodeHeaderFromOrientedGraph}
   frame="code"
 />
 
 <Code
   lang="cpp"
-  title="node/node.cpp"
+  title="src/node/node.cpp"
   code={nodeFromOrientedGraph}
   frame="code"
 />
 
 <Code
   lang="cpp"
-  title="edge/edge.hpp"
+  title="src/edge/edge.hpp"
   code={edgeHeaderFromOrientedGraph}
   frame="code"
 />
 
 <Code
   lang="cpp"
-  title="edge/edge.cpp"
+  title="src/edge/edge.cpp"
   code={edgeFromOrientedGraph}
   frame="code"
 />
 
 <Code
   lang="cpp"
-  title="graph/graph.hpp"
+  title="src/graph/graph.hpp"
   code={graphHeaderFromOrientedGraph}
   frame="code"
 />
 
 <Code
   lang="cpp"
-  title="graph/graph.cpp"
+  title="src/graph/graph.cpp"
   code={graphFromOrientedGraph}
   frame="code"
 />
 
-Também **crie** o arquivo `.clang-tidy` na raiz do projeto e o preencha com o **snippet** `clang-tidy`.
-Igualmente, **crie** o arquivo `.clang-format` e o preencha com o **snippet** `clang-format`.
-
 ## Git
 
-Da mesma forma como fizemos anteriormente, vamos **inicializar** o repositório Git e criar um arquivo `.gitignore` para que arquivos de compilação não sejam versionados.
+Da mesma forma como fizemos anteriormente, vamos **criar** um arquivo `.gitignore` na raiz do projeto.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/c_cpp_projects/oriented_graph
+touch .gitignore
+```
+
+Agora, inicialize-no com o **snippet** `gitignore-c-cpp` para que arquivos de compilação não sejam versionados.
+
+Então, **inicialize** o repositório Git.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 git init
-echo -e "## Build\n.cache/\nbuild/" >> .gitignore
 git add .
 git commit -m "Initialize project"
 ```
@@ -136,8 +161,9 @@ Assim como antes, você pode **compilar** esse projeto diretamente pelo comando 
 O comando de compilação é o seguinte.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/c_cpp_projects/oriented_graph
 mkdir -p build
-clang++ main.cpp node/node.cpp edge/edge.cpp graph/graph.cpp -I node -I edge -I graph -o build/oriented_graph
+clang++ src/main.cpp src/node/node.cpp src/edge/edge.cpp src/graph/graph.cpp -I src/node -I src/edge -I src/graph -o build/oriented_graph
 ```
 
 Ao executar o programa, você verá a seguinte saída.

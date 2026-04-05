@@ -1,7 +1,7 @@
 #ifndef __EDGE_HPP__
 #define __EDGE_HPP__
 
-#include "../node/node.hpp"
+#include "node.hpp"
 
 class Edge {
     private:

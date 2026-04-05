@@ -8,8 +8,8 @@ add_subdirectory(node)
 add_subdirectory(edge)
 add_subdirectory(graph)
 
-## Linking libraries
+## Link libraries
 target_link_libraries(oriented_graph
-    PRIVATE
+    PUBLIC
         graph
 )

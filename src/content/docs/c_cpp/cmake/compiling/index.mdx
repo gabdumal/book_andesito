@@ -28,16 +28,20 @@ Este comando tem a seguinte estrutura.
 - `-DCMAKE_C_COMPILER=clang`: indica que o **Clang** deve ser utilizado como compilador C;
 - `-DCMAKE_CXX_COMPILER=clang++`: indica que o **Clang++** deve ser utilizado como compilador C++.
 
-Portanto, execute na raiz do projeto **oriented_graph_with_cmake** os seguintes comandos.
+Portanto, execute na raiz do projeto **oriented_graph** os seguintes comandos.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/c_cpp_projects/oriented_graph
+cmake -S . -B build -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+```
+
 O resultado deve ser semelhante ao disposto abaixo.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
-cmake -S . -B build -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
-# - The CXX compiler identification is Clang 18.1.3
+# -- The CXX compiler identification is Clang 21.1.8
 # -- Detecting CXX compiler ABI info
 # -- Detecting CXX compiler ABI info - done
-# -- Check for working CXX compiler: /usr/bin/clang++ - skipped
+# -- Check for working CXX compiler: /usr/sbin/clang++ - skipped
 # -- Detecting CXX compile features
 # -- Detecting CXX compile features - done
 # -- Configuring done (0.3s)
@@ -48,13 +52,13 @@ cmake -S . -B build -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang
 # 	CMAKE_C_COMPILER
 
 
-# -- Build files have been written to: /home/gabriel/dev/c_cpp_projects/oriented_graph_with_cmake/build
+# -- Build files have been written to: /home/gabriel/dev/c_cpp_projects/oriented_graph/build
 ```
 
 Se você observar a pasta `build`, verá que ela foi populada com arquivos de configuração gerados pelo **CMake**.
 
-Caso você **não** mude a estrutura de dependências do projeto, não é necessário rodar o comando de configuração novamente.
-Quando você alterar as dependências, **delete** a pasta `build` e rode o comando.
+Caso você faça alguma mudança num projeto e seja necessário alterar as dependências, **delete** a pasta `build` e rode o comando novamente.
+Caso você **não** mude a estrutura de dependências do projeto, não é necessário rodar o comando de configuração de novo.
 
 ## Compilação
 
@@ -65,10 +69,10 @@ Ele tem a seguinte estrutura:
 - `--build`: indica que o CMake deve **compilar** o projeto; e
 - `build`: indica a **pasta** em que os arquivos de configuração foram gerados.
 
-Portanto, execute o seguinte comando na raiz do projeto `oriented_graph_with_cmake`.
+Portanto, execute o seguinte comando na raiz do projeto `oriented_graph`.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
+cd ~/dev/c_cpp_projects/oriented_graph
 cmake --build build
 ```
 
@@ -82,7 +86,7 @@ Você verá que um arquivo `oriented_graph` foi gerado na pasta `build/src`.
 Para executar o programa, basta chamá-lo.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
-cd ~/dev/c_cpp_projects/oriented_graph_with_cmake
+cd ~/dev/c_cpp_projects/oriented_graph
 ./build/src/oriented_graph
 # 1 3 4 5 2
 ```

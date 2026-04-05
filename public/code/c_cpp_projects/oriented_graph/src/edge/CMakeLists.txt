@@ -1,23 +1,22 @@
 ## Library
-add_library(graph)
+add_library(edge)
 
 ## Sources
-target_sources(graph
+target_sources(edge
     PUBLIC
-        graph.hpp
+        edge.hpp
     PRIVATE
-        graph.cpp
+        edge.cpp
 )
 
 ## Define module
-target_include_directories(graph
+target_include_directories(edge
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
 
 ## Link libraries
-target_link_libraries(graph
-    PRIVATE
+target_link_libraries(edge
+    PUBLIC
         node
-        edge
 )

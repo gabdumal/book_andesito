@@ -4,8 +4,8 @@
 #include <optional>
 #include <vector>
 
-#include "../edge/edge.hpp"
-#include "../node/node.hpp"
+#include "edge.hpp"
+#include "node.hpp"
 
 using namespace std;
 

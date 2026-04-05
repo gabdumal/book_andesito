@@ -18,11 +18,6 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
         -Wpedantic              # Strict ISO C++ compliance
         -Wconversion            # Warn on implicit type conversions
     )
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    add_compile_options(
-        /W4                     # High warning level
-        /permissive-            # Enforce standards compliance
-    )
 endif()
 
 ## Directories

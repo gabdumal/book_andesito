@@ -7,7 +7,7 @@
       "program": "${command:cmake.launchTargetPath}",
       "args": [],
       "cwd": "${workspaceFolder}",
-      "terminal": "console",
+      "terminal": "integrated",
       "preLaunchTask": "CMake: build"
     }
   ],

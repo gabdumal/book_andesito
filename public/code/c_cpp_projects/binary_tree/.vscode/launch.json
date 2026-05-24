@@ -7,7 +7,7 @@
       "preLaunchTask": "Clang: build C++ project (Local)",
       "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
       "request": "launch",
-      "terminal": "console",
+      "terminal": "integrated",
       "type": "lldb"
     }
   ],

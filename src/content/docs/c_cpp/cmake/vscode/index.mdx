@@ -151,10 +151,7 @@ Por padrão, o VSCode tenta usar o depurador `GDB` para depuração.
 Dessa forma, a extensão faz a compatibilidade para usarmos o `LLDB`.
 
 Caso você tenha seguido as instruções para configurar o perfil `C/C++` do VSCode, como discutido [anteriormente](../../compiler/vscode#configurações), seu ambiente já terá utilidades que facilitam a depuração de um programa.
-
-Entre elas, adicionamos uma tarefa de depuração para rodar um programa sem antes compilá-lo (dado que o CMakeTools já fez isso).
-O nome dessa tarefa é LLDB: launch C++ project.
-Também definimos algumas configurações específicas para o CMake.
+Entre elas, definimos algumas configurações específicas para o CMake.
 
 Agora, **adicione** um ponto de depuração na linha `12` do arquivo `src/main.cpp`.
 Então, clique no botão com o ícone de **besouro** na barra inferior do VSCode.
@@ -212,5 +209,5 @@ A extensão `CMake Tools` define um conjunto de tarefas padrão, como a `CMake: 
 Isso faz com que, antes de iniciar a depuração, o projeto seja **compilado**.
 
 Configurar uma tarefa de execução **personalizada** tem outra vantagem.
-A interface de depuração comum do VSCode, que pode ser acessada por meio do atalho <Kbd linux={"Ctrl+Shift+D"} />, passa a funcionar totalmente com o CMake.
+A interface de depuração comum do VSCode, que pode ser acessada por meio do atalho de teclado <span style="white-space: nowrap;"><Kbd linux={"Ctrl+Shift+D"} />,</span> passa a funcionar totalmente com o CMake.
 Dessa forma, você pode inclusive depurar o projeto com o **atalho** <Kbd linux={"F5"} />.

@@ -62,7 +62,7 @@
         "preLaunchTask": "Clang: build C project (all files in root)",
         "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
         "request": "launch",
-        "terminal": "console",
+        "terminal": "integrated",
         "type": "lldb"
       },
       {
@@ -72,7 +72,7 @@
         "preLaunchTask": "Clang: build C++ project (all files in root)",
         "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
         "request": "launch",
-        "terminal": "console",
+        "terminal": "integrated",
         "type": "lldb"
       }
     ],

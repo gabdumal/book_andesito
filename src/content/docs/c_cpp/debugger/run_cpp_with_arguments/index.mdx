@@ -120,7 +120,7 @@ O conteúdo do arquivo será o seguinte:
       "preLaunchTask": "Clang: build C++ project (Local)",
       "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
       "request": "launch",
-      "terminal": "console",
+      "terminal": "integrated",
       "type": "lldb"
     }
   ],
@@ -165,12 +165,12 @@ int main(int argc, char *argv[]) {
 Para executar nosso programa, acesse o menu de depuração clicando no ícone de **bug** ou pelo atalho <Kbd linux={"Ctrl+Shift+D"} />.
 Então clique no botão de **play** verde ou, se preferir, use o atalho de teclado <Kbd linux={"F5"} />.
 
-A execução será exibida na aba `Debug console`, que pode ser acessada com o atalho <Kbd linux={"Ctrl+Shift+Y"} />.
+A execução será exibida na aba `Terminal`, que pode ser acessada com o atalho <Kbd linux={"Ctrl+'"} />.
 
 <Figure caption="Execução do programa exibindo o caminho do arquivo executado.">
   <Image
     src={outputOfProgramPath}
-    alt={`Aba "Debug console" do Visual Studio Code, em que o programa "hello_user" é executado. Ele exibe no console o seguinte texto: "This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.".`}
+    alt={`Aba "Terminal" do Visual Studio Code, em que o programa "hello_user" é executado. Ele exibe no console o seguinte texto: "This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.".`}
   />
 </Figure>
 
@@ -255,7 +255,7 @@ Parece ótimo!
 Mas e se quisermos executar o programa pelo VSCode?
 Ele não sabe qual é o nome do usuário a informar.
 
-Se tentarmos executá-lo, veremos a seguinte saída no "Debug console":
+Se tentarmos executá-lo, veremos a seguinte saída no "Terminal":
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 # This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.
@@ -274,7 +274,7 @@ Vamos adicionar dentro dele a string "Alice".
   mark={4}
 />
 
-Agora, se compilarmos e executarmos pelo VScode, o resultado no "Debug console" mostrará o nome "Alice", como a seguir:
+Agora, se compilarmos e executarmos pelo VScode, o resultado no "Terminal" mostrará o nome "Alice", como a seguir:
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 # This is the program /home/gabriel/dev/c_cpp_projects/hello_user/build/hello_user.

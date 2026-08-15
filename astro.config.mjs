@@ -100,7 +100,7 @@ export default defineConfig({
             { label: "Introdução", slug: "python" },
             { label: "Instalação", slug: "python/install" },
             { label: "Executando", slug: "python/run" },
-            // { label: "Ambientes virtuais", slug: "python/venv" },
+            { label: "Ambientes virtuais", slug: "python/venv" },
           ],
           label: "Python",
         },

@@ -2,3 +2,93 @@
 title: Ambientes virtuais
 author: Gabriel Malosto
 ---
+
+import { Image } from "astro:assets";
+import { Kbd } from "starlight-kbd/components";
+
+import Figure from "@components/Figure.astro";
+
+import createEnv from "@assets/content/docs/python/venv/create_env.png";
+import selectVenv from "@assets/content/docs/python/venv/select_venv.png";
+import selectInterpreter from "@assets/content/docs/python/venv/select_interpreter.png";
+import footer from "@assets/content/docs/python/venv/footer.png";
+
+Uma das características fundamentais do Python é a facilidade de que dispõe para instalar pacotes utilitários.
+Para que diferentes projetos nos nossos computadores não tenham conflitos de versões, é recomendado criar um **ambiente virtual** para cada um.
+
+Existem várias ferramentas que fazem isso.
+Neste guia, usaremos o [**venv**](https://docs.python.org/3/library/venv.html).
+Ele é um módulo padrão do Python, que cria uma pasta isolada dentro de um projeto.
+Então, podemos usar o **pip** para instalar as dependências dentro dessa pasta.
+
+## Criação de um projeto
+
+**Crie** uma pasta dentro do diretório `python` chamada `colors`.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/python
+mkdir -p colors
+cd colors
+```
+
+Então, **abra** o Visual Studio Code nessa pasta.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+code .
+```
+
+**Ative** o perfil do Python que criamos dentro do VSCode.
+
+Por dentro do VSCode, **crie** um arquivo chamado `main.py` e adicione o seguinte código.
+
+```python
+name = input('Qual é o seu nome? ')
+print(f'Olá, {name}!')
+```
+
+Este é o mesmo código que usamos no [capítulo anterior](../run).
+Execute-o por meio do painel lateral `Run and Debug`, como explicado anteriormente.
+
+## Configuração do venv
+
+Agora, vamos criar um **ambiente virtual** para instalar pacotes.
+Podemos fazer isso tanto pela linha de comando, como também pela interface do VSCode.
+
+**Abra** a Command Palette com o atalho <Kbd linux={"Ctrl+Shift+P"}/>, e digite `Python: Create Environment`.
+
+<Figure caption={`Criando um ambiente virtual no Visual Studio Code.`}>
+  <Image
+    src={createEnv}
+    alt={`Paleta de Comandos do Visual Studio Code, em que se escolhe a opção "Python: Create Environment".`}
+  />
+</Figure>
+
+Então, **selecione** a ferramenta `venv` no menu que se abrir.
+
+<Figure caption={`Criando um ambiente "venv" Visual Studio Code.`}>
+  <Image
+    src={selectVenv}
+    alt={`Menu de seleção de ferramenta de ambiente virtual no Visual Studio Code, em que se escolhe a opção "venv".`}
+  />
+</Figure>
+
+Em seguida, **selecione** o caminho do interpretador como `/bin/python`.
+
+<Figure
+  caption={`Selecionando o interpretador na pasta "/bin/python" pelo Visual Studio Code.`}
+>
+  <Image
+    src={selectInterpreter}
+    alt={`Menu de seleção do caminho do interpretador de Python pelo Visual Studio Code, em que se escolhe a opção "/bin/python".`}
+  />
+</Figure>
+
+O ambiente virtual será criado em uma pasta chamada **`.venv`**.
+No **rodapé** do Visual Studio Code, você poderá ver a versão do Python usada e o ambiente do venv selecionado.
+
+<Figure caption={`Rodapé do Visual Studio Code com o venv ativado.`}>
+  <Image
+    src={footer}
+    alt={`Rodapé do Visual Studio Code, em que se vê o ambiente virtual criado no caminho ".venv".`}
+  />
+</Figure>

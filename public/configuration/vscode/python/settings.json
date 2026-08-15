@@ -15,6 +15,7 @@
     "prettier.tabWidth": 2
   },
   "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true
   },
   "cSpell.words": [
@@ -31,14 +32,14 @@
     "venv"
   ],
   "files.exclude": {
-    "**/__init__.py": true,
     "**/__pycache__": true,
     "**/.DS_Store": true,
-    "**/.git": true,
     "**/.ipynb_checkpoints": true,
     "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/.venv": true
+    "**/.pytest_cache": true
   },
-  "python.analysis.extraPaths": ["./src"]
+  "python.analysis.extraPaths": ["./src"],
+  "search.exclude": {
+    "**/.venv": true
+  }
 }

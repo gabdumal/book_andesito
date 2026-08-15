@@ -31,14 +31,18 @@ A criação dessa pasta foi tratada no capítulo [Windows Subsystem for Linux](.
 
 ## Olá, Mundo
 
-Para os sistemas **Linux**, basta executar o seguinte comando para criar a pasta `dev`.
-O argumento `-p` é usado para não gerar um conflito.
-Caso essa pasta já exista, o comando simplesmente não faz nada.
+Execute o seguinte comando no **Linux** ou no **WSL** para criar uma pasta com o nome `dev` dentro do diretório do nosso usuário.
+Dentro dela, vamos criar um conjunto de projetos no decorrer deste guia.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 mkdir -p ~/dev
 cd ~/dev
 ```
+
+:::note
+O argumento `-p` após o comando `mkdir` serve para garantir que a pasta ou seja criada ou permaneça como está.
+Caso a pasta já exista, o comando simplesmente não faz nada.
+:::
 
 Então, vamos criar dentro dela uma pasta chamada `python`.
 

@@ -11,6 +11,7 @@
     "ptyxis",
     "rustup",
     "tseslint",
+    "venv",
     "winget",
     "zoxide"
   ],

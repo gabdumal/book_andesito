@@ -38,6 +38,7 @@
     "**/.mypy_cache": true,
     "**/.pytest_cache": true
   },
+  "notebook.formatOnSave.enabled": true,
   "python.analysis.extraPaths": ["./src"],
   "search.exclude": {
     "**/.venv": true

@@ -12,6 +12,8 @@ import createEnv from "@assets/content/docs/python/venv/create_env.png";
 import selectVenv from "@assets/content/docs/python/venv/select_venv.png";
 import selectInterpreter from "@assets/content/docs/python/venv/select_interpreter.png";
 import footer from "@assets/content/docs/python/venv/footer.png";
+import output from "@assets/content/docs/python/venv/output.png";
+import cowsay from "@assets/content/docs/python/venv/cowsay.png";
 
 Uma das características fundamentais do Python é a facilidade de que dispõe para instalar pacotes utilitários.
 Para que diferentes projetos nos nossos computadores não tenham conflitos de versões, é recomendado criar um **ambiente virtual** para cada um.
@@ -41,7 +43,7 @@ code .
 
 Por dentro do VSCode, **crie** um arquivo chamado `main.py` e adicione o seguinte código.
 
-```python
+```python title="main.py"
 name = input('Qual é o seu nome? ')
 print(f'Olá, {name}!')
 ```
@@ -53,6 +55,11 @@ Execute-o por meio do painel lateral `Run and Debug`, como explicado anteriormen
 
 Agora, vamos criar um **ambiente virtual** para instalar pacotes.
 Podemos fazer isso tanto pela linha de comando, como também pela interface do VSCode.
+
+Escolha uma das formas abaixo e a siga.
+Caso queira seguir uma e depois a outra, basta apagar a pasta `.venv` criada ao fim do processo.
+
+### Visual Studio Code
 
 **Abra** a Command Palette com o atalho <Kbd linux={"Ctrl+Shift+P"}/>, e digite `Python: Create Environment`.
 
@@ -92,3 +99,186 @@ No **rodapé** do Visual Studio Code, você poderá ver a versão do Python usad
     alt={`Rodapé do Visual Studio Code, em que se vê o ambiente virtual criado no caminho ".venv".`}
   />
 </Figure>
+
+### Linha de comando
+
+**Abra** no terminal a pasta que criamos.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+cd ~/dev/python/colors
+```
+
+Então, **crie** um ambiente virtual com o `venv` usando o comando a seguir.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+python -m venv .venv
+```
+
+Isso criará uma pasta no seu projeto com o nome `.venv`.
+
+Agora, é necessário **ativar** o ambiente criado.
+Para isso, execute o comando a seguir.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+source .venv/bin/activate
+```
+
+Toda vez que você fechar e abrir o terminal nessa pasta, será necessário ativar o venv novamente por meio desse comando.
+
+## Instalando um pacote
+
+Vamos instalar o pacote [**`rich`**](https://rich.readthedocs.io/en/stable/introduction.html), que facilita colorir o texto impresso no terminal pelo nosso programa.
+
+**Abra** o terminal na pasta do projeto.
+Pode ser o terminal integrado do VSCode, ou então um terminal externo com o venv ativado.
+
+Então, **execute** o comando de instalação a seguir.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+pip install rich
+```
+
+O resultado no terminal será como a seguir.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+Collecting rich
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting markdown-it-py>=2.2.0 (from rich)
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich)
+  Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 45.8 MB/s  0:00:00
+Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Installing collected packages: pygments, mdurl, markdown-it-py, rich
+Successfully installed markdown-it-py-4.2.0 mdurl-0.1.2 pygments-2.20.0 rich-15.0.0
+```
+
+Agora, **edite** o programa no arquivo `main.py` para importar o pacote `rich` em seu topo.
+
+```python title="main.py" ins={1}
+from rich import print
+
+name = input('Qual é o seu nome? ')
+print(f'Olá, {name}!')
+```
+
+Em seguida, **edite** o corpo do programa para adicionar cores e negrito.
+
+```python title="main.py" {3-5}
+from rich import print
+
+print("Qual é o seu [italic blue]nome[/italic blue]?")
+name = input("")
+print(f"Olá, [bold yellow]{name}[/bold yellow]!")
+```
+
+**Execute** o programa atualizado.
+O resultado deve ser como a seguir.
+
+<Figure caption={`Execução do programa.`}>
+  <Image
+    src={output}
+    alt={`Execução do programa utilizado o pacote rich no terminal, em que o nome digitado aparece colorido.`}
+  />
+</Figure>
+
+## Gerenciando dependências
+
+Quando lidamos com pacotes, queremos que pessoas que usam nossos projetos possam instalar as mesmas dependências nas mesmas versões.
+Para garantir isso, podemos criar uma lista de pacotes instalados.
+
+**Abra** o terminal na pasta do projeto com o venv ativado e **execute** o comando a seguir.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+touch requirements.txt
+```
+
+Isso **cria** o arquivo em que listaremos os pacotes.
+
+Agora, vamos verificar qual é a **versão** que instalamos do pacote `rich`.
+
+**Execute** o comando a seguir para obter as informações do pacote.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+pip show rich
+```
+
+```txt title="Fedora, WSL ou Mint" frame="terminal"
+Name: rich
+Version: 15.0.0
+Summary: Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
+Home-page: https://github.com/Textualize/rich
+Author: Will McGugan
+Author-email: willmcgugan@gmail.com
+License: MIT
+Location: /home/gabriel/dev/python/colors/.venv/lib64/python3.14/site-packages
+Requires: markdown-it-py, pygments
+Required-by:
+```
+
+Na data de escrita deste guia, o `rich` está na versão `15.0.0`.
+
+**Edite** o arquivo `requirements.txt` para adicionar o pacote.
+Podemos ignorar o último número de versão, pois ele tende a representar atualizações de pouco impacto na funcionalidade.
+Ele deve ficar como a seguir.
+
+```txt title="requirements.txt"
+rich>=15.0
+```
+
+Se quiser instalar outros pacotes, você pode listá-los abaixo nesse mesmo arquivo.
+Por exemplo, **adicione** uma linha para o pacote `cowsay`.
+
+```txt title="requirements.txt" ins={2}
+rich>=15.0
+cowsay>=6.1
+```
+
+Para instalar os pacotes descritos nessa lista, **execute** o comando a seguir.
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+pip install -r requirements.txt
+```
+
+```txt title="Fedora, WSL ou Mint" frame="terminal"
+Requirement already satisfied: rich>=15.0 in ./.venv/lib64/python3.14/site-packages (from -r requirements.txt (line 1)) (15.0.0)
+Collecting cowsay>=6.1 (from -r requirements.txt (line 2))
+  Downloading cowsay-6.1-py3-none-any.whl.metadata (5.6 kB)
+Requirement already satisfied: markdown-it-py>=2.2.0 in ./.venv/lib64/python3.14/site-packages (from rich>=15.0->-r requirements.txt (line 1)) (4.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in ./.venv/lib64/python3.14/site-packages (from rich>=15.0->-r requirements.txt (line 1)) (2.20.0)
+Requirement already satisfied: mdurl~=0.1 in ./.venv/lib64/python3.14/site-packages (from markdown-it-py>=2.2.0->rich>=15.0->-r requirements.txt (line 1)) (0.1.2)
+Downloading cowsay-6.1-py3-none-any.whl (25 kB)
+Installing collected packages: cowsay
+Successfully installed cowsay-6.1
+```
+
+Vamos entrar no ambiente do interpretador do Python (**REPL**).
+
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
+python
+```
+
+Agora, **execute** os seguintes comandos para importar o pacote `cowsay` e executá-lo.
+
+```python title="Fedora, WSL ou Mint" frame="terminal"
+import cowsay
+cowsay.cow('Olá, Mundo!')
+```
+
+A execução será como a seguir.
+
+<Figure
+  caption={`Execução do pacote "cowsay" no console do interpretador do Python.`}
+>
+  <Image
+    src={cowsay}
+    alt={`Execução de uma função do pacote "cowsay" no console do interpretador do Python.`}
+  />
+</Figure>
+
+Para **fechar** o console do interpretador, pressione <Kbd linux={"Ctrl+D"}/>.

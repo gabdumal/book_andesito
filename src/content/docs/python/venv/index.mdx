@@ -228,15 +228,15 @@ Podemos ignorar o último número de versão, pois ele tende a representar atual
 Ele deve ficar como a seguir.
 
 ```txt title="requirements.txt"
-rich==15.0
+rich>=15.0
 ```
 
 Se quiser instalar outros pacotes, você pode listá-los abaixo nesse mesmo arquivo.
 Por exemplo, **adicione** uma linha para o pacote `cowsay`.
 
 ```txt title="requirements.txt" ins={2}
-rich==15.0
-cowsay==6.1
+rich>=15.0
+cowsay>=6.1
 ```
 
 Para instalar os pacotes descritos nessa lista, **execute** o comando a seguir.
@@ -246,12 +246,12 @@ pip install -r requirements.txt
 ```
 
 ```txt title="Fedora, WSL ou Mint" frame="terminal"
-Requirement already satisfied: rich==15.0 in ./.venv/lib64/python3.14/site-packages (from -r requirements.txt (line 1)) (15.0.0)
-Collecting cowsay==6.1 (from -r requirements.txt (line 2))
+Requirement already satisfied: rich>=15.0 in ./.venv/lib64/python3.14/site-packages (from -r requirements.txt (line 1)) (15.0.0)
+Collecting cowsay>=6.1 (from -r requirements.txt (line 2))
   Downloading cowsay-6.1-py3-none-any.whl.metadata (5.6 kB)
-Requirement already satisfied: markdown-it-py>=2.2.0 in ./.venv/lib64/python3.14/site-packages (from rich==15.0->-r requirements.txt (line 1)) (4.2.0)
-Requirement already satisfied: pygments<3.0.0,>=2.13.0 in ./.venv/lib64/python3.14/site-packages (from rich==15.0->-r requirements.txt (line 1)) (2.20.0)
-Requirement already satisfied: mdurl~=0.1 in ./.venv/lib64/python3.14/site-packages (from markdown-it-py>=2.2.0->rich==15.0->-r requirements.txt (line 1)) (0.1.2)
+Requirement already satisfied: markdown-it-py>=2.2.0 in ./.venv/lib64/python3.14/site-packages (from rich>=15.0->-r requirements.txt (line 1)) (4.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in ./.venv/lib64/python3.14/site-packages (from rich>=15.0->-r requirements.txt (line 1)) (2.20.0)
+Requirement already satisfied: mdurl~=0.1 in ./.venv/lib64/python3.14/site-packages (from markdown-it-py>=2.2.0->rich>=15.0->-r requirements.txt (line 1)) (0.1.2)
 Downloading cowsay-6.1-py3-none-any.whl (25 kB)
 Installing collected packages: cowsay
 Successfully installed cowsay-6.1

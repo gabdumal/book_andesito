@@ -186,7 +186,7 @@
       "      \"preLaunchTask\": \"Clang: build C project (Local)\",",
       "      \"program\": \"\\${workspaceFolder}/build/\\${workspaceFolderBasename}\",",
       "      \"request\": \"launch\",",
-      "      \"terminal\": \"console\",",
+      "      \"terminal\": \"integrated\",",
       "      \"type\": \"lldb\"",
       "    },",
     ],
@@ -202,7 +202,7 @@
       "      \"preLaunchTask\": \"Clang: build C++ project (Local)\",",
       "      \"program\": \"\\${workspaceFolder}/build/\\${workspaceFolderBasename}\",",
       "      \"request\": \"launch\",",
-      "      \"terminal\": \"console\",",
+      "      \"terminal\": \"integrated\",",
       "      \"type\": \"lldb\"",
       "    },",
     ],
@@ -210,7 +210,12 @@
     "prefix": "cpp-launch",
   },
   "Ignore auxiliary files on C and C++ projects.": {
-    "body": ["## Build", ".cache/", "build/", ""],
+    "body": [
+      "## Build",
+      ".cache/",
+      "build/",
+      ""
+    ],
     "description": "Ignore auxiliary files on C and C++ projects.",
     "prefix": "gitignore-c-cpp",
   },

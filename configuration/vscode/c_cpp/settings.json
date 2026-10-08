@@ -1,4 +1,10 @@
 {
+  "[c]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -56,7 +62,7 @@
         "preLaunchTask": "Clang: build C project (all files in root)",
         "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
         "request": "launch",
-        "terminal": "console",
+        "terminal": "integrated",
         "type": "lldb"
       },
       {
@@ -66,7 +72,7 @@
         "preLaunchTask": "Clang: build C++ project (all files in root)",
         "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
         "request": "launch",
-        "terminal": "console",
+        "terminal": "integrated",
         "type": "lldb"
       }
     ],

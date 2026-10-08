@@ -6,6 +6,7 @@
     "astrojs",
     "clangd",
     "flathub",
+    "gabdumal",
     "gabriel",
     "openssh",
     "ptyxis",
@@ -22,5 +23,7 @@
     "astro", // Enable .astro
     "typescript", // Enable .ts
     "typescriptreact" // Enable .tsx
-  ]
+  ],
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsserver.experimental.enableProjectDiagnostics": false
 }

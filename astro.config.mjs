@@ -5,7 +5,6 @@ import starlightKbd from "starlight-kbd";
 
 // https://astro.build/config
 export default defineConfig({
-  base: "book_andesito",
   integrations: [
     starlight({
       customCss: [
@@ -13,19 +12,24 @@ export default defineConfig({
         "@fontsource-variable/atkinson-hyperlegible-mono",
         "./src/styles/global.css",
       ],
+
       defaultLocale: "root",
+
       description: "Guia de configuração de ambiente de desenvolvimento.",
+
       expressiveCode: {
         frames: {
           removeCommentsWhenCopyingTerminalFrames: false,
         },
       },
+
       locales: {
         root: {
           label: "Português",
           lang: "pt",
         },
       },
+
       plugins: [
         starlightKbd({
           types: [
@@ -34,6 +38,7 @@ export default defineConfig({
           ],
         }),
       ],
+
       sidebar: [
         {
           label: "Introdução",
@@ -201,6 +206,7 @@ export default defineConfig({
         //   slug: "ruby",
         // },
       ],
+
       social: [
         {
           href: "https://github.com/gabdumal/book_andesito",
@@ -208,11 +214,8 @@ export default defineConfig({
           label: "GitHub",
         },
       ],
+
       title: "Andesito",
     }),
   ],
-  site: "https://gabdumal.github.io",
-  vite: {
-    plugins: [],
-  },
 });

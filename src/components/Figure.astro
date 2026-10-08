@@ -43,7 +43,5 @@ const { caption, horizontal = false } = Astro.props;
   <div class={`images-container ${horizontal ? "horizontal" : "vertical"}`}>
     <slot />
   </div>
-  <figcaption class="figure-caption">
-    {caption}
-  </figcaption>
+  <figcaption class="figure-caption">{caption}</figcaption>
 </figure>

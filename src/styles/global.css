@@ -1,6 +1,46 @@
 :root {
   --sl-font: "Atkinson Hyperlegible Next Variable", sans-serif;
   --sl-font-mono: "Atkinson Hyperlegible Mono Variable", monospace;
+  font-size: 1.125rem;
+
+  /* Activate automatic hyphenation */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+
+  /* Breaks word if it is too long */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Dark mode colors. */
+:root {
+  --sl-color-accent-low: #460b05;
+  --sl-color-accent: #c60e00;
+  --sl-color-accent-high: #feb3a6;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #ebeef3;
+  --sl-color-gray-2: #bec2c9;
+  --sl-color-gray-3: #858c98;
+  --sl-color-gray-4: #525864;
+  --sl-color-gray-5: #323943;
+  --sl-color-gray-6: #212731;
+  --sl-color-black: #15181d;
+}
+/* Light mode colors. */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #ffc8be;
+  --sl-color-accent: #c90e00;
+  --sl-color-accent-high: #640300;
+  --sl-color-white: #15181d;
+  --sl-color-gray-1: #212731;
+  --sl-color-gray-2: #323943;
+  --sl-color-gray-3: #525864;
+  --sl-color-gray-4: #858c98;
+  --sl-color-gray-5: #bec2c9;
+  --sl-color-gray-6: #ebeef3;
+  --sl-color-gray-7: #f5f6f9;
+  --sl-color-black: #ffffff;
 }
 
 .flex {
@@ -14,4 +54,24 @@
 img,
 picture {
   margin-top: 0rem;
+}
+
+.image-rounded img,
+.image-rounded > a[data-fancybox] img {
+  border-radius: 0.25rem;
+}
+
+.image-shadowed img,
+.image-rounded > a[data-fancybox] img {
+  filter: drop-shadow(0rem 0rem 0.25rem black);
+}
+
+.f-caption {
+  text-align: center;
+}
+
+/* Prevent Fancybox's zoomable image wrapper from collapsing. */
+.fancybox__slide .f-panzoom__wrapper.is-fullsize {
+  width: 100%;
+  height: auto;
 }

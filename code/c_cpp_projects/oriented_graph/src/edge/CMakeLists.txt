@@ -3,16 +3,14 @@ add_library(edge)
 
 ## Sources
 target_sources(edge
-    PUBLIC
-        edge.hpp
     PRIVATE
         edge.cpp
-)
-
-## Define module
-target_include_directories(edge
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        FILE_SET HEADERS
+        BASE_DIRS
+            "${CMAKE_CURRENT_SOURCE_DIR}"
+        FILES
+            edge.hpp
 )
 
 ## Link libraries

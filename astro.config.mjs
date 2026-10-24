@@ -295,4 +295,5 @@ export default defineConfig({
     }),
     fancyboxIntegration,
   ],
+  site: "https://andesito.gabdumal.com",
 });

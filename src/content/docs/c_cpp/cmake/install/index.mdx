@@ -4,38 +4,35 @@ author: Gabriel Malosto
 ---
 
 Vamos instalar o [**CMake**](https://cmake.org/) por meio dos pacotes distribuídos pelas distros Fedora Linux e Linux Mint.
-Também instalaremos o [**Ninja**](https://ninja-build.org/), um gerador de build com foco em velocidade.
 
 ## Pacotes
-
-### Fedora e WSL
 
 Para instalar o **CMake** no Fedora (ou no WSL usando o Fedora), **execute** o seguinte comando no terminal.
 
 ```zsh title="Fedora ou WSL" frame="terminal"
 sudo dnf upgrade -y
-sudo dnf install cmake ninja-build python3-ninja -y
+sudo dnf install -y \
+    cmake \
+    cmakelang \
+    ccache \
+    pkgconf-pkg-config
 
 cmake --version
-# cmake version 3.31.11
-
-ninja --version
-# 1.13.1
+# cmake version 4.3.0
 ```
-
-### Mint
 
 Para instalar o **CMake** no Mint ou em outras distribuições baseadas no Debian, **execute** o seguinte comando no terminal.
 
 ```zsh title="Mint" frame="terminal"
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install cmake ninja-build -y
+sudo apt install -y \
+    cmake \
+    cmake-format \
+    ccache \
+    pkg-config
 
 cmake --version
 # cmake version 3.28.3
-
-ninja --version
-# 1.11.1
 ```
 
 ## Extensões

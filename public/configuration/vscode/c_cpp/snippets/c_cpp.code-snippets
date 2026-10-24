@@ -71,7 +71,7 @@
       "IndentAccessModifiers: true",
       "IndentCaseBlocks: true",
       "IndentCaseLabels: true",
-      "IndentExternBlock: true",
+      "IndentExternBlock: Indent",
       "IndentGotoLabels: true",
       "IndentPPDirectives: AfterHash",
       "IndentRequiresClause: true",
@@ -210,12 +210,7 @@
     "prefix": "cpp-launch",
   },
   "Ignore auxiliary files on C and C++ projects.": {
-    "body": [
-      "## Build",
-      ".cache/",
-      "build/",
-      ""
-    ],
+    "body": ["## Build", ".cache/", "build/", ""],
     "description": "Ignore auxiliary files on C and C++ projects.",
     "prefix": "gitignore-c-cpp",
   },

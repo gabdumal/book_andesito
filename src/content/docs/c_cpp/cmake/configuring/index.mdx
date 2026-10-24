@@ -56,8 +56,6 @@ Vamos preencher trecho por trecho do arquivo `CMakeLists.txt` para entender o qu
 ### Versões
 
 Primeiramente, é necessário definir a **versão** do CMake que será utilizada.
-Na época de escrita deste guia, a versão `3.31.11` era a mais recente disponível.
-
 Nós podemos definir um **intervalo** de versões suportadas, para garantir que o projeto seja compilado corretamente em diferentes ambientes.
 Isso é feito com o comando `cmake_minimum_required`.
 
@@ -91,6 +89,7 @@ Para isso, usamos comandos iniciados em `set` para definir as **variáveis** de 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ```
 
 ### Flags de compilação
@@ -106,13 +105,14 @@ Além disso, a [documentação do Clang](https://clang.llvm.org/docs/Diagnostics
 Para definir avisos para esses dois compiladores, abrimos uma seção que foca no GCC, no Clang e no Apple Clang.
 Então, usamos o comando `add_compile_options`.
 
-```cmake title="CMakeLists.txt" frame="code" startLineNumber=14
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=15
 ## Warnings
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     add_compile_options(
-        -Wall -Wextra           # Reasonable warnings
-        -Wpedantic              # Strict ISO C++ compliance
-        -Wconversion            # Warn on implicit type conversions
+        -Wall
+        -Wextra      # Reasonable warnings
+        -Wpedantic   # Strict ISO C++ compliance
+        -Wconversion # Warn on implicit type conversions
     )
 endif()
 ```
@@ -122,7 +122,7 @@ endif()
 Nosso projeto guarda o código-fonte na pasta `src`.
 Para que o CMake consiga encontrar os arquivos dentro dela, precisamos **listá-la** no arquivo `CMakeLists.txt`.
 
-```cmake title="CMakeLists.txt" frame="code" startLineNumber=23
+```cmake title="CMakeLists.txt" frame="code" startLineNumber=25
 ## Directories
 add_subdirectory(src)
 ```
@@ -290,32 +290,21 @@ Em seguida, precisamos adicionar os arquivos de código-fonte e de cabeçalho qu
 O módulo `edge` possui apenas um arquivo de cabeçalho &mdash; o `edge.hpp` &mdash; e um arquivo de código-fonte &mdash; o `edge.cpp`.
 Usemos o comando `target_sources` para **adicionar** esses arquivos à biblioteca.
 
-Os arquivos de cabeçalho são adicionados como **públicos** para que eles possam ser incluídos por outros módulos.
-Já os arquivos de código-fonte são adicionados como **privados**, de forma que outros módulos precisem utilizar o arquivo de cabeçalho para conseguir acessá-los.
+Os arquivos de código-fonte são adicionados como **privados**, de forma que outros módulos precisem utilizar o arquivo de cabeçalho para conseguir acessá-los.
+Já os arquivos de cabeçalho são adicionados como **públicos** para que eles possam ser incluídos por outros módulos.
+Para eles, é importante usar o trecho `"${CMAKE_CURRENT_SOURCE_DIR}"`, que indica a pasta onde encontrá-los.
 
 ```cmake title="src/edge/CMakeLists.txt" frame="code" startLineNumber=4
 ## Sources
 target_sources(edge
-    PUBLIC
-        edge.hpp
     PRIVATE
         edge.cpp
-)
-```
-
-### Diretórios
-
-Agora, precisamos **definir** o diretório `edge` como um diretório de **inclusão**, para que ele possa ser acessado por outros módulos.
-Isso é feito com o comando `target_include_directories`.
-
-O CMake vai incluir o diretório `edge` de forma **pública** à biblioteca `edge`.
-É necessário usar a keyword `PUBLIC` para que outros arquivos consigam incluir a classe `Edge`, definida no arquivo `edge.hpp`.
-
-```cmake title="src/edge/CMakeLists.txt" frame="code" startLineNumber=12
-## Define module
-target_include_directories(edge
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        FILE_SET HEADERS
+        BASE_DIRS
+            "${CMAKE_CURRENT_SOURCE_DIR}"
+        FILES
+            edge.hpp
 )
 ```
 
@@ -330,7 +319,7 @@ Da mesma forma que fizemos para o executável `oriented_graph`, vamos incluir o 
 ```cmake title="src/edge/CMakeLists.txt" frame="code" startLineNumber=18
 ## Link libraries
 target_link_libraries(edge
-    PRIVATE
+    PUBLIC
         node
 )
 ```

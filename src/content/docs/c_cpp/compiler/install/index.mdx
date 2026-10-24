@@ -16,50 +16,27 @@ Para obter as ferramentas no Fedora ou no WSL usando o Fedora, vamos instalar os
 ```zsh title="Fedora ou WSL" frame="terminal"
 sudo dnf upgrade -y
 
+# Libraries
 sudo dnf install -y \
-  llvm \
-  clang \
-  clang-analyzer \
-  clang-devel \
-  clang-libs \
-  clang-resource-filesystem \
-  clang-tools-extra \
-  clang-tools-extra-devel \
-  compiler-rt \
-  git-clang-format \
-  libcxx \
+  glibc-devel \
   libcxx-devel \
-  libcxx-static \
-  libcxxabi \
-  libcxxabi-devel \
-  libcxxabi-static \
-  lld \
-  lld-devel \
-  lld-libs \
-  lldb \
-  lldb-devel \
-  llvm-bolt \
-  llvm-cmake-utils \
-  llvm-devel \
-  llvm-doc \
-  llvm-filesystem \
-  llvm-googletest \
-  llvm-libs \
-  llvm-static \
-  llvm-test \
-  mlir \
-  mlir-devel \
-  mlir-static \
-  polly \
-  polly-devel \
-  python3-clang \
-  python3-lit \
-  python3-lldb \
-  python3-mlir
+  libcxxabi-devel
 
+# Compiling
 sudo dnf install -y \
-  ninja-build \
-  python3-ninja
+  clang \
+  compiler-rt \
+  lld \
+  lldb \
+  llvm \
+  ninja-build
+
+# Tools
+sudo dnf install -y \
+  clang-analyzer \
+  clang-tools-extra \
+  clangd \
+  git-clang-format
 ```
 
 Você pode **verificar** a instalação com os comandos abaixo.
@@ -84,27 +61,27 @@ Para instalar as ferramentas no Mint ou em outras distribuições baseadas no De
 ```zsh title="Mint" frame="terminal"
 sudo apt update -y && sudo apt upgrade -y
 
+## Libraries
+sudo apt install -y \
+    libc++-dev \
+    libc++abi-dev \
+    libc6-dev
+
+# Compiling
+sudo apt install -y \
+  clang \
+  libclang-rt-dev \
+  lld \
+  lldb \
+  llvm \
+  ninja-build
+
+# Tools
 sudo apt install -y \
   clang-format \
   clang-tidy \
   clang-tools \
-  clang \
-  clangd \
-  libc++-dev \
-  libc++1 \
-  libc++abi-dev \
-  libc++abi1 \
-  libclang-dev \
-  libclang1 \
-  liblldb-dev \
-  lld \
-  lldb \
-  llvm-dev \
-  llvm-runtime \
-  llvm \
-  python3-clang
-
-sudo apt install -y ninja-build
+  clangd
 ```
 
 Você pode **verificar** a instalação com os comandos abaixo.

@@ -10,13 +10,15 @@ project(oriented_graph
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ## Warnings
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     add_compile_options(
-        -Wall -Wextra           # Reasonable warnings
-        -Wpedantic              # Strict ISO C++ compliance
-        -Wconversion            # Warn on implicit type conversions
+        -Wall
+        -Wextra      # Reasonable warnings
+        -Wpedantic   # Strict ISO C++ compliance
+        -Wconversion # Warn on implicit type conversions
     )
 endif()
 

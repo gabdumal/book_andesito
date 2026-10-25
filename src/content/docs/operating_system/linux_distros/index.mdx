@@ -15,7 +15,7 @@ Primeiro, você precisará de um **pen-drive** com pelo menos **4GB** de armazen
 Os dados desse pen-drive serão apagados para fazer a instalação do sistema, então, antes de prosseguir, faça um **backup** dos arquivos e pastas dentro dele em um lugar seguro (como algum serviço de armazenamento em nuvem).
 
 Quando você transferir a distro para esse pen-drive, ele funcionará como um flash-drive bootável (também chamado de **Live USB**).
-Isso significa que você poderá conectá-lo no seu computador e iniciar a distro transferida por meio dele, durante o processo de ligar o computador.
+Isso significa que você poderá conectá-lo no seu computador e, durante o processo de ligar o computador, selecionar a distro transferida.
 Não se preocupe: depois da instalação, você pode facilmente transformar o pen-drive de volta em um flash-drive de arquivos.
 
 Outra recomendação é que você faça um **backup** dos **arquivos** do seu computador em um serviço de armazenamento em nuvem.
@@ -26,7 +26,7 @@ Esteja seguro de que você pode remover o sistema operacional atual do computado
 Então, após removê-lo, você poderá criar os espaços para instalar dois sistemas operacionais um do lado do outro (como uma distro **Linux** e o **Windows** 11, por exemplo).
 Esse tipo de instalação é chamado de **_dual boot_**.
 
-Com último comentário: várias distros Linux permitem que você faça a encriptação do seu dispositivo de armazenamento (HD ou SSD).
+Como último comentário: várias distros Linux permitem que você faça a encriptação do seu dispositivo de armazenamento (HD ou SSD).
 Isso pode ser interessante para garantir que ninguém tenha acesso aos seus arquivos caso você perca seu laptop.
 Contudo, essa configuração exige alguns passos mais complexos.
 Por isso, recomendo que você não se preocupe com encriptação na sua primeira instalação do Linux.
@@ -41,22 +41,22 @@ Muitas vezes, ele adota padrões recentes, mesmo quando ainda restam alguns pouc
 Por exemplo, o Fedora apoia a adoção do protocolo gráfico Wayland nos principais ambientes de área de trabalho suportados.
 Isso permite que computadores mais recentes utilizem todas as suas potencialidades (como HDR, e monitores com resoluções diferentes).
 
-Contudo, se você necessitar de alguma função que não foi completamente implementada no Wayland, pode ser mais interessante utilizar uma outra distro, com uma filosofia de atualização menos recente.
+Contudo, se você necessitar de alguma função que não foi completamente implementada no Wayland, pode ser mais interessante utilizar uma outra distro, com uma filosofia de atualização mais conservadora.
 Essa mesma lógica se aplica para outros contextos.
 
 O Projeto Fedora recebe recursos de corporações como a Red Hat, mas mantém autonomia sobre suas decisões.
 A ideia é que os usuários do Fedora possam utilizar um sistema novo e polido.
-Ao mesmo tempo, as contribuições da comunidade que se consolidam são adotadas em distros mais estáveis, como a [Red Hat Enterprise Linux](https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux) mais tarde.
+Ao mesmo tempo, as contribuições da comunidade que se consolidam são adotadas em distros mais estáveis, como a [Red Hat Enterprise Linux](https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux).
 
 ### Instalação
 
 O Fedora Linux é distribuído com um conjunto variado de ambientes de área de trabalho (DEs).
-Os dois mais utilizados são o GNOME e o KDE, mas versões (chamadas de _spins_) com o Cinnamon, Cosmic, Xfce, e outros são oficialmente apoiadas.
+Os dois mais utilizados são o GNOME e o KDE, mas versões (chamadas de _spins_) como o Cinnamon, Cosmic, Xfce, e outros são oficialmente suportadas.
 Neste guia, cobrimos a versão [**Fedora Workstation**](https://fedoraproject.org/workstation/), que acompanha o **GNOME** como seu DE.
 O instalador do sistema pode ser baixado [nesta página](https://fedoraproject.org/workstation/download/).
 
 Este vídeo, do canal [Learn Linux TV](https://www.youtube.com/@LearnLinuxTV) no YouTube, ensina a instalar o Fedora Linux Workstation na **versão 43**.
-No momento de escrita desta seção &mdash; maio de 2026 &mdash;, a versão mais recente é a 44, mas o procedimento é similar para as versões sucessoras.
+No momento de escrita desta seção &mdash; outubro de 2026 &mdash;, a versão mais recente é a 44, mas o procedimento é similar para as versões sucessoras.
 
 <Figure caption="Guia de instalação do Fedora Workstation 43.">
   <iframe
@@ -102,7 +102,7 @@ Então, abra o aplicativo `Terminal`.
 Digite o comando abaixo para atualizar todos os pacotes do sistema.
 
 ```bash title="Fedora"  frame="terminal"
-sudo dnf update
+sudo dnf update -y
 ```
 
 Seu terminal pedirá para que você digite a senha que cadastrou no primeiro log-in.
@@ -186,7 +186,7 @@ Escolha qualquer opção e aguarde o download do arquivo `.iso`.
 
 Este vídeo, do canal [ExplainingComputers
 ](https://www.youtube.com/@ExplainingComputers) no YouTube, ensina a instalar o Linux Mint na **versão 22**.
-No momento de escrita desta seção &mdash; abril de 2026 &mdash;, a versão mais recente é a 22.3, mas o procedimento é o mesmo para essa e para as próximas versões.
+No momento de escrita desta seção &mdash; outubro de 2026 &mdash;, a versão mais recente é a 22.3, mas o procedimento é o mesmo para essa e para as próximas versões.
 
 <Figure caption="Guia de instalação do Linux Mint 22.">
   <iframe
@@ -204,7 +204,7 @@ No momento de escrita desta seção &mdash; abril de 2026 &mdash;, a versão mai
 
 Esse vídeo trata da instalação do Linux Mint como o único sistema em um computador.
 Caso você queira instalar o Linux Mint ao lado do Windows 11 no mesmo computador, recomendo que você siga este tutorial do canal [Learn Linux TV](https://www.youtube.com/@LearnLinuxTV) no YouTube, que ensina a fazer o **_dual boot_**.
-A versão do Linux Mint utilizada no vídeo é a 21, mas o processo é o mesmo que as versões mais recentes.
+A versão do Linux Mint utilizada no vídeo é a 21, mas o processo é o mesmo que nas versões mais recentes.
 
 <Figure caption="Guia de instalação do Linux Mint ao lado do Windows 11.">
   <iframe
@@ -219,3 +219,21 @@ A versão do Linux Mint utilizada no vídeo é a 21, mas o processo é o mesmo q
     allowfullscreen
   />
 </Figure>
+
+Agora que instalamos o Linux Mint, vamos pegar jeito com o terminal, e utilizá-lo para atualizar os programas do sistema.
+Garanta que você configurou a conexão com a internet.
+
+Então, abra o aplicativo `Terminal` e digite o comando abaixo.
+
+```bash title="Mint"  frame="terminal"
+sudo apt update -y && sudo apt upgrade -y
+```
+
+Seu terminal pedirá para que você digite a senha que cadastrou no primeiro log-in.
+Então, pressione <Kbd linux={"Enter"} />.
+
+Em seguida, digite o seguinte comando para instalar o programa Git.
+
+```bash title="Mint"  frame="terminal"
+sudo apt install git -y
+```

@@ -277,10 +277,6 @@ export default defineConfig({
         //   label: "Go",
         //   slug: "go",
         // },
-        // {
-        //   label: "Ruby",
-        //   slug: "ruby",
-        // },
       ],
 
       social: [

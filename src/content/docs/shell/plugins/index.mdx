@@ -93,6 +93,7 @@ Já para o **Mint** ou outros derivados do Debian, a versão do FZF disponível 
 Então, por enquanto, vamos baixar uma versão um pouco mais atualizada diretamente do repositório oficial.
 
 ```zsh title="Mint" frame="terminal"
+mkdir -p ~/.local/bin
 wget https://github.com/junegunn/fzf/releases/download/0.48.0/fzf-0.48.0-linux_amd64.tar.gz
 tar -xzf fzf-0.48.0-linux_amd64.tar.gz
 mv fzf ~/.local/bin/
@@ -121,7 +122,7 @@ Para verificar se a instalação foi bem-sucedida, execute o seguinte comando.
 
 ```zsh title="Fedora, WSL ou Mint" frame="terminal"
 zoxide --version
-# zoxide 0.9.7
+# zoxide 0.10.0
 ```
 
 Então, devemos atualizar o arquivo de configurações `~/.zshrc`, adicionando as seguintes linhas ao fim do arquivo de configuração.
@@ -147,7 +148,7 @@ O Zsh Autosuggestions pode ser habilitado por meio do **Oh My Zsh**.
 Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
 Faça isso executando o seguinte comando:
 
-```zsh
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
@@ -173,7 +174,7 @@ Ele também está disponível apenas para o Zsh, e pode ser habilitado por meio 
 Para isso, devemos clonar o repositório do plugin para a pasta de plugins do Oh My Zsh.
 Faça isso executando o seguinte comando.
 
-```zsh
+```zsh title="Fedora, WSL ou Mint" frame="terminal"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
